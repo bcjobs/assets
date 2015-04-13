@@ -1,0 +1,225 @@
+@primary_color: #243958;
+@action_color: #e64d2a;
+@action_hover_color: #d24120;
+@action_secondary: #57b83e;
+@action_highlight: #243958;
+
+@import "../bootstrap-3.3.4/less/bootstrap.less";
+@import "_jobcentre_theme.less";
+@import "_print.less";
+@import "_common.less";
+
+
+html,
+button {
+    color: #949494;
+}
+
+/* Links & Buttons */
+
+a, a:link, a:visited {
+    outline: 0;
+    color: @action_color;
+    cursor: pointer;
+}
+
+a.bct-link { color: @primary_color; }
+
+/* BCT Specific */
+
+body, .bcjobs-layout-wrapper { background: #f7f7f7; }
+.bct-body {
+    background: #fff;
+    padding: 10px;
+    padding-bottom: 100px;
+}
+
+.bct-search-section {
+    padding: 20px;
+}
+
+/* CONTENT */
+
+.application-wrapper {
+    @media (max-width: 600px) {
+        padding: 20px;
+    }
+}
+
+.bct-promo {
+    background: transparent url(../images/fancy_box.jpg) center center no-repeat;
+    height: 200px;
+    padding: 40px;
+    position: relative;
+    width: 340px;
+    @media (max-width: 400px) {
+        width: 100%;
+    }
+}
+.bct-promo-boost {
+    color: @primary_color;
+    font-size: 60px; 
+    font-weight: bold;
+    @media (max-width: 400px) {
+        font-size: 40px;
+    }
+}
+.bct-promo-banner {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+}
+
+
+.pricing-highlight {
+    background: #283b56; 
+    background: -moz-linear-gradient(top,  #283b56 0%, #1c2944 100%); 
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#283b56), color-stop(100%,#1c2944));
+    background: -webkit-linear-gradient(top,  #283b56 0%,#1c2944 100%); 
+    background: -o-linear-gradient(top,  #283b56 0%,#1c2944 100%); 
+    background: -ms-linear-gradient(top,  #283b56 0%,#1c2944 100%);
+    background: linear-gradient(to bottom,  #283b56 0%,#1c2944 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#283b56', endColorstr='#1c2944',GradientType=0 ); 
+    border: 1px solid #283b56;
+    color: #ffffff;
+}
+
+.user-signup-image.candidate {
+    background-image: url(../images/banner_bctcand.jpg);
+}
+.candidate .user-signup-image-content {
+    background: #ffffff;
+    left: 40px;
+    padding: 25px 0;
+    top: 360px;
+    width: 350px;
+}
+
+/* AFTER BOOTSTRAP */
+
+.bct-container-white { background: #ffffff; }
+
+/* HEADER */
+.header-logo-wrapper {
+    padding: 18px 0 0 0;
+    @media(max-width: 600px){
+        margin: 15px 0 10px 0;
+    }
+}
+.header { min-height: 50px; }
+
+.header-actions-wrapper {
+    height: auto;
+}
+
+.bct-tagline {
+    color: #949494;
+    font-size: 14px;
+    margin: 5px 0 0 0;
+}
+
+
+
+.search-widget-submit {
+    margin-top: 27px;
+    @media(max-width: @screen-xs-max){ margin-top: 10px; }
+}
+
+.search-widget-wrapper {
+    background: #1d2e52;
+    background: -moz-linear-gradient(top,  #1d2e52 0%, #16233d 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1d2e52), color-stop(100%,#16233d));
+    background: -webkit-linear-gradient(top,  #1d2e52 0%,#16233d 100%);
+    background: -o-linear-gradient(top,  #1d2e52 0%,#16233d 100%);
+    background: -ms-linear-gradient(top,  #1d2e52 0%,#16233d 100%);
+    background: linear-gradient(to bottom,  #1d2e52 0%,#16233d 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d2e52', endColorstr='#16233d',GradientType=0 );
+    color: #ffffff;
+    padding: 0;
+}
+
+.search-widget-bctlogo {
+    background: transparent url(../images/bct_searchlogo.png) 0 0 no-repeat;
+    padding: 40px;
+    @media(max-width: 400px){
+        padding: 20px;
+    }
+}
+
+.search-widget-title {
+    font-size: 30px;
+    font-weight: normal;
+    @media (max-width: 400px) {
+        font-size: 24px;
+    }
+}
+
+
+/* FOOTER */
+.footer-wrapper {
+    margin-top: -80px;
+    position: relative;
+}
+.footer {
+    background: @primary_color;
+    min-height: 140px;
+    border: 0;
+}
+
+.bct-footer-logo { 
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    @media(max-width: 400px){
+        float: none;
+        text-align: center;
+    }
+}
+.bct-footer-logo img {
+    @media(max-width: 400px) {
+        max-width: 250px;   
+    }
+}
+
+.bct-footer-social {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    @media (max-width: 600px) {
+        left: 10px;
+        top: 68px;
+    }
+}
+
+.social-icons {
+    background: transparent url(/images/bct_social.png) no-repeat;
+    display: inline-block;
+    height: 15px;
+    margin-left: 10px;
+    width: 19px;
+}
+.social-icons.google { background-position: 0 0; }
+.social-icons.twitter { background-position: -19px 0; }
+.social-icons.facebook { background-position: -38px 0; }
+.social-icons.linkedin { background-position: -57px 0; }
+
+.bct-power, .bct-footer-links {
+    color: #537ebc;
+    font-size: 14px;
+    padding: 78px 20px 0;
+    margin-bottom: 10px;
+    @media (max-width: 600px) {
+        padding: 90px 20px 0;
+    }
+}
+.bct-power {
+    @media (max-width: 750px) {
+        padding: 0 0 20px 20px;
+    }
+}
+.bct-power a, .bct-footer-links a { color: #ffffff; }
+
+
+.bct-m0 { margin: 0; }
+.bct-p0 { padding: 0; }
+.bct-vp0 { padding-top: 0; padding-bottom: 0; }
