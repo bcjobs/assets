@@ -1,8 +1,7 @@
-﻿@primary_color: #005ca2;
-@action_color: #00a936;
-@action_hover_color: #009b32;
-@action_secondary: #2a91e0;
-@action_highlight: #7ecfff;
+﻿@primary_color: #006fba;
+@action_color: #006fba;
+@action_hover_color: #379f1f;
+@action_secondary: #43b02a;
 
 @import "../bootstrap-3.3.4/less/bootstrap.less";
 @import "_common.less";
@@ -18,18 +17,14 @@ body{
     position:relative;
 }
 
-/*links */
-
-a:link, a:visited, a:active{ text-decoration:none; color:#00a160;}
+a:link, a:visited, a:active{ text-decoration:none; color: @primary_color;}
 a:hover{ color:#000;}
-
-/* headers */
 
 strong{ font-weight:bold;}
 em { font-style:italic;}
 
 h1, h2, h3, h4, h5, h6{
-	color:#006fba;
+	color: @primary_color;
 	font-weight:bold;
 	margin-top:15px;
 	line-height:1em;
@@ -39,31 +34,30 @@ h1{	font-size:2em; }
 h2{ font-size:1.4em;}
 h3{ font-size:1.3em; color:#009a49;}
 
-
-
 /* apply a natural box layout model to all elements */
 *, *:before, *:after {
   	-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
  }
 
-/*
- * Hide visually and from screenreaders, but maintain layout
- */
+/* Hide visually and from screenreaders, but maintain layout */
+.invisible { visibility: hidden; }
 
-.invisible {
-    visibility: hidden;
-}
-
-/* Simple Clearfix */
- .clearfix:after {
+.clearfix:after {
   content: "";
   display: table;
   clear: both;
 }
 
-p{
-	margin-top:1em;
+.btn {
+    color: #fff;
+    border: 0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 15px;
 }
+
+p{ margin-top:1em; }
 
 input{ 
 	width:100%;

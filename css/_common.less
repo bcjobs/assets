@@ -1,9 +1,45 @@
-﻿/* Margin Classes */
+﻿/* Button Styles */
+.btn {
+    color: #fff;
+    border: 0;
+    border-radius: 0;
+}
+
+.btn-default, .btn-default:link, .btn-default:visited, .btn-default:focus {
+    background: @action_color;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.btn-default:hover, .btn-default:active {
+    background: @action_color;
+    color: #fff;
+}
+
+.btn-primary, .btn-primary:link, .btn-primary:visited, .btn-primary:focus {
+    background-color: @action_secondary;
+    color: #fff;
+}
+.btn-primary:hover, .btn-primary:active {
+    background-color: @action_secondary;
+    color: #fff;
+}
+
+.btn-danger, .btn-danger:link, .btn-danger:visited, .btn-danger:focus { background: #c9302c; color: #fff; }
+
+.btn-set { width: 240px; }
+
+.btn-default.disabled, .btn-default[disabled], .btn-default.disabled:hover, .btn-default[disabled]:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, .btn-default.disabled:active, .btn-default[disabled]:active, .btn-default.disabled.active, .btn-default[disabled].active {
+    background: #999999;
+}
+
+/* Margin Classes */
 .flex-mauto { margin: 0 auto; }
 .flex-m0 { margin: 0; }
 .flex-m5 { margin: 5px; }
 .flex-m10 { margin: 10px; }
 /* margin-top */
+.flex-mt0 { margin-top: 0px; }
 .flex-mt5 { margin-top: 5px; }
 .flex-mt10 { margin-top: 10px; }
 .flex-mt15 { margin-top: 15px; }
