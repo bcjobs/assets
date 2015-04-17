@@ -56,6 +56,16 @@ h3{ font-size:1.3em; color:#009a49;}
     font-weight: bold;
     padding: 5px 15px;
 }
+.btn-pop {
+	border-bottom:4px solid #024d80;
+	border-radius:3px;
+}
+.btn-pop:hover {
+	margin-top:4px;
+	margin-bottom:0;
+	border-bottom:none;
+	vertical-align:-4px;
+}
 
 p{ margin-top:1em; }
 
@@ -223,7 +233,7 @@ ul ul {
     left:20px;
 }
 
-.flex_dataentry_wrapper{
+.flex_dataentry_wrapper, .form-dataentry{
 	margin-top:5px;
 }
 
@@ -233,6 +243,18 @@ ul ul {
 	border: 3px solid #EAF1F3;
 	padding:5px;
 	padding-left: 12px;
+}
+
+.form-horizontal .form-group { margin-left: 0; margin-right: 0; }
+.form-label {
+	border: 3px solid #EAF1F3;
+	margin: 0;
+	padding: 5px 5px 5px 12px;
+	@media(max-width: @screen-xs-max){ border-bottom: 0; }
+}
+.form-input {
+	padding-right: 0;
+	@media(max-width: @screen-xs-max){ padding: 0; }
 }
 .flex_label_short {
 	padding: 5px;
@@ -245,11 +267,11 @@ ul ul {
 	padding-left:20px;
 }
 
-.flex_dataentry_wrapper select{
+.flex_dataentry_wrapper select, .form-dataentry select {
 	min-height:100px;
 }
 
-.ie8 .flex_dataentry_wrapper select{
+.ie8 .flex_dataentry_wrapper select, .ie8 .form-dataentry select {
 	min-height: 32px;
 }
 
@@ -257,12 +279,12 @@ ul ul {
 	min-height: 100px;
 }
 
-.flex_dataentry_wrapper select:not([multiple]){
+.flex_dataentry_wrapper select:not([multiple]), .form-dataentry select:not([multiple]){
 	min-height:0;
 	height: 32px;
 }
 
-.flex_dataentry_wrapper option {
+.flex_dataentry_wrapper option, .form-dataentry option {
 	height: 32px;
 }
 
@@ -420,6 +442,10 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 .flex_brand_bg_2 { border: 3px solid #E8F5E7;}
 .flex_brand_bg_3 { border: 3px solid #006fba; }
 
+.border-primary { border: 3px solid #EAF1F3; }
+.border-second { border: 3px solid #E8F5E7;}
+.border-thin { border: 1px solid #dfdfdf; }
+
 .flex_cube.flex_noborder_r { border-right: 0; }
 .flex_cube.flex_noborder_l { border-left: 0; }
 
@@ -496,7 +522,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	margin-top:0;
 }
 
-.flex_cube .flex_cube_header{
+.flex_cube .flex_cube_header, .title-bar{
 	padding:15px;
 	background:#006fba;
 	margin:-14px -14px 20px -14px;
@@ -506,8 +532,9 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 .flex_cube .flex_cube_header a,.flex_cube .flex_cube_header a:link, .flex_cube .flex_cube_header a:visited, .flex_cube .flex_cube_header a:active {
 	color: #88ee7c;
 }
+.title-bar a, .title-bar a:link, .title-bar a:visited, .title-bar a:active { color: #88ee7c; }
 
-.flex_cube .flex_cube_header.error{
+.flex_cube .flex_cube_header.error, .title-bar.error {
 	background:#EEB5B5;
 }
 
@@ -1224,22 +1251,32 @@ body .select2-expand .select2-choices {
 .public_navbar_wrapper ul li a { padding: 5px 20px; }
 
 
-.preapproved_banner {
+.preapproved-banner {
 	height: 100px;
 	width: 100%;
+	@media(max-width: @screen-xs-max){
+		height: 60px;
+		background-size: auto 60px !important;
+	}
 }
-.preapproved_title {
+.preapproved-title {
 	color: #ffffff;
 	font-size: 28px;
+	margin-top: 0;
 	padding: 25px;
 	text-transform: uppercase;
+	@media(max-width: @screen-xs-max){ display: none; }
 }
-.preapproved_banner.students {
-	background: transparent url(../images/banner_students.jpg) right 0 no-repeat;
+.preapproved-banner.students {
+	background: transparent url(/images/banner_students.jpg) right 0 no-repeat;
+	@media(max-width: @screen-xs-max){ background-position: center 0; }
 }
-.preapproved_banner.employers {
-	background: transparent url(../images/banner_employers.jpg) right 0 no-repeat;
+.preapproved-banner.employers {
+	background: transparent url(/images/banner_employers.jpg) right 0 no-repeat;
+	@media(max-width: @screen-xs-max){ background-position: center 0; }
 }
+
+
 
 /* USEFUL includable styles -- for Employer Program showcase, and Stats Feature */
 
@@ -3359,7 +3396,7 @@ a.flex_list_item_wrapper:hover{
 }
 
 
-.flex_dataentry_input label.error {
+.flex_dataentry_input label.error, .form-input label.error {
 	padding: 5px 5px 0 5px;
 	display: block;
 	border: none;
@@ -3371,6 +3408,13 @@ a.flex_list_item_wrapper:hover{
 	.flex_dataentry_input input[type=password].error, 
 		.flex_dataentry_input input[type=email].error,
 			.flex_dataentry_input select.error, 
+				body .select2-container.error .select2-choice {
+	border-bottom: 5px solid #fcc;
+}
+.form-input input[type=text].error, 
+	.form-input input[type=password].error, 
+		.form-input input[type=email].error,
+			.form-input select.error, 
 				body .select2-container.error .select2-choice {
 	border-bottom: 5px solid #fcc;
 }
@@ -3456,6 +3500,36 @@ a.flex_tab.active { color: #fff;}
 }
 
 .flex_tab.active {
+	z-index: 20;
+	background: #008bb1;
+	cursor: default;
+}
+
+.flex-tab {
+	display: inline-block;
+	border:1px solid #008bb1;
+	border-bottom: none;
+	background-color: #fff;
+	text-align: center;
+	padding: 7px 10px;
+	position: relative;
+	z-index: 10;
+	border-radius: 5px 5px 0 0;
+	background-color: none;
+	font-size: 1.1em;
+	margin: 0 2px;
+	@media(max-width: 959px){
+		border: 1px solid #008bb1;
+		border-radius: 5px;
+        padding: 5px 5px;
+        font-size: 0.9em;
+        margin: 0 0 5px 0;
+	}
+}
+a.flex-tab { color: #008bb1;}
+a.flex-tab.active { color: #fff;}
+.flex-tab:hover { background-color: #EAF1F3; }
+.flex-tab.active {
 	z-index: 20;
 	background: #008bb1;
 	cursor: default;
@@ -3945,7 +4019,7 @@ a.flex_tab.active { color: #fff;}
 	.flex_cube { padding: 15px 2%; }
 	.flex_padded { padding: 15px 2%; }
 	.flex_padded_horizontal { padding: 0 2%; }
-	.flex_cube .flex_cube_header { margin: -14px -2% 20px -2%;}
+	.flex_cube .flex_cube_header, .title-bar { margin: -14px -2% 20px -2%;}
 
 	.header_login_password, .header_login_username, .header_login_accounttype, .header_login_button_wrapper{
 		width: 100%;
@@ -4071,6 +4145,7 @@ a.flex_tab.active { color: #fff;}
 		padding-left: 0;
 		margin-bottom: 5px;
 	}
+
 	.flex_dataentry_input { margin-bottom: 10px; }
     .flex_width_25, .flex_width_30, .flex_width_33, .flex_width_45, .flex_width_48, .flex_width_50, .flex_width_55, .flex_width_66, .flex_width_70, .flex_width_75 { width:100%;}
     .flex_tab { width: auto; }
