@@ -65,7 +65,6 @@ h3{ font-size:1.3em; color:#009a49;}
 	margin-top:4px;
 	margin-bottom:0;
 	border-bottom:none;
-	vertical-align:-4px;
 }
 
 .btn-info, .btn-info:focus, .btn-info:active {
@@ -462,6 +461,8 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 .border-primary { border: 3px solid #EAF1F3; }
 .border-second { border: 3px solid #E8F5E7;}
 .border-thin { border: 1px solid #dfdfdf; }
+.border-bold { border: 3px solid #54b948; }
+.border-none { border: 0; }
 
 .flex_cube.flex_noborder_r { border-right: 0; }
 .flex_cube.flex_noborder_l { border-left: 0; }
@@ -620,6 +621,17 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
     display:none;
 }
 .flex_bg_trans_white_85 { background: rgba(255,255,255,.85); }
+
+.panel { border-radius: 0; }
+.panel-default>.panel-heading {
+	background: @primary_color;
+	border: 0;
+	border-radius: 0;
+	color: #ffffff;
+}
+.panel>.list-group .list-group-item, .panel-heading+.list-group .list-group-item:first-child {
+	@media(max-width: @screen-xs-max){ border-top: 2px solid @primary_color; }
+}
 
 #container{
     position:relative;
@@ -2181,7 +2193,13 @@ a.student_remove {
 	margin: 0 0 10px 0;
 }
 
-.student_center { padding: 0 2%; width: 50%; }
+.student-center {
+	padding: 0 2%;
+	width: 50%;
+	@media(max-width: 469px){
+		width: 90%;
+	}
+}
 
 .student_item:last-child { 
 	margin-bottom: 0;
@@ -4196,7 +4214,6 @@ a.flex-tab.active { color: #fff;}
         margin-right: 0;
         width: 100%;
     }
-    .student_center { width: 90%; }
 
 
 
