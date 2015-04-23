@@ -1,0 +1,13 @@
+@primary_color: #000000;
+@action_color: #ff0000;
+
+@import "../bootstrap-3.3.4/less/bootstrap.less";
+
+.alert-floater {
+	position:fixed;
+	top:-100%;
+	transition:top 0.7s ease-out;
+    width:100%;
+    z-index: 6000;
+}
+.alert-floater.active{top:10px;}
