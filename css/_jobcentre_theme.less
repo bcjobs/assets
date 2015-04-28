@@ -762,31 +762,46 @@ a.header-action:link, a.header-action:visited {
     padding: 120px 0 60px 0;
     -webkit-box-shadow:inset 0 0 5px 5px rgba(0,0,0,0.3);
     box-shadow:inset 0 0 5px 5px rgba(0,0,0,0.3);
+    @media(max-width: @screen-xs-max){ padding: 0 0 60px 0; }
 }
 .search-widget-title {
     color: #ffffff;
     font-family: 'Dancing Script', cursive;
     font-size: 60px;
+    @media(max-width: @screen-xs-max){ font-size: 40px; }
 }
 .search-widget-tagline { color: @action_highlight; }
+.search-widget-content { 
+    padding: 40px 6% 0 6%;
+    font-size: 18px;
+}
 
-.flare-title {
+.flair-title {
     color: @primary_color;
     font-size: 30px;
-    padding: 60px 0;
+    line-height: 100px;
     position: relative;
     z-index: 5;
+    @media(max-width: @screen-xs-max){
+        font-size: 20px; 
+        line-height: 70px;
+    }
 }
-.flare-base {
+.flair-base {
     color: #dfe4e8;
     font-family: 'Dancing Script', cursive;
     font-size: 100px;
+    line-height: 100px;
     position: absolute;
     top: 0;
     width: 100%;
     z-index: 1;
+    @media(max-width: @screen-xs-max){
+        font-size: 70px;
+        line-height: 70px;
+    }
 }
-.flare-base.blue { color: #006bbc; }
+.flair-base.blue { color: #006bbc; }
 
 .bkg-quotes {
     background: #005ca2 url(../images/splash-quote.jpg) no-repeat 0 center;
@@ -821,10 +836,7 @@ a.header-action:link, a.header-action:visited {
     text-shadow: 0 1px 1px #00468c;
     @media(max-width:600px){ font-size: 18px; }
 }
-.search-widget-content { 
-    padding: 40px 6%;
-    font-size: 18px;
-}
+
 .search-widget-fields {
     padding: 0 5px; 
     vertical-align: bottom;
