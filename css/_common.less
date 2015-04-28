@@ -25,6 +25,15 @@
     color: #fff;
 }
 
+.btn-info, .btn-info:link, .btn-info:visited, .btn-info:focus {
+    background-color: @primary_color;
+    color: #fff;
+}
+.btn-info:hover, .btn-info:active {
+    background-color: @primary_color;
+    color: #fff;
+}
+
 .btn-danger, .btn-danger:link, .btn-danger:visited, .btn-danger:focus { background: #c9302c; color: #fff; }
 
 .btn-set { width: 240px; }
@@ -32,6 +41,9 @@
 .btn-default.disabled, .btn-default[disabled], .btn-default.disabled:hover, .btn-default[disabled]:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, .btn-default.disabled:active, .btn-default[disabled]:active, .btn-default.disabled.active, .btn-default[disabled].active {
     background: #999999;
 }
+
+.bkg-primary { background: @primary_color; }
+.bkg-action { background: @action_color; }
 
 .icon-help {
     vertical-align:top; 
@@ -58,14 +70,18 @@
     white-space: nowrap;
     text-overflow: ellipsis;
 }
-.text-med { font-size: 18px; }
-.text-muted { color: #a6a6a6; }
 .text-small { font-size: 12px; }
+.text-14 { font-size: 14px; }
+.text-med, .text-18 { font-size: 18px; }
+.text-20 { font-size: 20px; }
 .text-subtext {
     font-size: 0.8em;
     line-height: 1.4em;
     display: inline-block;
 }
+.text-muted { color: #a6a6a6; }
+.text-white { color: #ffffff; }
+.text-shadow { text-shadow: 0 1px 5px #000000; }
 
 .a-block a, a.a-block {
     display: block;
@@ -130,10 +146,17 @@
 /* padding-vertical */
 .flex-pv15 { padding-top: 15px; padding-bottom: 15px; }
 .flex-pv25 { padding-top: 25px; padding-bottom: 25px; }
+.flex-pv40 { padding-top: 40px; padding-bottom: 40px; }
 /* padding-horizontal */
 .flex-ph0 { padding-right: 0; padding-left: 0;}
 .flex-ph10 { padding-right: 10px; padding-left: 10px; }
 .flex-ph15 { padding-right: 15px; padding-left: 15px; }
+.flex-ph30 { padding-right: 30px; padding-left: 30px; }
+
+.overlay-low-black {
+    background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
+    background: rgba(0,0,0,0.6);
+}
 
 
 .flex-relative { position: relative;}
@@ -164,6 +187,8 @@
     .xs-text-left { text-align: left; }
     .xs-text-right { text-align: right; }
     .xs-text-small { font-size: 12px; }
+
+    .xs-width-100 { width: 100%; }
     
     .xs-nobullet { list-style-type: none; padding: 0;  }
 
