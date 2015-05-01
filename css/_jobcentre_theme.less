@@ -811,6 +811,20 @@ a.header-action:link, a.header-action:visited {
     background: #005ca2 url(../images/splash-callout.jpg) no-repeat 0 center;
     background-size: 100%;
 }
+.bkg-jobseeker-callout {
+    background: #005ca2 url(../images/splash-jobcallout.jpg) no-repeat 0 center;
+    background-size: 100%;
+}
+.bkg-callout-user1 {
+    position: absolute;
+    top: 0;
+    left: -160px;
+}
+.bkg-callout-user2 {
+    position: absolute;
+    top: 0;
+    right: -160px;
+}
 .muted-title {
     border-bottom: 1px solid #dfdfdf;
     color: #616161;
@@ -818,6 +832,40 @@ a.header-action:link, a.header-action:visited {
     margin-bottom: 15px;
     padding-bottom: 15px;
     width: 100%;
+}
+.form-base.employer {
+    background: url(../images/splash-employer.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-bottom: 5px solid @primary_color;
+    min-height: 600px;
+}
+.form-base.jobseeker {
+    background: url(../images/splash-jobseeker.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    border-bottom: 5px solid @primary_color;
+    min-height: 670px;
+}
+.form-jobseeker-text {
+    margin-top: 150px;
+}
+.signup-form {
+    background: @primary_color;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    z-index: 100;
+}
+
+.top-anchor {
+    position: absolute;
+    right: 0;
+    top: 5px;
 }
 
 /* Homepage Search Widget */
@@ -1544,6 +1592,7 @@ input[type="file"].upload-input { display: none; }
 }
 
 .user-signup-field {
+    font-size: 14px;
     margin-bottom: 14px;
     clear: both;
 }
@@ -1551,7 +1600,11 @@ input[type="file"].upload-input { display: none; }
 .user-signup-field input[type=text],
  .user-signup-field input[type=password],
   .user-signup-field input[type=email],
-   .user-signup-field select { width: 100%; }
+   .user-signup-field select {
+    min-height: 28px;
+    line-height: 28px;
+    width: 100%;
+}
 
 .user-signup-field-highlight {
     background: #0062ad;
