@@ -530,9 +530,13 @@ a.list-item-wrapper:hover {
 
 .login-panel-menu{
     position:absolute;
-    top: 5px;
-    right: 5px;
+    top: 18px;
+    right: 215px;
     color: #a6a6a6;
+    @media(max-width: 500px){
+        top: 5px;
+        right: 5px;
+    }
 }
 
 .login-panel-show, .login-panel-menu a {
@@ -548,29 +552,27 @@ a.list-item-wrapper:hover {
 .header-wrapper {
     background: 100% #fff;
     border-bottom: 2px solid @action_color;
-    min-height: 90px;
+    min-height: 70px;
     width: 100%;
 }
 
 .header {
-    display:block; 
+    border-bottom: 5px solid #e2e5eb;
+    display: block; 
     margin: 0px auto;
+    min-height: 70px;
     padding: 0px;
-    min-height: 120px;
 }
 
 .header-logo-wrapper{
     position:absolute;
     top:0;
     left:0;
-    padding: 20px 10px 10px 10px;
-    @media(max-width: 949px){
+    padding: 13px 10px 10px 10px;
+    @media(max-width: 500px){
         text-align: center;
-        position: static;
-    }
-    @media(max-width: 600px){
-        padding-top: 0;
-        margin-top: 15px;   
+        position: relative;
+        width: 100%;
     }
 }
 
@@ -662,11 +664,14 @@ a.list-item-wrapper:hover {
 /* Header Actions (New Employer? New Jobseeker?) -- For Logged Out Users Only  */
 
 .header-actions-wrapper { 
-    height:120px;
-    @media(max-width: 600px){ margin-bottom: 0; }
-    @media(max-width: 949px){
+    float: right;
+    height: 70px;
+    text-align: right;
+    padding-top: 20px;
+    @media(max-width: 500px){
+        float: none;
         height: auto;
-        margin-bottom: 10px;
+        padding: 10px 0 20px 0;
         text-align: center;
     }
 }
@@ -677,14 +682,6 @@ a.list-item-wrapper:hover {
 .header-action{
     clear:right;
     cursor:pointer;
-    float:right;    
-    margin-top: 40px;
-    @media(max-width: 949px){
-        display: inline-block;
-        float: none;
-        margin: 10px 0;
-    }
-    @media(max-width: 600px){ margin: 0; }
 }
 
 .header-action:hover {
