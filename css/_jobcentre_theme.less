@@ -849,6 +849,7 @@ a.header-action:link, a.header-action:visited {
     background-size: cover;
     border-bottom: 5px solid @primary_color;
     min-height: 600px;
+    @media(max-width:@screen-xs-max){ min-height: 840px; }
 }
 .form-base.jobseeker {
     background: url(../images/splash-jobseeker.jpg) no-repeat center center fixed;
@@ -871,6 +872,9 @@ a.header-action:link, a.header-action:visited {
     right: 0;
     z-index: 100;
     @media(max-width:@screen-xs-max){ top: 200px; }
+}
+.signup-form.employer {
+    @media(max-width:@screen-xs-max){ top: 270px; }
 }
 
 .top-anchor {
@@ -900,6 +904,7 @@ a.header-action:link, a.header-action:visited {
 .featured-base {
     padding: 60px 0 240px 0;
     z-index: 1;
+    @media(max-width:@screen-xs-max){ padding-bottom: 140px; }
 }
 .featured-top { z-index: 5; }
 .featured-pencils {
@@ -2466,6 +2471,7 @@ select.form-selectlist {
 
 /* Pricing Boxes */
 .pricing-box {
+    background: #ffffff;
     border: 1px solid #dcdcdc;
     color: #a6a6a6;
     font-size: 16px;
