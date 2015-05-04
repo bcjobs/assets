@@ -818,6 +818,8 @@ a.header-action:link, a.header-action:visited {
 .bkg-jobseeker-callout {
     background: #005ca2 url(../images/splash-jobcallout.jpg) no-repeat 0 center;
     background-size: 100%;
+    @media(max-width: 1400px){ background-size: auto 100%; }
+    @media(max-width: @screen-xs-max){ background-image: none; }
 }
 .bkg-callout-user1 {
     position: absolute;
@@ -856,9 +858,11 @@ a.header-action:link, a.header-action:visited {
     background-size: cover;
     border-bottom: 5px solid @primary_color;
     min-height: 670px;
+    @media(max-width:@screen-xs-max){ min-height: 840px; }
 }
 .form-jobseeker-text {
     margin-top: 150px;
+    @media(max-width:@screen-xs-max){ margin-top: 0; }
 }
 .signup-form {
     background: @primary_color;
@@ -866,6 +870,7 @@ a.header-action:link, a.header-action:visited {
     top: 30px;
     right: 0;
     z-index: 100;
+    @media(max-width:@screen-xs-max){ top: 200px; }
 }
 
 .top-anchor {
@@ -900,6 +905,22 @@ a.header-action:link, a.header-action:visited {
 .featured-pencils {
     position: absolute;
     bottom: 0;
+}
+
+.hire-me-image {
+    float: left;
+    width: 50%;
+    @media(max-width: 1030px){ display: none; }
+}
+.hire-me-callout {
+    float: left;
+    padding: 60px 0;
+    text-align: center;
+    width: 50%;
+    @media(max-width: 1030px){
+        padding: 30px;
+        width: 100%;
+    }
 }
 
 /* Homepage Search Widget */
