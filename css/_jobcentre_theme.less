@@ -806,10 +806,14 @@ a.header-action:link, a.header-action:visited {
 .bkg-quotes {
     background: #005ca2 url(../images/splash-quote.jpg) no-repeat 0 center;
     background-size: 100%; 
+    @media(max-width: 1300px){ background-size: auto 100%;}
+    @media(max-width: @screen-xs-max){ background-image: none; }
 }
 .bkg-callout {
     background: #005ca2 url(../images/splash-callout.jpg) no-repeat 0 center;
     background-size: 100%;
+    @media(max-width: 1500px){ background-size: auto 100%; }
+    @media(max-width: @screen-xs-max){ background-image: none; }
 }
 .bkg-jobseeker-callout {
     background: #005ca2 url(../images/splash-jobcallout.jpg) no-repeat 0 center;
@@ -819,11 +823,13 @@ a.header-action:link, a.header-action:visited {
     position: absolute;
     top: 0;
     left: -160px;
+    @media(max-width: 1400px){ display: none; }
 }
 .bkg-callout-user2 {
     position: absolute;
     top: 0;
     right: -160px;
+    @media(max-width: 1400px){ display: none; }
 }
 .muted-title {
     border-bottom: 1px solid #dfdfdf;
