@@ -117,9 +117,21 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
 
 .flair-base.blue { color: #2e4974; }
 .bkg-jobseeker-callout {
-    background: #005ca2 url(../images/splash-bct-jobseeker.jpg) no-repeat 0 center;
+    background: #273956 url(../images/splash-bct-jobseeker.jpg) no-repeat 0 center;
     background-size: 100%;
     @media(max-width: 1400px){ background-size: auto 100%; }
+    @media(max-width: @screen-xs-max){ background-image: none; }
+}
+.bkg-quotes {
+    background: #273956 url(../images/splash-bct-quote.jpg) no-repeat 0 center;
+    background-size: 100%; 
+    @media(max-width: 1300px){ background-size: auto 100%;}
+    @media(max-width: @screen-xs-max){ background-image: none; }
+}
+.bkg-callout {
+    background: #273956 url(../images/splash-bct-callout.jpg) no-repeat center center;
+    background-size: 100%;
+    @media(max-width: 1800px){ background-size: auto 100%;}
     @media(max-width: @screen-xs-max){ background-image: none; }
 }
 
@@ -154,7 +166,7 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
 
 /* FOOTER */
 .footer-wrapper {
-    margin-top: -80px;
+    margin-top: -40px;
     position: relative;
 }
 .footer {
