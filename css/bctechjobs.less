@@ -2,7 +2,7 @@
 @action_color: #e64d2a;
 @action_hover_color: #d24120;
 @action_secondary: #57b83e;
-@action_highlight: #243958;
+@action_highlight: #adb9dc;
 
 @import "../bootstrap-3.3.4/less/bootstrap.less";
 @import "_jobcentre_theme.less";
@@ -111,6 +111,14 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
     margin: 5px 0 0 0;
 }
 
+.flair-base.blue { color: #2e4974; }
+.bkg-jobseeker-callout {
+    background: #005ca2 url(../images/splash-bct-jobseeker.jpg) no-repeat 0 center;
+    background-size: 100%;
+    @media(max-width: 1400px){ background-size: auto 100%; }
+    @media(max-width: @screen-xs-max){ background-image: none; }
+}
+
 
 
 .search-widget-submit {
@@ -136,14 +144,6 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
     padding: 40px;
     @media(max-width: 400px){
         padding: 20px;
-    }
-}
-
-.search-widget-title {
-    font-size: 30px;
-    font-weight: normal;
-    @media (max-width: 400px) {
-        font-size: 24px;
     }
 }
 
