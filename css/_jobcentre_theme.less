@@ -877,6 +877,13 @@ a.header-action:link, a.header-action:visited {
     position: absolute;
     right: 0;
     top: 5px;
+    @media(max-width: 400px){
+        display: block;
+        margin-top: 15px;
+        position: relative;
+        text-align: center;
+        width: 100%;
+    }
 }
 .employ-plans, .employ-resume, .employ-feature, .employ-lmia {
     border-bottom: 1px solid @primary_color;
