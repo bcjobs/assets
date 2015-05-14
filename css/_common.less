@@ -223,6 +223,13 @@
 .container-warning { background: #FFECEC; }
 .container-white { background: #ffffff; }
 
+.old-ie-warning {display:none;}
+.ie8-warning {display:none;}
+
+.ie6 .old-ie-warning {display:block;}
+.ie7 .old-ie-warning {display:block;}
+.ie8 .ie8-warning {display:block;}
+
 @media(max-width: @screen-xs-max){
     .visible-xs { display: inline-block !important; }
     .xs-text-center { text-align: center; }
