@@ -3,19 +3,21 @@
 JOBCENTRE.employerProfile = (function ($) {
 
     var dropboxAppKey;
-
+    var url;
     //#region url
 
-    var url = {
-        employers: '/rest/v1.0/employers/:id',
+    var url = function(restPath) {
+        url = {
+            employers: restPath + 'employers/:id',
 
-        images: '/rest/v1.0/files',
-        formImage: '/rest/v1.0/files/form',
-        fetchImage: '/rest/v1.0/files/fetch',
+            images: restPath + 'files',
+            formImage: restPath + 'files/form',
+            fetchImage: restPath + 'files/fetch',
 
-        // generic
-        industries: '/rest/v1.0/industries',
-        companySizes: '/rest/v1.0/companysizes'
+            // generic
+            industries: restPath + 'industries',
+            companySizes: restPath + 'companysizes'
+        };
     };
 
     //#endregion
@@ -194,7 +196,9 @@ JOBCENTRE.employerProfile = (function ($) {
 
         collection: Industries,
         listName: 'industry',
-        url: url.industries,
+        url: function() {
+            return url.industries;
+        },
 
         getIndustries: function () {
             return this.getList();
@@ -220,7 +224,9 @@ JOBCENTRE.employerProfile = (function ($) {
 
         collection: CompanySizes,
         listName: 'company size',
-        url: url.companySizes,
+        url: function () {
+            return url.companySizes;
+        },
 
         getCompanySizes: function () {
             return this.getList();
@@ -294,7 +300,7 @@ JOBCENTRE.employerProfile = (function ($) {
             xhr.addEventListener('load', callbacks.load, false);
             xhr.addEventListener('error', callbacks.error, false);
             xhr.addEventListener('abort', callbacks.abort, false);
-            xhr.open('POST', this.sendUrl);
+            xhr.open('POST', this.sendUrl());
             xhr.setRequestHeader('Accept', 'application/json');
             xhr.send(fd);
         },
@@ -305,7 +311,7 @@ JOBCENTRE.employerProfile = (function ($) {
             var that = this;
 
             $.ajax({
-                url: this.fetchUrl,
+                url: this.fetchUrl(),
                 contentType: 'application/json',
                 data: JSON.stringify({
                     url: link,
@@ -342,9 +348,13 @@ JOBCENTRE.employerProfile = (function ($) {
             'png', 'jpg'
         ],
         fileTypeMessage: 'Only PNG and JPG file types allowed.',
-        sendUrl: url.images,
+        sendUrl: function () {
+            return url.images;
+        },
         sendName: 'file',
-        fetchUrl: url.fetchImage,
+        fetchUrl: function () {
+            return url.fetchImage;
+        },
         includeDropbox: true,
         includeLinkedIn: false,
         includeWeb: true
@@ -356,9 +366,13 @@ JOBCENTRE.employerProfile = (function ($) {
             'docx', 'doc', 'rtf', 'pdf', 'txt'
         ],
         fileTypeMessage: 'Only Word, Plain Text, PDF, RTF file types allowed.',
-        sendUrl: url.resumes,
+        sendUrl: function () {
+            return url.resumes;
+        },
         sendName: 'file',
-        fetchUrl: url.fetchResume,
+        fetchUrl: function () {
+            return url.fetchResume;
+        },
         includeDropbox: true,
         includeLinkedIn: true,
         includeWeb: false
@@ -1945,6 +1959,7 @@ JOBCENTRE.employerProfile = (function ($) {
     	init: function (options) {
 
     	    dropboxAppKey = options.dropboxAppKey;
+    	    url(options.restPath);
 
     		var employer = new Employer({ id: options.employerId });
     		var industryCache = new IndustryCache();
