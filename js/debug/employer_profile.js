@@ -1686,20 +1686,21 @@ JOBCENTRE.employerProfile = (function ($) {
 
         formPreProcess: function (attrs) {
 
-            attrs.industries = [];
             if (attrs['industry.ids']) {
+                attrs.industries = [];
                 _.each(attrs['industry.ids'], function (id) {
                     attrs.industries.push({ id: id });
                 });
+                delete attrs['industry.ids'];
             }
-            delete attrs['industry.ids'];
 
-            attrs.companySize = null;
-            if (attrs['companySize.id'])
+            if (attrs['companySize.id']) {
+                attrs.companySize = null;
                 attrs.companySize = {
                     id: attrs['companySize.id']
                 };
-            delete attrs['companySize.id'];
+                delete attrs['companySize.id'];
+            }
         },
 
         renderIndustries: function () {
