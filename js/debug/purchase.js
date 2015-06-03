@@ -4,13 +4,15 @@ JOBCENTRE.purchase = (function ($) {
 
     //#region url
 
-    var url = {
-        purchases: '/rest/v1.0/purchases',
+    var url = function (restPath) {
+        url = {
+            purchases: restPath + 'purchases',
 
-        // generic
-        countries: '/rest/v1.0/countries',
-        provinces: '/rest/v1.0/provinces?countryId=:id',
-        taxcodes: '/rest/v1.0/taxcodes'
+            // generic
+            countries: restPath + 'countries',
+            provinces: restPath + 'provinces?countryId=:id',
+            taxcodes: restPath + 'taxcodes'
+        };
     };
 
     //#endregion
@@ -215,8 +217,9 @@ JOBCENTRE.purchase = (function ($) {
 
         collection: Countries,
         listName: 'country',
-        url: url.countries,
-
+        url: function() {
+            return url.countries;
+        },
         getCountries: function () {
             return this.getList();
         }
@@ -276,8 +279,9 @@ JOBCENTRE.purchase = (function ($) {
         collection: TaxCodes,
         primeTimer: 0,
         listName: 'taxcodes',
-        url: url.taxcodes,
-
+        url: function() {
+            return url.taxcodes;
+        },
         getTaxCodes: function () {
             return this.getList();
         }
@@ -527,6 +531,10 @@ JOBCENTRE.purchase = (function ($) {
     var Invoice = Backbone.Model.extend({
 
         trackEcommerce: function () {
+
+            if (!window.dataLayer)
+                return;
+
             dataLayer.push({
                 'event' : 'transactionComplete',
                 'transactionId': this.id,
@@ -616,6 +624,9 @@ JOBCENTRE.purchase = (function ($) {
 
             var that = this;
             var taxCode = this.taxCodes.find(function (taxCode) {
+                if (!taxCode.get('province'))
+                    return true;
+
                 return taxCode.get('province').id == that.get('address').get('province').id;
             });
 
@@ -1545,6 +1556,9 @@ JOBCENTRE.purchase = (function ($) {
 
     return {
         init: function (options) {
+
+            url(options.restPath);
+
             var router = new Router(options);
             Backbone.history.start();
             router.startUp();

@@ -3,7 +3,7 @@
 JOBCENTRE.employerProfile = (function ($) {
 
     var dropboxAppKey;
-    var url;
+
     //#region url
 
     var url = function(restPath) {
