@@ -505,6 +505,17 @@ a.header-action:link, a.header-action:visited {
     -o-background-size: cover;
     background-size: cover;
 }
+.search-widget-base.not-found {
+    background: url(../images/splash-404.jpg) no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+    -webkit-box-shadow:inset 0 0 5px 5px rgba(0,0,0,0.3);
+    box-shadow:inset 0 0 5px 5px rgba(0,0,0,0.3);
+    @media(max-width: @screen-xs-max){ padding: 0; }
+}
 .search-widget-title {
     color: #ffffff;
     font-family: 'Dancing Script', sans-serif;
@@ -544,6 +555,14 @@ a.header-action:link, a.header-action:visited {
     }
 }
 .flair-base.blue { color: #006bbc; }
+
+.title-box {
+    border: 3px solid #ffffff;
+    display: inline-block;
+    font-size: 60px;
+    font-weight: bold;
+    padding: 10px 35px;
+}
 
 .bkg-quotes {
     background: #005ca2 url(../images/splash-quote.jpg) no-repeat 0 center;
