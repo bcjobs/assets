@@ -100,6 +100,24 @@ a:hover { text-decoration: none; }
     padding: 8px 15px;
 }
 
+.fixed-nav {
+    background: #ffffff;
+    border: 2px solid #006fba;
+    padding: 15px;
+    position: fixed;
+    right: 50px;
+    @media(max-width: @screen-xs-max){
+        position: relative;
+        right: auto;
+    }
+}
+.fixed-nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+.fixed-nav ul li { margin-bottom: 5px; }
+.fixed-nav ul li:last-child { margin-bottom: 0; }
+
 /* Page Features */
 
 .page-title {
