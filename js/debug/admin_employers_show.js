@@ -141,3 +141,20 @@ JOBCENTRE.renderNotes = function(employerId, currentNotes){
     showNotes(currentNotes);
 
 };
+
+
+JOBCENTRE.renderResumeAuthorize = function(authorized){
+    $('span[id="ResumeAuthorized"]').append(_.template(document.getElementById('email-authorize').innerHTML, {}));
+    $('input[name=ResumeAuthorized]').change(function() {
+        if($('input[name=ResumeAuthorized]:checked').val() === '0') {
+            $('#sendresumeauthorizedemail_wrapper').find('input[name=SendResumeAuthorizedEmail]').prop('checked', false);
+            $('#sendresumeauthorizedemail_wrapper').hide();
+            return;
+        }
+
+        $('#sendresumeauthorizedemail_wrapper').show();
+
+        if (!authorized)
+            $('#sendresumeauthorizedemail_wrapper').find('input[name=SendResumeAuthorizedEmail]').prop('checked', true);
+    });
+};
