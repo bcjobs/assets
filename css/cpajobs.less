@@ -1189,79 +1189,43 @@ body .select2-expand .select2-choices {
 
 /* Public Styles */
 
-.public_navbar_container {
-	margin-bottom:25px;
-}
-
-.public_navbar_wrapper{
-	background-color:#006FBA;
+.social-nav-wrapper {
+	background-color: #006fba;
 	border-bottom: 5px solid #024D80;
-	line-height: 36px;
 }
-
-.public_navbar_social{
-	text-align: left;
-	height: 36px;
-	color: #ddd;
+.social-nav {
+	color: #dddddd;
 	font-weight: bold;
+	display: inline-block;
+	height: 36px;
 	line-height: 36px;
 	padding-left: 15px;
-	display: inline-block;
-	float: left;
 }
-
-.public_navbar_social img{
-	vertical-align:-8px;	
-}
-
-.public_navbar_social img:hover{
-	opacity:0.8;
-}
-
-.public_navbar_social .social_icon {
-	width: 22px;
-	height: 22px;
+.social-nav .social-icon {
 	background-size: 22px 22px;
 	background-repeat: no-repeat;
 	display: inline-block;
+	height: 22px;
 	vertical-align: middle;
+	width: 22px;
 }
-
-.public_navbar_social .social_icon:hover {
-	opacity: 0.8;
-}
-
-.public_navbar_social .social_icon a{
+.social-nav .social-icon:hover { opacity: 0.8; }
+.social-nav .social-icon a{
 	width: 100%;
 	height: 100%;
 	display: block;
 	text-indent: -9999px;
 }
+.social-nav .social-icon.twitter { background-image: url(/images/social_icon_twitter.png); }
+.social-nav .social-icon.facebook { background-image: url(/images/social_icon_facebook.png); }
 
-.public_navbar_social .social_icon_twitter {
-	background-image: url(/images/social_icon_twitter.png);
+.social-nav a, .social-nav a:link, .social-nav a:visited, .social-nav a:hover, .social-nav a:active {
+	color: #ffffff;
+	position: relative;
+	text-decoration: none;
 }
-
-.public_navbar_social .social_icon_facebook {
-	background-image: url(/images/social_icon_facebook.png);
-}
-
-.public_navbar_link {
-	padding: 0 1% 0 0;
-}
-
-.public_navbar_wrapper a {
-	position:relative;
-}
-
-.public_navbar_wrapper a:link{ color:#fff;text-decoration:none; }
-.public_navbar_wrapper a:visited{ color:#fff;text-decoration:none; }
-.public_navbar_wrapper a:hover{ color:#fff;text-decoration:none; }
-.public_navbar_wrapper a:active{ color:#fff;text-decoration:none; }
-
-.public_navbar_wrapper ul {
+.social-nav-links {
 	list-style-type: none;
-	float:right;
 	line-height: 37px;
 	margin: 0;
 	padding: 0;
@@ -1271,23 +1235,23 @@ body .select2-expand .select2-choices {
 	-webkit-margin-end: 0px;
 	-webkit-padding-start: 0px;
 }
-
-.public_navbar_wrapper ul li {
+.social-nav-links li {
 	color: #ffffff;
 	display: inline-block;
 	float: left;
 	font-size: 1em;
 	font-weight: bold;
-	height:37px;
-	line-height:37px;
-	margin-left:1px;
-	text-align:center;
-	text-transform:uppercase;
+	height: 37px;
+	line-height: 37px;
+	margin-left: 1px;
+	text-align: center;
+}
+.social-nav-links li:hover { background-color: #008bb0; }
+.social-nav-links li a {
+	color: #ffffff;
+	padding: 5px 20px;
 }
 
-.public_navbar_wrapper ul li:hover{ background:#008bb0; }
-
-.public_navbar_wrapper ul li a { padding: 5px 20px; }
 
 
 .preapproved-banner {
@@ -2009,15 +1973,16 @@ td.blockmonthon{
 
 /* Campusaccess */
 
-.student_progress_wrapper {
+.student-progress-wrapper {
 	background: #004b81;
 	height: 130px;
 	padding: 20px;
 	text-align: center;
 	width: 100%;
+	@media(max-width: 730px){ height: 110px; }
 }
 
-.student_progress_barbase {
+.student-progress-barbase {
 	background: #00233d;
 	background: -moz-linear-gradient(top,  #00233d 0%, #003052 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00233d), color-stop(100%,#003052));
@@ -2034,9 +1999,10 @@ td.blockmonthon{
 	padding: 5px 5px;
 	position: relative;
 	width: 700px;
+	@media(max-width: 730px){ width: 100%; }
 }
 
-.student_progress_progbar {
+.student-progress-progbar {
 	background: #39b541;
 	background: -moz-linear-gradient(top,  #39b541 0%, #039655 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#39b541), color-stop(100%,#039655));
@@ -2049,17 +2015,43 @@ td.blockmonthon{
 	height: 11px;
 	width: 50%;
 }
-.student_progress_progbar.progbar_contact { width: 44px; }
-.student_progress_progbar.progbar_preferences { width: 130px; }
-.student_progress_progbar.progbar_education { width: 216px; }
-.student_progress_progbar.progbar_experience { width: 304px; }
-.student_progress_progbar.progbar_languages { width: 390px; }
-.student_progress_progbar.progbar_competencies { width: 474px; }
-.student_progress_progbar.progbar_resume { width: 560px; }
-.student_progress_progbar.progbar_status { width: 646px; }
-.student_progress_progbar.progbar_access { width: 100%; }
+.student-progress-progbar.progbar-contact {
+	width: 44px;
+	@media(max-width: 730px){ width: 6%; }
+}
+.student-progress-progbar.progbar-preferences {
+	width: 130px;
+	@media(max-width: 730px){ width: 19%; }
+}
+.student-progress-progbar.progbar-education {
+	width: 216px;
+	@media(max-width: 730px){ width: 31%; }
+}
+.student-progress-progbar.progbar-experience {
+	width: 304px;
+	@media(max-width: 730px){ width: 44%; }
+}
+.student-progress-progbar.progbar-languages {
+	width: 390px;
+	@media(max-width: 730px){ width: 57%; }
+}
+.student-progress-progbar.progbar-competencies {
+	width: 474px;
+	@media(max-width: 730px){ width: 69%; }
+}
+.student-progress-progbar.progbar-resume {
+	width: 560px;
+	@media(max-width: 730px){ width: 82%; }
+}
+.student-progress-progbar.progbar-status {
+	width: 646px;
+	@media(max-width: 730px){ width: 95%; }
+}
+.student-progress-progbar.progbar-access {
+	width: 100%;
+}
 
-.student_progress_arrows {
+.student-progress-arrows {
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
 	border-top: 8px solid #003052;
@@ -2067,22 +2059,52 @@ td.blockmonthon{
 	height: 0; 
 	position: absolute;
 	width: 0; 
+	@media(max-width: 469px){
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #003052;
+        bottom: -5px;
+    }
 }
-.student_progress_arrow_contact { left: 39px; }
-.student_progress_arrow_education { left: 125px; }
-.student_progress_arrow_work { left: 212px; }
-.student_progress_arrow_lang { left: 298px; }
-.student_progress_arrow_comp { left: 384px; }
-.student_progress_arrow_resume { left: 468px; }
-.student_progress_arrow_pref { left: 556px; }
-.student_progress_arrow_profile { left: 642px; }
+.student-progress-arrow-contact {
+	left: 39px;
+	@media(max-width: 730px){ left: 4.5%; }
+}
+.student-progress-arrow-education {
+	left: 125px;
+	@media(max-width: 730px){ left: 17.3%; }
+}
+.student-progress-arrow-work {
+	left: 212px;
+	@media(max-width: 730px){ left: 29.8%; }
+}
+.student-progress-arrow-lang {
+	left: 298px;
+	@media(max-width: 730px){ left: 42.5%; }
+}
+.student-progress-arrow-comp {
+	left: 384px;
+	@media(max-width: 730px){ left: 55%; }
+}
+.student-progress-arrow-resume {
+	left: 468px;
+	@media(max-width: 730px){ left: 67%; }
+}
+.student-progress-arrow-pref {
+	left: 556px;
+	@media(max-width: 730px){ left: 79.8%; }
+}
+.student-progress-arrow-profile {
+	left: 642px;
+	@media(max-width: 730px){ left: 92.5%; }
+}
 
-
-.student_progress_selectors {
+.student-progress-selectors {
 	margin: 15px auto 0 auto;
 	width: 690px;
+	@media(max-width: 730px) { width: 100%; }
 }
-.student_progress_selectors a {
+.student-progress-selectors a {
 	color: #4da5e5;
 	float: left;
 	font-size: 9px;
@@ -2091,66 +2113,131 @@ td.blockmonthon{
 	text-transform: uppercase;
 	width: 12.5%;
 }
+.student-progress-selectors span { @media(max-width: 730px) { display: none; } }
+.student-progress-selectors a.active { color: #fff; }
 
-.student_progress_selectors a.active {
-	color: #fff;
-}
-
-.student_progress_icon {
+.student-progress-icon {
 	background: url(/images/progress_icons.png) 0 0 no-repeat;
 	cursor: pointer;
 	margin: 0 auto;
+	@media(max-width: 469px){
+		background: url(/images/progress_icons_small.png) 0 0 no-repeat;
+	}
 }
 
-.proicon_contact {
+.proicon-contact {
 	height: 36px;
 	width: 28px;
+	@media(max-width: 469px){
+		height: 29px;
+        width: 19px;
+	}
 }
-.proicon_education {
+.proicon-education {
 	background-position: -28px 0;
 	height: 34px;
 	width: 52px;
+	@media(max-width: 469px){
+		background-position: -19px 0;
+        height: 29px;
+        width: 36px;
+	}
 }
-.proicon_work {
+.proicon-work {
 	background-position:  -80px 0;
 	height: 36px;
 	width: 31px;
+	@media(max-width: 469px){
+		background-position:  -55px 0;
+        height: 29px;
+        width: 22px;
+	}
 }
-.proicon_lang {
+.proicon-lang {
 	background-position: -111px 0;
 	height: 36px;
 	width: 39px;
+	@media(max-width: 469px){
+		background-position: -77px 0;
+        height: 29px;
+        width: 27px;
+	}
 }
-.proicon_comp {
+.proicon-comp {
 	background-position: -177px 0;
 	height: 36px;
 	width: 29px;
+	@media(max-width: 469px){
+		background-position: -104px 0;
+        height: 29px;
+        width: 22px;
+	}
 }
-.proicon_resume {
+.proicon-resume {
 	background-position: -150px 0;
 	height: 36px;
 	width: 27px;
+	@media(max-width: 469px){
+		background-position: -126px 0;
+        height: 29px;
+        width: 19px;
+	}
 }
-.proicon_pref {
+.proicon-pref {
 	background-position: -206px 0;
 	height: 36px;
 	width: 35px;
+	@media(max-width: 469px){
+		background-position: -145px 0;
+        height: 29px;
+        width: 25px;
+	}
 }
-.proicon_profile {
+.proicon-profile {
 	background-position: -241px 0;
 	height: 36px;
 	width: 36px;
+	@media(max-width: 469px){
+		background-position: -170px 0;
+        height: 29px;
+        width: 25px;
+	}
 }
 
-.passed .proicon_contact, .active .proicon_contact { background-position: 0 -44px; }
-.passed .proicon_education, .active .proicon_education { background-position: -28px -44px; }
-.passed .proicon_work, .active .proicon_work { background-position:  -80px -44px; }
-.passed .proicon_lang, .active .proicon_lang { background-position: -111px -44px; }
-.passed .proicon_comp, .active .proicon_comp { background-position: -177px -44px; }
-.passed .proicon_comp, .active .proicon_resume { background-position: -150px -44px; }
-.passed .proicon_comp, .active .proicon_pref { background-position: -206px -44px; }
-.passed .proicon_profile, .active .proicon_profile { background-position: -241px -44px; }
+.passed .proicon-contact, .active .proicon-contact {
+	background-position: 0 -44px;
+	@media(max-width: 469px){ background-position: 0 -29px; }
+}
+.passed .proicon-education, .active .proicon-education {
+	background-position: -28px -44px;
+	@media(max-width: 469px){ background-position: -19px -29px; }
+}
+.passed .proicon-work, .active .proicon-work {
+	background-position:  -80px -44px;
+	@media(max-width: 469px){ background-position:  -55px -29px; }
+}
+.passed .proicon-lang, .active .proicon-lang {
+	background-position: -111px -44px;
+	@media(max-width: 469px){ background-position: -77px -29px; }
+}
+.passed .proicon-comp, .active .proicon-comp {
+	background-position: -177px -44px;
+	@media(max-width: 469px){ background-position: -104px -29px; }
+}
+.passed .proicon-comp, .active .proicon-resume {
+	background-position: -150px -44px;
+	@media(max-width: 469px){ background-position: -126px -29px; }
+}
+.passed .proicon-comp, .active .proicon-pref {
+	background-position: -206px -44px;
+	@media(max-width: 469px){ background-position: -145px -29px; }
+}
+.passed .proicon-profile, .active .proicon-profile {
+	background-position: -241px -44px;
+	@media(max-width: 469px){ background-position: -170px -29px; }
+}
 
+/* Delete student_ classes after bootstrap */
 .student_half {
 	float: left;
 	margin-right: 3%;
@@ -2161,26 +2248,25 @@ td.blockmonthon{
 	margin-right: 0;
 }
 
-a.student_option, a.campus-option {
+a.campus-option {
 	color:#006fba;
     font-weight:bold;
     cursor:pointer;
     display:inline-block;
 }
-a.student_remove, a.campus-remove {
+a.campus-remove {
 	color: #999999;
 	font-weight: bold;
 	cursor: pointer;
 }
-
-
-.student_pagination, .campus-pagination {
+.campus-pagination {
 	margin: 80px 0 10px 0;
 }
-.student_pagination a, .campus-pagination a {
+.campus-pagination a {
 	color: #999999;
 	font-size: 14px;
 }
+
 
 /* Replace with .flex-mb40 */
 .student_section {
@@ -3854,8 +3940,6 @@ a.flex-tab.active { color: #fff;}
         float: none;
     }
 
-	.public_navbar_wrapper span { display: none; }
-
 	.alert_icon { left: 10px; }
 
     .dashboard_header_panel_wrapper { margin: 0; }
@@ -4013,31 +4097,9 @@ a.flex-tab.active { color: #fff;}
 }
 
 @media (max-width: 730px) {
-    /* Campus Access Progress Bar */
-    .student_progress_wrapper { height: 110px; }
-    .student_progress_barbase { width: 100%; }
-    .student_progress_selectors { width: 100%; }
-    /* Arrows */
-    .student_progress_arrow_contact { left: 4.5%; }
-    .student_progress_arrow_education { left: 17.3%; }
-    .student_progress_arrow_work { left: 29.8%; }
-    .student_progress_arrow_lang { left: 42.5%; }
-    .student_progress_arrow_comp { left: 55%; }
-    .student_progress_arrow_resume { left: 67%; }
-    .student_progress_arrow_pref { left: 79.8%; }
-    .student_progress_arrow_profile { left: 92.5%; }
-    /* Green Bar Positions */
-    .student_progress_progbar.progbar_contact { width: 6%; }
-    .student_progress_progbar.progbar_preferences { width: 19%; }
-    .student_progress_progbar.progbar_education { width: 31%; }
-    .student_progress_progbar.progbar_experience { width: 44%; }
-    .student_progress_progbar.progbar_languages { width: 57%; }
-    .student_progress_progbar.progbar_competencies { width: 69%; }
-    .student_progress_progbar.progbar_resume { width: 82%; }
-    .student_progress_progbar.progbar_status { width: 95%; }
 
-    .student_progress_selectors a { width: 12.5%; }
-    .student_progress_selectors span { display: none; }
+
+
 
 
     .flex_halfcol {
@@ -4080,18 +4142,18 @@ a.flex-tab.active { color: #fff;}
     .newsbox_content_text { margin-top: 5px; padding: 0 10px; }
     
 
-	.public_navbar_wrapper { }
-	.public_navbar_social {
+	.social-nav {
         width: 100%;
         text-align: center;
         height: 28px;
         line-height: 26px;
     }
-	.public_navbar_wrapper ul {
-		float:none;
+	.social-nav-links {
+		float: none;
 		width: 100%;
 	}
-	.public_navbar_wrapper ul li {
+	.social-nav-links li {
+		font-size: 0.8em;
         height: 30px;
         line-height: 30px;
     }
@@ -4216,10 +4278,8 @@ a.flex-tab.active { color: #fff;}
 
     .candidate_keywords input[type=text] { display: block; width: 250px; margin: 10px auto 0 auto; }
 
-   .public_navbar_wrapper ul li { font-size: 0.6em; margin: 0;}
-   .public_navbar_social { padding-left: 0; }
-
-   .public_navbar_link { text-align: center; }
+   .social-nav-links li { font-size: 0.6em; margin: 0; }
+   .social-nav { padding-left: 0; }
 
    .preapproved_banner { height: 60px; background-size: auto 60px !important; }
    .preapproved_title { display: none; }
@@ -4250,63 +4310,6 @@ a.flex-tab.active { color: #fff;}
     .calcontainer td table td { text-align: center; padding: 2px;}
 
     .jobseeker_profile_header { font-size: 0.9em; padding: 10px 5%;}
-
-    /* progress bar */
-    .student_progress_arrows {
-        border-left: 5px solid transparent;
-        border-right: 5px solid transparent;
-        border-top: 5px solid #003052;
-        bottom: -5px;
-    }
-    .student_progress_icon { background: url(/images/progress_icons_small.png) 0 0 no-repeat; }
-
-    .proicon_contact {
-        height: 29px;
-        width: 19px;
-    }
-    .proicon_education {
-        background-position: -19px 0;
-        height: 29px;
-        width: 36px;
-    }
-    .proicon_work {
-        background-position:  -55px 0;
-        height: 29px;
-        width: 22px;
-    }
-    .proicon_lang {
-        background-position: -77px 0;
-        height: 29px;
-        width: 27px;
-    }
-    .proicon_comp {
-        background-position: -104px 0;
-        height: 29px;
-        width: 22px;
-    }
-    .proicon_resume {
-        background-position: -126px 0;
-        height: 29px;
-        width: 19px;
-    }
-    .proicon_pref {
-        background-position: -145px 0;
-        height: 29px;
-        width: 25px;
-    }
-    .proicon_profile {
-        background-position: -170px 0;
-        height: 29px;
-        width: 25px;
-    }
-    .passed .proicon_contact, .active .proicon_contact { background-position: 0 -29px; }
-    .passed .proicon_education, .active .proicon_education { background-position: -19px -29px; }
-    .passed .proicon_work, .active .proicon_work { background-position:  -55px -29px; }
-    .passed .proicon_lang, .active .proicon_lang { background-position: -77px -29px; }
-    .passed .proicon_comp, .active .proicon_comp { background-position: -104px -29px; }
-    .passed .proicon_comp, .active .proicon_resume { background-position: -126px -29px; }
-    .passed .proicon_comp, .active .proicon_pref { background-position: -145px -29px; }
-    .passed .proicon_profile, .active .proicon_profile { background-position: -170px -29px; }
 
    /* recordlists */
     .flex_recordlist { font-size: 0.8em; }
