@@ -161,6 +161,27 @@ a:hover { text-decoration: none; }
     right: 0;
 }
 
+/* Notes */
+
+.add-note-label {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
+.notes:hover {
+    background: #ddd;
+    cursor: pointer;
+}
+.notes:hover .add-note-label { display: block; }
+.notes-display { min-height: 50px; }
+.notes-display strong {
+    font-weight: bold;
+    color: black;
+}
+
+
 .body-container {
     padding: 15px;
     margin-bottom: 30px;
