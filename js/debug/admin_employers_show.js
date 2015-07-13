@@ -158,3 +158,37 @@ JOBCENTRE.renderResumeAuthorize = function(authorized){
             $('#sendresumeauthorizedemail_wrapper').find('input[name=SendResumeAuthorizedEmail]').prop('checked', true);
     });
 };
+
+
+JOBCENTRE.renderProvinceNames = function(){
+    var template = _.template($('#province_option').html());
+    var pairs = [
+        { source: 'CountryID', destination: 'ProvinceStateID', ajax: null },
+        { source: 'BillingCountryID', destination: 'BillingProvinceStateID', ajax: null }
+    ];
+
+    _.each(pairs, function(pair) {
+        $('#' + pair.source).change(function(e) {
+            if (pair.ajax)
+                pair.ajax.abort();
+
+            pair.ajax = $.ajax({
+                url: '/rest/v1.0/provinces?countryId=' + $(this).val(),
+                dataType: 'json',
+                type: 'GET',
+                success: function (provinces, textStatus, jqXHR) {
+                    var options = [];
+                    _.each(provinces.data, function(province) {
+                        options.push(template(province));
+                    });
+                    $('#' + pair.destination).html(options.join(''));
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                    if (jqXHR.statusText === 'abort')
+                        return;
+                }
+            });
+        });
+    });
+}
