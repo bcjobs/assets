@@ -26,7 +26,7 @@ em { font-style:italic;}
 h1, h2, h3, h4, h5, h6{
 	color: @primary_color;
 	font-weight:bold;
-	margin-top:15px;
+	margin-top: 0;
 	line-height:1em;
 }
 
@@ -459,6 +459,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 
 .border-primary { border: 3px solid #EAF1F3; }
 .border-second { border: 3px solid #E8F5E7;}
+.border-tertiary { border: 3px solid #54b948; }
 .border-thin { border: 1px solid #dfdfdf; }
 .border-bold { border: 3px solid #54b948; }
 .border-none { border: 0; }
@@ -555,7 +556,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	background:#EEB5B5;
 }
 
-.flex_bordered{
+.flex_bordered{ /* replace with .border-tertiary */
 	border: 3px solid #54b948;
 }
 
@@ -1389,6 +1390,7 @@ body .select2-expand .select2-choices {
 
 
 /* Dashboard General Styles */
+
 .dash-header-wrapper {
 	border-bottom: 20px solid #54b948;
 	margin: 0 -15px;
@@ -1496,6 +1498,23 @@ body .select2-expand .select2-choices {
 	font-size:0.9em;
 	padding: 20px 0;	
 }
+
+/* Jobseeker Dash */
+
+.dash-search-wrapper {
+	.flex-relative;
+	.flex-m0;
+	.flex-p15;
+	.flex-ph30;
+}
+
+.dash-search-title {
+	color: @primary_color;
+	.flex-m0;
+	.flex-mb5;
+	.text-uppercase;
+}
+.dash-search-subtitle { color: #757575; }
 
 
 /* News box */
@@ -1683,43 +1702,6 @@ body .select2-expand .select2-choices {
 	
 }
 
-/* Searchbox styles */
-
-.dashboard_search_wrapper{
-	width: 100%;
-	padding: 10px 10%;
-	margin: 0;
-	position: relative;
-}
-
-.dashboard_search_wrapper a:link {color:#004a90;}
-.dashboard_search_wrapper a:visited {color:#004a90;}
-.dashboard_search_wrapper a:hover {color:#000; text-decoration:none;}
-.dashboard_search_wrapper a:active {color:#333;}
-
-.dashboard_search_input_wrapper input{
-	height:32px;
-	width:100%;
-}
-
-.dashboard_search_meta_wrapper{
-	position:relative;
-	margin-bottom:1px;
-}
-
-.dashboard_search_title h2{ 
-	color:#006fba;
-	margin: 0px 0px 5px 0px;
-	text-transform: uppercase;
-}
-.dashboard_search_subtitle {
-	color: #757575;
-}
-
-.dashboard_search_advanced_link{
-	float:right;
-	margin-top:5px;
-}
 
 /* Resume Specific (non-printable, regular) */
 
@@ -3911,8 +3893,6 @@ a.flex-tab.active { color: #fff;}
 
 	.alert_icon { left: 10px; }
 
-    .dashboard_main_panel { margin: 0; }
-
 	.content_search_results_sidebar_filters, .content_search_results_main_jobs {
         width: 100%;
         float: none;
@@ -4136,7 +4116,6 @@ a.flex-tab.active { color: #fff;}
 		margin: 0 auto;
 	}
 
-    .dashboard_search_wrapper { padding: 10px 5%; }
 
 	.pep_showcase_explanation_wrapper { width: 100%; }
 
