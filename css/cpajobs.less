@@ -368,75 +368,35 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 
 .flex_left { float:left;}
 .flex_right { float:right;}
-.flex_width_4 { width:4%; }
+
 .flex_width_25 { width:25%; }
 .flex_width_30 { width:30%; }
 .flex_width_33 { width:33%; }
-.flex_width_45 { width:45%; }
-.flex_width_48 { width:48%; }
 .flex_width_50 { width:50%; }
-.flex_width_55 { width:55%; }
 .flex_width_66 { width:66%; }
 .flex_width_70 { width:70%; }
 .flex_width_75 { width:75%; }
-.flex_width_80 { width: 80%; }
-.flex_width_90 { width: 90%; }
 .flex_width_100 { width:100%; }
-.flex_width_auto { width:auto; }
-.flex_nowrap {white-space:nowrap;}
 
-/* flex col loses float on mobile */
-.flex_col_left { float: left; }
 .flex_col_right { float: right; }
-
-.flex_underline { text-decoration: underline; }
-
-.flex_image_maxwidth{ max-width:100%;}
 
 .flex_alignright{ text-align:right;}
 .flex_alignleft{ text-align:left;}
 .flex_aligncenter{ text-align:center;}
 
-.flex_table_verticalalign_middle td{ vertical-align:middle; }
-.flex_table_verticalalign_top td{ vertical-align:top; }
-
-.flex_padded{ padding:15px;}
-.flex_padded_horizontal{ padding:0 15px;}
-.flex_paddedbottom{ padding-bottom:15px;}
 .flex_paddingless { padding: 0; }
-
-.flex_ph0 { padding-right: 0; padding-left: 0; }
-.flex_pr2 { padding-right: 2%; }
 
 .flex_nobullet { list-style-type: none; }
 
-.flex_mt15{ margin-top:15px;}
 .flex_marginless{ margin:0;}
-.flex_margin_auto { margin-left:auto;margin-right:auto;}
+
 .flex_marginbottom { margin-bottom:15px;}
-.flex_mbextend { margin-bottom: 25px; }
-.flex_margin_horizontal { margin: 0 15px; }
-.flex_margin_vertical { margin: 15px 0;}
+
 .flex_marginright { margin-right: 15px; }
 .flex_marginleft { margin-left: 15px; }
 
-.flex_mt0 { margin-top: 0; }
-.flex_mt5 { margin-top: 5px; }
 .flex_mt15 { margin-top: 15px; }
-.flex_mt23 { margin-top: 23px; }
-.flex_mt30 { margin-top: 30px; }
 
-.flex_mr0 { margin-right: 0; }
-.flex_mr2 { margin-right: 2%; }
-
-.flex_mb0 { margin-bottom: 0; }
-.flex_mb5 { margin-bottom: 5px; }
-.flex_mb15 { margin-bottom: 15px; }
-.flex_mb20 { margin-bottom: 20px; }
-.flex_mb40 { margin-bottom: 40px; }
-
-.flex_ml1 { margin-left: 1%; }
-.flex_ml20 { margin-left: 20px; }
 
 .flex_small_pop {
 	border: 3px solid #006fba;
@@ -444,18 +404,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	padding: 5px;
 }
 
-.flex_hidden { display: none; }
-
-.flex_alignvertical { vertical-align: middle; }
-
-.flex_brand_color_1 { color:#006fba; }
-.flex_brand_color_2 { color:#008ab0; }
-.flex_brand_color_3 { color:#00a160; } 
-.flex_brand_color_4 { color:#54b948; }
-
 .flex_brand_bg_1 { border: 3px solid #EAF1F3;}
-.flex_brand_bg_2 { border: 3px solid #E8F5E7;}
-.flex_brand_bg_3 { border: 3px solid #006fba; }
 
 .border-primary { border: 3px solid #EAF1F3; }
 .border-second { border: 3px solid #E8F5E7;}
@@ -463,9 +412,6 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 .border-thin { border: 1px solid #dfdfdf; }
 .border-bold { border: 3px solid #54b948; }
 .border-none { border: 0; }
-
-.flex_cube.flex_noborder_r { border-right: 0; }
-.flex_cube.flex_noborder_l { border-left: 0; }
 
 .flex_ellipsis {
 	overflow: hidden;
@@ -623,6 +569,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 }
 .flex_bg_trans_white_85 { background: rgba(255,255,255,.85); }
 
+/* Panel adjustments */
 .panel { border-radius: 0; }
 .panel-default>.panel-heading {
 	background: @primary_color;
@@ -635,6 +582,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 }
 .panel li.odd { background: #eeeeee; }
 .panel li.even { background: #f5f5f5; }
+
 
 #container{
     position:relative;
@@ -912,124 +860,6 @@ textarea {
 	color:#fff;
 }
 
-/* Alert Styling */
-
-.alert_masthead_wrapper{
-	background-color:#E2ECF8;
-	display:none;
-	border: 4px solid #9AD0F4;
-	width:98%;
-	margin:15px auto 0 auto;
-}
-
-.alert_masthead_wrapper.active{display:block;}
-
-.alert_floater_wrapper .alert{
-	border:2px solid #fff;
-	padding:20px 60px 20px 110px;
-	background-color:#E2ECF8;
-	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkNEQzcxOEU2MzY4ODExRTJCQzEzQUYyNEVDQjFCRTJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkNEQzcxOEU3MzY4ODExRTJCQzEzQUYyNEVDQjFCRTJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Q0RDNzE4RTQzNjg4MTFFMkJDMTNBRjI0RUNCMUJFMkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Q0RDNzE4RTUzNjg4MTFFMkJDMTNBRjI0RUNCMUJFMkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7ssUAsAAAAHElEQVR42mJiYGAQYIACJiD+ABNgggqCBQACDAAdcwIXn63wqwAAAABJRU5ErkJggg==);
-	font-size: 1.1em;
-	color: #333;
-}
-
-.alert_masthead_wrapper .alert{
-	padding: 15px 30px;
-	border-top: none;
-}
-
-.alert_floater_wrapper{
-	border-radius:10px;
-	position:fixed;
-	top:-100%;
-	-webkit-transition:top 0.7s ease-out;
-	-moz-transition:top 0.7s ease-out;
-	transition:top 0.7s ease-out;
-	z-index: 6000;
-	border: 3px solid #fff;
-	background-color:#4CABEB;
-	box-shadow: 0px 4px 7px 0px rgba(0,0,0, 0.2);
-	padding:10px;
-}
-
-.alert_icon{
-	width:60px;
-	height:50px;
-	background-image: url(../images/icons_alert.png);
-	margin-right:15px;
-	position: absolute;
-	top: 50%;
-	left:40px;
-	margin-top: -25px;
-}
-
-.alert_icon_inline{
-	display:inline-block;
-	float:none;
-	vertical-align:middle;
-}
-
-.alert_masthead_wrapper .alert_icon{
-	background-position:0 -112px;
-	width:19px;
-	height:18px;
-	margin-top:2px;
-	opacity:0.5;
-}
-
-.alert_masthead_wrapper .alert_icon.last{
-	float:right;
-	margin-right:0;
-	margin-left:15px;
-}
-
-.alert_message{ 
-	text-align:center; 
-}
-
-.alert_message ul, .alert_message ol{
-	list-style-position: inside;
-	list-style-type: square;
-	padding: 0;
-	color: #666;
-	margin: 0;
-}
-
-.alert_button_close{
-	position:absolute;
-	top:19px;
-	right:18px;
-	background-image: url(../images/icons_alert.png);
-	background-position:0 -100px;
-	width:12px;
-	height:12px;
-	opacity:0.5;
-	cursor:pointer;
-}
-
-.alert_error .alert_button_close{
-	background-position:-12px -100px;
-}
-
-.alert_button_close:hover{
-	opacity:1;
-}
-
-.alert_wrapper.alert_error .alert_icon, .alert_icon_error{
-	background-position:0 -50px;
-}
-
-.alert_floater_wrapper.active{top:10px;}
-
-.alert_wrapper.alert_error{
-	border-color: white;
-	background-color: #FC594B;
-}
-
-.alert_wrapper.alert_error .alert{
-	background-color:#FFEFE0;	
-	background-repeat: repeat;
-}
 
 /* Popup Notification Styling */
 .notice_shadow{ 
@@ -1282,31 +1112,6 @@ body .select2-expand .select2-choices {
 
 
 
-/* USEFUL includable styles -- for Employer Program showcase, and Stats Feature */
-
-.stats_feature{
-	width: 100%;
-	margin: 35px auto 0px auto;
-	border: 1px solid  #008bb0;
-	background-color:#eaf1f3;
-}
-
-.stats_main {
-	padding: 20px 15px 0 15px;
-	font-style: italic;
-}
-
-.stats_feature_box1{
-	float:left;
-	width: 50%;
-	padding: 20px 15px;
-}
-
-.stats_feature_box2{
-	float:left;
-	width: 50%;
-	padding:20px 15px;
-}
 
 .pep-desc-wrapper {
 	background-color: #f7f7f7;
@@ -2172,77 +1977,21 @@ a.campus-remove {
 
 .student_comp_limit.limit_breach { color: #fd0000;}
 
-.textarea_compress, .textarea-h200 {
+.textarea-h200 {
 	height: 200px;
 	min-height: 200px;
 }
 
-/* The following styles are all additions from the 2011 redesign. (started in March) Implemented by Leif.
-
-
-/* GLOBAL (all pages) styles */
-
+/* The following styles are all additions from the 2011 redesign. (started in March) Implemented by Leif. */
 
 .last{
 	margin-bottom:0px;	
 }
 
-.rd11_fileselect{
-	width:300px;
-	background-color:#FFF; 
-	padding:5px;
-	border:1px solid #ddd; 
-	margin:0 auto;
-}
-
-.note_emphasis{
-	background-image:url(/images/rd11_bullet_ver2.png);
-	background-position:top left;
-	background-repeat:no-repeat;
-	padding-left:17px;
-	padding-top:3px;
-	width:80%;
-}
-
-.note_bordered{
-	margin:0px 0 15px 0;
-	padding:20px 35px;
-	border:1px solid #bbc7df;
-	border-radius: 3px;
-	background-color:#fff;
-}
-
-
-.simple_emphasis{
-	background-color:#fff;
-	padding:5px;	
-	-moz-border-radius: 10px;
-	border-radius: 10px;	
-}
-
-
-.rd11_icon_helptrigger{
-	vertical-align:-3px;	
-}
-
-
-
-/* Flex styles that need to override previous styles */
-
 .flex_relative{ position:relative;}
 
 .flex_ul_spaced li { margin-bottom: 15px; }
 .flex_ul_m5 li { margin-bottom: 5px; }
-
-.flex_mb15 { margin-bottom: 15px; }
-.flex_mb30 { margin-bottom: 30px; }
-
-.flex_halfcol {
-	float: left;
-	width: 50%;
-}
-.flex_halfcol:first-child { padding-right: 15px; }
-.flex_halfcol:last-child { padding-left: 15px; }
 
 /* Job Apply ---- Resume specific styles */
 
@@ -2363,10 +2112,6 @@ a.resume_upload_menu_item:link, a.resume_upload_menu_item:visited, a.resume_uplo
     background-color: white;
     float: left;
     margin-right: 10px;
-}
-
-.progress_bar{
-    
 }
 
 .resume_upload_progress{
