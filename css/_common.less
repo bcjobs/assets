@@ -279,7 +279,7 @@ a.tab-item:hover {
     background: linear-gradient(to bottom,  #f1f2f5 0%,#ffffff 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1f2f5', endColorstr='#ffffff',GradientType=0 );
     z-index: 20;
-    color: @primary_color !important;
+    color: #666666 !important;
     cursor: default;
 }
 
@@ -318,6 +318,38 @@ a.tab-item.active:hover{
     max-height: 100%;
     max-width: 100%;
 }
+
+
+/* List filter badge */
+
+.search-filter-wrapper {
+  background: @primary_color;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 15px;
+}
+.search-filter {
+  background: #0091f2;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-left: 10px;
+  padding: 4px 10px;
+}
+.search-filter-close {
+  background: @primary_color;
+  border-radius: 8px;
+  color: #ffffff !important;
+  display: inline-block;
+  font-size: 12px;
+  height: 17px;
+  line-height: 18px;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: 1px;
+  width: 18px;
+}
+a.search-filter-close, a.search-filter-close { color: #ffffff; }
+.search-filter-close:hover{ background-color: #219d15; }
 
 /* Profile Editors */
 
