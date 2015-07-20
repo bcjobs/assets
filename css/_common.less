@@ -137,6 +137,13 @@
 
 /* Icons */
 
+.icon-checkmark {
+    background:url(../images/icon_checkmark_v1.gif);
+    width:11px;
+    height:15px;
+    display:inline-block;
+}
+
 .icon-help {
     vertical-align:top; 
     width:17px;
@@ -227,6 +234,54 @@
         background-position: 0 1px;
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAARCAYAAADpPU2iAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAPtJREFUeNpi3L9/PwMSYAbiIiCOAWJ+ID4GxLVAfBemgIUBFXRBNcCAPBAbALEjEL8ECTChSaYxYAJNII6AcZA1SAExDwN2oIBNw2Mg/oRDw1VsGp4AcTsWxUeBeBk2T7MBcTcQ3wDidKjz9gFxJ7LBLEg2LQJiISAuAeIAqBgvEFcCcQgQ+wPxLZiGaCAOh7LPAfEDIP4OxLLQ+GCA2u4P0sABxKVokaeMxS8+QGwDstYaiHUZCAOQ2kgQ4cJAPHAAaTAiQYM8SIMoCRq4QRrkSNAA9kg7NLIIgbdAvJgRmh+4gdgO5CkgVgdiQWjMf4CmMVC+2AtiAwQYAAouJtfmNtjRAAAAAElFTkSuQmCC);
     }
+}
+
+/* Lists - such as candidates, jobs */
+.list-item-wrapper {
+    padding: 11px 15px;
+    display:block;
+}
+
+.list-item-wrapper.odd {
+    background: #f3f3f3;
+    border-top: 2px solid #f2f2f2;
+    border-bottom: 2px solid #f2f2f2;
+}
+.list-item-wrapper.even {
+    background: #f9f9f9;
+    border-top: 2px solid #f9f9f9;
+    border-bottom: 2px solid #f9f9f9;
+}
+
+a.list-item-wrapper:link, a.list-item-wrapper:visited, a.list-item-wrapper:active {
+    color:#484848;
+}
+a.list-item-wrapper:hover .text-subtext { color: @primary_color; }
+
+a.list-item-wrapper:hover {
+    background-color: #D4E9F7;
+    border-top-color: #fff;
+    border-bottom-color: #fff;
+}
+
+.list-header {
+    background:@primary_color;
+    color:#eaeaea;
+    font-size:1.3em;
+    padding:15px;
+    margin-bottom:5px;
+    line-height: 1.2em;
+}
+
+.list-item-title { color: @primary_color; }
+
+.list-divider {
+    @media(max-width: @screen-xs-max){
+        border-bottom: 1px solid #ddd;
+        display: inline-block;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }  
 }
 
 
