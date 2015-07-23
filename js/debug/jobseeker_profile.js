@@ -1750,7 +1750,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 el: this.$('[data-outlet="status"]')[0],
                 model: this.model,
                 requireVerification: this.options.requireVerification
-        })).render();
+            })).render();
 
             this.$('[data-outlet="photo"]').append(
                 this.addChildren(new PhotoView({
