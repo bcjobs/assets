@@ -754,6 +754,92 @@ input[type="file"].upload-input { display: none; }
     max-height: 100%;
 }
 
+/* Public profile Styles */
+
+.header-badge {
+    background-color: #ffffff;
+    color: @primary_color;
+    font-size: 16px;
+}
+
+.employer-profile-subtitle {
+    color: @primary_color;
+    font-size: 20px;
+}
+
+.employer-profile-banner img {
+    max-height: 200px;
+    max-width: 100%;
+}
+
+.employer-profile-logo {
+    max-width: 100%;
+    max-height: 150px;
+    @media(max-width: @screen-xs-max){ max-width: 280px; }
+}
+
+.employer-profile-company {
+    color: @primary_color;
+    font-size: 1.7em;
+    font-weight: bold;
+    line-height: 1.1em;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.employer-profile-thumb {
+    max-width: 360px;
+}
+.employer-profile-thumb img {
+    max-width: 100%;
+}
+
+.employer-profile-youtube {
+    height: 150px;
+    max-width: 100%;
+    width: 266px;
+}
+
+.play-icon {
+    background: transparent url(../images/icon_play.png) 0 0 no-repeat;
+    background-position: center;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    opacity: 0.7;
+    padding: 8px 12px;
+    position: absolute;
+    width: 100%;
+}
+.play-icon:hover {
+    opacity: 1;
+}
+
+.profile-textarea textarea {
+    min-height:200px;
+    @media(max-width: 600px){
+        min-height: 150px;
+    }
+}
+
+.profile-skillset {
+    background:#64a2cf;
+    line-height:1.2em;
+    color:#c9e7fe;
+    font-size:0.9em;
+    display:inline-block;
+    text-align:center;
+    padding:8px 10px;
+    text-transform:uppercase;
+    margin:5px;
+    max-width:280px;
+}
+
+.profile-skillset-title{
+    color:#fff;
+    text-transform:none;
+    font-size:1.1em; 
+}
+
 /* Bootstrap Modal */
 .modal-close {
     background: #ffffff;
