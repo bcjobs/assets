@@ -1683,7 +1683,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         requireVerification: this.options.requireVerification,
                         countries: this.options.countries,
                         memberStatuses: this.options.memberStatuses,
-                        careerLevels: this.options.careerLevels
+                        careerLevels: this.options.careerLevels,
+                        enabled: this.options.enabled
                     })
                 )
                 .render().el
@@ -1764,17 +1765,19 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 countries: this.options.countries
             })).render();
 
-            this.addChildren(new MemberStatusView({
-                el: this.$('[data-outlet="member_status"]')[0],
-                model: this.model,
-                memberStatuses: this.options.memberStatuses
-            })).render();
+            if (this.options.enabled.memberStatus)
+                this.addChildren(new MemberStatusView({
+                    el: this.$('[data-outlet="member_status"]')[0],
+                    model: this.model,
+                    memberStatuses: this.options.memberStatuses
+                })).render();
 
-            this.addChildren(new CareerLevelView({
-                el: this.$('[data-outlet="career_level"]')[0],
-                model: this.model,
-                careerLevels: this.options.careerLevels
-            })).render();
+            if (this.options.enabled.careerLevel)
+                this.addChildren(new CareerLevelView({
+                    el: this.$('[data-outlet="career_level"]')[0],
+                    model: this.model,
+                    careerLevels: this.options.careerLevels
+                })).render();
 
             this.addChildren(new PositionTypesWrapperView({
                 el: this.$('[data-outlet="position_types_wrapper"]')[0],
@@ -3185,7 +3188,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 countries: countryCache.getCountries(),
                 careerLevels: careerLevelCache.getCareerLevels(),
                 memberStatuses: memberStatusCache.getMemberStatuses(),
-                requireVerification: options.requireVerification
+                requireVerification: options.requireVerification,
+                enabled: options.enabled
             });
 
             $('[data-outlet="container"]').append(pageView.render().el);
