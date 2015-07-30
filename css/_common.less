@@ -430,6 +430,242 @@ a.tab-item.active:hover{
 }
 
 
+/* Search Results Styling */
+
+.search-results-title {
+    font-size: 20px;
+}
+
+.search-sidebar-container {
+    margin-bottom: 30px;
+    @media(max-width: 949px){
+        margin: 0 auto;
+        padding: 20px;
+        box-shadow: 1px 1px 1px 3px #ddd;
+        border: 1px solid #666;
+        background-color: #fff;
+    }
+}
+
+.search-sidebar-filters{
+    width: 20%;
+    margin-top: 20px;
+    float: left;
+    @media(max-width:949px){
+        position: absolute;
+        top: 0;
+        left: -100%;
+        float: none;
+        z-index: 6000;
+        width: 100%;
+        padding: 10px;
+        max-width: 430px;
+        margin-left: -215px;
+    }
+    @media (max-width: 469px) {  
+        margin-left:-50%;
+        max-width:100%;
+    }
+}
+
+.search-results-leftside-ads {
+    @media(max-width:949px){
+        display: none;
+    }
+}
+
+.search-results-subtitle {
+    background-color:@primary_color;
+    color:#fff;
+    padding:3px 20px;
+    font-weight:bold;
+}
+
+.search-results-container .search-results-subtitle {
+    background-color: @primary_color;
+    margin-bottom:5px;
+}
+
+
+.search-results-subcontent{
+    padding:10px 10px 15px 10px;
+    background:#f7f7f7;
+    position: relative;
+    font-size:0.9em;
+}
+
+.search-results-subcontent-note, .search-results-subcontent h5{
+    margin-top:5px;
+    background-color:#eee;
+    padding:5px;
+}
+
+.search-results-subcontent h5{
+    margin-bottom:10px;
+    font-weight:normal;
+    font-size:1em;
+    background-color:#fcfcfc;
+}
+
+.search-results-subcontent .range{ margin-top:10px; }
+
+.search-results-container{
+    float: left;
+    margin-top:20px;
+    padding: 0 2%;
+    width: 60%;
+    @media(max-width:949px){
+        width: 70%;
+        min-height: 600px;
+        padding-left: 0;
+    }
+    @media(max-width:600px){
+        padding: 0;
+        width: 100%;
+    }
+}
+
+.refine-search-results{
+    display:none;
+    background-color:#e3edf4;
+    color:#585858;
+    float: left;
+    padding: 2px 10px;
+    height: 28px;
+    line-height: 24px;
+    font-weight:normal;
+    margin-left: 12px;
+    border-radius: 2px 10px 10px 2px;
+    cursor: pointer;
+    -webkit-transition: margin-top 0.4s ease-in-out,margin-right 0.1s ease-in-out;
+    -moz-transition: margin-top 0.4s ease-in-out,margin-right 0.1s ease-in-out;
+    transition: margin-top 0.4s ease-in-out,margin-right 0.1s ease-in-out;
+    @media(max-width:949px){
+        display:inline-block;
+    }
+}
+
+.refine-search-results:hover{
+    background-color:#fff;
+}
+
+.refine-search-results-arrow{
+      border-color: transparent #e3edf4 transparent transparent;
+      border-style:solid;
+      border-width:14px;
+      width:0;
+      height:0;
+      float:left;
+      margin-left:-37px;
+      margin-top:-2px;
+}
+
+.refine-search-results:hover .refine-search-results-arrow{
+    border-color: transparent #fff transparent transparent;
+}
+
+
+
+.ad-sidebar-widget{
+    float: right;
+    width: 20%;
+    margin-top: 20px;
+    @media(max-width: 949px){
+        width: 30%;
+    }
+    @media(max-width: 600px){
+        display: none;
+    }
+}
+
+.search-jobs-widget-options{
+    @media(max-width: 400px){
+       text-align:center;
+       margin-top:5px;
+    }
+}
+
+.search-results-save {
+    display:inline-block;
+    padding:0px;
+    margin-top:17px
+}
+
+.search-results-empty {
+    text-align:center;
+    margin:5px auto;
+    padding:40px 10px;
+    border:2px solid #ddd;
+    line-height:1em;
+}
+
+.adsense-leaderboard{
+    background:#ffffff;
+    clear:left;
+    text-align:center;
+    margin-top:25px;
+    max-width: 100%;
+}
+
+.adsbygoogle { max-width: 100%; }
+
+
+/* Search Jobs Sidebar */
+
+.search-jobs-widget-map {
+    border:1px solid #aaa;
+    margin-top:15px;
+    height: 165px;
+
+}
+
+.search-jobs-widget-anchor {
+    display:none;
+    @media(max-width: 949px){
+        display: inline-block;
+    }
+}
+.search-jobs-widget-anchor.first{
+    @media(max-width: 400px){
+        float:none;
+    }
+}
+
+.search-jobs-adv-anchor{
+    padding: 3px 10px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    background-color: #2a91e0;
+    margin-top: 6px;
+    @media(max-width: 949px){
+        float: left;
+    }
+    @media(max-width: 400px){
+       display:inline-block;
+       margin-bottom:10px;
+       float:none;
+    }
+}
+
+.search-jobs-adv-anchor:hover{
+    background: #0073cc;
+}
+
+
+
+/* Search Results Featured Employers */
+.ad-sidebar-widget-logo {
+    border: 1px solid #e6e6e6;
+    height: 90px;
+    line-height: 90px;
+    margin-bottom: 6px;
+    text-align: center;
+    width: 100%;
+}
+.ad-sidebar-widget-logo a { display: block; }
+
+
 /* List filter badge */
 
 .search-filter-wrapper {
