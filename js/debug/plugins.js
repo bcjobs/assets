@@ -118,6 +118,37 @@ JOBCENTRE.utility = {
 
 //#endregion
 
+JOBCENTRE.capabilities = {
+    localStorage: (function () {
+        // source: Modernizr
+        try {
+            localStorage.setItem('foo', 'foo');
+            localStorage.removeItem('foo');
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }()),
+    oninput: (function () {
+
+        // a more robust plugin for this...but lots of hack in it.
+        // http://whattheheadsaid.com/projects/input-special-event
+
+        // note: IE9 doesn't trigger input event on backspace. ultimate FAIL!
+        if ('oninput' in document.body)
+            return true;
+
+        // feature detection is too painful. going to browser sniffing.
+        // https://github.com/Modernizr/Modernizr/issues/210#issuecomment-1325576
+
+        // FF supported oninput since version 2, but reports 'oninput' in document.body === false until version 4
+        if (/Firefox/.test(navigator.userAgent))
+            return true;
+
+        return false;
+    }())
+};
+
 //#region JOBCAST.lazyLoad
 
 JOBCENTRE.lazyLoad = (function () {
