@@ -737,9 +737,9 @@ JOBCENTRE.purchase = (function ($) {
 
     _.extend(BaseView.prototype, Backbone.View.prototype, {
 
-        loaderTemplate: _.template($('#loader').html()),
+        loaderTemplate: _.template($('#purchase_loader').html()),
 
-        errorTemplate: _.template($('#error').html()),
+        errorTemplate: _.template($('#purchase_error').html()),
 
         renderState: function (state) {
             if (state.get('error')) {
@@ -1583,7 +1583,7 @@ JOBCENTRE.ensurePackage = (function ($) {
 
     var SpinnerView = Backbone.View.extend({
 
-        template: _.template($('#spinner').html()),
+        template: _.template($('#purchase_spinner').html()),
 
         className: 'overlay overlay-white overlay-fixed',
 
