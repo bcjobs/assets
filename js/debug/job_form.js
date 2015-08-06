@@ -2,7 +2,7 @@
 
 JOBCENTRE.jobForm = (function ($) {
 
-    var tinyMceCssPath, restPath, jobPostDurationMax, today, labels, redirectOnSave, skipCheckCreditOnTypeIds;
+    var employer, tinyMceCssPath, restPath, jobPostDurationMax, today, labels, redirectOnSave, skipCheckCreditOnTypeIds;
 
     //#region url
 
@@ -28,6 +28,8 @@ JOBCENTRE.jobForm = (function ($) {
     //#region Job
 
     var Job = Backbone.Model.extend({
+
+        draftKey: 'draft_job',
 
         defaults: {
             title: '',
@@ -216,6 +218,9 @@ JOBCENTRE.jobForm = (function ($) {
                 cache: false,
                 type: method,
                 success: function (response, textStatus, jqXHR) {
+                    if (JOBCENTRE.capabilities.localStorage)
+                        localStorage.removeItem(that.draftKey);
+
                     window.location.href = String.format(redirectOnSave, response.id);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
@@ -230,6 +235,25 @@ JOBCENTRE.jobForm = (function ($) {
                     });
                 }
             });
+        },
+
+        restoreDraft: function () {
+            if (!JOBCENTRE.capabilities.localStorage || !localStorage.getItem(this.draftKey))
+                return;
+
+            var draft;
+            try {
+                draft = JSON.parse(localStorage.getItem(this.draftKey));
+            } catch (e) {
+                return;
+            }
+
+            if (!draft.employer || draft.employer.id !== employer.id)
+                return;
+
+            delete draft.employer;
+
+            this.set(draft);
         }
 
     });
@@ -373,21 +397,10 @@ JOBCENTRE.jobForm = (function ($) {
             'keyup form': 'onKeyup'
         },
 
-
-
         onSubmit: function(e) {
-            console.log('onSubmit');
             e.preventDefault();
 
             this.validatable = true;
-
-            tinyMCE.activeEditor.setContent(
-                this.removeTinyMceComment(
-                    this.emptyIfNoTinyMceText(
-                        tinyMCE.activeEditor.getContent()
-                    )
-                )
-            );
 
             this.model.set(this.getFormValues());
 
@@ -399,6 +412,29 @@ JOBCENTRE.jobForm = (function ($) {
 
         onChange: function () {
             this.validateIfReady();
+
+            if (this.model.isNew())
+                this.saveDraft();
+        },
+
+        saveDraft: function () {
+
+            if (!JOBCENTRE.capabilities.localStorage)
+                return;
+
+            localStorage.setItem(
+                this.model.draftKey,
+                JSON.stringify(
+                    _.extend(
+                        this.getFormValues(),
+                        {
+                            employer: {
+                                id: employer.id
+                            }
+                        }
+                    )
+                )
+            );
         },
 
         onKeyup: function (e) {
@@ -479,15 +515,19 @@ JOBCENTRE.jobForm = (function ($) {
             });
             delete attrs.categoryIds;
 
-            attrs.memberStatuses = _.map(attrs.memberStatusIds.split(','), function (id) {
-                return { id: id };
-            });
-            delete attrs.memberStatusIds;
+            if (attrs.memberStatusIds) {
+                attrs.memberStatuses = _.map(attrs.memberStatusIds.split(','), function (id) {
+                    return { id: id };
+                });
+                delete attrs.memberStatusIds;
+            }
 
-            attrs.careerLevels = _.map(attrs.careerLevelIds, function (id) {
-                return { id: id };
-            });
-            delete attrs.careerLevelIds;
+            if (attrs.careerLevels) {
+                attrs.careerLevels = _.map(attrs.careerLevelIds, function (id) {
+                    return { id: id };
+                });
+                delete attrs.careerLevelIds;
+            }
 
             attrs.positionType = {
                 id: attrs.positionTypeId
@@ -507,6 +547,13 @@ JOBCENTRE.jobForm = (function ($) {
 
                 delete attrs['location' + i];
             }
+
+            attrs.description = this.removeTinyMceComment(
+                this.emptyIfNoTinyMceText(
+                    tinyMCE.activeEditor.getContent()
+                )
+            );
+
         },
 
         bindSelect2: function() {
@@ -514,9 +561,12 @@ JOBCENTRE.jobForm = (function ($) {
         },
 
         bindTinyeMCE: function () {
+
+            var elementId = 'description';
+
             tinyMCE.init({
                 mode: 'exact',
-                elements: 'description',
+                elements: elementId,
                 theme: 'advanced',
                 plugins: 'paste',
 
@@ -524,6 +574,10 @@ JOBCENTRE.jobForm = (function ($) {
                 setup: function (ed) {
                     ed.onInit.add(function (ed) {
                         ed.pasteAsPlainText = true;
+                    });
+
+                    ed.onChange.add(function (ed, l) {
+                        $('#' + elementId).change();
                     });
                 },
 
@@ -631,6 +685,7 @@ JOBCENTRE.jobForm = (function ($) {
     return {
         init: function (options) {
 
+            employer = options.employer;
             tinyMceCssPath = options.tinyMceCssPath;
             restPath = options.restPath;
             jobPostDurationMax = options.jobPostDurationMax;
@@ -650,6 +705,7 @@ JOBCENTRE.jobForm = (function ($) {
             } else {
                 job.set('applicationEmail', options.employer.email);
                 job.set('status', 'active');
+                job.restoreDraft();
                 job.state.set('ready', true);
             }
 
