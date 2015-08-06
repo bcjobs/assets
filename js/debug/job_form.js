@@ -2,7 +2,7 @@
 
 JOBCENTRE.jobForm = (function ($) {
 
-    var employer, tinyMceCssPath, restPath, jobPostDurationMax, today, labels, redirectOnSave, skipCheckCreditOnTypeIds;
+    var employer, tinyMceCssPath, restPath, jobPostDurationMax, today, labels, redirectOnSave, skipCreditCheckForTypeIds;
 
     //#region url
 
@@ -199,7 +199,8 @@ JOBCENTRE.jobForm = (function ($) {
         },
 
         submit: function () {
-            if (this.isNew())
+            var that = this;
+            if (this.isNew() && !_.some(skipCreditCheckForTypeIds, function (skipId) { return that.get('positionType').id == skipId; }))
                 checkCredits(_.bind(this.save, this)); // TODO: for cpajobs, don't check credit if this is a volunteer job.
             else
                 this.save();
@@ -707,7 +708,7 @@ JOBCENTRE.jobForm = (function ($) {
             today = options.today;
             labels = options.labels;
             redirectOnSave = options.redirectOnSave;
-            skipCheckCreditOnTypeIds = options.skipCheckCreditOnTypeIds;
+            skipCreditCheckForTypeIds = options.skipCreditCheckForTypeIds;
 
             url(options.restPath);
 
