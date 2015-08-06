@@ -139,6 +139,10 @@ JOBCENTRE.jobForm = (function ($) {
                 type: 'GET',
                 success: function (response, textStatus, jqXHR) {
                     delete response.id;
+                    delete response.activeDate;
+                    delete response.publishDate;
+                    delete response.closeDate;
+
                     that.set(that.parse(response));
                     that.state.set({ ready: true, error: null });
                 },
@@ -214,12 +218,20 @@ JOBCENTRE.jobForm = (function ($) {
                 url: saveUrl,
                 data: JSON.stringify(this.toJSON()),
                 contentType: 'application/json',
+                headers: { 'JC-RenewIfStale': false },
                 dataType: 'json',
                 cache: false,
                 type: method,
                 success: function (response, textStatus, jqXHR) {
                     if (JOBCENTRE.capabilities.localStorage)
                         localStorage.removeItem(that.draftKey);
+
+                    // this doesn't work because page gets reloaded immediately after showing the alertFloater
+                    //if (jqXHR.getResponseHeader('JC-Warning'))
+                    //    JOBCENTRE.alertFloater.show({
+                    //        summary: jqXHR.getResponseHeader('JC-Warning'),
+                    //        isError: false
+                    //    });
 
                     window.location.href = String.format(redirectOnSave, response.id);
                 },
@@ -510,9 +522,12 @@ JOBCENTRE.jobForm = (function ($) {
             delete attrs.applicantRoutingTypeId;
 
             // different values for attrs.categoryIds depending on whether multiple attribute is set or not.
-            attrs.categories = _.map(_.isString(attrs.categoryIds) ? attrs.categoryIds.split(',') : attrs.categoryIds, function (id) {
-                return { id: id };
-            });
+            attrs.categories = [];
+            if (attrs.categoryIds)
+                attrs.categories = _.map(_.isString(attrs.categoryIds) ? attrs.categoryIds.split(',') : attrs.categoryIds, function (id) {
+                    return { id: id };
+                });
+            
             delete attrs.categoryIds;
 
             if (attrs.memberStatusIds) {
@@ -522,7 +537,7 @@ JOBCENTRE.jobForm = (function ($) {
                 delete attrs.memberStatusIds;
             }
 
-            if (attrs.careerLevels) {
+            if (attrs.careerLevelIds) {
                 attrs.careerLevels = _.map(attrs.careerLevelIds, function (id) {
                     return { id: id };
                 });
