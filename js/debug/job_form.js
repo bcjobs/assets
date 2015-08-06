@@ -641,10 +641,16 @@ JOBCENTRE.jobForm = (function ($) {
 
         bindLocationsSuggests: function () {
             for (var i = 0; i < 3; i++) {
-                this.$('input[name=location' + i + ']').jsonSuggest({
-                    url: restPath + 'locations?pageSize=7',
-                    textPropertyName: 'description',
-                    minCharacters: 3
+                this.$('input[name=location' + i + ']').each(function () {
+                    var that = this;
+                    $(this).jsonSuggest({
+                        url: restPath + 'locations?pageSize=7',
+                        textPropertyName: 'description',
+                        minCharacters: 3,
+                        onSelect: function () {
+                            $(that).change();
+                        }
+                    });
                 });
             }
         },
