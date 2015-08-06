@@ -131,7 +131,7 @@ JOBCENTRE.jobForm = (function ($) {
             this.state.set({ ready: false, error: null });
 
             $.ajax({
-                url: this.url + '/' + id,
+                url: url.jobs + '/' + id,
                 dataType: 'json',
                 cache: false,
                 type: 'GET',
@@ -166,7 +166,7 @@ JOBCENTRE.jobForm = (function ($) {
                 errors.push({ name: 'memberStatusIds', message: 'Member status is required.' });
 
             if (this.required.careerLevelId && !this.get('careerLevels').length)
-                errors.push({ name: 'careerLevelId', message: 'Career level is required.' });
+                errors.push({ name: 'careerLevelIds', message: 'Career level is required.' });
 
             if (!this.get('positionType'))
                 errors.push({ name: 'positionTypeId', message: 'Position type is required.' });
@@ -473,12 +473,13 @@ JOBCENTRE.jobForm = (function ($) {
             };
             delete attrs.applicantRoutingTypeId;
 
-            attrs.categories = _.map(attrs.categoryIds, function (id) {
+            // different values for attrs.categoryIds depending on whether multiple attribute is set or not.
+            attrs.categories = _.map(_.isString(attrs.categoryIds) ? attrs.categoryIds.split(',') : attrs.categoryIds, function (id) {
                 return { id: id };
             });
             delete attrs.categoryIds;
 
-            attrs.memberStatuses = _.map(attrs.memberStatusIds, function (id) {
+            attrs.memberStatuses = _.map(attrs.memberStatusIds.split(','), function (id) {
                 return { id: id };
             });
             delete attrs.memberStatusIds;
