@@ -1,8 +1,8 @@
 ﻿var JOBCENTRE = window.JOBCENTRE || {};
 
-JOBCENTRE.searchjobs = (function ($) {
+JOBCENTRE.jobSearch = (function ($) {
 
-    var restPath;
+    var restPath, labels;
 
     //#region url
 
@@ -1178,7 +1178,7 @@ JOBCENTRE.searchjobs = (function ($) {
             output.push('</select>');
             this.$('[data-outlet]').html(output.join(''));
             this.$('select').select2({
-                placeholder: this.placeholder,
+                placeholder: this.placeholder(),
                 allowClear: true
             });
             this.select2Rendered = true;
@@ -1200,7 +1200,9 @@ JOBCENTRE.searchjobs = (function ($) {
 
         property: 'categoryIds',
 
-        placeholder: 'All Categories'
+        placeholder: function () {
+            return 'All ' + labels.jobCategories;
+        }
 
     });
 
@@ -1215,7 +1217,9 @@ JOBCENTRE.searchjobs = (function ($) {
 
         property: 'careerLevelIds',
 
-        placeholder: 'All Career Levels'
+        placeholder: function () {
+            return 'All Career Levels';
+        }
 
     });
 
@@ -1230,7 +1234,9 @@ JOBCENTRE.searchjobs = (function ($) {
 
         property: 'memberStatusIds',
 
-        placeholder: 'All CPA Statuses'
+        placeholder: function () {
+            return 'All CPA Statuses';
+        }
 
     });
 
@@ -1850,6 +1856,7 @@ JOBCENTRE.searchjobs = (function ($) {
         init: function (options) {
 
             restPath = options.restPath;
+            labels = options.labels;
             url(options.restPath);
 
             switch (options.type) {
