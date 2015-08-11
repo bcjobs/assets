@@ -1047,10 +1047,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             var index = _.indexOf(this.children, child);
             if (index !== -1)
                 this.children.splice(index, 1);
-        },
-
-        bindTooltip: function () {
-            this.$('[data-toggle="tooltip"]').tooltip();
         }
     });
 
@@ -1892,7 +1888,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             }
 
             this.$el.addClass(c);
-            this.bindTooltip();
             return this;
         }
 
