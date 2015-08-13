@@ -580,6 +580,114 @@ JOBCENTRE.jobForm = (function ($) {
 
             var elementId = 'description';
 
+            var settings = {
+                    validElements: [
+                        ['a', 'href|target:_blank'],
+                        ['strong/b'],
+                        ['em/i'],
+                        ['br'],
+                        ['p'],
+                        ['ul'],
+                        ['ol'],
+                        ['li']
+                    ],
+                    replacements: [
+                        ['h1', 'strong'],
+                        ['h2', 'strong'],
+                        ['h3', 'strong'],
+                        ['h4', 'strong'],
+                        ['h5', 'strong']
+                    ]
+            };
+
+            var validElements = function (settings) {
+                return _.map(settings.validElements, function (element) {
+                    if (element.length == 1)
+                        return element;
+                    if (element.length == 2)
+                        return String.format('{0}[{1}]', element[0], element[1]);
+                    throw new Error('Element length not supported.');
+                }).join(',');
+            };
+
+            var allowedTags = function (settings) {
+                var result = [];
+                _.each(settings.validElements, function (element) {
+                    _.each(element[0].split('/'), function (tag) {
+                        result.push(String.format('<{0}>', tag));
+                    });
+                });
+                return result.join('');
+            };
+
+            var stripTags = function (str, allowed_tags, replacements) {
+                var key = '';
+                var allowed = false;
+                var matches = [];
+                var allowed_array = [];
+                var allowed_tag = '';
+                var i = 0;
+                var k = '';
+                var html = '';
+                var replacer = function (search, replace, str) {
+                    return str.split(search).join(replace);
+                };
+                // Build allowes tags associative array
+                if (allowed_tags) {
+                    allowed_array = allowed_tags.match(/([a-zA-Z0-9]+)/gi);
+                }
+
+                str += '';
+
+                // Match tags
+                matches = str.match(/(<\/?[\S][^>]*>)/gi);
+                // Go through all HTML tags
+                for (key in matches) {
+                    if (isNaN(key)) {
+                        // IE7 Hack
+                        continue;
+                    }
+
+                    // Save HTML tag
+                    html = matches[key].toString();
+                    // Is tag not in allowed list? Remove from str!
+                    allowed = false;
+
+                    // Go through all allowed tags
+                    for (k in allowed_array) {
+                        allowed_tag = allowed_array[k];
+                        i = -1;
+
+                        if (i != 0)
+                            i = html.toLowerCase().indexOf('<' + allowed_tag + '>');
+                        if (i != 0)
+                            i = html.toLowerCase().indexOf('<' + allowed_tag + ' ');
+                        if (i != 0)
+                            i = html.toLowerCase().indexOf('</' + allowed_tag);
+
+                        // Determine
+                        if (i == 0) {
+                            allowed = true;
+                            break;
+                        }
+                    }
+                    if (!allowed) {
+                        for (tags in replacements) {
+                            if (html.toLowerCase().indexOf('<' + replacements[tags][0] + '>') == 0 || html.toLowerCase().indexOf('<' + replacements[tags][0] + ' ') == 0) {
+                                str = replacer(html, '<' + replacements[tags][1] + '>', str);
+                                break;
+                            }
+                            if (html.toLowerCase().indexOf('</' + replacements[tags][0]) == 0) {
+                                str = replacer(html, '</' + replacements[tags][1] + '>', str);
+                                break;
+                            }
+                        }
+                        str = replacer(html, '', str);
+                    }
+                }
+                return str;
+            };
+
             tinyMCE.init({
                 mode: 'exact',
                 elements: elementId,
@@ -589,7 +697,7 @@ JOBCENTRE.jobForm = (function ($) {
                 paste_text_sticky: true,
                 setup: function (ed) {
                     ed.onInit.add(function (ed) {
-                        ed.pasteAsPlainText = true;
+                        ed.pasteAsPlainText = false;
                     });
 
                     ed.onChange.add(function (ed, l) {
@@ -597,7 +705,11 @@ JOBCENTRE.jobForm = (function ($) {
                     });
                 },
 
-                valid_elements: 'a[href|target:_blank],strong/b,em/i,br,p,ul,ol,li',
+                paste_preprocess: function (pl, o) {
+                    o.content = stripTags(o.content, allowedTags(settings), settings.replacements);
+                },
+
+                valid_elements: validElements(settings),
 
                 content_css: tinyMceCssPath,
 
