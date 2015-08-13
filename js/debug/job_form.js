@@ -645,12 +645,13 @@ JOBCENTRE.jobForm = (function ($) {
             var execute = function () {
                 for (var i = 0; i < 3; i++) {
                     that.$('input[name=location' + i + ']').each(function () {
+                        var element = this;
                         $(this).jsonSuggest({
                             url: restPath + 'locations?pageSize=7',
                             textPropertyName: 'description',
                             minCharacters: 3,
                             onSelect: function () {
-                                $(that).change();
+                                $(element).change();
                             }
                         });
                     });
