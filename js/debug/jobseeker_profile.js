@@ -12,7 +12,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             relocations: restPath + 'jobseekers/:id/relocations',
             educations: restPath + 'jobseekers/:id/educations',
             positions: restPath + 'jobseekers/:id/positions',
-            skills: restPath + 'jobseekers/:id/skills',
+            jobseekerSkills: restPath + 'jobseekers/:id/skills',
 
             photos: restPath + 'files',
             formPhoto: restPath + 'files/form',
@@ -875,9 +875,9 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
         url: function () {
             if (this.isNew())
-                return url.skills.replace(':id', this.collection.jobseeker.id);
+                return url.jobseekerSkills.replace(':id', this.collection.jobseeker.id);
             else
-                return url.skills.replace(':id', this.collection.jobseeker.id) + '/' + this.id;
+                return url.jobseekerSkills.replace(':id', this.collection.jobseeker.id) + '/' + this.id;
         }
 
     });
