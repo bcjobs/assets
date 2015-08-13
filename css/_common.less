@@ -1314,8 +1314,8 @@ input[type="file"].upload-input { display: none; }
 .pricing-container {
     border: 1px solid #dadada;
     color: #787878;
-    height: 140px;
-    padding: 25px 5px;
+    min-height: 140px;
+    padding: 25px 5px 35px 5px;
     position: relative;
     vertical-align: top;
     width: 170px;
@@ -1337,7 +1337,11 @@ input[type="file"].upload-input { display: none; }
 }
 
 .pricing-container span { font-size: 16px; }
-.pricing-container .plan-price { font-size: 28px; font-weight: bold; }
+.pricing-container .plan-price {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 28px;
+}
 
 .pricing-banner {
     background: #787878;
