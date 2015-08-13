@@ -201,7 +201,7 @@ JOBCENTRE.jobForm = (function ($) {
         submit: function () {
             var that = this;
             if (this.isNew() && !_.some(skipCreditCheckForTypeIds, function (skipId) { return that.get('positionType').id == skipId; }))
-                checkCredits(_.bind(this.save, this)); // TODO: for cpajobs, don't check credit if this is a volunteer job.
+                checkCredits(_.bind(this.save, this));
             else
                 this.save();
         },
