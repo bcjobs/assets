@@ -1569,8 +1569,8 @@ a.list-item-wrapper:hover{background-color:#d4e9f7;border-top-color:#fff;border-
 }
 @media(max-width:767px){.tab-item{margin:0 0 10px 5px;font-size:12px}
 }
-a.tab-item,a.tab-item:link{color:#999}
-a.tab-item:hover{background-color:#dbe7f0;color:#006fba}
+a.tab-item.active,a.tab-item.active:link,a.tab-item.active:visited{color:#999}
+a.tab-item,a.tab-item:link,a.tab-item:visited,a.tab-item:hover{background-color:#dbe7f0;color:#006fba}
 .tab-item.active{background:#f1f2f5;background:-moz-linear-gradient(top,#f1f2f5 0,#fff 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#f1f2f5),color-stop(100%,#fff));background:-webkit-linear-gradient(top,#f1f2f5 0,#fff 100%);background:-o-linear-gradient(top,#f1f2f5 0,#fff 100%);background:-ms-linear-gradient(top,#f1f2f5 0,#fff 100%);background:linear-gradient(to bottom,#f1f2f5 0,#fff 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f2f5',endColorstr='#ffffff',GradientType=0);z-index:20;color:#666!important;cursor:default}
 a.tab-item.active:hover{color:#0067b1;cursor:default}
 .tab-select{border:1px solid #b0bcdd;border-radius:5px;float:left;margin:0 1% 10px 0;padding:3px;width:19%}
@@ -1761,7 +1761,7 @@ input[type="file"].upload-input{display:none}
 .read-more-cover{background:transparent url(../images/cover-white-fade.png) 0 0 repeat-x;bottom:0;height:75px;left:0;padding:35px 5px 0 0;position:absolute;right:0;width:100%}
 .modal-close{background:#fff;border-radius:25px;-webkit-box-shadow:0 2px 5px 1px rgba(0,0,0,0.4);box-shadow:0 2px 5px 1px rgba(0,0,0,0.4);height:40px;line-height:44px;position:absolute;text-align:center;top:-15px;right:-15px;width:40px;z-index:1000}
 .x-close{float:none;font-size:30px;width:100%;height:100%;display:block;line-height:34px}
-.pricing-container{border:1px solid #dadada;color:#787878;height:140px;padding:25px 5px;position:relative;vertical-align:top;width:170px}
+.pricing-container{border:1px solid #dadada;color:#787878;min-height:140px;padding:25px 5px 35px 5px;position:relative;vertical-align:top;width:170px}
 @media(max-width:740px){.pricing-container{width:30%;font-size:14px}
 }
 @media(max-width:500px){.pricing-container{margin:0 0 15px 0;width:48%}
@@ -1769,7 +1769,7 @@ input[type="file"].upload-input{display:none}
 .pricing-container:hover{border:1px solid #006fba}
 .pricing-container a,.pricing-container a:link,.pricing-container a:visited{color:#787878;display:block;height:100%;width:100%}
 .pricing-container span{font-size:16px}
-.pricing-container .plan-price{font-size:28px;font-weight:bold}
+.pricing-container .plan-price{font-size:28px;font-weight:bold;line-height:28px}
 .pricing-banner{background:#787878;color:#fff;font-size:11px;left:0;padding:2px 0;position:absolute;top:0;width:100%}
 .pricing-button{bottom:0;left:0;position:absolute;width:100%}
 .pricing-details,.pricing-details:hover{border:0;font-size:13px}
@@ -1944,6 +1944,8 @@ a:hover{text-decoration:none}
 @media(max-width:1024px){.flex-outer-width{width:95%}
 }
 .login-wrapper{border:1px solid #e1e1e1;padding:30px;margin:0 auto;margin-top:60px;width:960px}
+@media(max-width:767px){.login-wrapper{width:100%}
+}
 .navbar{border:0;border-radius:0;border-bottom:1px solid #b1c9e3;border-top:1px solid #b1c9e3}
 .navbar-default{background-color:#d4e1f0}
 .navbar-default .navbar-collapse{border-color:#b1c9e3;padding:0}
