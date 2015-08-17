@@ -171,13 +171,12 @@ JOBCENTRE.renderProvinceNames = function(){
         $('#' + pair.source).change(function(e) {
             if (pair.ajax)
                 pair.ajax.abort();
-
             pair.ajax = $.ajax({
                 url: '/rest/v1.0/provinces?countryId=' + $(this).val(),
                 dataType: 'json',
                 type: 'GET',
                 success: function (provinces, textStatus, jqXHR) {
-                    var options = [];
+                    var options = ['<option value=""></option>'];
                     _.each(provinces.data, function(province) {
                         options.push(template(province));
                     });
