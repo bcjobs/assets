@@ -1908,8 +1908,8 @@ a.list-item-wrapper:hover{background-color:#d4e9f7;border-top-color:#fff;border-
 }
 @media(max-width:767px){.tab-item{margin:0 0 10px 5px;font-size:12px}
 }
-a.tab-item,a.tab-item:link{color:#999}
-a.tab-item:hover{background-color:#dbe7f0;color:#005ca2}
+a.tab-item.active,a.tab-item.active:link,a.tab-item.active:visited{color:#999}
+a.tab-item,a.tab-item:link,a.tab-item:visited,a.tab-item:hover{background-color:#dbe7f0;color:#005ca2}
 .tab-item.active{background:#f1f2f5;background:-moz-linear-gradient(top,#f1f2f5 0,#fff 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0,#f1f2f5),color-stop(100%,#fff));background:-webkit-linear-gradient(top,#f1f2f5 0,#fff 100%);background:-o-linear-gradient(top,#f1f2f5 0,#fff 100%);background:-ms-linear-gradient(top,#f1f2f5 0,#fff 100%);background:linear-gradient(to bottom,#f1f2f5 0,#fff 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f1f2f5',endColorstr='#ffffff',GradientType=0);z-index:20;color:#666!important;cursor:default}
 a.tab-item.active:hover{color:#0067b1;cursor:default}
 .tab-select{border:1px solid #b0bcdd;border-radius:5px;float:left;margin:0 1% 10px 0;padding:3px;width:19%}
@@ -2081,7 +2081,7 @@ input[type="file"].upload-input{display:none}
 }
 .header-badge{background-color:#fff;color:#005ca2;font-size:16px}
 .employer-profile-subtitle{color:#005ca2;font-size:20px}
-.employer-profile-banner img{max-height:200px;max-width:100%}
+.employer-profile-banner img{max-width:100%;width:100%}
 .employer-profile-logo{max-width:100%;max-height:150px}
 @media(max-width:767px){.employer-profile-logo{max-width:280px}
 }

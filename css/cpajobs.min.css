@@ -1735,7 +1735,7 @@ input[type="file"].upload-input{display:none}
 }
 .header-badge{background-color:#fff;color:#006fba;font-size:16px}
 .employer-profile-subtitle{color:#006fba;font-size:20px}
-.employer-profile-banner img{max-height:200px;max-width:100%}
+.employer-profile-banner img{max-width:100%;width:100%}
 .employer-profile-logo{max-width:100%;max-height:150px}
 @media(max-width:767px){.employer-profile-logo{max-width:280px}
 }
