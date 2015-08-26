@@ -193,11 +193,7 @@ JOBCENTRE.renderProvinceNames = function(){
 };
 
 JOBCENTRE.renderCreditCard = function(){
-    $(function(){
-        //hacky way of getting form-group
-        $('#PaymentMethod').parent().parent().after(_.template($('#creditCardPayment').html()));
-    });
-    $('body').on('change', '#PaymentMethod', function(){
+    creditcard = function(){
         if($('#PaymentMethod').val() == 1){
             $('[data-cardpayment]').hide();
             $("#Card_Number").val("");
@@ -208,6 +204,11 @@ JOBCENTRE.renderCreditCard = function(){
             $("#Card_Number").val("");
             window.scrollBy(0,150);
         }
-
+    }
+    $(function(){
+        //hacky way of getting form-group
+        $('#PaymentMethod').parent().parent().after(_.template($('#creditCardPayment').html()));
+        creditcard();
     });
+    $('body').on('change', '#PaymentMethod', creditcard);
 };
