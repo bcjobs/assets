@@ -1926,6 +1926,7 @@ ul.list-group{margin:0}
 .xs-pv30{padding-top:30px;padding-bottom:30px}
 .xs-m0{margin:0}
 .xs-mt15{margin-top:15px}
+.xs-mb5{margin-bottom:5px}
 .xs-mb15{margin-bottom:15px}
 .xs-mb30{margin-bottom:30px}
 .xs-mb40{margin-bottom:40px}
@@ -2170,8 +2171,6 @@ body .select2-expand .select2-choices{min-height:36px;line-height:34px}
 .pep-desc-wrapper{background-color:#f7f7f7;border:1px solid #bbc7df;border-radius:10px;margin:18px auto 0 auto;padding:20px;width:720px}
 @media(max-width:767px){.pep-desc-wrapper{width:100%}
 }
-.pep_showcase_wrapper{margin:20px auto 0 auto;padding-top:28px;position:relative}
-.pep_showcase_wrapper.pep_showcase_wrapper_advert{padding-top:0;padding-bottom:20px}
 .pep_showcase_content{overflow:hidden;border-radius:10px;background:#f8f8f8;border:1px solid #007397;padding-bottom:10px}
 .pep_showcase_content_banner{margin-top:32px;margin-left:1px;background-color:#eaedf3;padding:8px 0}
 .pep_showcase_content_banner_item_wrapper{width:25%;padding:5px;float:left;text-align:center;overflow:hidden}
@@ -2181,7 +2180,6 @@ body .select2-expand .select2-choices{min-height:36px;line-height:34px}
 .pep_showcase_content_banner_item_wrapper table{height:91px;overflow:hidden;margin:0 auto;border-spacing:0}
 .pep_showcase_content_banner_item_wrapper td{height:91px;overflow:hidden}
 .pep_showcase_header_logo{position:absolute;top:0;color:#999;font-size:11.5px;width:100%;text-align:center}
-.pep_showcase_wrapper.pep_showcase_wrapper_advert .pep_showcase_header_logo{top:3px}
 .pep_showcase_content_learnmore_link{margin-top:9px;text-align:center}
 .dash-header-wrapper{border-bottom:20px solid #54b948;margin:0 -15px}
 @media(max-width:959px){.dash-header-wrapper{margin:0}
@@ -2260,7 +2258,6 @@ td.blockmonthon{background-color:#fff;border:1px solid #dfdfdf}
 .joblist_search_sidebar_content{padding:10px 10px 15px 10px;position:relative;font-size:.9em}
 .content_search_results_main .content_search_results_subsection_title{background-color:#006fba;margin-bottom:5px}
 .content_search_results_subsection_title{background-color:#adadad;color:#fff;padding:3px 20px;font-weight:bold}
-.content_search_results_main_header_resultcount_wrapper{color:#eaeaea;padding:15px;position:relative;text-align:center}
 .content_search_results_subsection_content{padding:10px 10px 15px 10px;background:#f7f7f7;position:relative;font-size:.9em}
 .candidate_keywords input[type=text]{width:355px}
 .icon_help_button{vertical-align:top;width:25px;height:25px;display:inline-block;background:transparent url(/images/icon_help_@2x.png) no-repeat;background-size:25px 25px;cursor:pointer}
@@ -2455,7 +2452,6 @@ a.resume_upload_menu_item:link,a.resume_upload_menu_item:visited,a.resume_upload
 .jobseeker_profile_section .select2-container,.jobseeker_profile_section_editable .select2-container{margin-bottom:8px}
 .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_input{width:34%}
 .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_label.last{padding-left:10px;padding-right:10px;text-align:right}
-.jobseeker_profile_section_editable_main_wrapper{width:77%;float:left}
 .jobseeker_profile_section_editable_sidebar_wrapper{width:23%;float:left;padding-left:20px}
 .jobseeker_profile_section_editable_sidebar{border:3px solid #eaf1f3;padding:15px}
 .jobseeker_profile_section input[type=text],.jobseeker_profile_section_editable input[type=text],.jobseeker_profile_section_editable input[name=jobseeker_profile_status]{width:100%;height:32px;margin-bottom:8px;padding:0 8px;border:1px solid #bbb}
@@ -2471,7 +2467,6 @@ a.resume_upload_menu_item:link,a.resume_upload_menu_item:visited,a.resume_upload
 .jobseeker_profile_section_editable_menu_wrapper{background:#e8f5e7;margin:28px -10px -10px -10px;padding:10px}
 .jobseeker_profile_section_editable_menu_wrapper.with_sidebar{padding-right:23%;padding-left:25px}
 .jobseeker_profile_section_status_wrapper .jobseeker_profile_section_editable_menu_wrapper{text-align:right;padding-right:25px}
-.jobseeker_profile_section_editable_main_wrapper .jobseeker_profile_section_editable_menu_wrapper{padding-left:25px;margin-right:0;margin-top:20px}
 .jobseeker_profile_section_skill{padding:7px 15px}
 .jobseeker_profile_readonly .jobseeker_profile_skill_wrapper{background:#006fba;line-height:1.2em;color:#eaf1f3;font-size:.9em;display:inline-block;text-align:center;padding:8px 10px;text-transform:uppercase;margin:5px;max-width:280px}
 .jobseeker_profile_readonly .jobseeker_profile_skill_wrapper strong{color:#fff;text-transform:none;font-size:1.1em}
@@ -2554,11 +2549,6 @@ h3.jobseeker_profile_heading{color:#484a4b}
 .content_search_results_main{margin-top:20px}
 .content_search_results_main_jobs{width:675px;float:left}
 .content_search_results_main .flex_table_footer{padding:0 0 17px 0}
-.content_search_results_button_refinesearch{display:none;background-color:#e3edf4;color:#585858;float:left;padding:2px 10px;height:28px;line-height:24px;font-weight:normal;margin-left:12px;border-radius:2px 10px 10px 2px;cursor:pointer;-webkit-transition:margin-top .4s ease-in-out,margin-right .1s ease-in-out;-moz-transition:margin-top .4s ease-in-out,margin-right .1s ease-in-out;transition:margin-top .4s ease-in-out,margin-right .1s ease-in-out}
-.content_search_results_button_refinesearch:hover{background-color:#fff}
-.content_search_results_button_refinesearch_triangle{border-color:transparent #e3edf4 transparent transparent;border-style:solid;border-width:14px;width:0;height:0;float:left;margin-left:-37px;margin-top:-2px}
-.content_search_results_button_refinesearch:hover .content_search_results_button_refinesearch_triangle{border-color:transparent #fff transparent transparent}
-.content_search_results_main_header_resultcount_wrapper strong{color:#fff}
 .content_search_results_main_header_sorting_options{padding:15px}
 .content_search_results_item_wrapper{margin-top:5px}
 .content_search_results_subsection_content .range{margin-top:10px}
@@ -2587,14 +2577,7 @@ h3.jobseeker_profile_heading{color:#484a4b}
 .content_search_results_adsense_halfad.last{float:right}
 .content_searchbox_widget_search_anchor{display:none}
 .flex_list{font-size:.9em}
-.flex_list_item_wrapper{background:#f9f9f9;border-top:2px solid #f9f9f9;border-bottom:2px solid #f9f9f9;padding:11px 15px;display:block}
-.flex_list_item_wrapper.odd{background:#f2f2f2;border-top:2px solid #f2f2f2;border-bottom:2px solid #f2f2f2}
-a.flex_list_item_wrapper:link,a.flex_list_item_wrapper:visited,a.flex_list_item_wrapper:active{color:#000}
-a.flex_list_item_wrapper:hover{background-color:#d4e9f7;border-top-color:#fff;border-bottom-color:#fff}
-.flex_list_header{background:#73a5c9;color:#eaeaea;font-size:1.3em;padding:15px;border-bottom:5px solid #ddd;margin-bottom:5px;line-height:1.2em}
-.flex_list_header strong{color:#fff}
 .flex_list_item{float:left}
-.flex_list_item_title{color:#006fba;width:100%}
 .flex_list_item.left{text-align:left}
 .flex_list_item.right{text-align:right}
 .flex_list_item.center{text-align:center}
@@ -2643,7 +2626,6 @@ a.flex-tab.active{color:#fff}
 .flex_recordlist_column_100{width:100%}
 .flex_recordlist_calendar{font-size:.9em}
 .flex_calendar_event{width:75%}
-.flex_pagination_footer{margin-top:15px}
 .visible-mobile{display:none}
 .content_search_results_footer_pagination_wrapper{padding:10px 15px 12px 15px}
 .content_search_results_footer_pagination{width:100%;vertical-align:top;line-height:1em;text-align:center}
@@ -2696,7 +2678,6 @@ a.flex-tab.active{color:#fff}
 .content_search_results_sidebar{margin:0 auto;padding:20px;box-shadow:1px 1px 1px 3px #ddd;border:1px solid #666;background-color:#fff}
 .content_searchbox_widget_searchresults_advanced_anchor{float:none}
 .content_searchbox_widget_search_anchor{display:inline-block}
-.content_search_results_button_refinesearch{display:inline-block}
 .content_reports{display:none}
 .jobseeker_profile_section_editable_status_item{width:50%;text-align:left}
 .jobseeker_profile_section_editable_status_item input[type=radio]+label div{margin:0 0 10px 0;display:inline-block;vertical-align:middle}
@@ -2709,27 +2690,16 @@ a.flex-tab.active{color:#fff}
 .content_viewjobs_column_title .flex_recordlist_mobile_header{font-weight:normal;font-size:.8em;line-height:1em;display:inline-block;padding:5px}
 .flex_recordlist_item{margin-bottom:5px;margin-top:15px;border:1px solid #e5e5e5}
 .flex_recordlist_item_cell{overflow:visible;white-space:normal;text-overflow:ellipsis;padding:10px 1%}
-.flex_recordlist_clear_tablet{clear:both}
-.flex_recordlist_mobilehide{display:none}
 .flex_recordlist_item_cell,.flex_recordlist_item .flex_recordlist_item_cell:first-child{border:0}
 .flex_recordlist_mobile_title{width:100%;background:#006fba;color:#fff}
 .flex_recordlist_mobile_notitle{border-top:5px solid #006fba}
 .flex_recordlist_mobile_title a{color:#fff}
 .flex_recordlist_column_10{width:50%}
 .flex_recordlist_options{width:33.3%}
-.recordlist_employer_applicantlist .flex_recordlist_column_25{width:50%}
-.flex_recordlist_employer_joblist .flex_recordlist_options{width:16.6%;font-size:.9em}
-.flex_recordlist_employer_saved .flex_recordlist_column_15{width:25%}
 .flex_recordlist_employer_packages .flex_recordlist_column_80{width:100%}
-.flex_recordlist_agent_employers .flex_recordlist_column_15,.flex_recordlist_agent_employers .flex_recordlist_column_35,.flex_recordlist_agent_employers .flex_recordlist_column_25{width:33.3%}
-.flex_recordlist_seeker_history .flex_recordlist_column_15,.flex_recordlist_seeker_history .flex_recordlist_column_35{width:50%}
-.flex_recordlist_seeker_jobfolder .flex_recordlist_column_15,.flex_recordlist_seeker_jobfolder .flex_recordlist_column_35{width:50%}
-.flex_recordlist_seeker_saved .flex_recordlist_column_25{width:33.3%}
-.flex_recordlist_career_job .flex_recordlist_column_65{width:100%}
 .flex_recordlist_calendar .flex_recordlist_column_30{width:100%}
 .flex_recordlist_calendar .flex_recordlist_column_20,.flex_recordlist_calendar .flex_recordlist_column_15{width:25%}
 .flex_tab{border-radius:5px;border:1px solid #008bb1}
-.jobseeker_profile_section_editable_main_wrapper{width:100%}
 .jobseeker_profile_section_label{width:25%}
 .jobseeker_profile_section_input{width:75%}
 .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_input{width:75%}
@@ -2766,7 +2736,6 @@ h3{font-size:1.1em}
 .stats_feature_box1{padding-bottom:0}
 .stats_feature_box1,.stats_feature_box2{width:100%;float:none}
 .flex_recordlist_seeker_company .flex_recordlist_column_30,.flex_recordlist_seeker_company .flex_recordlist_column_35{width:100%;padding:5px 1%}
-.flex_recordlist_seeker_history .flex_recordlist_column_15,.flex_recordlist_seeker_history .flex_recordlist_column_35{width:100%}
 .flex_recordlist_agent_invoice .flex_recordlist_item_cell{width:50%}
 .flex_recordlist_directory .flex_recordlist_item_cell{width:50%}
 .flex_recordlist_calendar .flex_recordlist_column_20,.flex_recordlist_calendar .flex_recordlist_column_15{width:50%}
@@ -2811,12 +2780,6 @@ h3{font-size:1em}
 .jobseeker_profile_header{font-size:.9em;padding:10px 5%}
 .flex_recordlist{font-size:.8em}
 .flex_recordlist_options,.flex_recordlist_column_10,.flex_recordlist_column_15,.flex_recordlist_column_25,.flex_recordlist_column_30,.flex_recordlist_column_35,.flex_recordlist_column_65,.flex_recordlist_column_75,.flex_recordlist_column_80{padding:5px 1%}
-.recordlist_employer_applicantlist .flex_recordlist_column_25{width:100%}
-.flex_recordlist_employer_joblist .flex_recordlist_options{width:33.3%}
-.flex_recordlist_employer_saved .flex_recordlist_column_15{width:33.3%}
-.flex_recordlist_employer_saved .flex_recordlist_column_25{width:100%}
-.flex_recordlist_agent_employers .flex_recordlist_column_15,.flex_recordlist_agent_employers .flex_recordlist_column_35,.flex_recordlist_agent_employers .flex_recordlist_column_25{width:100%}
-.flex_recordlist_seeker_saved .flex_recordlist_column_25{width:100%}
 .flex_recordlist_employer_jobpost .flex_recordlist_item_cell{width:100%;text-align:center}
 .flex_recordlist_directory .flex_recordlist_item{border:0}
 .flex_recordlist_directory .flex_recordlist_item_cell{width:100%}
