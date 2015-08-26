@@ -2,7 +2,15 @@
 
 JOBCENTRE.jobForm = (function ($) {
 
-    var employer, tinyMceCssPath, restPath, jobPostDurationMax, today, labels, redirectOnSave, skipCreditCheckForTypeIds;
+    var pageState,
+        employer,
+        tinyMceCssPath,
+        restPath,
+        jobPostDurationMax,
+        today,
+        labels,
+        redirectOnSave,
+        skipCreditCheckForTypeIds;
 
     //#region url
 
@@ -227,6 +235,8 @@ JOBCENTRE.jobForm = (function ($) {
                     if (JOBCENTRE.capabilities.localStorage)
                         localStorage.removeItem(that.draftKey);
 
+                    pageState.set('isSavedToServer', true);
+
                     // this doesn't work because page gets reloaded immediately after showing the alertFloater
                     //if (jqXHR.getResponseHeader('JC-Warning'))
                     //    JOBCENTRE.alertFloater.show({
@@ -272,6 +282,41 @@ JOBCENTRE.jobForm = (function ($) {
     });
 
     //#endregion
+
+    // PageState
+
+    // #region PageState
+
+    var PageState = Backbone.Model.extend({
+        defaults: {
+            isNew: false,
+            isDraftSaved: false,
+            isSavedToServer: false,
+        },
+
+        initialize: function () {
+            this.setup();
+        },
+
+        setup: function () {
+            var that = this;
+            window.onbeforeunload = function () {
+                if (!that.get('isNew'))
+                    return;
+
+                if (!that.get('isDraftSaved'))
+                    return;
+
+                if (that.get('isSavedToServer'))
+                    return;
+
+                return 'Your job has not been published yet, but it will still be here when you come back.';
+            }
+        }
+
+    });
+
+    // #endregion
 
     // VIEWS
 
@@ -448,6 +493,8 @@ JOBCENTRE.jobForm = (function ($) {
                     )
                 )
             );
+
+            pageState.set('isDraftSaved', true);
         },
 
         onKeyup: function (e) {
@@ -832,6 +879,10 @@ JOBCENTRE.jobForm = (function ($) {
     return {
         init: function (options) {
 
+            pageState = new PageState({
+                isNew: !options.jobId
+            });
+
             employer = options.employer;
             tinyMceCssPath = options.tinyMceCssPath;
             restPath = options.restPath;
@@ -862,8 +913,6 @@ JOBCENTRE.jobForm = (function ($) {
 
             $('[data-outlet=page]').append(pageView.render().el);
 
-            //debug
-            window.job = job;
         }
     }
     
