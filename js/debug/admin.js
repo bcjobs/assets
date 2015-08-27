@@ -200,7 +200,6 @@ JOBCENTRE.renderCreditCard = function(){
             $('[data-cardpayment]').show();
             if(focus)
                 $('#CardHoldersName').focus();
-            window.scrollTo(0,document.body.scrollHeight);
         }
     }
     $(function(){
