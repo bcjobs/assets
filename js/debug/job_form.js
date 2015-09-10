@@ -718,7 +718,11 @@ JOBCENTRE.jobForm = (function ($) {
                             break;
                         }
                     }
-                    if (!allowed) {
+                    if (allowed) {
+                        // TinyMCE doesn't strip out data- attributes even though it's not allowed, so we need to do it manually here
+                        str = replacer(html, html.replace(/(data-.+?=".*?")|(data-.+?='.*?')|(data-[a-zA-Z0-9-]+)/g, ''), str);
+                    } else {
+                        // if tag is not allowed, we don't need to strip out data- attributes because the whole tag is replaced and all attributes stripped out
                         for (tags in replacements) {
                             if (html.toLowerCase().indexOf('<' + replacements[tags][0] + '>') == 0 || html.toLowerCase().indexOf('<' + replacements[tags][0] + ' ') == 0) {
                                 str = replacer(html, '<' + replacements[tags][1] + '>', str);
