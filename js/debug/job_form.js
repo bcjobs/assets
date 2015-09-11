@@ -719,7 +719,9 @@ JOBCENTRE.jobForm = (function ($) {
                         }
                     }
                     if (allowed) {
-                        // TinyMCE doesn't strip out data- attributes even though it's not allowed, so we need to do it manually here
+                        // TinyMCE strips out all attributes that aren't listed in valid_elements, except for data- attributes.
+                        // The best way to strip out data- attributes is during paste, as this is the only time that it can be introduced and we already have HTML markup separated in 'matches' array.
+                        // If we try to strip out data-* from tinyMCE.activeEditor.getContent() later, we could end up stripping out data- inside of the user's text instead of just from HTML attributes.
                         str = replacer(html, html.replace(/(data-.+?=".*?")|(data-.+?='.*?')|(data-[a-zA-Z0-9-]+)/g, ''), str);
                     } else {
                         // if tag is not allowed, we don't need to strip out data- attributes because the whole tag is replaced and all attributes stripped out
