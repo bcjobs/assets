@@ -1,9 +1,9 @@
-﻿@primary_color: #006fba;
+@primary_color: #006fba;
 @action_color: #006fba;
 @action_hover_color: #379f1f;
 @action_secondary: #43b02a;
 
-@import "../bootstrap-3.3.4/less/bootstrap.less";
+@import "../bootstrap-3.3.4/less/variables.less";
 @import "_common.less";
 
 
@@ -67,12 +67,12 @@ h3{ font-size:1.3em; color:#009a49;}
 .btn-info, .btn-info:focus, .btn-info:active {
 	color: #555555;
 	background: #def3fb;
-	background: -moz-linear-gradient(top,  #def3fb 0%, #def3fb 52%, #b6e0fa 52%, #b6e0fa 100%); 
+	background: -moz-linear-gradient(top,  #def3fb 0%, #def3fb 52%, #b6e0fa 52%, #b6e0fa 100%);
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#def3fb), color-stop(52%,#def3fb), color-stop(52%,#b6e0fa), color-stop(100%,#b6e0fa));
-	background: -webkit-linear-gradient(top,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%); 
-	background: -o-linear-gradient(top,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%); 
-	background: -ms-linear-gradient(top,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%); 
-	background: linear-gradient(to bottom,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%); 
+	background: -webkit-linear-gradient(top,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%);
+	background: -o-linear-gradient(top,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%);
+	background: -ms-linear-gradient(top,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%);
+	background: linear-gradient(to bottom,  #def3fb 0%,#def3fb 52%,#b6e0fa 52%,#b6e0fa 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#def3fb', endColorstr='#b6e0fa',GradientType=0 );
 }
 a.btn-info, .btn-info a, a.btn-info:hover, .btn-info a:hover, .btn-info:link, a.btn-info:link { color: #555555 !important; }
@@ -82,7 +82,7 @@ a.btn-info, .btn-info a, a.btn-info:hover, .btn-info a:hover, .btn-info:link, a.
 
 p{ margin-top: 0; }
 
-input{ 
+input{
 	width:100%;
 	height:32px;
 	border:1px solid #aaa;
@@ -154,7 +154,7 @@ ul ul {
 }
 
 .recordlist {
-	border:1px solid #ddd;	
+	border:1px solid #ddd;
 }
 
 /* General */
@@ -170,7 +170,7 @@ ul ul {
 .flex_loader_white{
 	position:absolute;
 	top:50%;
-	left:50%;	
+	left:50%;
 	background:url(/images/icon_loader_white_50.gif) no-repeat;
 	display:inline-block;
 	width:50px;
@@ -182,7 +182,7 @@ ul ul {
 .flex_loader_blue{
 	position:absolute;
 	top:50%;
-	left:50%;	
+	left:50%;
 	background:url(/images/icon_loader_blue_50.gif) no-repeat;
 	display:inline-block;
 	width:50px;
@@ -404,7 +404,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	white-space: nowrap;
 }
 
-.flex_checked, .flex-checked { 
+.flex_checked, .flex-checked {
 	background:url(/images/icon_checkmark_v1.gif);
 	width:11px;
 	height:15px;
@@ -434,12 +434,12 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	margin: 15px 0;
 	padding: 15px;
 	position: relative;
-} 
+}
 .flex_border { border: 1px solid #dfdfdf; }
 
 
 .flex_cube{
-	border: 1px solid #dfdfdf;	
+	border: 1px solid #dfdfdf;
 	padding:15px;
 	background-color:#fff;
 	position:relative;
@@ -509,8 +509,8 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 .bkg-muted { background-color: #EAF1F3; }
 
 .flex_tooltip {
-	position:absolute; 
-	z-index:5100;  
+	position:absolute;
+	z-index:5100;
 	display:none;
 }
 .flex_tooltip_message_wrapper {
@@ -723,7 +723,7 @@ textarea {
 	height:135px;
 }
 
-.header_login_hide_anchor { 
+.header_login_hide_anchor {
 	position: absolute;
 	right: 10px;
 	top: 10px;
@@ -744,7 +744,7 @@ textarea {
 	font-size:11px;
 	font-family: Arial, Helvetica, sans-serif;
 	color:#FFF;
-	
+
 }
 
 .header_menu_item{
@@ -862,7 +862,7 @@ textarea {
 
 
 /* Popup Notification Styling */
-.notice_shadow{ 
+.notice_shadow{
 	position:absolute;
 	top:0;
 	right:0;
@@ -959,7 +959,7 @@ body .select2-expand .select2-choices {
 	height: 359px;
 	line-height:0;
 	overflow:hidden;
-	position:relative; 
+	position:relative;
 	@media(max-width: @screen-xs-max){
 		background-position: top center;
 		background-size: 100%;
@@ -982,7 +982,7 @@ body .select2-expand .select2-choices {
 	@media(max-width: @screen-xs-max){
 		left: 0;
 		padding: 2%;
-		width: 50%;  
+		width: 50%;
 	}
 }
 
@@ -1173,7 +1173,7 @@ body .select2-expand .select2-choices {
 
 .pep_showcase_content_learnmore_link{
 	margin-top:9px;
-	text-align:center;	
+	text-align:center;
 }
 
 
@@ -1224,7 +1224,7 @@ body .select2-expand .select2-choices {
 .dash-feature-item {
 	color: #646565;
 	font-size: 1em;
-	padding-top: 8px;	
+	padding-top: 8px;
 	width: 50%;
 }
 .dash-panel-img {
@@ -1272,9 +1272,9 @@ body .select2-expand .select2-choices {
 	border-left: 1px solid #00b5d6;
 	border-right: 1px solid #00b5d6;
 	box-shadow: 0 5px 15px -7px #000 inset;
-	font-weight: normal;	
+	font-weight: normal;
 	margin-top: -10px;
-	padding: 15px;	
+	padding: 15px;
 }
 
 .dash-packages {
@@ -1284,7 +1284,7 @@ body .select2-expand .select2-choices {
 	border-bottom-left-radius: 7px;
 	border-top:0px;
 	font-size:0.9em;
-	padding: 20px 0;	
+	padding: 20px 0;
 }
 
 /* Jobseeker Dash */
@@ -1312,7 +1312,7 @@ body .select2-expand .select2-choices {
 	display:none;
 	height:0px;
 	position:relative;
-	border: 3px solid #eaf1f3;	
+	border: 3px solid #eaf1f3;
 }
 
 .newsbox{
@@ -1328,7 +1328,7 @@ body .select2-expand .select2-choices {
 .newsbox_content_navwrapper{
 	position: relative;
 	width: 65%;
-	margin:0 auto;	
+	margin:0 auto;
 }
 
 .newsbox_content_navbar_arrow {
@@ -1347,7 +1347,7 @@ body .select2-expand .select2-choices {
 }
 
 .newsbox_content_navbar_arrow img{
-	cursor:pointer;	
+	cursor:pointer;
 }
 
 .newsbox_meta{
@@ -1365,13 +1365,13 @@ body .select2-expand .select2-choices {
 	width: 100%;
 	background-color:#fff;
 	padding-bottom:15px;
-	
+
 }
 
 .newsbox_package{
 	width:580px;
 	padding-bottom:10px;
-	border:1px solid #aaa;	
+	border:1px solid #aaa;
 }
 
 .newsbox_content_bg{
@@ -1382,14 +1382,14 @@ body .select2-expand .select2-choices {
 
 .newsbox_content_title{
 	width: 60%;
-	text-align:center;	
+	text-align:center;
 	font-weight:bold;
 	font-size:1.4em;
 	margin: 10px auto;
 }
 
 .newsbox_content_date{
-	text-align:center;	
+	text-align:center;
 	font-style:italic;
 	margin-top:0px;
 }
@@ -1426,7 +1426,7 @@ body .select2-expand .select2-choices {
 .header_notification_toolbar img{
 	vertical-align:-10px;
 	margin-right:5px;
-}	
+}
 
 .header_notification_closebar{
 	background-color:#fff;
@@ -1441,9 +1441,9 @@ body .select2-expand .select2-choices {
 }
 
 .header_notification_closebar img{
-	vertical-align:-2px;	
+	vertical-align:-2px;
 	margin-right:5px;
-	
+
 }
 
 /* EVENT styles */
@@ -1460,7 +1460,7 @@ body .select2-expand .select2-choices {
 .event_listing_small { font-size: 0.8em;}
 
 .rd11_calendar_eventdetails_wrapper{
-	background-color:#00B5D6;	
+	background-color:#00B5D6;
 	padding: 2px 2px 2px 5px;
 	color:#fff;
 }
@@ -1474,7 +1474,7 @@ body .select2-expand .select2-choices {
 .rd11_calendar_week_title{
 	font-size:12px;
 	text-decoration:none;
-	background-color: #E8F5E7;	
+	background-color: #E8F5E7;
 }
 
 .calendar_wrapper{
@@ -1491,24 +1491,24 @@ body .select2-expand .select2-choices {
 }
 
 .calcontainer td{
-	padding:5px;	
+	padding:5px;
 	font-weight:normal;
 }
 
 td.daynames{
-	padding:5px 0px;	
+	padding:5px 0px;
 	background-color:#006fba;
 	color: #FFFFFF;
 }
 
 td.blockdaynames{
-	padding:2px 0px;	
+	padding:2px 0px;
 	background-color:#006fba;
 	color: #FFFFFF;
 }
 
 td .blockmonthtoday{
-	border:2px solid #008bb1;	
+	border:2px solid #008bb1;
 }
 
 td .todaysdate{
@@ -1516,11 +1516,11 @@ td .todaysdate{
 }
 
 td.calendar_content{
-	padding:4px;	
+	padding:4px;
 }
 
 .blockmonthheader{
-	padding-top:0px;	
+	padding-top:0px;
 }
 
 td.monthon{
@@ -1581,7 +1581,7 @@ td.blockmonthon{
 .candidate_keywords input[type=text] { width: 355px; }
 
 .icon_help_button{
-	vertical-align:top;	
+	vertical-align:top;
 	width: 25px;
 	height: 25px;
 	display:inline-block;
@@ -1688,9 +1688,9 @@ td.blockmonthon{
 	border-right: 8px solid transparent;
 	border-top: 8px solid #003052;
 	bottom: -8px;
-	height: 0; 
+	height: 0;
 	position: absolute;
-	width: 0; 
+	width: 0;
 	@media(max-width: 469px){
         border-left: 5px solid transparent;
         border-right: 5px solid transparent;
@@ -1909,7 +1909,7 @@ a.campus-remove {
 	font-size: 26px;
 	font-weight: bold;
 	margin: 0 0 10px 0;
-	@media(max-width: @screen-xs-max){ font-size: 18px; } 
+	@media(max-width: @screen-xs-max){ font-size: 18px; }
 }
 .student-center {
 	padding: 0 2%;
@@ -1919,7 +1919,7 @@ a.campus-remove {
 	}
 }
 
-.student_item:last-child { 
+.student_item:last-child {
 	margin-bottom: 0;
 }
 
@@ -1963,7 +1963,7 @@ a.campus-remove {
 /* The following styles are all additions from the 2011 redesign. (started in March) Implemented by Leif. */
 
 .last{
-	margin-bottom:0px;	
+	margin-bottom:0px;
 }
 
 .flex_relative{ position:relative;}
@@ -1983,7 +1983,7 @@ a.campus-remove {
 
 .resume_upload_menu_wrapper {
     margin-top:5px;
-}   
+}
 
 .resume_upload_menu_item{
     float:left;
@@ -2055,7 +2055,7 @@ a.resume_upload_menu_item:link, a.resume_upload_menu_item:visited, a.resume_uplo
     clear: both;
 }
 
-.requires_file_dialog_input .resume_upload_menu_item_mycpu { 
+.requires_file_dialog_input .resume_upload_menu_item_mycpu {
     display:none;
 }
 
@@ -2216,7 +2216,7 @@ a.resume_upload_menu_item:link, a.resume_upload_menu_item:visited, a.resume_uplo
 }
 
 .jobseeker_profile_section .select2-container, .jobseeker_profile_section_editable .select2-container{
-	margin-bottom:8px;	
+	margin-bottom:8px;
 }
 
 .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_input{
@@ -2226,7 +2226,7 @@ a.resume_upload_menu_item:link, a.resume_upload_menu_item:visited, a.resume_uplo
 .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_label.last{
     padding-left:10px;
     padding-right:10px;
-    text-align:right;  
+    text-align:right;
 }
 
 .jobseeker_profile_section_editable_sidebar_wrapper{
@@ -2236,7 +2236,7 @@ a.resume_upload_menu_item:link, a.resume_upload_menu_item:visited, a.resume_uplo
 }
 
 .jobseeker_profile_section_editable_sidebar{
-    border:3px solid #eaf1f3;   
+    border:3px solid #eaf1f3;
     padding:15px;
 }
 
@@ -2325,7 +2325,7 @@ a.resume_upload_menu_item:link, a.resume_upload_menu_item:visited, a.resume_uplo
 .jobseeker_profile_readonly .jobseeker_profile_skill_wrapper strong{
     color:#fff;
     text-transform:none;
-    font-size:1.1em; 
+    font-size:1.1em;
 }
 
 .jobseeker_profile_skill_editable_wrapper{
@@ -2383,7 +2383,7 @@ h3 .jobseeker_profile_section_menu_item{
 }
 
 h3 .jobseeker_profile_section_menu{
-    margin-bottom:5px;    
+    margin-bottom:5px;
 }
 
 .jobseeker_profile_section_menu_item:hover{
@@ -2422,7 +2422,7 @@ h3 .jobseeker_profile_section_menu{
 }
 
 .jobseeker_profile_title{
-    margin-top:25px; 
+    margin-top:25px;
     margin-left:5px;
 }
 
@@ -2460,7 +2460,7 @@ h3 .jobseeker_profile_section_menu{
 
 .jobseeker_profile_section_personalinfo_image .jobseeker_profile_section_menu_item_replaceimage, .jobseeker_profile_section_personalinfo_image .jobseeker_profile_section_menu_item_deleteimage{
     margin-top:5px;
-    display:inline-block;   
+    display:inline-block;
 }
 
 .jobseeker_profile_publish_cta_wrapper {
@@ -2468,7 +2468,7 @@ h3 .jobseeker_profile_section_menu{
     margin:15px 0 0 0;
 }
 
-.jobseeker_profile_publish_cta { 
+.jobseeker_profile_publish_cta {
     font-weight: bold;
     margin: 10px;
 }
@@ -2530,7 +2530,7 @@ h3 .jobseeker_profile_section_menu{
 }
 
 .jobseeker_profile_section_status.profile_status_confidential, .jobseeker_profile_section_status.profile_status_block_recruiters{
-	background-repeat:repeat;	
+	background-repeat:repeat;
 	background-image: url(../images/bg_diagonal_yellow_stripes.jpg);
 	background-color:#e9e7ad;
 }
@@ -2827,7 +2827,7 @@ h3.jobseeker_profile_heading { color: #484a4b;}
 }
 
 .content_searchbox_widget_searchresults_advanced_anchor{
-    
+
 }
 
 .content_search_results_sidebar_filters_fullwidth .content_searchbox_widget_searchresults_options_wrapper{
@@ -2870,7 +2870,7 @@ h3.jobseeker_profile_heading { color: #484a4b;}
 .content_search_results_footer_save .subscribe_error{
     color:#E73C3C;
     font-style:italic;
-    margin-top:5px;    
+    margin-top:5px;
 }
 
 .content_search_results_footer_pagination_wrapper{
@@ -2902,7 +2902,7 @@ h3.jobseeker_profile_heading { color: #484a4b;}
 	display: inline-block;
 	vertical-align:middle;
 	padding:3px 0px 0px 0px;
-	margin-top:-0.4em;	
+	margin-top:-0.4em;
 }
 
 .content_search_results_footer_pagination_pages{
@@ -2972,8 +2972,8 @@ h3.jobseeker_profile_heading { color: #484a4b;}
 	cursor: pointer;
 }
 
-.content_dataentry_item_multioption_wrapper input, 
-	.content_dataentry_item_multioption_wrapper option { 
+.content_dataentry_item_multioption_wrapper input,
+	.content_dataentry_item_multioption_wrapper option {
 	cursor: pointer;
 	margin-right: 10px;
 }
@@ -3004,17 +3004,17 @@ h3.jobseeker_profile_heading { color: #484a4b;}
 	color: #C00;
 }
 
-.flex_dataentry_input input[type=text].error, 
-	.flex_dataentry_input input[type=password].error, 
+.flex_dataentry_input input[type=text].error,
+	.flex_dataentry_input input[type=password].error,
 		.flex_dataentry_input input[type=email].error,
-			.flex_dataentry_input select.error, 
+			.flex_dataentry_input select.error,
 				body .select2-container.error .select2-choice {
 	border-bottom: 5px solid #fcc;
 }
-.form-input input[type=text].error, 
-	.form-input input[type=password].error, 
+.form-input input[type=text].error,
+	.form-input input[type=password].error,
 		.form-input input[type=email].error,
-			.form-input select.error, 
+			.form-input select.error,
 				body .select2-container.error .select2-choice {
 	border-bottom: 5px solid #fcc;
 }
@@ -3069,7 +3069,7 @@ h3.jobseeker_profile_heading { color: #484a4b;}
 	clear: both;
 }
 
-.flex_marginless { 
+.flex_marginless {
 	margin: 0;
 }
 
@@ -3171,7 +3171,7 @@ a.flex-tab.active { color: #fff;}
 	text-align: center;
 }
 
-.content_search_results_footer_pagination .button { 
+.content_search_results_footer_pagination .button {
 	line-height: 1.4em;
 }
 
@@ -3191,7 +3191,7 @@ a.flex-tab.active { color: #fff;}
 	display: inline-block;
 	vertical-align: middle;
 	padding: 3px 0px 0px 0px;
-	margin-top: -0.4em;	
+	margin-top: -0.4em;
 }
 
 .content_search_results_footer_pagination_pages {
@@ -3211,7 +3211,7 @@ a.flex-tab.active { color: #fff;}
 }
 
 .subhead_margin_bottom p {
-	margin-top: 0; 
+	margin-top: 0;
 	margin-bottom: 5px;
 }
 
@@ -3219,7 +3219,7 @@ a.flex-tab.active { color: #fff;}
 
 /* Icon Styles (taken from jobcentre) */
 
-.tag { 
+.tag {
     float:left;
     margin: 5px 5px 5px 0;
     padding:5px 7px;
@@ -3272,13 +3272,13 @@ a.flex-tab.active { color: #fff;}
     position: absolute;
     cursor: default;
 }
-      
+
 .jsonsuggest_widget_content { /*ui-widget-content*/
     border: 1px solid #006fba;
     background: #FFF;
     color: #666;
     border-top: none;
-}  
+}
 .jsonsuggest_state_hover { /*ui-state-hover*/
    	margin:-1px;
     border: 1px solid #008bb1;
@@ -3292,7 +3292,7 @@ a.flex-tab.active { color: #fff;}
 /* Media-querying for handling mobile sizing, started Feb 20, 2014, Michelle Lysohirka */
 
 @media (max-width: 1135px) {
-   
+
 }
 
 @media (max-width: 959px) {
@@ -3501,13 +3501,13 @@ a.flex-tab.active { color: #fff;}
     .flex_recordlist_mobile_notitle { border-top: 5px solid #006fba;}
 
     .flex_recordlist_mobile_title a { color: #fff; }
-    
+
     .flex_recordlist_column_10 { width: 50%;}
     .flex_recordlist_options { width: 33.3%; }
     .flex_recordlist_employer_packages .flex_recordlist_column_80 { width: 100%; }
     .flex_recordlist_calendar .flex_recordlist_column_30 { width: 100%; }
     .flex_recordlist_calendar .flex_recordlist_column_20, .flex_recordlist_calendar .flex_recordlist_column_15 { width: 25%; }
-    
+
     .flex_tab { border-radius: 5px; border: 1px solid #008bb1;}
 
     .jobseeker_profile_section_label { width: 25%; }
@@ -3559,7 +3559,7 @@ a.flex-tab.active { color: #fff;}
     .newsbox_content_navwrapper { width: 100%; }
     .newsbox_content_title { margin: 5px auto; }
     .newsbox_content_text { margin-top: 5px; padding: 0 10px; }
-    
+
 
 	.social-nav {
         width: 100%;
@@ -3616,20 +3616,20 @@ a.flex-tab.active { color: #fff;}
     .jobseeker_profile_section_label { width: 100%; }
     .jobseeker_profile_section_input { width: 100%; }
     .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_input { width: 100%;}
-    
+
 }
 @media (max-width: 530px) {
     /* Fixing spacing issues */
     .flex_width_33 { width: 100%; }
 }
 
-@media (max-width: 469px) {  
+@media (max-width: 469px) {
 
     .hidden-mobile { display: none; }
     .visible-mobile { display: inline-block; }
 
 	h1{	font-size:1.4em; }
-	h3{ font-size:1em; } 
+	h3{ font-size:1em; }
 
     .flex_button.flex_button_pop, a.flex_button.flex_button_pop:link, a.flex_button.flex_button_pop:visited {
         padding: 5px 8px;
@@ -3704,7 +3704,7 @@ a.flex-tab.active { color: #fff;}
         margin: 0 auto;
         float: none;
    }
-   .jobseeker_profile_section_personalinfo_wrapper { 
+   .jobseeker_profile_section_personalinfo_wrapper {
         width: 100%;
         padding: 0;
         margin-top: 10px;
@@ -3742,5 +3742,5 @@ a.flex-tab.active { color: #fff;}
 }
 
 @media (max-width: 350px) {
- 	
+
 }
