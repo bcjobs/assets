@@ -617,7 +617,7 @@ JOBCENTRE.jobSearch = (function ($) {
 
             this.searchBoxView.on('refine-search-end', this.onRefineSearchEnd, this);
 
-            var joblistView = this.addChildren(new JoblistView({ el: $('#joblist')[0], jobs: this.options.jobs }));
+            var joblistView = this.addChildren(new JoblistView({ el: $('#joblist')[0], jobs: this.options.jobs, jobUrlFormatOverride: this.options.jobUrlFormatOverride }));
             joblistView.on('refine-search', this.onRefineSearch, this);
             joblistView.render();
 
@@ -1447,7 +1447,7 @@ JOBCENTRE.jobSearch = (function ($) {
             headerView.on('refine-search', this.onRefineSearch, this);
             headerView.render();
 
-            var bodyView = this.addChildren(new JoblistBodyView({ el: $('#joblist-body-content'), jobs: this.options.jobs }));
+            var bodyView = this.addChildren(new JoblistBodyView({ el: $('#joblist-body-content'), jobs: this.options.jobs, jobUrlFormatOverride: this.options.jobUrlFormatOverride }));
             bodyView.render();
 
             var footerView = this.addChildren(new JoblistFooterView({ el: $('#joblist_footer'), jobs: this.options.jobs }));
@@ -1523,7 +1523,7 @@ JOBCENTRE.jobSearch = (function ($) {
                     model: job,
                     className: 'list-item-wrapper clearfix ' + oddEvenClass,
                     attributes: {
-                        href: job.get('url')
+                        href: !!that.options.jobUrlFormatOverride ? that.options.jobUrlFormatOverride.replace('{0}', job.id) : job.get('url')
                     }
                 });
                 that.jobViews.push(view.render());
@@ -1805,7 +1805,7 @@ JOBCENTRE.jobSearch = (function ($) {
                     search: this.search
                 });
             this.jobs.state.set({ ready: true, error: null });
-            this.pageView = new SearchJobsPageView({ search: this.search, enabled: this.enabled, defaultLocation: this.defaultLocation, provinces: this.provinces, jobs: this.jobs, ads: options.ads });
+            this.pageView = new SearchJobsPageView({ search: this.search, enabled: this.enabled, defaultLocation: this.defaultLocation, provinces: this.provinces, jobs: this.jobs, ads: options.ads, jobUrlFormatOverride: options.jobUrlFormatOverride });
             this.pageView.render();
         },
 
