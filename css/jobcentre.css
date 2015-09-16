@@ -230,8 +230,7 @@ body .select2-container.error .select2-choice {
     right: 5px;
   }
 }
-.login-panel-show,
-.login-panel-menu a {
+.login-panel-show {
   color: #0082e3;
   font-size: 14px;
   margin-top: 5px;
@@ -3204,6 +3203,9 @@ a.a-block {
 }
 .flex-mr15 {
   margin-right: 15px;
+}
+.flex-mr30 {
+  margin-right: 30px;
 }
 /* margin-bottom */
 .flex-mb0 {
