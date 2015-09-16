@@ -1685,9 +1685,20 @@ body .select2-results .select2-selection-limit {
   padding: 10px;
   width: 1024px;
 }
-@media (max-width: 949px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   .alert-floater-wrapper {
-    width: 96%;
+    width: 970px !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  .alert-floater-wrapper {
+    width: 750px !important;
+  }
+}
+@media (max-width: 768px) {
+  .alert-floater-wrapper {
+    margin: 0 2%;
+    width: 96% !important;
   }
 }
 .alert-icon {
@@ -1701,7 +1712,14 @@ body .select2-results .select2-selection-limit {
   margin-top: -25px;
 }
 .alert-body {
+  padding: 0 20px 0 70px;
   text-align: center;
+}
+@media (max-width: 767px) {
+  .alert-body {
+    font-size: 12px;
+    padding: 0 0 0 0;
+  }
 }
 .alert-body ul,
 .alert-body ol {
