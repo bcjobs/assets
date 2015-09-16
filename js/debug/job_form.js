@@ -333,7 +333,7 @@ JOBCENTRE.jobForm = (function ($) {
 
         errorTemplate: _.template($('#job_form_error').html()),
 
-        loaderClass: 'flex-loader',
+        loaderClass: 'flex-loader flex-loader-inline',
 
         renderState: function (state) {
             if (state.get('error')) {
