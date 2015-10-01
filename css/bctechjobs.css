@@ -1809,6 +1809,7 @@ body .select2-results .select2-selection-limit {
   position: relative;
   top: 0.1em;
   left: 20px;
+  margin: 0;
 }
 /* Icons */
 .icon-checkmark {
