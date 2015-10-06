@@ -3057,6 +3057,14 @@ body .select2-expand .select2-choices {
   background-color: #006fba;
   border-bottom: 5px solid #024D80;
 }
+.social-nav-sitelink {
+  padding: 10px 15px 0 0;
+}
+.social-nav-sitelink a,
+.social-nav-sitelink a:visited,
+.social-nav-sitelink a:link {
+  color: #ffffff;
+}
 .social-nav {
   color: #dddddd;
   font-weight: bold;
