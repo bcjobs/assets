@@ -160,7 +160,7 @@ JOBCENTRE.renderResumeAuthorize = function(authorized){
 };
 
 
-JOBCENTRE.renderProvinceNames = function(){
+JOBCENTRE.renderProvinceNames = function(restPath){
     var template = _.template($('#province_option').html());
     var pairs = [
         { source: 'CountryID', destination: 'ProvinceStateID', ajax: null },
@@ -172,7 +172,7 @@ JOBCENTRE.renderProvinceNames = function(){
             if (pair.ajax)
                 pair.ajax.abort();
             pair.ajax = $.ajax({
-                url: '/rest/v1.0/provinces?countryId=' + $(this).val(),
+                url: restPath + 'provinces?countryId=' + $(this).val(),
                 dataType: 'json',
                 type: 'GET',
                 success: function (provinces, textStatus, jqXHR) {
