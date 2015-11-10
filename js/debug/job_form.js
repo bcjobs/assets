@@ -623,7 +623,7 @@ JOBCENTRE.jobForm = (function ($) {
             this.$('select').select2();
         },
 
-        bindTinyeMCE: function () {
+        bindTinyMCE: function () {
 
             var elementId = 'description';
 
@@ -870,7 +870,7 @@ JOBCENTRE.jobForm = (function ($) {
 
             this.$el.html(this.template(this.model));
             this.bindSelect2();
-            this.bindTinyeMCE();
+            this.bindTinyMCE();
             this.bindLocationsSuggests();
             this.bindUrlFixer();
             this.bindTrainingPositionDisplay();
