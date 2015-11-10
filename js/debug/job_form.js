@@ -634,6 +634,7 @@ JOBCENTRE.jobForm = (function ($) {
                         ['em/i'],
                         ['br'],
                         ['p'],
+                        ['div'],
                         ['ul'],
                         ['ol'],
                         ['li']
