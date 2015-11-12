@@ -39,13 +39,13 @@ body .select2-container.error .select2-choice{border:1px solid #BBB;border-botto
 @media(max-width:767px){.login-panel-item{width:100%;padding:0;float:none;margin-top:10px}
 }
 .login-panel-menu{position:absolute;top:18px;right:230px;color:#a6a6a6}
-@media(max-width:500px){.login-panel-menu{top:5px;right:5px}
+@media(max-width:680px){.login-panel-menu{left:0;right:0;text-align:center;top:68px}
 }
 .login-panel-show{color:#0082e3;font-size:14px;margin-top:5px;cursor:pointer;display:inline-block}
 .header-wrapper{background:100% #fff;border-bottom:5px solid #e2e5eb;min-height:70px;width:100%}
 .header{display:block;margin:0 auto;min-height:70px;padding:0}
 .header-logo-wrapper{position:absolute;top:0;left:0;padding:13px 10px 10px 10px}
-@media(max-width:500px){.header-logo-wrapper{text-align:center;position:relative;width:100%}
+@media(max-width:680px){.header-logo-wrapper{text-align:center;position:relative;width:100%}
 }
 .header-tagline{color:#b0bcdc;font-size:16px;margin-top:5px}
 .header-border{border-top:2px solid #eee;height:9px;margin-top:10px}
@@ -53,7 +53,7 @@ body .select2-container.error .select2-choice{border:1px solid #BBB;border-botto
 @media(max-width:960px){.header-links{float:none;text-align:center;width:100%}
 }
 .header-actions-wrapper{float:right;height:70px;text-align:right;padding-top:20px}
-@media(max-width:500px){.header-actions-wrapper{float:none;height:auto;padding:10px 0 20px 0;text-align:center}
+@media(max-width:680px){.header-actions-wrapper{float:none;height:auto;padding:35px 0 20px 0;text-align:center}
 }
 @media(max-width:767px){.header-actions-wrapper .header-xs-hidden{display:none}
 }
