@@ -224,10 +224,12 @@ body .select2-container.error .select2-choice {
   right: 230px;
   color: #a6a6a6;
 }
-@media (max-width: 500px) {
+@media (max-width: 680px) {
   .login-panel-menu {
-    top: 5px;
-    right: 5px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 68px;
   }
 }
 .login-panel-show {
@@ -256,7 +258,7 @@ body .select2-container.error .select2-choice {
   left: 0;
   padding: 13px 10px 10px 10px;
 }
-@media (max-width: 500px) {
+@media (max-width: 680px) {
   .header-logo-wrapper {
     text-align: center;
     position: relative;
@@ -292,11 +294,11 @@ body .select2-container.error .select2-choice {
   text-align: right;
   padding-top: 20px;
 }
-@media (max-width: 500px) {
+@media (max-width: 680px) {
   .header-actions-wrapper {
     float: none;
     height: auto;
-    padding: 10px 0 20px 0;
+    padding: 35px 0 20px 0;
     text-align: center;
   }
 }
