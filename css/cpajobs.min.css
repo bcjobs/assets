@@ -140,7 +140,11 @@ a.tab-item.active:hover{color:#0067B1;cursor:default}
 .search-jobs-adv-anchor:hover{background:#0073cc}
 .job-wrapper{background:#f8f8f8;color:#616161}
 .job-details{background:#e2e5eb}
-.logo-place{border:1px solid #b3b3b3}
+.logo-admin,.logo-place,.logo-related{border:1px solid #b3b3b3;position:relative;text-align:center}
+.logo-admin{height:120px;width:120px;line-height:115px}
+.logo-place{height:70px;width:70px;line-height:64px}
+.logo-related{height:36px;width:36px;line-height:30px}
+.logo-admin img,.logo-place img,.logo-related img{display:inline-block;max-height:100%;max-width:100%;vertical-align:middle}
 .user-job-details{border-bottom:2px solid #f3f3f2;font-size:14px}
 .user-job-title{font-size:22px;font-weight:normal}
 .user-job-company{font-size:16px;font-weight:normal}
