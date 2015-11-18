@@ -2289,7 +2289,17 @@ a.tab-item.active:hover {
   background: #e2e5eb;
 }
 .logo-place {
-  border: 1px solid #b3b3b3;
+  height: 70px;
+  width: 70px;
+}
+.logo-related {
+  height: 36px;
+  width: 36px;
+}
+.logo-place img,
+.logo-related img {
+  max-height: 100%;
+  max-width: 100%;
 }
 .user-job-details {
   border-bottom: 2px solid #f3f3f2;
