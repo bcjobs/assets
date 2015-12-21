@@ -38,7 +38,7 @@ body .select2-container.error .select2-choice{border:1px solid #BBB;border-botto
 .login-panel-item{width:230px}
 @media(max-width:767px){.login-panel-item{width:100%;padding:0;float:none;margin-top:10px}
 }
-.login-panel-menu{position:absolute;top:18px;right:230px;color:#a6a6a6}
+.login-panel-menu{position:absolute;top:18px;right:250px;color:#a6a6a6}
 @media(max-width:680px){.login-panel-menu{left:0;right:0;text-align:center;top:68px}
 }
 .login-panel-show{color:#0082e3;font-size:14px;margin-top:5px;cursor:pointer;display:inline-block}
