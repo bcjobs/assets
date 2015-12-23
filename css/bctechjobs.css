@@ -1331,6 +1331,31 @@ body .select2-results .select2-selection-limit {
 .blogfeed-readmore {
   white-space: nowrap;
 }
+#intercom-container .intercom-launcher-button {
+  background-color: #005ca2 !important;
+}
+#intercom-container .intercom-sheet-header {
+  background-color: #005ca2 !important;
+}
+#intercom-container .intercom-sheet-header-minimize-button,
+#intercom-container .intercom-sheet-header-conversations-button,
+#intercom-container .intercom-sheet-header-close-button {
+  background-color: #ffffff;
+  padding: 0 10px;
+  margin: 0 !important;
+}
+#intercom-container .intercom-sheet-header-close-button {
+  border-left: 1px solid #f1f1f1;
+}
+#intercom-container .intercom-sheet-header-title,
+#intercom-container .intercom-sheet-header-show-generic .intercom-sheet-header-generic-title {
+  color: #ffffff !important;
+}
+#intercom-container .intercom-conversations-new-conversation-button {
+  background: #00a936 !important;
+  background: linear-gradient(to bottom, #1ab54b, #00a936) !important;
+  border: 1px solid #01832A !important;
+}
 /* REWRITE EVERYTHING AFTER THIS */
 .flex_cube_bg {
   background-color: #f3f3f3;
@@ -3896,6 +3921,37 @@ body,
 .bct-vp0 {
   padding-top: 0;
   padding-bottom: 0;
+}
+#intercom-container .intercom-launcher-button {
+  background-color: #e64d2a !important;
+}
+#intercom-container .intercom-sheet-header {
+  background-color: #243958 !important;
+}
+#intercom-container .intercom-sheet-header-minimize-button,
+#intercom-container .intercom-sheet-header-conversations-button,
+#intercom-container .intercom-sheet-header-close-button {
+  background-color: #ffffff;
+  padding: 0 10px;
+  margin: 0 !important;
+}
+#intercom-container .intercom-sheet-header-close-button {
+  border-left: 1px solid #f1f1f1;
+}
+#intercom-container .intercom-sheet-header-title,
+#intercom-container .intercom-sheet-header-show-generic .intercom-sheet-header-generic-title {
+  color: #ffffff !important;
+}
+#intercom-container .intercom-conversations-new-conversation-button {
+  background: #e64d2a !important;
+  background: linear-gradient(to bottom, #ef583f, #e64d2a) !important;
+  border: 1px solid #d63a21 !important;
+}
+#intercom-container .intercom-comment-by-user .intercom-comment-body-container {
+  background-color: #243958 !important;
+}
+#intercom-container .intercom-comment-by-user .intercom-comment-caret:after {
+  border-left-color: #243958 !important;
 }
 
 /*# sourceMappingURL=bctechjobs.css.map */
