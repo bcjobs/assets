@@ -291,6 +291,12 @@ body .select2-results .select2-no-results,body .select2-results .select2-searchi
 .blogfeed-image img{width:100%}
 .blogfeed-excerpt{font-size:14px;color:#a6a6a6}
 .blogfeed-readmore{white-space:nowrap}
+#intercom-container .intercom-launcher-button{background-color:#005ca2!important}
+#intercom-container .intercom-sheet-header{background-color:#005ca2!important}
+#intercom-container .intercom-sheet-header-minimize-button,#intercom-container .intercom-sheet-header-conversations-button,#intercom-container .intercom-sheet-header-close-button{background-color:#fff;padding:0 10px;margin:0!important}
+#intercom-container .intercom-sheet-header-close-button{border-left:1px solid #f1f1f1}
+#intercom-container .intercom-sheet-header-title,#intercom-container .intercom-sheet-header-show-generic .intercom-sheet-header-generic-title{color:#fff!important}
+#intercom-container .intercom-conversations-new-conversation-button{background:#00a936!important;background:linear-gradient(to bottom,#1ab54b,#00a936)!important;border:1px solid #01832A!important}
 .flex_cube_bg{background-color:#f3f3f3}
 @media(max-width:600px){.application-wrapper{padding:0}
 }
