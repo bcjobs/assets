@@ -566,6 +566,20 @@ a.header-action:visited {
     min-height: 840px;
   }
 }
+.form-base.bctia {
+  background: url(../images/bctia-members.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-bottom: 5px solid #005ca2;
+  min-height: 600px;
+}
+@media (max-width: 767px) {
+  .form-base.bctia {
+    min-height: 840px;
+  }
+}
 .form-base.jobseeker {
   background: url(../images/splash-jobseeker.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -3204,6 +3218,9 @@ ul.list-group {
 }
 .text-brand {
   color: #005ca2;
+}
+.text-strike {
+  text-decoration: line-through;
 }
 .a-block a,
 a.a-block {

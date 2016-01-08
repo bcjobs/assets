@@ -1585,6 +1585,9 @@ ul.list-group {
 .text-brand {
   color: #006fba;
 }
+.text-strike {
+  text-decoration: line-through;
+}
 .a-block a,
 a.a-block {
   display: block;

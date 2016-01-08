@@ -566,6 +566,20 @@ a.header-action:visited {
     min-height: 840px;
   }
 }
+.form-base.bctia {
+  background: url(../images/bctia-members.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  border-bottom: 5px solid #243958;
+  min-height: 600px;
+}
+@media (max-width: 767px) {
+  .form-base.bctia {
+    min-height: 840px;
+  }
+}
 .form-base.jobseeker {
   background: url(../images/splash-jobseeker.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -3205,6 +3219,9 @@ ul.list-group {
 .text-brand {
   color: #243958;
 }
+.text-strike {
+  text-decoration: line-through;
+}
 .a-block a,
 a.a-block {
   display: block;
@@ -3702,6 +3719,9 @@ body,
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#283b56', endColorstr='#1c2944', GradientType=0);
   border: 1px solid #283b56;
   color: #ffffff;
+}
+.pricing-tall {
+  min-height: 160px;
 }
 .user-signup-image.candidate {
   background-image: url(../images/banner_bctcand.jpg);
