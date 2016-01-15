@@ -150,6 +150,7 @@ JOBCENTRE.jobForm = (function ($) {
                     delete response.activeDate;
                     delete response.publishDate;
                     delete response.closeDate;
+                    response.status = 'active';
 
                     that.set(that.parse(response));
                     that.state.set({ ready: true, error: null });
@@ -906,7 +907,6 @@ JOBCENTRE.jobForm = (function ($) {
                 job.fetch(options.jobId);
             } else if (options.copyFromJobId) {
                 job.copyFrom(options.copyFromJobId);
-                job.set('status', 'active');
             } else {
                 job.set('applicationEmail', options.employer.email);
                 job.set('status', 'active');
