@@ -619,6 +619,16 @@ a.header-action:visited {
     top: 270px;
   }
 }
+@media (max-width: 767px) {
+  .signup-form.bctia {
+    top: 450px;
+  }
+}
+@media (max-width: 425px) {
+  .signup-form.bctia {
+    top: 500px;
+  }
+}
 .top-anchor {
   position: absolute;
   right: 0;
@@ -631,6 +641,16 @@ a.header-action:visited {
     position: relative;
     text-align: center;
     width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .bctia-plans {
+    padding-top: 180px;
+  }
+}
+@media (max-width: 425px) {
+  .bctia-plans {
+    padding-top: 260px;
   }
 }
 .employ-plans,
