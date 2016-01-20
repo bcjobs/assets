@@ -124,6 +124,9 @@ a.header-action:link,a.header-action:visited{color:#6a826b}
 .form-base.employer{background:url(../images/splash-employer.jpg) no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;border-bottom:5px solid #005ca2;min-height:600px}
 @media(max-width:767px){.form-base.employer{min-height:840px}
 }
+.form-base.bctia{background:url(../images/bctia-members.jpg) no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;border-bottom:5px solid #005ca2;min-height:600px}
+@media(max-width:767px){.form-base.bctia{min-height:840px}
+}
 .form-base.jobseeker{background:url(../images/splash-jobseeker.jpg) no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;border-bottom:5px solid #005ca2;min-height:670px}
 @media(max-width:767px){.form-base.jobseeker{min-height:800px}
 }
@@ -135,8 +138,16 @@ a.header-action:link,a.header-action:visited{color:#6a826b}
 }
 @media(max-width:767px){.signup-form.employer{top:270px}
 }
+@media(max-width:767px){.signup-form.bctia{top:450px}
+}
+@media(max-width:425px){.signup-form.bctia{top:500px}
+}
 .top-anchor{position:absolute;right:0;top:5px}
 @media(max-width:400px){.top-anchor{display:block;margin-top:15px;position:relative;text-align:center;width:100%}
+}
+@media(max-width:767px){.bctia-plans{padding-top:180px}
+}
+@media(max-width:425px){.bctia-plans{padding-top:260px}
 }
 .employ-plans,.employ-resume,.employ-feature,.employ-lmia{border-bottom:1px solid #005ca2}
 .employ-plans{background:#fff url(../images/employ-plans.jpg) no-repeat bottom center;background-size:100%}
@@ -681,6 +692,7 @@ ul.list-group{margin:0}
 .text-white{color:#fff}
 .text-shadow{text-shadow:0 1px 5px #000}
 .text-brand{color:#005ca2}
+.text-strike{text-decoration:line-through}
 .a-block a,a.a-block{display:block;height:100%;width:100%}
 .pull-none{float:none!important}
 .flex-mauto{margin:0 auto}
