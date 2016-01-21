@@ -469,11 +469,19 @@ JOBCENTRE.jobForm = (function ($) {
                 this.scrollToTopError();
         },
 
-        onChange: function () {
+        onChange: function (e) {
+            if ($(e.target).attr('name') === 'applicantRoutingTypeId')
+                this.onApplicantRoutingChange();
+
             this.validateIfReady();
 
             if (this.model.isNew())
                 this.saveDraft();
+        },
+
+        onApplicantRoutingChange: function() {
+            this.$('[data-applicant-routing-email]').toggle(this.$('[name=applicantRoutingTypeId]').val() == 1);
+            this.$('[data-applicant-routing-url]').toggle(this.$('[name=applicantRoutingTypeId]').val() == 2);
         },
 
         saveDraft: function () {
@@ -543,6 +551,9 @@ JOBCENTRE.jobForm = (function ($) {
 
             var attrs = {};
             this.$('input,textarea,select').each(function () {
+                if (!this.name)
+                    return;
+
                 if (this.disabled)
                     return;
 
@@ -564,6 +575,11 @@ JOBCENTRE.jobForm = (function ($) {
         },
 
         formPreProcess: function (attrs) {
+            if (attrs.applicantRoutingTypeId == 1)
+                attrs.applicationUrl = '';
+
+            if (attrs.applicantRoutingTypeId == 2)
+                attrs.applicationEmail = '';
 
             attrs.applicantRoutingType = {
                 id: attrs.applicantRoutingTypeId
@@ -617,7 +633,6 @@ JOBCENTRE.jobForm = (function ($) {
                     tinyMCE.activeEditor.getContent()
                 )
             );
-
         },
 
         bindSelect2: function() {
@@ -875,6 +890,7 @@ JOBCENTRE.jobForm = (function ($) {
             this.bindLocationsSuggests();
             this.bindUrlFixer();
             this.bindTrainingPositionDisplay();
+            this.onApplicantRoutingChange();
             return this;
         }
 
