@@ -27,30 +27,6 @@ JOBCENTRE.renderLocation = function(ipAddress){
     });
 };
 
-
-JOBCENTRE.renderFullStory = function(employerId, apiKey){
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://www.fullstory.com/api/v1/sessions?limit=1&uid=' + encodeURI('employer-' + employerId), true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.setRequestHeader('Authorization', 'Basic ' + apiKey);
-    xhr.withCredentials = true;
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4) {
-            if (xhr.status == 200) {
-                var data = JSON.parse(xhr.responseText);
-                if (!data.length)
-                    return;
-
-                var s = _.template(document.getElementById('fullstory').innerHTML, {
-                    userId: data[0].UserId
-                });
-                $('[data-actions]').append(s);
-            }
-        }
-    };
-    xhr.send();
-};
-
 JOBCENTRE.renderNotes = function(employerId, currentNotes){
 
     var ajax = (function () {
