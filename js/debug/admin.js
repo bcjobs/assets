@@ -187,3 +187,11 @@ JOBCENTRE.renderCreditCard = function(){
         creditcard(true);
     });
 };
+
+JOBCENTRE.calculateEmployer = function(){
+    $('[name=IndustryIds]').change(function () {
+        if(this.value === '33' && this.checked){
+            $("#IsRecruitAgency>option:eq(1)").prop('selected', true);
+        }
+    });
+};
