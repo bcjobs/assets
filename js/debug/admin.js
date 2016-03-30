@@ -187,3 +187,15 @@ JOBCENTRE.renderCreditCard = function(){
         creditcard(true);
     });
 };
+
+JOBCENTRE.calculateEmployer = function(){
+    $('[name=IndustryIds]').change(function () {
+        if(this.value === '33' && this.checked){
+            $('#IsRecruitAgency>option:eq(1)').prop('selected', true);
+            JOBCENTRE.alertFloater.show({
+                summary: 'Employer type changed to \'Recruiter\' because you selected the \'Staffing, Recruiting, HR Outsourcing\' industry.',
+                duration: 6000
+            });
+        }
+    });
+};
