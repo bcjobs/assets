@@ -730,7 +730,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     _.extend(BaseView.prototype, Backbone.View.prototype, {
 
-        errorTemplate: _.template($('#error').html()),
+        errorTemplate: _.template($('#profile_error').html()),
 
         loaderClass: 'flex-loader',
 
@@ -754,8 +754,10 @@ JOBCENTRE.employerProfile = (function ($) {
             $(container).empty().append(div);
         },
 
+        savingStateOutlet: null,
+
         hideSavingState: function () {
-            this.$el.children()
+            (this.savingStateOutlet ? this.$(this.savingStateOutlet) : this.$el).children()
                 .removeClass('invisible')
                     .end()
                     .find('.flex-loader-mini')
@@ -763,7 +765,7 @@ JOBCENTRE.employerProfile = (function ($) {
         },
 
         showSavingState: function () {
-            this.$el.children()
+            (this.savingStateOutlet ? this.$(this.savingStateOutlet) : this.$el).children()
                 .addClass('invisible')
                     .end()
                     .prepend('<div class="flex-loader-mini"></div>');
@@ -1011,7 +1013,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
         source: null,
 
-        template: _.template($('#file_upload').html()),
+        template: _.template($('#profile_file_upload').html()),
 
         events: {
             'change [data-element=file_input]': 'initializeUpload'
@@ -1141,7 +1143,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
         source: 'Dropbox',
 
-        template: _.template($('#dropbox_upload').html()),
+        template: _.template($('#profile_dropbox_upload').html()),
 
         events: {
             'click a': 'onClick'
@@ -1215,7 +1217,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
         source: 'Web',
 
-        template: _.template($('#web_upload').html()),
+        template: _.template($('#profile_web_upload').html()),
 
         events: {
             'submit form': 'onSubmit'
@@ -1256,15 +1258,20 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var SectionView = BaseView.extend({
 
+        sectionHiddenTemplate: _.template($('#section_hidden').html()),
+
         className: 'flex-relative',
 
         initialize: function () {
             this.content = null;
         },
 
+        onlyEditFormVisible: false,
+
         events: {
             'click [data-action=edit]': 'renderEdit',
-            'click [data-action=cancel]': 'onCancelClick'
+            'click [data-action=cancel]': 'onCancelClick',
+            'click [data-action=show]': 'show'
         },
 
         onCancelClick: function () {
@@ -1279,7 +1286,31 @@ JOBCENTRE.employerProfile = (function ($) {
             }
         },
 
+        show: function (e) {
+            this.$('[data-action=show]').remove();
+            if (this.onlyEditFormVisible)
+                this.renderEdit();
+            else
+                this.renderDetails();
+        },
+
+        hide: function () {
+            var that = this;
+
+            this.$el.append(this.sectionHiddenTemplate());
+
+            if (this.content)
+                this.content.$el.slideUp('fast', function () {
+                    that.disposeChildren(that.content);
+                });
+        },
+
         renderDetails: function () {
+            if (this.onlyEditFormVisible) {
+                this.hide();
+                return;
+            }
+
             var that = this;
             if (this.content) {
                 this.content.$el.fadeOut('fast', function () {
@@ -1336,10 +1367,11 @@ JOBCENTRE.employerProfile = (function ($) {
         },
 
         render: function () {
-            if (this.model.isNew())
-                this.renderEdit();
+            if (this.onlyEditFormVisible)
+                this.hide();
             else
-                this.renderDetails();
+                this.show();
+
             return this;
         }
     });
@@ -1350,7 +1382,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var PageView = BaseView.extend({
 
-        template: _.template($('#page').html()),
+        sepratorTemplate: _.template($('#profile_section_separator').html()),
 
 		initialize: function (options) {
 			this.listenTo(this.model.state, 'change', this.render);
@@ -1361,45 +1393,58 @@ JOBCENTRE.employerProfile = (function ($) {
 			if (this.renderState(this.model.state))
 				return this;
 
-			this.$el.html(this.template());
+			this.$el.empty();
 
-			this.$('[data-outlet=images]').append(
-                this.addChildren(
-                    new ImagesView({
-        		        model: this.model
-                    })
-                )
-                .render().el
-            );
+			if (this.options.visibility.images) {
+			    this.$el.append(
+                    this.addChildren(
+                        new ImagesView({
+                            model: this.model,
+                            visibility: this.options.visibility.images
+                        })
+                    )
+                    .render().el
+                );
+			    if (this.options.visibility.sectionSeparator) this.$el.append(this.sepratorTemplate());
+			}
 
-			this.$('[data-outlet=company_info]').append(
-                this.addChildren(
-                    new CompanyInfoView({
-                        model: this.model,
-                        industries: this.options.industries,
-                        companySizes: this.options.companySizes
-                    })
-                )
-                .render().el
-            );
+			if (this.options.visibility.companyInfo) {
+			    this.$el.append(
+                    this.addChildren(
+                        new CompanyInfoView({
+                            model: this.model,
+                            industries: this.options.industries,
+                            companySizes: this.options.companySizes,
+                            visibility: this.options.visibility.companyInfo
+                        })
+                    )
+                    .render().el
+                );
+			    if (this.options.visibility.sectionSeparator) this.$el.append(this.sepratorTemplate());
+            }
 
-			this.$('[data-outlet=youtube_video]').append(
-                this.addChildren(
-                    new YouTubeVideoView({
-                        model: this.model
-                    })
-                )
-                .render().el
-            );
+			if (this.options.visibility.youTubeVideo) {
+			    this.$el.append(
+                    this.addChildren(
+                        new YouTubeVideoView({
+                            model: this.model
+                        })
+                    )
+                    .render().el
+                );
+			    if (this.options.visibility.sectionSeparator) this.$el.append(this.sepratorTemplate());
+            }
 
-			this.$('[data-outlet=social_media]').append(
-                this.addChildren(
-                    new SocialMediaView({
-                        model: this.model
-                    })
-                )
-                .render().el
-            );
+			if (this.options.visibility.socialMedia) {
+			    this.$el.append(
+                    this.addChildren(
+                        new SocialMediaView({
+                            model: this.model
+                        })
+                    )
+                    .render().el
+                );
+			}
 
             return this;
         }
@@ -1409,22 +1454,30 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var ImagesView = BaseView.extend({
 
-        template: _.template($('#images').html()),
+        template: _.template($('#profile_images').html()),
 
         render: function () {
             this.$el.html(this.template());
 
-            this.$('[data-outlet=logo]').append(
-                this.addChildren(new LogoImageView({
-                    model: this.model.logo
-                })).render().el
-            );
-
-            this.$('[data-outlet=banner_header]').append(
-                this.addChildren(new BannerHeaderImageView({
-                    model: this.model.bannerHeader
-                })).render().el
-            );
+            if (this.options.visibility.logo) {
+                this.$('[data-outlet="images"]').append(
+                    this.addChildren(new LogoImageView({
+                        model: this.model.logo,
+                        visibility: this.options.visibility.logo,
+                        fullWidth: !this.options.visibility.bannerHeader
+                    })).render().el
+                );
+            }
+            
+            if (this.options.visibility.bannerHeader) {
+                this.$('[data-outlet="images"]').append(
+                    this.addChildren(new BannerHeaderImageView({
+                        model: this.model.bannerHeader,
+                        visibility: this.options.visibility.bannerHeader,
+                        fullWidth: !this.options.visibility.logo
+                    })).render().el
+                );
+            }
 
             return this;
         }
@@ -1436,9 +1489,9 @@ JOBCENTRE.employerProfile = (function ($) {
     var FileView = BaseView.extend({
 
         template: _.template(''),
-        uploadingTemplate: _.template($('#file_uploading').html()),
-        progressTemplate: _.template($('#file_progress').html()),
-        errorTemplate: _.template($('#file_error').html()),
+        uploadingTemplate: _.template($('#profile_file_uploading').html()),
+        progressTemplate: _.template($('#profile_file_progress').html()),
+        errorTemplate: _.template($('#profile_file_error').html()),
 
         initialize: function () {
             this.fileUploadView = null;
@@ -1545,7 +1598,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var ImageView = BaseView.extend({
 
-        template: _.template($('#image').html()),
+        template: _.template($('#profile_image').html()),
 
         initialize: function () {
             this.listenTo(this.model, 'change:imageUrl', this.onImageUrlChange);
@@ -1564,8 +1617,10 @@ JOBCENTRE.employerProfile = (function ($) {
 
         onReplaceClick: function () {
             this.model.file.setIdle();
-            this.$el.append(this.addChildren(new ImageEditView({ model: this.model })).render().el);
+            this.$('[data-outlet="image"]').append(this.addChildren(new ImageEditView({ model: this.model })).render().el);
         },
+
+        savingStateOutlet: '[data-outlet="image"]',
 
         onDeleteClick: function () {
             this.showSavingState();
@@ -1594,6 +1649,9 @@ JOBCENTRE.employerProfile = (function ($) {
 
         render: function () {
             this.$el.html(this.template({
+                title: this.title,
+                titleVisible: this.options.visibility.title,
+                fullWidth: this.options.fullWidth,
                 image: this.model,
                 displayUrl: this.getDisplayUrl(),
                 size: {
@@ -1606,11 +1664,13 @@ JOBCENTRE.employerProfile = (function ($) {
     });
 
     var LogoImageView = ImageView.extend({
+        title: 'Logo',
         width: 162,
         missingImage: 'https://placehold.it/162x162&text=logo'
     });
 
     var BannerHeaderImageView = ImageView.extend({
+        title: 'Banner',
         width: 240,
         missingImage: 'https://placehold.it/401x50&text=banner'
     });
@@ -1619,7 +1679,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var ImageEditView = FileView.extend({
 
-        template: _.template($('#image_edit').html()),
+        template: _.template($('#profile_image_edit').html()),
 
         events: {
             'click [data-action=cancel]': 'onCancelClick'
@@ -1641,6 +1701,10 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var CompanyInfoView = SectionView.extend({
 
+        initialize: function(options) {
+            this.onlyEditFormVisible = options.visibility.onlyEditForm;
+        },
+
         detailsView: function () {
             return new CompanyInfoDetailsView({ model: this.model });
         },
@@ -1659,7 +1723,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var CompanyInfoDetailsView = BaseView.extend({
 
-        template: _.template($('#company_info_details').html()),
+        template: _.template($('#profile_company_info_details').html()),
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
@@ -1673,7 +1737,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var CompanyInfoEditView = BaseFormView.extend({
 
-        template: _.template($('#company_info_edit').html()),
+        template: _.template($('#profile_company_info_edit').html()),
 
         initialize: function (options) {
             this.listenTo(options.industries.state, 'change', this.render);
@@ -1763,7 +1827,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var YouTubeVideoView = BaseView.extend({
 
-        template: _.template($('#youtube_video').html()),
+        template: _.template($('#profile_youtube_video').html()),
         imgPlaceholder: 'https://placehold.it/200x100&text=No+Video',
 
         initialize: function () {
@@ -1903,7 +1967,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var SocialMediaViewDetailsView = BaseView.extend({
 
-        template: _.template($('#social_media_details').html()),
+        template: _.template($('#profile_social_media_details').html()),
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
@@ -1917,7 +1981,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var SocialMediaViewEditView = BaseFormView.extend({
 
-        template: _.template($('#social_media_edit').html()),
+        template: _.template($('#profile_social_media_edit').html()),
 
         onSaveSuccess: function (model, response) {
             this.trigger('render-details');
@@ -1970,9 +2034,10 @@ JOBCENTRE.employerProfile = (function ($) {
     			model: employer,
     			industries: industryCache.getIndustries(),
     			companySizes: companySizeCache.getCompanySizes(),
+                visibility: options.visibility
     		});
 
-    		$('[data-outlet=page]').append(pageView.render().el);
+    		$('[data-outlet=profile_page]').append(pageView.render().el);
 
     		employer.fetch();
         }
