@@ -934,7 +934,7 @@ JOBCENTRE.jobForm = (function ($) {
                 job: job
             });
 
-            $('[data-outlet=page]').append(pageView.render().el);
+            $('[data-outlet=job_form_page]').append(pageView.render().el);
 
         }
     }
