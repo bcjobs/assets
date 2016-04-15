@@ -734,6 +734,8 @@ JOBCENTRE.employerProfile = (function ($) {
 
         loaderClass: 'flex-loader',
 
+        showLoader: true,
+
         renderState: function (state) {
             if (state.get('error')) {
                 $(this.el).html(this.errorTemplate({ error: state.get('error') }));
@@ -741,7 +743,9 @@ JOBCENTRE.employerProfile = (function ($) {
             }
 
             if (!state.get('ready')) {
-                this.renderLoader(this.el);
+                if (this.showLoader)
+                    this.renderLoader(this.el);
+
                 return true;
             }
 
@@ -1385,7 +1389,8 @@ JOBCENTRE.employerProfile = (function ($) {
         sepratorTemplate: _.template($('#profile_section_separator').html()),
 
 		initialize: function (options) {
-			this.listenTo(this.model.state, 'change', this.render);
+		    this.listenTo(this.model.state, 'change', this.render);
+		    this.showLoader = options.visibility.initialLoader;
 		},
 
 		render: function () {
