@@ -2563,21 +2563,27 @@ a.search-filter-close {
     top: auto;
   }
 }
-.editor-replaceimg {
+.editor-replaceimg-wrapper {
   position: absolute;
-  z-index: 1;
-  left: 5px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+}
+.editor-replaceimg {
   background: #fafafa;
   border: 1px solid #aaa;
   box-shadow: 1px 1px 2px 1px rgba(100, 100, 100, 0.1);
   padding: 15px;
   margin-top: -20px;
-  min-width: 420px;
+  max-width: 420px;
+  min-width: 400px;
+  margin: 0 auto;
 }
 @media (max-width: 767px) {
   .editor-replaceimg {
-    width: 280px;
-    left: -10px;
+    max-width: 100%;
+    min-width: 0;
   }
 }
 .editor-replaceimg-arrow {
@@ -2596,7 +2602,10 @@ a.search-filter-close {
   }
 }
 .editor-replaceimg-arrow.arrow-center {
-  left: 45%;
+  left: 50%;
+  right: 50%;
+  margin-left: -20px;
+  margin-right: -20px;
 }
 .replaceimg-field {
   height: 32px;
