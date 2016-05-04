@@ -676,6 +676,7 @@ JOBCENTRE.purchase = (function ($) {
             else
                 return this.total().toFixed(2);
         },
+
         totalDescription: function () {
 
             if (!this.get('package'))
@@ -685,6 +686,31 @@ JOBCENTRE.purchase = (function ($) {
                 return this.totalText();
 
             return this.totalText() + ' /' + this.get('package').get('recurrencePeriod');
+        },
+
+        tryGetAddon: function () {
+            var that = this;
+
+            if (!this.get('package'))
+                return null;
+
+            if (!this.get('package').get('addon'))
+                return null;
+
+            return this.packages.find(function (p) {
+                return p.id == that.get('package').get('addon').id;
+            });
+        },
+
+        tryGetAddonPrompt: function() {
+            if (!this.tryGetAddon())
+                return '';
+
+            var difference = '$' + Math.ceil(this.tryGetAddon().discountedPrice() - this.get('package').discountedPrice());
+            if (this.tryGetAddon().get('recurrencePeriod'))
+                difference = difference + '/' + this.tryGetAddon().get('recurrencePeriod');
+
+            return this.get('package').get('addon').prompt.replace('{price}', difference);
         },
 
         save: function (options) {
@@ -1084,6 +1110,23 @@ JOBCENTRE.purchase = (function ($) {
             }));
         },
 
+        renderAddonView: function () {
+
+            if (!this.model.get('package')) {
+                router.navigate('', true);
+                return;
+            }
+
+            if (!this.model.get('address').isValid()) {
+                router.navigate('address', true);
+                return;
+            }
+
+            this.renderPanel(new AddonPanelView({
+                model: this.model
+            }));
+        },
+
         renderPaymentView: function () {
 
             if (!this.model.get('package')) {
@@ -1321,7 +1364,10 @@ JOBCENTRE.purchase = (function ($) {
         },
 
         save: function (attrs) {
-            router.navigate('payment', true);
+            if (this.model.tryGetAddon())
+                router.navigate('addon', true);
+            else
+                router.navigate('payment', true);
         },
 
         render: function() {
@@ -1340,11 +1386,37 @@ JOBCENTRE.purchase = (function ($) {
 
     //#endregion
 
+    //#region AddonPanelView
+
+    var AddonPanelView = PanelView.extend({
+
+        position: 3,
+
+        template: _.template($('#purchase_panel_addon').html()),
+
+        className: 'panel panel_addon',
+
+        events: {
+            'click [data-action]': 'onActionClick'
+        },
+
+        onActionClick: function (e) {
+            e.preventDefault();
+
+            if ($(e.currentTarget).data('action') === 'add')
+                this.model.trySetPackage(this.model.tryGetAddon().id);
+
+            router.navigate('payment', true);
+        }
+    });
+
+    //#endregion
+
     //#region PaymentPanelView
 
     var PaymentPanelView = PanelView.extend({
 
-        position: 3,
+        position: 4,
 
         modelName: 'creditCard',
 
@@ -1411,7 +1483,7 @@ JOBCENTRE.purchase = (function ($) {
 
     var FinishPanelView = PanelView.extend({
 
-        position: 4,
+        position: 5,
 
         modelName: 'invoice',
 
@@ -1446,6 +1518,7 @@ JOBCENTRE.purchase = (function ($) {
         routes: {
             '': 'plans',
             'address': 'address',
+            'addon': 'addon',
             'payment': 'payment',
             'finish': 'finish'
         },
@@ -1524,6 +1597,14 @@ JOBCENTRE.purchase = (function ($) {
 
             this.session.set('selectedNav', '');
             this.modalView.renderPlansView();
+        },
+
+        addon: function () {
+            if (!this.started)
+                return;
+
+            this.session.set('selectedNav', 'addon');
+            this.modalView.renderAddonView();
         },
 
         address: function () {
