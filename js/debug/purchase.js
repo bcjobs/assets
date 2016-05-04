@@ -463,6 +463,10 @@ JOBCENTRE.purchase = (function ($) {
 
     var Package = Backbone.Model.extend({
 
+        defaults: {
+            addedOnTo: null
+        },
+
         discountedPrice: function () {
             if (this.get('discountRate') === 0)
                 return this.get('price');
@@ -490,8 +494,29 @@ JOBCENTRE.purchase = (function ($) {
                 return this.get('price').toString();
             else
                 return this.get('price').toFixed(2);
-        }
+        },
 
+        getAddon: function() {
+            var that = this;
+
+            if (!this.get('addon'))
+                return null;
+
+            return this.collection.find(function (p) {
+                return p.id == that.get('addon').id;
+            });
+        },
+
+        getAddonPrompt: function () {
+            if (!this.getAddon())
+                return '';
+
+            var difference = '$' + Math.ceil(this.getAddon().discountedPrice() - this.discountedPrice());
+            if (this.getAddon().get('recurrencePeriod'))
+                difference = difference + '/' + this.getAddon().get('recurrencePeriod');
+
+            return this.get('addon').prompt.replace('{price}', difference);
+        }
     });
 
     var Packages = Backbone.Collection.extend({
@@ -618,6 +643,22 @@ JOBCENTRE.purchase = (function ($) {
             return true;
         },
 
+        switchToAddonFrom: function(basePackage) {
+            var addon = basePackage.getAddon();
+            addon.set('addedOnTo', basePackage);
+            this.trySetPackage(addon.id);
+        },
+
+        switchAwayFromAddon: function (addon) {
+            // bad architecture warning:
+            // we can't be sure that addon.get('addedOnTo') is the correct one, b/c cleanup in case package is switched to a whole new one isn't guaranteed.
+            // code below is a workaround to compensate for it.
+
+            // if we've selected an addon, switch away from it
+            if (this.get('package') === addon)
+                this.trySetPackage(addon.get('addedOnTo').id);
+        },
+
         taxRate: function () {
             if (!this.taxCodes.state.get('ready'))
                 return 0;
@@ -686,31 +727,6 @@ JOBCENTRE.purchase = (function ($) {
                 return this.totalText();
 
             return this.totalText() + ' /' + this.get('package').get('recurrencePeriod');
-        },
-
-        tryGetAddon: function () {
-            var that = this;
-
-            if (!this.get('package'))
-                return null;
-
-            if (!this.get('package').get('addon'))
-                return null;
-
-            return this.packages.find(function (p) {
-                return p.id == that.get('package').get('addon').id;
-            });
-        },
-
-        tryGetAddonPrompt: function() {
-            if (!this.tryGetAddon())
-                return '';
-
-            var difference = '$' + Math.ceil(this.tryGetAddon().discountedPrice() - this.get('package').discountedPrice());
-            if (this.tryGetAddon().get('recurrencePeriod'))
-                difference = difference + '/' + this.tryGetAddon().get('recurrencePeriod');
-
-            return this.get('package').get('addon').prompt.replace('{price}', difference);
         },
 
         save: function (options) {
@@ -1122,8 +1138,18 @@ JOBCENTRE.purchase = (function ($) {
                 return;
             }
 
+            // All of this complexity to create basePackage is because the user
+            // could hit the back button after upgrading to addon. In that scenario,
+            // we need to reset and offer the upgrade option again.
+            var basePackage = this.model.get('package').get('addedOnTo') ?
+                this.model.get('package').get('addedOnTo') :
+                this.model.get('package');
+
             this.renderPanel(new AddonPanelView({
-                model: this.model
+                model: {
+                    purchase: this.model,
+                    basePackage: basePackage
+                }
             }));
         },
 
@@ -1364,7 +1390,7 @@ JOBCENTRE.purchase = (function ($) {
         },
 
         save: function (attrs) {
-            if (this.model.tryGetAddon())
+            if (this.model.get('package').getAddon())
                 router.navigate('addon', true);
             else
                 router.navigate('payment', true);
@@ -1402,12 +1428,14 @@ JOBCENTRE.purchase = (function ($) {
 
         onActionClick: function (e) {
             e.preventDefault();
-
             if ($(e.currentTarget).data('action') === 'add')
-                this.model.trySetPackage(this.model.tryGetAddon().id);
+                this.model.purchase.switchToAddonFrom(this.model.basePackage);
+            else
+                this.model.purchase.switchAwayFromAddon(this.model.basePackage.getAddon());
 
             router.navigate('payment', true);
         }
+
     });
 
     //#endregion
