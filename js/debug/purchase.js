@@ -512,8 +512,6 @@ JOBCENTRE.purchase = (function ($) {
                 return null;
 
             var difference = Math.ceil(this.getAddon().discountedPrice() - this.discountedPrice());
-            if (this.getAddon().get('recurrencePeriod'))
-                difference = difference + '/' + this.getAddon().get('recurrencePeriod');
 
             return {
                 line1: this.get('addon').prompt1,
