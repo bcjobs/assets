@@ -463,6 +463,10 @@ JOBCENTRE.purchase = (function ($) {
 
     var Package = Backbone.Model.extend({
 
+        initialize: function() {
+            this.addedOnTo = null;
+        },
+
         discountedPrice: function () {
             if (this.get('discountRate') === 0)
                 return this.get('price');
@@ -490,8 +494,31 @@ JOBCENTRE.purchase = (function ($) {
                 return this.get('price').toString();
             else
                 return this.get('price').toFixed(2);
-        }
+        },
 
+        getAddon: function() {
+            var that = this;
+
+            if (!this.get('addon'))
+                return null;
+
+            return this.collection.find(function (p) {
+                return p.id == that.get('addon').id;
+            });
+        },
+
+        getAddonPrompt: function () {
+            if (!this.getAddon())
+                return null;
+
+            var difference = Math.ceil(this.getAddon().discountedPrice() - this.discountedPrice());
+
+            return {
+                line1: this.get('addon').prompt1,
+                line2: this.get('addon').prompt2,
+                line3: this.get('addon').prompt3.replace('{price}', difference)
+            };
+        }
     });
 
     var Packages = Backbone.Collection.extend({
@@ -618,6 +645,22 @@ JOBCENTRE.purchase = (function ($) {
             return true;
         },
 
+        switchToAddonFrom: function(basePackage) {
+            var addon = basePackage.getAddon();
+            addon.addedOnTo = basePackage;
+            this.trySetPackage(addon.id);
+        },
+
+        switchAwayFromAddon: function (addon) {
+            // bad architecture warning:
+            // we can't be sure that addon.addedOnTo is the correct one, b/c cleanup in case package is switched to a whole new one isn't guaranteed.
+            // code below is a workaround to compensate for it.
+
+            // if we've selected an addon, switch away from it
+            if (this.get('package') === addon)
+                this.trySetPackage(addon.addedOnTo.id);
+        },
+
         taxRate: function () {
             if (!this.taxCodes.state.get('ready'))
                 return 0;
@@ -676,6 +719,7 @@ JOBCENTRE.purchase = (function ($) {
             else
                 return this.total().toFixed(2);
         },
+
         totalDescription: function () {
 
             if (!this.get('package'))
@@ -1084,6 +1128,33 @@ JOBCENTRE.purchase = (function ($) {
             }));
         },
 
+        renderAddonView: function () {
+
+            if (!this.model.get('package')) {
+                router.navigate('', true);
+                return;
+            }
+
+            if (!this.model.get('address').isValid()) {
+                router.navigate('address', true);
+                return;
+            }
+
+            // All of this complexity to create basePackage is because the user
+            // could hit the back button after upgrading to addon. In that scenario,
+            // we need to reset and offer the upgrade option again.
+            var basePackage = this.model.get('package').addedOnTo ?
+                this.model.get('package').addedOnTo :
+                this.model.get('package');
+
+            this.renderPanel(new AddonPanelView({
+                model: {
+                    purchase: this.model,
+                    basePackage: basePackage
+                }
+            }));
+        },
+
         renderPaymentView: function () {
 
             if (!this.model.get('package')) {
@@ -1321,7 +1392,10 @@ JOBCENTRE.purchase = (function ($) {
         },
 
         save: function (attrs) {
-            router.navigate('payment', true);
+            if (this.model.get('package').getAddon())
+                router.navigate('addon', true);
+            else
+                router.navigate('payment', true);
         },
 
         render: function() {
@@ -1340,11 +1414,39 @@ JOBCENTRE.purchase = (function ($) {
 
     //#endregion
 
+    //#region AddonPanelView
+
+    var AddonPanelView = PanelView.extend({
+
+        position: 3,
+
+        template: _.template($('#purchase_panel_addon').html()),
+
+        className: 'panel panel_addon',
+
+        events: {
+            'click [data-action]': 'onActionClick'
+        },
+
+        onActionClick: function (e) {
+            e.preventDefault();
+            if ($(e.currentTarget).data('action') === 'add')
+                this.model.purchase.switchToAddonFrom(this.model.basePackage);
+            else
+                this.model.purchase.switchAwayFromAddon(this.model.basePackage.getAddon());
+
+            router.navigate('payment', true);
+        }
+
+    });
+
+    //#endregion
+
     //#region PaymentPanelView
 
     var PaymentPanelView = PanelView.extend({
 
-        position: 3,
+        position: 4,
 
         modelName: 'creditCard',
 
@@ -1411,7 +1513,7 @@ JOBCENTRE.purchase = (function ($) {
 
     var FinishPanelView = PanelView.extend({
 
-        position: 4,
+        position: 5,
 
         modelName: 'invoice',
 
@@ -1446,6 +1548,7 @@ JOBCENTRE.purchase = (function ($) {
         routes: {
             '': 'plans',
             'address': 'address',
+            'addon': 'addon',
             'payment': 'payment',
             'finish': 'finish'
         },
@@ -1524,6 +1627,14 @@ JOBCENTRE.purchase = (function ($) {
 
             this.session.set('selectedNav', '');
             this.modalView.renderPlansView();
+        },
+
+        addon: function () {
+            if (!this.started)
+                return;
+
+            this.session.set('selectedNav', 'addon');
+            this.modalView.renderAddonView();
         },
 
         address: function () {
