@@ -509,13 +509,17 @@ JOBCENTRE.purchase = (function ($) {
 
         getAddonPrompt: function () {
             if (!this.getAddon())
-                return '';
+                return null;
 
-            var difference = '$' + Math.ceil(this.getAddon().discountedPrice() - this.discountedPrice());
+            var difference = Math.ceil(this.getAddon().discountedPrice() - this.discountedPrice());
             if (this.getAddon().get('recurrencePeriod'))
                 difference = difference + '/' + this.getAddon().get('recurrencePeriod');
 
-            return this.get('addon').prompt.replace('{price}', difference);
+            return {
+                line1: this.get('addon').prompt1,
+                line2: this.get('addon').prompt2,
+                line3: this.get('addon').prompt3.replace('{price}', difference)
+            };
         }
     });
 
