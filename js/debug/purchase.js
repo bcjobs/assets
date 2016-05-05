@@ -463,8 +463,8 @@ JOBCENTRE.purchase = (function ($) {
 
     var Package = Backbone.Model.extend({
 
-        defaults: {
-            addedOnTo: null
+        initialize: function() {
+            this.addedOnTo = null;
         },
 
         discountedPrice: function () {
@@ -647,18 +647,18 @@ JOBCENTRE.purchase = (function ($) {
 
         switchToAddonFrom: function(basePackage) {
             var addon = basePackage.getAddon();
-            addon.set('addedOnTo', basePackage);
+            addon.addedOnTo = basePackage;
             this.trySetPackage(addon.id);
         },
 
         switchAwayFromAddon: function (addon) {
             // bad architecture warning:
-            // we can't be sure that addon.get('addedOnTo') is the correct one, b/c cleanup in case package is switched to a whole new one isn't guaranteed.
+            // we can't be sure that addon.addedOnTo is the correct one, b/c cleanup in case package is switched to a whole new one isn't guaranteed.
             // code below is a workaround to compensate for it.
 
             // if we've selected an addon, switch away from it
             if (this.get('package') === addon)
-                this.trySetPackage(addon.get('addedOnTo').id);
+                this.trySetPackage(addon.addedOnTo.id);
         },
 
         taxRate: function () {
@@ -1143,8 +1143,8 @@ JOBCENTRE.purchase = (function ($) {
             // All of this complexity to create basePackage is because the user
             // could hit the back button after upgrading to addon. In that scenario,
             // we need to reset and offer the upgrade option again.
-            var basePackage = this.model.get('package').get('addedOnTo') ?
-                this.model.get('package').get('addedOnTo') :
+            var basePackage = this.model.get('package').addedOnTo ?
+                this.model.get('package').addedOnTo :
                 this.model.get('package');
 
             this.renderPanel(new AddonPanelView({
