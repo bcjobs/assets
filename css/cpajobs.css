@@ -1129,10 +1129,8 @@ input[type="file"].upload-input {
   display: none;
 }
 @media (max-width: 960px) {
-  .pricing-section-post,
-  .pricing-section-resume,
-  .pricing-section-featured {
-    display: block !important;
+  .pricing-section-post {
+    display: block;
   }
 }
 /* - end modals */
