@@ -226,7 +226,7 @@ input[type="file"].upload-input{display:none}
 .form-dataentry input[type=text].cvd{width:15%}
 .form-text{height:32px;line-height:32px}
 .pricing-section-resume{display:none}
-@media(max-width:960px){.pricing-section-post,.pricing-section-resume,.pricing-section-featured{display:block!important}
+@media(max-width:960px){.pricing-section-post{display:block}
 }
 .overlay{-ms-filter:"alpha(opacity=70)";filter:alpha(opacity=70);opacity:.7;top:0;left:0;right:0;bottom:0}
 .overlay-white{background:#fff}
