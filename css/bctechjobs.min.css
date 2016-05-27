@@ -876,6 +876,10 @@ body,.bcjobs-layout-wrapper{background:#f7f7f7}
 }
 .footer-wrapper{background:#243958;margin-top:15px;position:relative}
 .footer{min-height:140px;border:0}
+@media(max-width:680px){.footer{min-height:160px}
+}
+@media(max-width:400px){.footer{min-height:200px}
+}
 .bct-footer-logo{position:absolute;left:20px;top:20px}
 @media(max-width:400px){.bct-footer-logo{float:none;text-align:center}
 }
@@ -889,10 +893,13 @@ body,.bcjobs-layout-wrapper{background:#f7f7f7}
 .social-icons.twitter{background-position:-19px 0}
 .social-icons.facebook{background-position:-38px 0}
 .social-icons.linkedin{background-position:-57px 0}
-.bct-power,.bct-footer-links{color:#537ebc;font-size:14px;padding:78px 20px 0;margin-bottom:10px}
-@media(max-width:600px){.bct-power,.bct-footer-links{padding:90px 20px 0}
+.bct-footer-links{color:#537ebc;font-size:14px;position:absolute;left:20px;top:80px}
+.bct-power{color:#537ebc;font-size:14px;position:absolute;right:20px;top:80px}
+@media(max-width:980px){.bct-power{left:20px;top:100px;right:auto}
 }
-@media(max-width:750px){.bct-power{padding:0 0 20px 20px}
+@media(max-width:680px){.bct-power{top:120px}
+}
+@media(max-width:400px){.bct-power{top:145px}
 }
 .bct-power a,.bct-footer-links a{color:#fff}
 .bct-m0{margin:0}
