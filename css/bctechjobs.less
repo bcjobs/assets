@@ -212,6 +212,12 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
 .footer {
     min-height: 140px;
     border: 0;
+    @media(max-width: 680px) {
+        min-height: 160px;
+    }
+    @media(max-width: 400px) {
+        min-height: 200px;
+    }
 }
 
 .bct-footer-logo { 
@@ -251,18 +257,31 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
 .social-icons.facebook { background-position: -38px 0; }
 .social-icons.linkedin { background-position: -57px 0; }
 
-.bct-power, .bct-footer-links {
+.bct-footer-links {
     color: #537ebc;
     font-size: 14px;
-    padding: 78px 20px 0;
-    margin-bottom: 10px;
-    @media (max-width: 600px) {
-        padding: 90px 20px 0;
-    }
+    position: absolute;
+    left: 20px;
+    top: 80px;
 }
+
 .bct-power {
-    @media (max-width: 750px) {
-        padding: 0 0 20px 20px;
+    color: #537ebc;
+    font-size: 14px;
+    position: absolute;
+    right: 20px;
+    top: 80px;
+
+    @media (max-width: 980px) {
+        left: 20px;
+        top: 100px;
+        right: auto;
+    }
+    @media (max-width: 680px){
+        top: 120px;
+    }
+    @media (max-width: 400px) {
+        top: 145px;
     }
 }
 .bct-power a, .bct-footer-links a { color: #ffffff; }
