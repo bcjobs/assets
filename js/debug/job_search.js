@@ -136,6 +136,16 @@ JOBCENTRE.jobSearch = (function ($) {
 
     //#endregion
 
+    //#region Job
+    
+    var Attribution = Backbone.Model.extend({
+        defaults: {
+            value: ''
+        }
+    });
+
+    //#endregion
+
     //#region PagedCollection
 
     var Pagination = Backbone.Model.extend({
@@ -179,6 +189,7 @@ JOBCENTRE.jobSearch = (function ($) {
         options || (options = {});
 
         this.pagination = new Pagination(options.pagination || {});
+        this.attribution = new Attribution(options.attribution || {})
 
         this.state = new State();
     };
@@ -216,6 +227,7 @@ JOBCENTRE.jobSearch = (function ($) {
                         pageSize: response.paging.pageSize,
                         total: response.paging.total
                     });
+                    that.attribution.set('value', response.attribution);
                     that.reset(that.parse(response.data), options);
                     if (options.success) options.success(that, response);
                 },
@@ -1454,6 +1466,9 @@ JOBCENTRE.jobSearch = (function ($) {
             footerView.on('page-changed', this.onPageChanged, this);
             footerView.render();
 
+            var attributionView = this.addChildren(new AttributionView({ el: $('#joblist_attribution'), model: this.options.jobs.attribution }));
+            attributionView.render();
+
             return this;
         }
     });
@@ -1719,6 +1734,24 @@ JOBCENTRE.jobSearch = (function ($) {
 
     //#endregion
 
+    //#region AttributionView
+
+    var AttributionView = BaseView.extend({
+
+        template: _.template($('#joblist_attribution_template').html()),
+
+        initialize: function () {
+            this.listenTo(this.model, 'change:value', this.render);
+        },
+
+        render: function () {
+            $(this.el).html(this.template(this.model.toJSON()));
+            return this;
+        }
+    });
+
+    //#endregion
+
     //#endregion
 
     //#endregion
@@ -1802,7 +1835,8 @@ JOBCENTRE.jobSearch = (function ($) {
             this.jobs = new Jobs(
                 options.jobs.data, {
                     pagination: _.pick(options.jobs.paging, 'page', 'pageSize', 'total'),
-                    search: this.search
+                    search: this.search,
+                    attribution: { value: options.attribution }
                 });
             this.jobs.state.set({ ready: true, error: null });
             this.pageView = new SearchJobsPageView({ search: this.search, enabled: this.enabled, defaultLocation: this.defaultLocation, provinces: this.provinces, jobs: this.jobs, ads: options.ads, jobUrlFormatOverride: options.jobUrlFormatOverride });
