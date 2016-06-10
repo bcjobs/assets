@@ -1588,9 +1588,19 @@ JOBCENTRE.jobSearch = (function ($) {
             router.changeRoute({ replace: false });
         },
 
+        target: function() {
+            if (/^http(s)?:\/\//i.test(this.model.get('url')))
+                return '_blank';
+            else
+                return '_self';
+        },
+
         render: function () {
             this.$el
-                .attr('title', this.model.get('title'))
+                .attr({
+                    title: this.model.get('title'),
+                    target: this.target()
+                })
                 .html(this.template(this.model.toJSON()));
             return this;
         }
