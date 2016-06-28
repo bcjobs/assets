@@ -431,6 +431,14 @@ a.header-action:visited {
     font-size: 36px;
   }
 }
+.search-widget-title.title-small {
+  font-size: 45px;
+}
+@media (max-width: 767px) {
+  .search-widget-title.title-small {
+    font-size: 30px;
+  }
+}
 .search-widget-tagline {
   color: #adb9dc;
 }
@@ -626,7 +634,7 @@ a.header-action:visited {
 }
 @media (max-width: 425px) {
   .signup-form.bctia {
-    top: 500px;
+    top: 530px;
   }
 }
 .top-anchor {
