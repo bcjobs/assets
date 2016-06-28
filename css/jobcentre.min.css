@@ -87,6 +87,9 @@ a.header-action:link,a.header-action:visited{color:#6a826b}
 .search-widget-title{color:#fff;font-family:'Dancing Script',sans-serif;font-size:60px}
 @media(max-width:767px){.search-widget-title{font-size:36px}
 }
+.search-widget-title.title-small{font-size:45px}
+@media(max-width:767px){.search-widget-title.title-small{font-size:30px}
+}
 .search-widget-tagline{color:#adb9dc}
 .search-widget-content{padding:40px 6% 0 6%;font-size:18px}
 @media(max-width:767px){.search-widget-content{padding:20px 6% 0 6%}
@@ -140,7 +143,7 @@ a.header-action:link,a.header-action:visited{color:#6a826b}
 }
 @media(max-width:767px){.signup-form.bctia{top:450px}
 }
-@media(max-width:425px){.signup-form.bctia{top:500px}
+@media(max-width:425px){.signup-form.bctia{top:530px}
 }
 .top-anchor{position:absolute;right:0;top:5px}
 @media(max-width:400px){.top-anchor{display:block;margin-top:15px;position:relative;text-align:center;width:100%}
