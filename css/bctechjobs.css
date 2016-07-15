@@ -1828,6 +1828,15 @@ body .select2-results .select2-selection-limit {
 .alert-info a {
   color: #e64d2a;
 }
+.alert-wrapper-width {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 1024px;
+  margin: 0 auto;
+  z-index: 10000;
+}
 .flex-minheight100 {
   min-height: 100px;
 }
