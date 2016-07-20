@@ -1760,7 +1760,9 @@ JOBCENTRE.ensurePackage = (function ($) {
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     that.removeSpinner();
-                    alert('Error connecting to the server. Please try again.');
+
+                    if (jqXHR.status !== 401)
+                        alert('Error connecting to the server. Please try again.');
                 }
             });
 
