@@ -300,19 +300,30 @@ JOBCENTRE.jobForm = (function ($) {
         },
 
         setup: function () {
-            var that = this;
-            window.onbeforeunload = function () {
-                if (!that.get('isNew'))
-                    return;
+            //var that = this;
 
-                if (!that.get('isDraftSaved'))
-                    return;
+            // stopped using beforeunload because Chrome (as of version 51) no longer supports custom messages.
+            // https://developers.google.com/web/updates/2016/04/chrome-51-deprecations?hl=en#remove-custom-messages-in-onbeforeload-dialogs
 
-                if (that.get('isSavedToServer'))
-                    return;
+            //if (!window.addEventListener)
+            //    return;
 
-                return 'Your job has not been published yet, but it will still be here when you come back.';
-            }
+            //// https://developer.mozilla.org/en/docs/Web/Events/beforeunload
+            //window.addEventListener('beforeunload', function (e) {
+            //    if (!that.get('isNew'))
+            //        return;
+
+            //    if (!that.get('isDraftSaved'))
+            //        return;
+
+            //    if (that.get('isSavedToServer'))
+            //        return;
+
+            //    var message = 'Your job has not been published yet, but it will still be here when you come back.';
+
+            //    e.returnValue = message;     // Gecko, Trident, Chrome 34+
+            //    return message;              // Gecko, WebKit, Chrome <34
+            //});
         }
 
     });
