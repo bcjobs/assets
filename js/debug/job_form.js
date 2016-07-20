@@ -301,7 +301,14 @@ JOBCENTRE.jobForm = (function ($) {
 
         setup: function () {
             var that = this;
-            window.onbeforeunload = function () {
+
+            // stopped using window.onbeforeunload because it's no longer supported in Chrome / FF
+
+            if (!window.addEventListener)
+                return;
+
+            // https://developer.mozilla.org/en/docs/Web/Events/beforeunload
+            window.addEventListener('beforeunload', function (e) {
                 if (!that.get('isNew'))
                     return;
 
@@ -311,8 +318,11 @@ JOBCENTRE.jobForm = (function ($) {
                 if (that.get('isSavedToServer'))
                     return;
 
-                return 'Your job has not been published yet, but it will still be here when you come back.';
-            }
+                var message = 'Your job has not been published yet, but it will still be here when you come back.';
+
+                e.returnValue = message;     // Gecko, Trident, Chrome 34+
+                return message;              // Gecko, WebKit, Chrome <34
+            });
         }
 
     });
