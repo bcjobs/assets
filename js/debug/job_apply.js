@@ -1017,16 +1017,30 @@ JOBCENTRE.jobApply = (function ($) {
 
         template: _.template($('#call_to_action').html()),
 
-        onSubscribeClick: function () {
+        onSubscribeClick: function (options) {
+            options || (options = {});
 
             var that = this;
             var jobAlert = JobAlert.fromApplicationForm(this.options.form, this.options.job);
-            jobAlert.subscribe(); // hope for the best and continue.  even if there's an error, don't want to stop the user from continuing.
+            jobAlert.subscribe({
+                success: function () {
+                    if (window.dataLayer)
+                        dataLayer.push({ 'event': 'custom', 'eventCategory': 'App', 'eventAction': 'JobAlertSubscribe', 'eventLabel': 'Source:JobApplication', 'nonInteraction': false });
 
-            if (window.dataLayer)
-                dataLayer.push({ 'event': 'custom', 'eventCategory': 'App', 'eventAction': 'JobAlertSubscribe', 'eventLabel': 'Source:JobApplication', 'nonInteraction': false });
+                    if (options.complete)
+                        options.complete();
 
-            this.renderSignup(true);
+                    that.renderSignup(true);
+                },
+                error: function () {
+                    // ignore error, as we don't want to prevent the user from continuing.
+
+                    if (options.complete)
+                        options.complete();
+
+                    that.renderSignup(true);
+                }
+            }); 
         },
 
         renderEmail: function () {
@@ -1069,6 +1083,8 @@ JOBCENTRE.jobApply = (function ($) {
 
     var CAllToActionEmailView = BaseView.extend({
 
+        className: 'flex-relative',
+
         template: _.template($('#call_to_action_email').html()),
 
         events: {
@@ -1076,7 +1092,12 @@ JOBCENTRE.jobApply = (function ($) {
         },
 
         onSubscribeClick: function () {
-            this.trigger('subscribe-click');
+            this.$('[data-element="overlay"]').show();
+            this.trigger('subscribe-click', { complete: _.bind(this.onSubscribeComplete, this) });
+        },
+
+        onSubscribeComplete: function () {
+            this.$('[data-element="overlay"]').hide();
         },
 
         render: function () {
