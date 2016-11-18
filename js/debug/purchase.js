@@ -558,6 +558,7 @@ JOBCENTRE.purchase = (function ($) {
     var Invoice = Backbone.Model.extend({
 
         trackEcommerce: function () {
+            var that = this;
 
             if (!window.dataLayer)
                 return;
@@ -569,47 +570,17 @@ JOBCENTRE.purchase = (function ($) {
                 'transactionTotal': this.get('subTotal'),
                 'transactionTax': this.get('tax'),
                 'transactionShipping': 0,
-                'transactionProducts': [{
-                    'sku': this.get('sku'),
-                    'name': this.get('title'),
-                    'category': this.productCategory(),
-                    'price': this.get('subTotal'),
-                    'quantity': 1
-                }]
+                'transactionProducts': _.map(this.get('items'), function (item) {
+                    return {
+                        'sku': item.sku,
+                        'name': item.description,
+                        'category': item.category,
+                        'price': item.amount,
+                        'quantity': 1
+                    };
+                })
             });
-        },
-
-        productCategory: function () {
-            var parts = this.get('sku').split('-');
-
-            if (parts.length !== 6)
-                return '';
-
-            // not interested in first 2 elements
-            parts.shift();
-            parts.shift();
-
-            var code = parts.join('-');
-
-            // possible values are: Job Credits, Resume Credits, Unlimited Job, Unlimited Resume, Unlimited Comb
-            if (/^1-[1-9]\d*-0-0$/.test(code))
-                return 'Job Credits';
-
-            if (/^0-0-1-[1-9]\d*$/.test(code))
-                return 'Resume Credits';
-
-            if (/^1-0-0-0$/.test(code))
-                return 'Unlimited Job';
-
-            if (/^0-0-1-0$/.test(code))
-                return 'Unlimited Resume';
-
-            if (/^1-0-1-\d+$/.test(code))
-                return 'Unlimited Combo';
-
-            return 'Undefined';
         }
-
     });
 
     //#endregion
@@ -626,8 +597,8 @@ JOBCENTRE.purchase = (function ($) {
         },
         
         initialize: function (attrs, options) {
+            this.options = options;
             this.plans = new Plans(options.plans);
-
             this.taxCodes = new TaxCodeCache().getTaxCodes();
         },
 
@@ -730,14 +701,51 @@ JOBCENTRE.purchase = (function ($) {
             return this.totalText() + ' /' + this.get('plan').get('recurrencePeriod');
         },
 
-        save: function (options) {
+        submit: function(options) {
+            options || (options = {});
+
+            if (this.options.stripePublishableKey) {
+                this.tokenizeCard(options);
+            } else {
+                this.save(this.toJSON(), options);
+            }
+        },
+
+        tokenizeCard: function (options) {
+            var that = this;
+
+            // TODO: set province and country
+            Stripe.setPublishableKey(this.options.stripePublishableKey);
+            Stripe.card.createToken({
+                address_line1: this.get('address').get('street'),
+                address_city: this.get('address').get('city'),
+                address_state: 'BC',
+                address_zip: this.get('address').get('postalCode'),
+                address_country: 'Canada',
+                name: this.get('creditCard').get('holder'),
+                number: this.get('creditCard').get('number'),
+                cvc: this.get('creditCard').get('cvd'),
+                exp_month: this.get('creditCard').get('expiry').substr(0,2),
+                exp_year: '20' + this.get('creditCard').get('expiry').substr(2, 2)
+            }, function (status, response) {
+                if (response.error)
+                    options.error(that, response.error.message);
+                else
+                    that.save(_.extend(that.toJSON(), {creditCard: response.id}), options);
+            });
+        },
+
+        save: function (payload, options) {
             options || (options = {});
             var that = this;
+
+            // http://stackoverflow.com/a/20735169/188740
+            // if an object being stringified has a method named toJSON, JSON.stringify will call that
 
             $.ajax({
                 url: url.purchases,
                 contentType: 'application/json',
-                data: JSON.stringify(this.toJSON()),
+                data: JSON.stringify(payload),
                 dataType: 'json',
                 type: 'POST',
                 success: function (response, textStatus, jqXHR) {
@@ -1483,7 +1491,7 @@ JOBCENTRE.purchase = (function ($) {
 
         save: function () {
             this.showSavingState();
-            this.model.save({
+            this.model.submit({
                 success: _.bind(this.onSaveSuccess, this),
                 error: _.bind(this.onSaveError, this)
             });
