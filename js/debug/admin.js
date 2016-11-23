@@ -168,26 +168,6 @@ JOBCENTRE.renderProvinceNames = function(restPath){
     });
 };
 
-JOBCENTRE.renderCreditCard = function(){
-    creditcard = function(focus){
-        if($('#PaymentMethod').val() == 1){
-            $('[data-cardpayment]').hide();
-        } else {
-            $('[data-cardpayment]').show();
-            if(focus)
-                $('#CardHoldersName').focus();
-        }
-    }
-    $(function(){
-        //hacky way of getting form-group
-        $('#PaymentMethod').parent().parent().after(_.template($('#creditCardPayment').html()));
-        creditcard(false);
-    });
-    $('body').on('change', '#PaymentMethod', function(){
-        creditcard(true);
-    });
-};
-
 JOBCENTRE.calculateEmployer = function(){
     $('[name=IndustryIds]').change(function () {
         if(this.value === '33' && this.checked){
