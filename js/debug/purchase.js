@@ -567,7 +567,7 @@ JOBCENTRE.purchase = (function ($) {
                 'event' : 'transactionComplete',
                 'transactionId': this.id,
                 'transactionAffiliation': this.get('agent') ? 'Agent' : 'Employer',
-                'transactionTotal': this.get('subTotal'),
+                'transactionTotal': this.get('subtotal'),
                 'transactionTax': this.get('tax'),
                 'transactionShipping': 0,
                 'transactionProducts': _.map(this.get('items'), function (item) {
