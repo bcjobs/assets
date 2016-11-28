@@ -11,7 +11,8 @@ JOBCENTRE.purchase = (function ($) {
             // generic
             countries: restPath + 'countries',
             provinces: restPath + 'provinces?countryId=:id',
-            taxcodes: restPath + 'taxcodes'
+            taxcodes: restPath + 'taxcodes',
+            storedcards: restPath + 'creditcards'
         };
     };
 
@@ -289,11 +290,39 @@ JOBCENTRE.purchase = (function ($) {
 
     //#endregion
 
+    //#region StoredCard
+
+    var StoredCard = Backbone.Model.extend();
+
+    var StoredCards = Backbone.Collection.extend({
+        model: StoredCard,
+
+        initialize: function () {
+            this.state = new State();
+        }
+    });
+
+    var StoredCardCache = Cache.extend({
+
+        collection: StoredCards,
+        primeTimer: 0,
+        listName: 'storedcards',
+        url: function () {
+            return url.storedcards;
+        },
+        getStoredCards: function () {
+            return this.getList();
+        }
+    });
+
+    //#endregion
+
     //#region CreditCard
 
     var CreditCard = BaseModel.extend({
 
         defaults: {
+            storedCardId: '',
             holder: '',
             number: '',
             expiry: '',
@@ -600,6 +629,14 @@ JOBCENTRE.purchase = (function ($) {
             this.options = options;
             this.plans = new Plans(options.plans);
             this.taxCodes = new TaxCodeCache().getTaxCodes();
+            this.storedCards = new StoredCardCache().getStoredCards();
+            this.listenTo(this.storedCards.state, 'change', this.onStoredCardsStateChange);
+        },
+
+        onStoredCardsStateChange: function () {
+            if (this.storedCards.state.get('ready'))
+                if (this.storedCards.length > 0)
+                    this.get('creditCard').set('storedCardId', this.storedCards.at(0).id);
         },
 
         trySetPlan: function (id) {
@@ -704,11 +741,16 @@ JOBCENTRE.purchase = (function ($) {
         submit: function(options) {
             options || (options = {});
 
-            if (this.options.stripePublishableKey) {
+            if (this.get('creditCard').get('storedCardId'))
+                this.save(_.extend(this.toJSON(), {
+                    creditCard: {
+                        id: this.get('creditCard').get('storedCardId')
+                    }
+                }), options);
+            else if (this.options.stripePublishableKey)
                 this.tokenizeCard(options);
-            } else {
+            else
                 this.save(this.toJSON(), options);
-            }
         },
 
         tokenizeCard: function (options) {
@@ -731,7 +773,11 @@ JOBCENTRE.purchase = (function ($) {
                 if (response.error)
                     options.error(that, response.error.message);
                 else
-                    that.save(_.extend(that.toJSON(), {creditCard: response.id}), options);
+                    that.save(_.extend(that.toJSON(), {
+                        creditCard: {
+                            token: response.id
+                        }
+                    }), options);
             });
         },
 
@@ -1463,6 +1509,19 @@ JOBCENTRE.purchase = (function ($) {
 
         initialize: function () {
             this.listenTo(this.model.taxCodes.state, 'change', this.render);
+            this.listenTo(this.model.storedCards.state, 'change', this.render);
+            this.listenTo(this.model.get('creditCard'), 'change:storedCardId', this.onStoredCardIdChange)
+        },
+
+        onStoredCardIdChange: function () {
+            this.$('[data-element=new_creditcard_form]').toggle(!this.model.get('creditCard').get('storedCardId'));
+        },
+
+        isValid: function () {
+            if (this.model.get('creditCard').get('storedCardId'))
+                return true;
+            else
+                return BaseFormView.prototype.isValid.apply(this);
         },
 
         formPreProcess: function (attrs) {
@@ -1501,11 +1560,14 @@ JOBCENTRE.purchase = (function ($) {
             if (this.renderState(this.model.taxCodes.state))
                 return this;
 
+            if (this.renderState(this.model.storedCards.state))
+                return this;
+
             this.$el.html(this.template(this.model));
+            this.onStoredCardIdChange();
 
             var that = this;
             setTimeout(function () {
-                // why doens't this work?
                 that.$('input').first().focus();
             }, 100);
 
