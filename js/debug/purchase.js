@@ -11,7 +11,8 @@ JOBCENTRE.purchase = (function ($) {
             // generic
             countries: restPath + 'countries',
             provinces: restPath + 'provinces?countryId=:id',
-            taxcodes: restPath + 'taxcodes'
+            taxcodes: restPath + 'taxcodes',
+            storedcards: restPath + 'creditcards'
         };
     };
 
@@ -289,11 +290,39 @@ JOBCENTRE.purchase = (function ($) {
 
     //#endregion
 
+    //#region StoredCard
+
+    var StoredCard = Backbone.Model.extend();
+
+    var StoredCards = Backbone.Collection.extend({
+        model: StoredCard,
+
+        initialize: function () {
+            this.state = new State();
+        }
+    });
+
+    var StoredCardCache = Cache.extend({
+
+        collection: StoredCards,
+        primeTimer: 0,
+        listName: 'storedcards',
+        url: function () {
+            return url.storedcards;
+        },
+        getStoredCards: function () {
+            return this.getList();
+        }
+    });
+
+    //#endregion
+
     //#region CreditCard
 
     var CreditCard = BaseModel.extend({
 
         defaults: {
+            storedCardId: '',
             holder: '',
             number: '',
             expiry: '',
@@ -459,9 +488,9 @@ JOBCENTRE.purchase = (function ($) {
 
     //#endregion
 
-    //#region Package
+    //#region Plan
 
-    var Package = Backbone.Model.extend({
+    var Plan = Backbone.Model.extend({
 
         initialize: function() {
             this.addedOnTo = null;
@@ -521,9 +550,9 @@ JOBCENTRE.purchase = (function ($) {
         }
     });
 
-    var Packages = Backbone.Collection.extend({
+    var Plans = Backbone.Collection.extend({
 
-        model: Package,
+        model: Plan,
 
         forJobs: function () {
             return this.filter(function (p) {
@@ -558,6 +587,7 @@ JOBCENTRE.purchase = (function ($) {
     var Invoice = Backbone.Model.extend({
 
         trackEcommerce: function () {
+            var that = this;
 
             if (!window.dataLayer)
                 return;
@@ -566,54 +596,23 @@ JOBCENTRE.purchase = (function ($) {
                 'event' : 'transactionComplete',
                 'transactionId': this.id,
                 'transactionAffiliation': this.get('agent') ? 'Agent' : 'Employer',
-                'transactionTotal': this.get('subTotal'),
+                'transactionTotal': this.get('subtotal'),
                 'transactionTax': this.get('tax'),
                 'transactionShipping': 0,
-                'transactionProducts': [{
-                    'sku': this.get('sku'),
-                    'name': this.get('title'),
-                    'category': this.productCategory(),
-                    'price': this.get('subTotal'),
-                    'quantity': 1
-                }]
+                'transactionProducts': _.map(this.get('items'), function (item) {
+                    return {
+                        'sku': item.sku,
+                        'name': item.description,
+                        'category': item.category,
+                        'price': item.amount,
+                        'quantity': 1
+                    };
+                })
             });
-        },
-
-        productCategory: function () {
-            var parts = this.get('sku').split('-');
-
-            if (parts.length !== 6)
-                return '';
-
-            // not interested in first 2 elements
-            parts.shift();
-            parts.shift();
-
-            var code = parts.join('-');
-
-            // possible values are: Job Credits, Resume Credits, Unlimited Job, Unlimited Resume, Unlimited Comb
-            if (/^1-[1-9]\d*-0-0$/.test(code))
-                return 'Job Credits';
-
-            if (/^0-0-1-[1-9]\d*$/.test(code))
-                return 'Resume Credits';
-
-            if (/^1-0-0-0$/.test(code))
-                return 'Unlimited Job';
-
-            if (/^0-0-1-0$/.test(code))
-                return 'Unlimited Resume';
-
-            if (/^1-0-1-\d+$/.test(code))
-                return 'Unlimited Combo';
-
-            return 'Undefined';
         }
-
     });
 
     //#endregion
-
 
     //#region Purchase
 
@@ -622,43 +621,51 @@ JOBCENTRE.purchase = (function ($) {
         defaults: {
             creditCard: new CreditCard(),
             address: new Address(),
-            'package': null, // package is a reserved word
+            plan: null,
             invoice: null
         },
         
         initialize: function (attrs, options) {
-            this.packages = new Packages(options.packages);
-
+            this.options = options;
+            this.plans = new Plans(options.plans);
             this.taxCodes = new TaxCodeCache().getTaxCodes();
+            this.storedCards = new StoredCardCache().getStoredCards();
+            this.listenTo(this.storedCards.state, 'change', this.onStoredCardsStateChange);
         },
 
-        trySetPackage: function (id) {
+        onStoredCardsStateChange: function () {
+            if (this.storedCards.state.get('ready'))
+                if (this.storedCards.length > 0)
+                    this.get('creditCard').set('storedCardId', this.storedCards.at(0).id);
+        },
 
-            var pk = this.packages.find(function (p) {
+        trySetPlan: function (id) {
+
+            var pk = this.plans.find(function (p) {
                 return p.id == id;
             });
 
             if (!pk)
                 return false;
 
-            this.set('package', pk);
+            this.set('plan', pk);
             return true;
         },
 
-        switchToAddonFrom: function(basePackage) {
-            var addon = basePackage.getAddon();
-            addon.addedOnTo = basePackage;
-            this.trySetPackage(addon.id);
+        switchToAddonFrom: function(basePlan) {
+            var addon = basePlan.getAddon();
+            addon.addedOnTo = basePlan;
+            this.trySetPlan(addon.id);
         },
 
         switchAwayFromAddon: function (addon) {
             // bad architecture warning:
-            // we can't be sure that addon.addedOnTo is the correct one, b/c cleanup in case package is switched to a whole new one isn't guaranteed.
+            // we can't be sure that addon.addedOnTo is the correct one, b/c cleanup in case plan is switched to a whole new one isn't guaranteed.
             // code below is a workaround to compensate for it.
 
             // if we've selected an addon, switch away from it
-            if (this.get('package') === addon)
-                this.trySetPackage(addon.addedOnTo.id);
+            if (this.get('plan') === addon)
+                this.trySetPlan(addon.addedOnTo.id);
         },
 
         taxRate: function () {
@@ -680,10 +687,10 @@ JOBCENTRE.purchase = (function ($) {
         },
 
         taxAmount: function () {
-            if (!this.get('package'))
+            if (!this.get('plan'))
                 return 0;
 
-            return this.taxRate() * this.get('package').discountedPrice();
+            return this.taxRate() * this.get('plan').discountedPrice();
         },
 
         taxAmountText: function () {
@@ -696,21 +703,21 @@ JOBCENTRE.purchase = (function ($) {
 
         taxAmountDescription: function () {
 
-            if (!this.get('package'))
+            if (!this.get('plan'))
                 return '-';
 
-            if (!this.get('package').get('recurrencePeriod'))
+            if (!this.get('plan').get('recurrencePeriod'))
                 return this.taxAmountText();
 
-            return this.taxAmountText() + ' /' + this.get('package').get('recurrencePeriod');
+            return this.taxAmountText() + ' /' + this.get('plan').get('recurrencePeriod');
         },
 
         total: function () {
 
-            if (!this.get('package'))
+            if (!this.get('plan'))
                 return 0;
 
-            return this.taxAmount() + this.get('package').discountedPrice();
+            return this.taxAmount() + this.get('plan').discountedPrice();
         },
 
         totalText: function () {
@@ -722,23 +729,69 @@ JOBCENTRE.purchase = (function ($) {
 
         totalDescription: function () {
 
-            if (!this.get('package'))
+            if (!this.get('plan'))
                 return '-';
 
-            if (!this.get('package').get('recurrencePeriod'))
+            if (!this.get('plan').get('recurrencePeriod'))
                 return this.totalText();
 
-            return this.totalText() + ' /' + this.get('package').get('recurrencePeriod');
+            return this.totalText() + ' /' + this.get('plan').get('recurrencePeriod');
         },
 
-        save: function (options) {
+        submit: function(options) {
+            options || (options = {});
+
+            if (this.get('creditCard').get('storedCardId'))
+                this.save(_.extend(this.toJSON(), {
+                    creditCard: {
+                        id: this.get('creditCard').get('storedCardId')
+                    }
+                }), options);
+            else if (this.options.stripePublishableKey)
+                this.tokenizeCard(options);
+            else
+                this.save(this.toJSON(), options);
+        },
+
+        tokenizeCard: function (options) {
+            var that = this;
+
+            // TODO: set province and country
+            Stripe.setPublishableKey(this.options.stripePublishableKey);
+            Stripe.card.createToken({
+                address_line1: this.get('address').get('street'),
+                address_city: this.get('address').get('city'),
+                address_state: 'BC',
+                address_zip: this.get('address').get('postalCode'),
+                address_country: 'Canada',
+                name: this.get('creditCard').get('holder'),
+                number: this.get('creditCard').get('number'),
+                cvc: this.get('creditCard').get('cvd'),
+                exp_month: this.get('creditCard').get('expiry').substr(0,2),
+                exp_year: '20' + this.get('creditCard').get('expiry').substr(2, 2)
+            }, function (status, response) {
+                if (response.error)
+                    options.error(that, response.error.message);
+                else
+                    that.save(_.extend(that.toJSON(), {
+                        creditCard: {
+                            token: response.id
+                        }
+                    }), options);
+            });
+        },
+
+        save: function (payload, options) {
             options || (options = {});
             var that = this;
+
+            // http://stackoverflow.com/a/20735169/188740
+            // if an object being stringified has a method named toJSON, JSON.stringify will call that
 
             $.ajax({
                 url: url.purchases,
                 contentType: 'application/json',
-                data: JSON.stringify(this.toJSON()),
+                data: JSON.stringify(payload),
                 dataType: 'json',
                 type: 'POST',
                 success: function (response, textStatus, jqXHR) {
@@ -1117,7 +1170,7 @@ JOBCENTRE.purchase = (function ($) {
 
         renderAddressView: function () {
 
-            if (!this.model.get('package')) {
+            if (!this.model.get('plan')) {
                 router.navigate('', true);
                 return;
             }
@@ -1130,7 +1183,7 @@ JOBCENTRE.purchase = (function ($) {
 
         renderAddonView: function () {
 
-            if (!this.model.get('package')) {
+            if (!this.model.get('plan')) {
                 router.navigate('', true);
                 return;
             }
@@ -1140,24 +1193,24 @@ JOBCENTRE.purchase = (function ($) {
                 return;
             }
 
-            // All of this complexity to create basePackage is because the user
+            // All of this complexity to create basePlan is because the user
             // could hit the back button after upgrading to addon. In that scenario,
             // we need to reset and offer the upgrade option again.
-            var basePackage = this.model.get('package').addedOnTo ?
-                this.model.get('package').addedOnTo :
-                this.model.get('package');
+            var basePlan = this.model.get('plan').addedOnTo ?
+                this.model.get('plan').addedOnTo :
+                this.model.get('plan');
 
             this.renderPanel(new AddonPanelView({
                 model: {
                     purchase: this.model,
-                    basePackage: basePackage
+                    basePlan: basePlan
                 }
             }));
         },
 
         renderPaymentView: function () {
 
-            if (!this.model.get('package')) {
+            if (!this.model.get('plan')) {
                 router.navigate('', true);
                 return;
             }
@@ -1261,12 +1314,12 @@ JOBCENTRE.purchase = (function ($) {
         className: 'panel panel_plans',
 
         events: {
-            'click [data-package]': 'onPackageClick'
+            'click [data-plan]': 'onPlanClick'
         },
 
-        onPackageClick: function (e) {
+        onPlanClick: function (e) {
             e.preventDefault();
-            if (this.model.trySetPackage($(e.currentTarget).data('package')))
+            if (this.model.trySetPlan($(e.currentTarget).data('plan')))
                 router.navigate('address', true);
         }
 
@@ -1392,7 +1445,7 @@ JOBCENTRE.purchase = (function ($) {
         },
 
         save: function (attrs) {
-            if (this.model.get('package').getAddon())
+            if (this.model.get('plan').getAddon())
                 router.navigate('addon', true);
             else
                 router.navigate('payment', true);
@@ -1431,9 +1484,9 @@ JOBCENTRE.purchase = (function ($) {
         onActionClick: function (e) {
             e.preventDefault();
             if ($(e.currentTarget).data('action') === 'add')
-                this.model.purchase.switchToAddonFrom(this.model.basePackage);
+                this.model.purchase.switchToAddonFrom(this.model.basePlan);
             else
-                this.model.purchase.switchAwayFromAddon(this.model.basePackage.getAddon());
+                this.model.purchase.switchAwayFromAddon(this.model.basePlan.getAddon());
 
             router.navigate('payment', true);
         }
@@ -1456,6 +1509,19 @@ JOBCENTRE.purchase = (function ($) {
 
         initialize: function () {
             this.listenTo(this.model.taxCodes.state, 'change', this.render);
+            this.listenTo(this.model.storedCards.state, 'change', this.render);
+            this.listenTo(this.model.get('creditCard'), 'change:storedCardId', this.onStoredCardIdChange)
+        },
+
+        onStoredCardIdChange: function () {
+            this.$('[data-element=new_creditcard_form]').toggle(!this.model.get('creditCard').get('storedCardId'));
+        },
+
+        isValid: function () {
+            if (this.model.get('creditCard').get('storedCardId'))
+                return true;
+            else
+                return BaseFormView.prototype.isValid.apply(this);
         },
 
         formPreProcess: function (attrs) {
@@ -1484,7 +1550,7 @@ JOBCENTRE.purchase = (function ($) {
 
         save: function () {
             this.showSavingState();
-            this.model.save({
+            this.model.submit({
                 success: _.bind(this.onSaveSuccess, this),
                 error: _.bind(this.onSaveError, this)
             });
@@ -1494,11 +1560,14 @@ JOBCENTRE.purchase = (function ($) {
             if (this.renderState(this.model.taxCodes.state))
                 return this;
 
+            if (this.renderState(this.model.storedCards.state))
+                return this;
+
             this.$el.html(this.template(this.model));
+            this.onStoredCardIdChange();
 
             var that = this;
             setTimeout(function () {
-                // why doens't this work?
                 that.$('input').first().focus();
             }, 100);
 
@@ -1587,8 +1656,8 @@ JOBCENTRE.purchase = (function ($) {
                     })
                     .on('hidden.bs.modal', _.bind(this.tearDown, this));
 
-            if (this.options.packageId)
-                if (this.purchase.trySetPackage(this.options.packageId)) {
+            if (this.options.planId)
+                if (this.purchase.trySetPlan(this.options.planId)) {
                     router.navigate('address');
                     router.address();
                     return;
@@ -1690,7 +1759,7 @@ JOBCENTRE.purchase = (function ($) {
     
 }(jQuery));
 
-JOBCENTRE.ensurePackage = (function ($) {
+JOBCENTRE.ensurePlan = (function ($) {
 
     var SpinnerView = Backbone.View.extend({
 
