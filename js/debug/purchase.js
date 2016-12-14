@@ -152,14 +152,14 @@ JOBCENTRE.purchase = (function ($) {
             this._list = new this.collection();
         },
 
-        getList: function () {
+        getList: function (fresh) {
             if (!this._loaded)
-                this._load();
+                this._load(fresh);
 
             return this._list;
         },
 
-        _load: function () {
+        _load: function (fresh) {
 
             var that = this;
 
@@ -175,7 +175,7 @@ JOBCENTRE.purchase = (function ($) {
                 $.ajax({
                     url: url,
                     dataType: 'json',
-                    cache: true,
+                    cache: !fresh,
                     type: 'GET',
                     success: function (response, textStatus, jqXHR) {
 
@@ -311,7 +311,7 @@ JOBCENTRE.purchase = (function ($) {
             return url.storedcards;
         },
         getStoredCards: function () {
-            return this.getList();
+            return this.getList(true);
         }
     });
 
