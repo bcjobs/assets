@@ -1409,10 +1409,10 @@ body .select2-results .select2-selection-limit {
   font-weight: bold;
   margin-bottom: 15px;
 }
-.sidefeature-subtlelink > a {
+.sidefeature-subtlelink {
   color: #ffffff;
 }
-.sidefeature-highlightlink > a {
+.sidefeature-highlightlink {
   color: #b3d4fc;
 }
 .sidefeature-relatedjobs {
@@ -3910,6 +3910,9 @@ body,
   .search-widget-bctlogo {
     padding: 20px;
   }
+}
+.sidefeature-highlightlink {
+  color: #e64d2a;
 }
 /* FOOTER */
 .footer-wrapper {
