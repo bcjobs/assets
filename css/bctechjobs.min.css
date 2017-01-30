@@ -311,6 +311,11 @@ body .select2-results .select2-no-results,body .select2-results .select2-searchi
 #intercom-container .intercom-sheet-header-close-button{border-left:1px solid #f1f1f1}
 #intercom-container .intercom-sheet-header-title,#intercom-container .intercom-sheet-header-show-generic .intercom-sheet-header-generic-title{color:#fff!important}
 #intercom-container .intercom-conversations-new-conversation-button{background:#00a936!important;background:linear-gradient(to bottom,#1ab54b,#00a936)!important;border:1px solid #01832A!important}
+.sidefeature-wrapper{background-color:#243958;color:#fff;padding:15px}
+.sidefeature-title{font-size:16px;font-weight:bold;margin-bottom:15px}
+.sidefeature-subtlelink{color:#fff}
+.sidefeature-highlightlink{color:#b3d4fc}
+.sidefeature-relatedjobs{font-size:14px}
 .flex_cube_bg{background-color:#f3f3f3}
 @media(max-width:600px){.application-wrapper{padding:0}
 }
@@ -877,6 +882,7 @@ body,.bcjobs-layout-wrapper{background:#f7f7f7}
 .search-widget-bctlogo{background:transparent url(../images/bct_searchlogo.png) 0 0 no-repeat;padding:40px}
 @media(max-width:400px){.search-widget-bctlogo{padding:20px}
 }
+.sidefeature-highlightlink{color:#e64d2a}
 .footer-wrapper{background:#243958;margin-top:15px;position:relative}
 .footer{min-height:140px;border:0}
 @media(max-width:680px){.footer{min-height:160px}
