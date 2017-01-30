@@ -1398,6 +1398,26 @@ body .select2-results .select2-selection-limit {
   background: linear-gradient(to bottom, #1ab54b, #00a936) !important;
   border: 1px solid #01832A !important;
 }
+/* Sidebar Feature */
+.sidefeature-wrapper {
+  background-color: #005ca2;
+  color: #ffffff;
+  padding: 15px;
+}
+.sidefeature-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.sidefeature-subtlelink {
+  color: #ffffff;
+}
+.sidefeature-highlightlink {
+  color: #b3d4fc;
+}
+.sidefeature-relatedjobs {
+  font-size: 14px;
+}
 /* REWRITE EVERYTHING AFTER THIS */
 .flex_cube_bg {
   background-color: #f3f3f3;
