@@ -1595,11 +1595,19 @@ JOBCENTRE.jobSearch = (function ($) {
                 return '_self';
         },
 
+        rel: function () {
+            if (/^http(s)?:\/\//i.test(this.model.get('url')))
+                return 'nofollow';
+            else
+                return null;
+        },
+
         render: function () {
             this.$el
                 .attr({
                     title: this.model.get('title'),
-                    target: this.target()
+                    target: this.target(),
+                    rel: this.rel()
                 })
                 .html(this.template(this.model.toJSON()));
             return this;
