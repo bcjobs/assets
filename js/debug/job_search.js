@@ -1846,7 +1846,7 @@ JOBCENTRE.jobSearch = (function ($) {
                 options.jobs.data, {
                     pagination: _.pick(options.jobs.paging, 'page', 'pageSize', 'total'),
                     search: this.search,
-                    attribution: { value: options.attribution }
+                    attribution: { value: decodeURIComponent(options.attribution) }
                 });
             this.jobs.state.set({ ready: true, error: null });
             this.pageView = new SearchJobsPageView({ search: this.search, enabled: this.enabled, defaultLocation: this.defaultLocation, provinces: this.provinces, jobs: this.jobs, ads: options.ads, jobUrlFormatOverride: options.jobUrlFormatOverride });
