@@ -1607,7 +1607,8 @@ JOBCENTRE.jobSearch = (function ($) {
                 .attr({
                     title: this.model.get('title'),
                     target: this.target(),
-                    rel: this.rel()
+                    rel: this.rel(),
+                    onmousedown: this.model.get('onmousedown')
                 })
                 .html(this.template(this.model.toJSON()));
             return this;
