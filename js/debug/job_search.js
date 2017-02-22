@@ -1926,7 +1926,7 @@ JOBCENTRE.jobSearch = (function ($) {
             
             var script = document.createElement("script");
             script.type = "text/javascript";
-            script.src = "https://maps.googleapis.com/maps/api/js?v=3.10&key=AIzaSyA7GqDK9GlTQJQc-WqPi-HHJ45vAtHgXAI&sensor=false&region=CA&callback=initializeMap";
+            script.src = "https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyA7GqDK9GlTQJQc-WqPi-HHJ45vAtHgXAI&region=CA&callback=initializeMap";
             document.body.appendChild(script);
         }
     }
