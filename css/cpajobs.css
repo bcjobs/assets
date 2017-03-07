@@ -725,6 +725,34 @@ a.tab-item.active:hover {
   max-width: 100%;
   vertical-align: middle;
 }
+.job-info {
+  font-size: 14px;
+  color: #616161;
+}
+.job-info-col {
+  padding: 5px 11px 5px 0;
+}
+.job-info-icon {
+  float: left;
+  margin-right: 10px;
+  width: 20px;
+  text-align: center;
+}
+.job-info-icon img {
+  max-height: 20px;
+  max-width: 20px;
+}
+.job-info-location {
+  float: left;
+}
+.job-info-location {
+  border-left: 1px solid #616161;
+  padding: 0 5px;
+}
+.job-info-location:first-child {
+  border: 0;
+  padding: 0 7px 0 0;
+}
 .user-job-details {
   border-bottom: 2px solid #f3f3f2;
   font-size: 14px;
