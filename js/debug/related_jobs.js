@@ -15,7 +15,7 @@ JOBCENTRE.relatedJobs = (function ($) {
       }
     },
     optimizeRelatedJobs: function(){
-      if(window.optimize !== undefined && window.optimize.relatedJobs === 1){
+      if(true ||window.optimize !== undefined && window.optimize.relatedJobs === 1){
         $(".related-jobs-optimize").show();
         $(".related-jobs-original").hide();
       }

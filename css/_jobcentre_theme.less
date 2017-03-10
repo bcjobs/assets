@@ -1284,9 +1284,11 @@ body .select2-results .select2-no-results, body .select2-results .select2-search
 }
 .sidefeature-subtlelink {
   color: #ffffff;
+  padding-right: 40px;
 }
 .sidefeature-highlightlink {
   color: #b3d4fc;
+  padding-right: 40px;
 }
 .sidefeature-relatedjobs {
   font-size: 14px;
@@ -1295,9 +1297,20 @@ body .select2-results .select2-no-results, body .select2-results .select2-search
   padding-bottom: 10px;
   margin-bottom: 10px;
   border-bottom: 1px solid #0079b8;
+  position: relative;
 }
 .sidefeature-jobitem .job-info-desc {
   color: #ffffff;
+}
+.sidefeature-close {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  display: none;
+  cursor: pointer;
+}
+.sidefeature-jobitem:hover .sidefeature-close {
+  display: block;
 }
 
 /* REWRITE EVERYTHING AFTER THIS */
