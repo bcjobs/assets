@@ -145,6 +145,13 @@ a.tab-item.active:hover{color:#0067B1;cursor:default}
 .logo-place{height:70px;width:70px;line-height:64px;background-color:white}
 .logo-related{height:36px;width:36px;line-height:30px;background-color:white}
 .logo-admin img,.logo-place img,.logo-related img{display:inline-block;max-height:100%;max-width:100%;vertical-align:middle}
+.job-info{font-size:14px;color:#616161}
+.job-info-col{padding:5px 11px 5px 0}
+.job-info-icon{float:left;margin-right:10px;width:20px;text-align:center}
+.job-info-icon img{max-height:20px;max-width:20px}
+.job-info-location{float:left}
+.job-info-location{border-left:1px solid #616161;padding:0 5px}
+.job-info-location:first-child{border:0;padding:0 7px 0 0}
 .user-job-details{border-bottom:2px solid #f3f3f2;font-size:14px}
 .user-job-title{font-size:22px;font-weight:normal}
 .user-job-company{font-size:16px;font-weight:normal}
