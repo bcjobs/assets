@@ -23,10 +23,10 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             fetchResume: restPath + 'resumes/fetch',
 
             // generic
-            countries: restPath + 'countries',
-            provinces: restPath + 'provinces?countryId=:id',
-            memberStatuses: restPath + 'memberstatuses',
-            careerLevels: restPath + 'careerlevels',
+            countries: '/api/v1.0/countries',
+            provinces: '/api/v1.0/provinces?countryId=:id',
+            memberStatuses: '/api/v1.0/memberstatuses',
+            careerLevels: '/api/v1.0/careerlevels',
             locations: restPath + 'locations?pageSize=7&types=town%2Cprovince%2Ccountry',
             skills: restPath + 'skills?pageSize=7'
         };

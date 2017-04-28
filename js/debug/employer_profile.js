@@ -15,8 +15,8 @@ JOBCENTRE.employerProfile = (function ($) {
             fetchImage: restPath + 'files/fetch',
 
             // generic
-            industries: restPath + 'industries',
-            companySizes: restPath + 'companysizes'
+            industries: '/api/v1.0/industries',
+            companySizes: '/api/v1.0/companysizes'
         };
     };
 

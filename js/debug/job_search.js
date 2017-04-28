@@ -9,9 +9,9 @@ JOBCENTRE.jobSearch = (function ($) {
     var url = function (restPath) {
         url = {
             jobs: restPath + 'public/jobs',
-            jobCategories: restPath + 'jobcategories',
-            careerLevels: restPath + 'careerlevels',
-            memberStatuses: restPath + 'memberstatuses',
+            jobCategories: '/api/v1.0/jobcategories',
+            careerLevels: '/api/v1.0/careerlevels',
+            memberStatuses: '/api/v1.0/memberstatuses',
             locations: restPath + 'locations?pageSize=5&types=town%2Cprovince%2Cterritory',
             log: restPath + 'public/jobs/log',
             jobAlerts: restPath + 'jobalerts/fromjobsearch'

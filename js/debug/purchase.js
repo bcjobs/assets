@@ -9,8 +9,8 @@ JOBCENTRE.purchase = (function ($) {
             purchases: restPath + 'purchases',
 
             // generic
-            countries: restPath + 'countries',
-            provinces: restPath + 'provinces?countryId=:id',
+            countries: '/api/v1.0/countries',
+            provinces: '/api/v1.0/provinces?countryId=:id',
             taxcodes: restPath + 'taxcodes',
             storedcards: restPath + 'creditcards'
         };
