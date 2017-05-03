@@ -1755,19 +1755,23 @@ JOBCENTRE.employerProfile = (function ($) {
 
         formPreProcess: function (attrs) {
 
-            if (attrs['industry.ids']) {
+            if (attrs.hasOwnProperty('industry.ids')) {
                 attrs.industries = [];
-                _.each(attrs['industry.ids'], function (id) {
-                    attrs.industries.push({ id: id });
-                });
+                if (attrs['industry.ids'])
+                    _.each(attrs['industry.ids'], function (id) {
+                        attrs.industries.push({ id: id });
+                    });
+
                 delete attrs['industry.ids'];
             }
 
-            if (attrs['companySize.id']) {
+            if (attrs.hasOwnProperty('companySize.id')) {
                 attrs.companySize = null;
-                attrs.companySize = {
-                    id: attrs['companySize.id']
-                };
+                if (attrs['companySize.id'])
+                    attrs.companySize = {
+                        id: attrs['companySize.id']
+                    };
+                
                 delete attrs['companySize.id'];
             }
         },
