@@ -1676,16 +1676,67 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 this.addChildren(
                     new HeadlineView({
                         model: this.model,
-                        requireVerification: this.options.requireVerification,
-                        countries: this.options.countries,
-                        memberStatuses: this.options.memberStatuses,
-                        careerLevels: this.options.careerLevels,
-                        enabled: this.options.enabled
+                        requireVerification: this.options.requireVerification
                     })
                 )
                 .render().el
             );
 
+            this.$el.append(
+                this.addChildren(
+                    new StatusView({
+                        model: this.model,
+                        requireVerification: this.options.requireVerification
+                    })
+                ).render().el
+            );
+
+            this.$el.append(
+                this.addChildren(
+                    new IdentityView({
+                        model: this.model,
+                        countries: this.options.countries
+                    })
+                ).render().el
+            );
+
+            this.$el.append('<hr />');
+
+            if (this.options.enabled.memberStatus)
+                this.$el.append(
+                    this.addChildren(
+                        new MemberStatusView({
+                            model: this.model,
+                            memberStatuses: this.options.memberStatuses
+                        })
+                    ).render().el
+                );
+
+            if (this.options.enabled.careerLevel)
+                this.$el.append(
+                    this.addChildren(
+                        new CareerLevelView({
+                            model: this.model,
+                            careerLevels: this.options.careerLevels
+                        })
+                    ).render().el
+                );
+
+            this.$el.append(
+                this.addChildren(
+                    new PositionTypesWrapperView({
+                        model: this.model
+                    })
+                ).render().el
+            );
+
+            this.$el.append(
+                this.addChildren(
+                    new RelocationsView({
+                        collection: this.model.relocations
+                    })
+                ).render().el
+            );
 
             this.$el.append(
                 this.addChildren(
@@ -1741,48 +1792,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 el: this.$('[data-outlet="publish_cta"]')[0],
                 model: this.model,
                 requireVerification: this.options.requireVerification
-            })).render();
-
-            this.addChildren(new StatusView({
-                el: this.$('[data-outlet="status"]')[0],
-                model: this.model,
-                requireVerification: this.options.requireVerification
-            })).render();
-
-            this.$('[data-outlet="photo"]').append(
-                this.addChildren(new PhotoView({
-                    model: this.model.photo
-                })).render().el
-            );
-
-            this.addChildren(new PersonalInfoView({
-                el: this.$('[data-outlet="personal_info"]')[0],
-                model: this.model,
-                countries: this.options.countries
-            })).render();
-
-            if (this.options.enabled.memberStatus)
-                this.addChildren(new MemberStatusView({
-                    el: this.$('[data-outlet="member_status"]')[0],
-                    model: this.model,
-                    memberStatuses: this.options.memberStatuses
-                })).render();
-
-            if (this.options.enabled.careerLevel)
-                this.addChildren(new CareerLevelView({
-                    el: this.$('[data-outlet="career_level"]')[0],
-                    model: this.model,
-                    careerLevels: this.options.careerLevels
-                })).render();
-
-            this.addChildren(new PositionTypesWrapperView({
-                el: this.$('[data-outlet="position_types_wrapper"]')[0],
-                model: this.model
-            })).render();
-
-            this.addChildren(new RelocationsView({
-                el: this.$('[data-outlet="relocations"]')[0],
-                collection: this.model.relocations
             })).render();
 
             return this;
@@ -1843,9 +1852,13 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     //#endregion
 
+    //#endregion
+
     //#region StatusView
 
     var StatusView = SectionView.extend({
+
+        className: 'editor-status-wrapper',
 
         initialize: function (options) {
             SectionView.prototype.initialize.call(this, options);
@@ -2010,6 +2023,33 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     //#endregion
 
+    //#region IdentityView
+
+    var IdentityView = BaseView.extend({
+
+        template: _.template($('#identity').html()),
+
+        className: 'clearfix flex-mv10 flex-p10',
+
+        render: function () {
+            this.$el.html(this.template());
+
+            this.$('[data-outlet="photo"]').append(
+                this.addChildren(new PhotoView({
+                    model: this.model.photo
+                })).render().el
+            );
+
+            this.addChildren(new PersonalInfoView({
+                el: this.$('[data-outlet="personal_info"]')[0],
+                model: this.model,
+                countries: this.options.countries
+            })).render();
+
+            return this;
+        }
+    });
+
     //#region PersonalInfoView
 
     var PersonalInfoView = SectionView.extend({
@@ -2090,9 +2130,13 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     //#endregion
 
+    //#endregion
+
     //#region MemberStatusView
 
     var MemberStatusView = SectionView.extend({
+
+        className: 'clearfix',
 
         detailsView: function () {
             return new MemberStatusDetailsView({ model: this.model });
@@ -2194,6 +2238,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var CareerLevelView = SectionView.extend({
 
+        className: 'clearfix',
+
         detailsView: function () {
             return new CareerLevelDetailsView({ model: this.model });
         },
@@ -2286,6 +2332,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var PositionTypesWrapperView = BaseView.extend({
 
+        className: 'clearfix',
+
         template: _.template($('#position_types_wrapper').html()),
 
         render: function () {
@@ -2294,7 +2342,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 el: this.$('[data-outlet="position_types"]')[0],
                 model: this.model
             })).render();
-            return;
+            return this;
         }
 
     });
@@ -2336,7 +2384,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
         template: _.template($('#position_types_edit').html()),
 
-        className: 'container-muted flex-p10 flex-mv10 clearfix flex-relative',
+        className: 'container-muted flex-p10 clearfix flex-relative',
 
         onSaveSuccess: function (model, response) {
             this.trigger('render-details');
@@ -2354,8 +2402,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         }
 
     });
-
-    //#endregion
 
     //#endregion
 
@@ -2403,6 +2449,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
     //#region RelocationsView
 
     var RelocationsView = QualificationsView.extend({
+
+        className: 'clearfix',
 
         newModel: function () {
             return new Relocation();
