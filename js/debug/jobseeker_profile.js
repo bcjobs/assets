@@ -1895,7 +1895,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
         template: _.template($('#status_details').html()),
 
-        className: 'flex-relative flex-p10 flex-mv10',
+        className: 'flex-relative flex-p10',
 
         render: function () {
             this.$el.html(this.template(this.model.toJSON()));
@@ -2039,7 +2039,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
         template: _.template($('#identity').html()),
 
-        className: 'clearfix flex-mv10 flex-p10',
+        className: 'clearfix flex-mv10',
 
         render: function () {
             this.$el.html(this.template());
