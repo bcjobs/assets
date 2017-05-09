@@ -1672,35 +1672,39 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
             this.$el.empty();
 
-            this.$el.append(
-                this.addChildren(
-                    new HeadlineView({
-                        model: this.model,
-                        requireVerification: this.options.requireVerification
-                    })
-                )
-                .render().el
-            );
+            if (this.options.enabled.headline)
+                this.$el.append(
+                    this.addChildren(
+                        new HeadlineView({
+                            model: this.model,
+                            requireVerification: this.options.requireVerification
+                        })
+                    )
+                    .render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new StatusView({
-                        model: this.model,
-                        requireVerification: this.options.requireVerification
-                    })
-                ).render().el
-            );
+            if (this.options.enabled.status)
+                this.$el.append(
+                    this.addChildren(
+                        new StatusView({
+                            model: this.model,
+                            requireVerification: this.options.requireVerification
+                        })
+                    ).render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new IdentityView({
-                        model: this.model,
-                        countries: this.options.countries
-                    })
-                ).render().el
-            );
+            if (this.options.enabled.identity) {
+                this.$el.append(
+                    this.addChildren(
+                        new IdentityView({
+                            model: this.model,
+                            countries: this.options.countries
+                        })
+                    ).render().el
+                );
 
-            this.$el.append('<hr />');
+                this.$el.append('<hr />');
+            }
 
             if (this.options.enabled.memberStatus)
                 this.$el.append(
@@ -1722,56 +1726,62 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                     ).render().el
                 );
 
-            this.$el.append(
-                this.addChildren(
-                    new PositionTypesWrapperView({
-                        model: this.model
-                    })
-                ).render().el
-            );
+            if (this.options.enabled.positionTypes)
+                this.$el.append(
+                    this.addChildren(
+                        new PositionTypesWrapperView({
+                            model: this.model
+                        })
+                    ).render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new RelocationsView({
-                        collection: this.model.relocations
-                    })
-                ).render().el
-            );
+            if (this.options.enabled.relocations)
+                this.$el.append(
+                    this.addChildren(
+                        new RelocationsView({
+                            collection: this.model.relocations
+                        })
+                    ).render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new EducationsView({
-                        collection: this.model.educations
-                    })
-                )
-                .render().el
-            );
+            if (this.options.enabled.educations)
+                this.$el.append(
+                    this.addChildren(
+                        new EducationsView({
+                            collection: this.model.educations
+                        })
+                    )
+                    .render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new PositionsView({
-                        collection: this.model.positions
-                    })
-                )
-                .render().el
-            );
+            if (this.options.enabled.positions)
+                this.$el.append(
+                    this.addChildren(
+                        new PositionsView({
+                            collection: this.model.positions
+                        })
+                    )
+                    .render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new SkillsView({
-                        collection: this.model.skills
-                    })
-                )
-                .render().el
-            );
+            if (this.options.enabled.skills)
+                this.$el.append(
+                    this.addChildren(
+                        new SkillsView({
+                            collection: this.model.skills
+                        })
+                    )
+                    .render().el
+                );
 
-            this.$el.append(
-                this.addChildren(
-                    new ResumeView({
-                        model: this.model.resume
-                    })
-                ).render().el
-            );
+            if (this.options.enabled.resume)
+                this.$el.append(
+                    this.addChildren(
+                        new ResumeView({
+                            model: this.model.resume
+                        })
+                    ).render().el
+                );
 
             return this;
         }
