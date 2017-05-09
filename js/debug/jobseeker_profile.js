@@ -1659,7 +1659,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var PageView = BaseView.extend({
 
-        className: 'clearfix',
+        className: 'clearfix flex-relative',
 
         initialize: function (options) {
             this.listenTo(this.model.state, 'change', this.render);
@@ -1672,12 +1672,13 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
             this.$el.empty();
 
-            if (this.options.enabled.headline)
+            if (this.options.enabled.headline_text || this.options.enabled.headline_publish)
                 this.$el.append(
                     this.addChildren(
                         new HeadlineView({
                             model: this.model,
-                            requireVerification: this.options.requireVerification
+                            requireVerification: this.options.requireVerification,
+                            enabled: this.options.enabled
                         })
                     )
                     .render().el
@@ -1791,29 +1792,56 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var HeadlineView = BaseView.extend({
 
-        template: _.template($('#headline').html()),
-
-        className: 'clearfix',
+        className: 'alert alert-info text-center clearfix',
 
         render: function () {
-            this.$el.html(this.template());
+            if (this.options.enabled.headline_text)
+                this.$el.append(
+                    this.addChildren(
+                        new HeadlineTextView()
+                    ).render().el
+                );
 
-            this.addChildren(new PublishCtaView({
-                el: this.$('[data-outlet="publish_cta"]')[0],
-                model: this.model,
-                requireVerification: this.options.requireVerification
-            })).render();
+            if (this.options.enabled.headline_publish)
+                this.$el.append(
+                    this.addChildren(
+                        new HeadlinePublishView({
+                            model: this.model,
+                            requireVerification: this.options.requireVerification,
+                            enabled: this.options.enabled
+                        })
+                    ).render().el
+                );
 
             return this;
         }
 
     });
 
-    //#region PublishCtaView
+    //#region HeadlineTextView
 
-    var PublishCtaView = BaseFormView.extend({
+    var HeadlineTextView = BaseView.extend({
 
-        template: _.template($('#publish_cta').html()),
+        template: _.template($('#headline_text').html()),
+
+        render: function () {
+            this.$el.html(this.template());
+            return this;
+        }
+
+    });
+
+    //#endregion
+
+    //#region HeadlinePublishView
+
+    var HeadlinePublishView = BaseFormView.extend({
+
+        template: _.template($('#headline_publish').html()),
+
+        templateCtaOnPublish: _.template($('#cta_on_publish').html()),
+
+        className: 'editor-cta',
 
         initialize: function () {
             this.listenTo(this.model, 'change:published', this.render);
@@ -1843,21 +1871,33 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
         },
 
-        onPublishedChange: function () {
-            if (this.model.get('published'))
-                this.$el.slideUp();
+        renderPrivate: function () {
+            this.$el.html(this.template({ enabled: this.options.enabled }));
+        },
+
+        renderPublished: function() {
+            this.$el.empty();
+            if (this.options.enabled.cta_on_publish)
+                this.$el.html(this.templateCtaOnPublish());
         },
 
         render: function () {
 
             if (this.model.get('published'))
-                this.$el.hide();
+                this.renderPublished();
             else
-                this.$el.html(this.template(this.model.toJSON())).show();
+                this.renderPrivate();
 
             return this;
         }
 
+    });
+
+    var CtaOnPublishView = BaseView.extend({
+        render: function () {
+
+            return this;
+        }
     });
 
     //#endregion
