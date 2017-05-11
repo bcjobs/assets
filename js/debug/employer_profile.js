@@ -8,7 +8,7 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var url = function(restPath) {
         url = {
-            employers: restPath + 'employers/:id',
+            employers: '/api/v1.0/employers/:id',
 
             images: restPath + 'files',
             formImage: restPath + 'files/form',
