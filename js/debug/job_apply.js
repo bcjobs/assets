@@ -388,7 +388,6 @@ JOBCENTRE.jobApply = (function ($) {
             firstName: '',
             lastName: '',
             email: '',
-            phone: '',
             countryId: '',
             provinceId: '',
             city: '',
@@ -421,14 +420,6 @@ JOBCENTRE.jobApply = (function ($) {
                 },
                 regex: {
                     pattern: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/
-                }
-            },
-            phone: {
-                maxLength: {
-                    max: 20
-                },
-                regex: {
-                    pattern: /^[\d-\.()\+\s]+$/
                 }
             },
             city: {
@@ -1286,9 +1277,6 @@ JOBCENTRE.jobApply = (function ($) {
 
             if (formData.email && !this.options.form.get('email'))
                 attrs.email = formData.email;
-
-            if (formData.phone && !this.options.form.get('phone'))
-                attrs.phone = formData.phone;
 
             this.options.form.set(attrs, { updateForm: true });
         },
