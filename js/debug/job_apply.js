@@ -388,7 +388,6 @@ JOBCENTRE.jobApply = (function ($) {
             firstName: '',
             lastName: '',
             email: '',
-            phone: '',
             countryId: '',
             provinceId: '',
             city: '',
@@ -421,14 +420,6 @@ JOBCENTRE.jobApply = (function ($) {
                 },
                 regex: {
                     pattern: /^[a-zA-Z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/
-                }
-            },
-            phone: {
-                maxLength: {
-                    max: 20
-                },
-                regex: {
-                    pattern: /^[\d-\.()\+\s]+$/
                 }
             },
             city: {
@@ -1017,44 +1008,10 @@ JOBCENTRE.jobApply = (function ($) {
 
         template: _.template($('#call_to_action').html()),
 
-        onSubscribeClick: function (options) {
-            options || (options = {});
-
-            var that = this;
-            var jobAlert = JobAlert.fromApplicationForm(this.options.form, this.options.job);
-            jobAlert.subscribe({
-                success: function () {
-                    if (window.dataLayer)
-                        dataLayer.push({ 'event': 'custom', 'eventCategory': 'App', 'eventAction': 'JobAlertSubscribe', 'eventLabel': 'Source:JobApplication', 'nonInteraction': false });
-
-                    if (options.complete)
-                        options.complete();
-
-                    that.renderSignup(true);
-                },
-                error: function () {
-                    // ignore error, as we don't want to prevent the user from continuing.
-
-                    if (options.complete)
-                        options.complete();
-
-                    that.renderSignup(true);
-                }
-            }); 
-        },
-
-        renderEmail: function () {
-            this.disposeAllChildren();
-            var emailView = this.addChildren(new CAllToActionEmailView());
-            emailView.on('subscribe-click', this.onSubscribeClick, this);
-            this.$('[data-element="cta_message"]').append(emailView.render().el);
-        },
-
-        renderSignup: function (emailPreferenceSaved) {
+        renderSignup: function () {
             this.disposeAllChildren();
             var signupView = this.addChildren(new CallToActionSignupView({
-                form: this.options.form,
-                emailPreferenceSaved: emailPreferenceSaved
+                form: this.options.form
             }));
             this.$('[data-element="cta_message"]').append(signupView.render().el);
         },
@@ -1070,43 +1027,12 @@ JOBCENTRE.jobApply = (function ($) {
 
             if (onApplyCallToAction === 'signup')
                 this.renderSignup(false);
-            else if (onApplyCallToAction === 'email')
-                this.renderEmail();
             else if (onApplyCallToAction === 'publish_profile')
                 this.renderPublishProfile();
 
             return this;
         }
     });
-
-    //#region CAllToActionEmailView
-
-    var CAllToActionEmailView = BaseView.extend({
-
-        className: 'flex-relative',
-
-        template: _.template($('#call_to_action_email').html()),
-
-        events: {
-            'click [data-action=subscribe]': 'onSubscribeClick'
-        },
-
-        onSubscribeClick: function () {
-            this.$('[data-element="overlay"]').show();
-            this.trigger('subscribe-click', { complete: _.bind(this.onSubscribeComplete, this) });
-        },
-
-        onSubscribeComplete: function () {
-            this.$('[data-element="overlay"]').hide();
-        },
-
-        render: function () {
-            this.$el.html(this.template());
-            return this;
-        }
-    });
-
-    //#endregion
 
     //#region CallToActionSignupView
 
@@ -1116,8 +1042,7 @@ JOBCENTRE.jobApply = (function ($) {
 
         render: function () {
             this.$el.html(this.template({
-                form: this.options.form.toJSON(),
-                emailPreferenceSaved: this.options.emailPreferenceSaved
+                form: this.options.form.toJSON()
             }));
             return this;
         }
@@ -1352,9 +1277,6 @@ JOBCENTRE.jobApply = (function ($) {
 
             if (formData.email && !this.options.form.get('email'))
                 attrs.email = formData.email;
-
-            if (formData.phone && !this.options.form.get('phone'))
-                attrs.phone = formData.phone;
 
             this.options.form.set(attrs, { updateForm: true });
         },
