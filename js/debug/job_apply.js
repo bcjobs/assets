@@ -284,11 +284,12 @@ JOBCENTRE.jobApply = (function ($) {
     var Resume = BaseModel.extend({
 
         defaults: {
-            state: 'idle' // '', idle, error, uploading, uploaded
-        },
-
-        initialize: function () {
-            this.restore();
+            state: '', // '', idle, error, uploading, uploaded
+            fileName: '',
+            fileSize: 0,
+            token: null,
+            progress: 0,
+            error: null
         },
 
         restore: function () {
@@ -1633,7 +1634,7 @@ JOBCENTRE.jobApply = (function ($) {
             var pageView = new PageView({
                 application: new Application(),
                 form: new ApplicationForm(options.form),
-                resume: new Resume(),
+                resume: new Resume(options.resume),
                 countries: countryCache.getCountries(),
                 job: options.job
             });
