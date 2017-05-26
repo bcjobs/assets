@@ -1450,6 +1450,30 @@ body .select2-results .select2-selection-limit {
 .sidefeature-jobitem:hover .sidefeature-close {
   display: block;
 }
+/* Sidefeature - white */
+.sidefeature-wrapper--white {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 0;
+}
+.sidefeature-wrapper--white .sidefeature-title {
+  color: #243958;
+}
+.sidefeature-wrapper--white .sidefeature-subtlelink {
+  color: #000000;
+}
+.sidefeature-wrapper--white .sidefeature-highlightlink {
+  color: #7d7d7d;
+  font-size: 12px;
+}
+.sidefeature-wrapper--white .sidefeature-jobitem {
+  border-bottom: 1px solid #eeeeee;
+}
+.sidefeature-wrapper--white .sidefeature-jobitem .job-info-desc {
+  color: #7d7d7d;
+  font-size: 12px;
+  line-height: 20px;
+}
 /* REWRITE EVERYTHING AFTER THIS */
 .flex_cube_bg {
   background-color: #f3f3f3;
