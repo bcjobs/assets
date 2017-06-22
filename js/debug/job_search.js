@@ -14,7 +14,7 @@ JOBCENTRE.jobSearch = (function ($) {
             memberStatuses: '/api/v1.0/memberstatuses',
             locations: restPath + 'locations?pageSize=5&types=town%2Cprovince%2Cterritory',
             log: restPath + 'public/jobs/log',
-            jobAlerts: restPath + 'jobalerts/fromjobsearch'
+            jobAlerts: '/api/v1.0/jobalerts/fromjobsearch'
         }
     };
 

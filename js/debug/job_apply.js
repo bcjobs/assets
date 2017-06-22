@@ -12,7 +12,6 @@ JOBCENTRE.jobApply = (function ($) {
             resumes: restPath + 'resumes',
             formResume: restPath + 'resumes/form',
             fetchResume: restPath + 'resumes/fetch',
-            jobAlerts: restPath + 'jobalerts',
             logResumeError: restPath + 'resumes/logerror',
 
             // generic
@@ -507,79 +506,6 @@ JOBCENTRE.jobApply = (function ($) {
             status: '', // submitting, submitted
             error: false
         }
-    });
-
-    //#endregion
-
-    //#region JobAlert
-    
-    var JobAlert = Backbone.Model.extend({
-
-        defaults: {
-            name: '',
-            email: '',
-            search: '',
-            location: ''
-        },
-
-        subscribe: function (options) {
-            options || (options = {});
-
-            var that = this;
-            $.ajax({
-                url: url.jobAlerts,
-                dataType: 'json',
-                cache: false,
-                type: 'POST',
-                data: JSON.stringify(this.toJSON()),
-                contentType: 'application/json',
-                success: function (response, textStatus, jqXHR) {
-                    that.set(that.parse(response, jqXHR));
-
-                    if (options.success)
-                        options.success(that, response);
-                },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
-                        var response = JSON.parse(jqXHR.responseText);
-
-                        if (options.error) {
-                            options.error(that, [response.message]);
-                            return;
-                        }
-                    }
-
-                    if (options.error)
-                        options.error(that, ['Error connecting to the server.'])
-                }
-            });
-        }
-    }, {
-        fromApplicationForm: function (form, job) {
-
-            var getLocationDescription = function (locations) {
-
-                if (!locations.length)
-                    return 'Canada';
-
-                var location;
-                for (var i = 0; i < locations.length; i++) {
-                    location = locations[i];
-                    if (location.description.indexOf(siteProvinceCode, location.length - siteProvinceCode.length) !== -1)
-                        return location.description + ', Canada';
-                }
-
-                return locations[0].description + ', Canada';
-            };
-
-            return new JobAlert({
-                name: form.get('firstName') + ' ' + form.get('lastName'),
-                email: form.get('email'),
-                search: job.title,
-                location: getLocationDescription(job.locations)
-            });
-        }
-
     });
 
     //#endregion
