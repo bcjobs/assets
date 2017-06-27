@@ -1406,7 +1406,7 @@ body .select2-results .select2-selection-limit {
 }
 #intercom-container .intercom-conversations-new-conversation-button {
   background: #00a936 !important;
-  background: linear-gradient(to bottom, #1ab54b, #00a936) !important;
+  background: linear-gradient(to bottom, #1AB54B, #00a936) !important;
   border: 1px solid #01832A !important;
 }
 /* Sidebar Feature */
@@ -2578,7 +2578,7 @@ a.search-filter-close {
   border: 1px solid #005ca2;
   border-radius: 10px;
   text-align: center;
-  background: url(../images/bg_overlay_lattice_v1.png) repeat #d1e4f1;
+  background: url(../images/bg_overlay_lattice_v1.png) repeat #D1E4F1;
   background-color: #fff;
   line-height: 1.2em;
 }
@@ -2922,7 +2922,7 @@ input[type="file"].upload-input {
   border: 1px solid #bbb;
 }
 .searchbox-icon {
-  background: #ffffff url(../images/icon_magglass_v3.png) right 5px no-repeat;
+  background: #fff url(../images/icon_magglass_v3.png) right 5px no-repeat;
 }
 /* Employer Directory Logos */
 .employer-directory-logo {
