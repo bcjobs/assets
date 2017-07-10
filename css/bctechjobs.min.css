@@ -312,7 +312,7 @@ body .select2-results .select2-no-results,body .select2-results .select2-searchi
 #intercom-container .intercom-sheet-header-minimize-button,#intercom-container .intercom-sheet-header-conversations-button,#intercom-container .intercom-sheet-header-close-button{background-color:#fff;padding:0 10px;margin:0!important}
 #intercom-container .intercom-sheet-header-close-button{border-left:1px solid #f1f1f1}
 #intercom-container .intercom-sheet-header-title,#intercom-container .intercom-sheet-header-show-generic .intercom-sheet-header-generic-title{color:#fff!important}
-#intercom-container .intercom-conversations-new-conversation-button{background:#00a936!important;background:linear-gradient(to bottom,#1ab54b,#00a936)!important;border:1px solid #01832A!important}
+#intercom-container .intercom-conversations-new-conversation-button{background:#00a936!important;background:linear-gradient(to bottom,#1AB54B,#00a936)!important;border:1px solid #01832A!important}
 .sidefeature-wrapper{background-color:#243958;color:#fff;padding:15px}
 .sidefeature-title{font-size:16px;font-weight:bold;margin-bottom:15px}
 .sidefeature-subtlelink{color:#fff;padding-right:40px}
@@ -548,7 +548,7 @@ a.tab-item.active:hover{color:#0067B1;cursor:default}
 .search-filter-close{background:#243958;border-radius:8px;color:#fff!important;display:inline-block;font-size:12px;height:17px;line-height:18px;text-align:center;text-transform:uppercase;vertical-align:1px;width:18px}
 a.search-filter-close,a.search-filter-close{color:#fff}
 .search-filter-close:hover{background-color:#219d15}
-.application-success-wrapper{margin:15px 0 15px 0;padding:15px 40px;border:1px solid #243958;border-radius:10px;text-align:center;background:url(../images/bg_overlay_lattice_v1.png) repeat #d1e4f1;background-color:#fff;line-height:1.2em}
+.application-success-wrapper{margin:15px 0 15px 0;padding:15px 40px;border:1px solid #243958;border-radius:10px;text-align:center;background:url(../images/bg_overlay_lattice_v1.png) repeat #D1E4F1;background-color:#fff;line-height:1.2em}
 .alert-danger-server{display:none}
 .editor-status-wrapper{text-align:center}
 .editor-status-wrapper input[type=radio]{display:block;margin:0 auto 10px auto}
