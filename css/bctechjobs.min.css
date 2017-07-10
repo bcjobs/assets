@@ -322,6 +322,12 @@ body .select2-results .select2-no-results,body .select2-results .select2-searchi
 .sidefeature-jobitem .job-info-desc{color:#fff}
 .sidefeature-close{position:absolute;top:2px;right:2px;display:none;cursor:pointer}
 .sidefeature-jobitem:hover .sidefeature-close{display:block}
+.sidefeature-wrapper--white{background-color:#fff;color:#000;padding:0}
+.sidefeature-wrapper--white .sidefeature-title{color:#243958}
+.sidefeature-wrapper--white .sidefeature-subtlelink{color:#000}
+.sidefeature-wrapper--white .sidefeature-highlightlink{color:#7d7d7d;font-size:12px}
+.sidefeature-wrapper--white .sidefeature-jobitem{border-bottom:1px solid #eee}
+.sidefeature-wrapper--white .sidefeature-jobitem .job-info-desc{color:#7d7d7d;font-size:12px;line-height:20px}
 .flex_cube_bg{background-color:#f3f3f3}
 @media(max-width:600px){.application-wrapper{padding:0}
 }
