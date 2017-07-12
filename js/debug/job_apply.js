@@ -933,25 +933,21 @@ JOBCENTRE.jobApply = (function ($) {
 
     var CallToActionView = BaseView.extend({
 
-        template: _.template($('#call_to_action').html()),
-
         renderSignup: function () {
             this.disposeAllChildren();
             var signupView = this.addChildren(new CallToActionSignupView({
                 form: this.options.form
             }));
-            this.$('[data-element="cta_message"]').append(signupView.render().el);
+            this.$el.append(signupView.render().el);
         },
 
         renderPublishProfile: function () {
             this.disposeAllChildren();
             var publisProfileView = this.addChildren(new CallToActionPublishProfileView());
-            this.$('[data-element="cta_message"]').append(publisProfileView.render().el);
+            this.$el.append(publisProfileView.render().el);
         },
 
         render: function () {
-            this.$el.html(this.template());
-
             if (onApplyCallToAction === 'signup')
                 this.renderSignup(false);
             else if (onApplyCallToAction === 'publish_profile')
@@ -971,6 +967,7 @@ JOBCENTRE.jobApply = (function ($) {
             this.$el.html(this.template({
                 form: this.options.form.toJSON()
             }));
+            this.$('[data-element="signup_modal"]').modal();
             return this;
         }
     });
