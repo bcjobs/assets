@@ -1563,6 +1563,10 @@ JOBCENTRE.jobApply = (function ($) {
             });
             $('[data-outlet="page"]').append(pageView.render().el);
 
+
+            // for debugging only:
+            window.jcform = pageView.options.form;
+            window.jcapplication = pageView.options.application;
         }
     }
     
