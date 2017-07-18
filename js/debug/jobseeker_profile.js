@@ -2770,7 +2770,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         onUndoClick: function () {
-            this.model.set('id', null);
+            this.model.set('id', undefined);
             this.showSavingState();
             this.model.save(this.model.toJSON(), {
                 success: _.bind(this.onUndoSuccess, this),
