@@ -1169,6 +1169,11 @@ input[type="file"].upload-input {
 .modal-basic_body {
   padding: 52px 35px 15px 35px;
 }
+@media (max-width: 767px) {
+  .modal-basic_body {
+    padding: 52px 15px 15px;
+  }
+}
 .modal-basic_title {
   font-weight: bold;
   font-size: 18px;

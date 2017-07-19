@@ -1142,13 +1142,14 @@ input[type="file"].upload-input { display: none; }
 }
 
 // Standard modal going forward
-.modal-basic {
+.modal-basic { 
     hr {
         opacity: 0.5;
     } 
 }
 .modal-basic_body {
     padding: 52px 35px 15px 35px;
+    @media(max-width: @screen-xs-max) { padding: 52px 15px 15px; }
 }
 .modal-basic_title {
     font-weight: bold;
