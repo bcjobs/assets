@@ -2290,9 +2290,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         formPreProcess: function (attrs) {
-            attrs.positionTypes = _.map(attrs.positionTypes.split(','), function (id) {
-                return { id: id };
-            });
+            attrs.positionTypes = attrs.positionTypes ?
+                _.map(attrs.positionTypes.split(','), function (id) {
+                    return { id: id };
+                }) :
+                [];
         },
 
         render: function () {
