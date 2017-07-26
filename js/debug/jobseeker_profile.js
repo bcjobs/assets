@@ -8,11 +8,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var url = function (restPath) {
         url = {
-            jobseekers: restPath + 'jobseekers/:id',
-            relocations: restPath + 'jobseekers/:id/relocations',
-            educations: restPath + 'jobseekers/:id/educations',
-            positions: restPath + 'jobseekers/:id/positions',
-            jobseekerSkills: restPath + 'jobseekers/:id/skills',
+            jobseekers: '/api/v1.0/resumes/:id',
+            relocations: '/api/v1.0/resumes/:id/relocations',
+            educations: '/api/v1.0/resumes/:id/educations',
+            positions: '/api/v1.0/resumes/:id/positions',
+            jobseekerSkills: '/api/v1.0/resumes/:id/skills',
 
             photos: restPath + 'files',
             formPhoto: restPath + 'files/form',
@@ -25,7 +25,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             // generic
             countries: '/api/v1.0/countries',
             provinces: '/api/v1.0/provinces?countryId=:id',
-            memberStatuses: '/api/v1.0/memberstatuses',
             careerLevels: '/api/v1.0/careerlevels',
             locations: restPath + 'locations?pageSize=7&types=town%2Cprovince%2Ccountry',
             skills: restPath + 'skills?pageSize=7'
@@ -258,34 +257,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     //#endregion
 
-    //#region MemberStatus
-
-    var MemberStatus = Backbone.Model.extend({
-    });
-
-    var MemberStatuses = Backbone.Collection.extend({
-        model: MemberStatus,
-
-        initialize: function () {
-            this.state = new State();
-        }
-    });
-
-    var MemberStatusCache = Cache.extend({
-
-        collection: MemberStatuses,
-        listName: 'member status',
-        url: function () {
-            return url.memberStatuses;
-        },
-
-        getMemberStatuses: function () {
-            return this.getList();
-        }
-    });
-
-    //#endregion
-
     //#region CareerLevel
 
     var CareerLevel = Backbone.Model.extend({
@@ -404,7 +375,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         options.success(that, response);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -516,11 +487,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             delete resp.skills;
 
             this.resume.set({
-                url: resp.resumeUrl,
-                fileType: resp.resumeFileType
+                url: resp.fileUrl,
+                fileType: resp.fileType
             });
-            delete resp.resumeUrl;
-            delete resp.resumeFileType;
+            delete resp.fileUrl;
+            delete resp.fileType;
 
             return resp;
         },
@@ -551,7 +522,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
 
-                    var error = jqXHR.status === 400
+                    var error = jqXHR.status >= 400 && jqXHR.status < 500
                                     ? JSON.parse(jqXHR.responseText).message
                                     : 'Error retrieving profile.';
 
@@ -582,8 +553,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                     delete response.educations;
                     delete response.positions;
                     delete response.skills;
-                    delete response.resumeUrl;
-                    delete response.resumeFileType;
+                    delete response.fileUrl;
+                    delete response.fileType;
 
                     that.set(response);
 
@@ -591,7 +562,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         options.success(that, response);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -667,7 +638,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         options.success(that, response);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -703,7 +674,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         options.success(that, response);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -744,7 +715,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         options.success(that, response);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -768,13 +739,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 dataType: 'json',
                 type: 'DELETE',
                 success: function (response, textStatus, jqXHR) {
-                    that.set(response);
-
                     if (options.success)
-                        options.success(that, response);
+                        options.success(that);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -792,19 +761,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var Relocation = Qualification.extend({
 
-        defaults: {
-            location: null
-        },
-
-        isNew: function () {
-            return !this.get('location') || !this.get('location').id;
-        },
-
         url: function () {
             if (this.isNew())
                 return url.relocations.replace(':id', this.collection.jobseeker.id);
             else
-                return url.relocations.replace(':id', this.collection.jobseeker.id) + '/' + this.get('location').id;
+                return url.relocations.replace(':id', this.collection.jobseeker.id) + '/' + this.get('id');
         }
 
     });
@@ -908,21 +869,21 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 url: this.url(),
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    resumeToken: this.file.get('token')
+                    fileToken: this.file.get('token')
                 }),
                 dataType: 'json',
                 type: 'PUT',
                 success: function (response, textStatus, jqXHR) {
                     that.set({
-                        url: response.resumeUrl,
-                        fileType: response.resumeFileType
+                        url: response.fileUrl,
+                        fileType: response.fileType
                     });
 
                     if (options.success)
                         options.success(that, response);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    if (jqXHR.status === 400) {
+                    if (jqXHR.status >= 400 && jqXHR.status < 500) {
                         var response = JSON.parse(jqXHR.responseText);
 
                         if (options.error) {
@@ -1707,16 +1668,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 this.$el.append('<hr />');
             }
 
-            if (this.options.enabled.memberStatus)
-                this.$el.append(
-                    this.addChildren(
-                        new MemberStatusView({
-                            model: this.model,
-                            memberStatuses: this.options.memberStatuses
-                        })
-                    ).render().el
-                );
-
             if (this.options.enabled.careerLevel)
                 this.$el.append(
                     this.addChildren(
@@ -2182,108 +2133,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     //#endregion
 
-    //#region MemberStatusView
-
-    var MemberStatusView = SectionView.extend({
-
-        className: 'clearfix',
-
-        detailsView: function () {
-            return new MemberStatusDetailsView({ model: this.model });
-        },
-
-        editView: function () {
-            return new MemberStatusEditView({
-                model: this.model,
-                memberStatuses: this.options.memberStatuses
-            });
-        }
-
-    });
-
-    //#region MemberStatusDetailsView
-
-    var MemberStatusDetailsView = BaseView.extend({
-
-        template: _.template($('#member_status_details').html()),
-
-        className: 'clearfix',
-
-        render: function () {
-            this.$el.html(this.template({ memberStatus: this.model.get('memberStatus') }));
-            return this;
-        }
-
-    });
-
-    //#endregion
-
-    //#region MemberStatusEditView
-
-    var MemberStatusEditView = BaseFormView.extend({
-
-        template: _.template($('#member_status_edit').html()),
-
-        className: 'container-muted flex-p10 flex-mv10 clearfix flex-relative',
-
-        initialize: function (options) {
-            this.listenTo(options.memberStatuses.state, 'change', this.render);
-        },
-
-        onSaveSuccess: function (model, response) {
-            this.trigger('render-details');
-        },
-
-        formPreProcess: function (attrs) {
-            attrs.memberStatus = {
-                id: attrs['memberStatus.id']
-            };
-            delete attrs['memberStatus.id'];
-        },
-
-        renderMemberStatuses: function () {
-
-            if (this.model.get('memberStatus') && this.model.get('memberStatus').id == 3)
-                throw new Error('PSI student cannot change member status.');
-
-            var that = this,
-                output = [];
-
-            output.push('<option value=""></option>');
-            this.options.memberStatuses.each(function (memberStatus) {
-
-                if (memberStatus.id == 3)
-                    return;
-
-                output.push(String.format(
-                    '<option value="{0}"{1}>{2}</option>',
-                    memberStatus.id,
-                    that.model.get('memberStatus') && that.model.get('memberStatus').id == memberStatus.id ? ' selected="selected"' : '',
-                    memberStatus.get('name')
-                ));
-            });
-            this.$('select[name="memberStatus.id"]').html(output.join('')).change();
-        },
-
-        render: function () {
-
-            if (this.renderState(this.options.memberStatuses.state))
-                return this;
-
-            this.$el.html(this.template({ memberStatus: this.model.get('memberStatus') }));
-
-            this.renderMemberStatuses();
-            this.bindSelect2();
-
-            return this;
-        }
-
-    });
-
-    //#endregion
-
-    //#endregion
-
     //#region CareerLevelView
 
     var CareerLevelView = SectionView.extend({
@@ -2441,9 +2290,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         formPreProcess: function (attrs) {
-            attrs.positionTypes = _.map(attrs.positionTypes.split(','), function (id) {
-                return { id: id };
-            });
+            attrs.positionTypes = attrs.positionTypes ?
+                _.map(attrs.positionTypes.split(','), function (id) {
+                    return { id: id };
+                }) :
+                [];
         },
 
         render: function () {
@@ -2678,7 +2529,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             });
         },
 
-        onDeleteSuccess: function (model, response) {
+        onDeleteSuccess: function (model) {
             this.trigger('render-deleted');
         },
 
@@ -2761,7 +2612,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             });
         },
 
-        onDeleteSuccess: function (model, response) {
+        onDeleteSuccess: function (model) {
             this.trigger('render-deleted');
         },
 
@@ -2787,13 +2638,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
         template: _.template($('#relocation_edit').html()),
 
-        formPreProcess: function (attrs) {
-            attrs.location = {
-                description: attrs['location.description']
-            };
-            delete attrs['location.description'];
-        },
-
         render: function () {
 
             var that = this;
@@ -2801,7 +2645,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             QualificationEditView.prototype.render.call(this);
 
             var execute = function () {
-                that.$('input[name="location.description"]').jsonSuggest({
+                that.$('input[name="description"]').jsonSuggest({
                     url: url.locations,
                     textPropertyName: 'description',
                     minCharacters: 3
@@ -2928,7 +2772,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         onUndoClick: function () {
-            this.model.set('id', null);
+            this.model.set('id', undefined);
             this.showSavingState();
             this.model.save(this.model.toJSON(), {
                 success: _.bind(this.onUndoSuccess, this),
@@ -2956,14 +2800,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var RelocationRemovedView = QualificationRemovedView.extend({
 
-        template: _.template($('#relocation_removed').html()),
-
-        onUndoClick: function () {
-            this.model.set('location', {
-                description: this.model.get('location').description
-            })
-            QualificationRemovedView.prototype.onUndoClick.call(this);
-        }
+        template: _.template($('#relocation_removed').html())
 
     });
 
@@ -3274,13 +3111,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             var jobseeker = new Jobseeker({ id: options.jobseekerId });
             var countryCache = new CountryCache();
             var careerLevelCache = new CareerLevelCache();
-            var memberStatusCache = new MemberStatusCache();
 
             var pageView = new PageView({
                 model: jobseeker,
                 countries: countryCache.getCountries(),
                 careerLevels: careerLevelCache.getCareerLevels(),
-                memberStatuses: memberStatusCache.getMemberStatuses(),
                 requireVerification: options.requireVerification,
                 enabled: options.enabled
             });
