@@ -1,1 +1,0 @@
-(function(a){var b=function(c){if(c){a("[data-related-info]").show()}appInsights.trackEvent("RecommendedJobs",{mainJob:JOBCENTRE.ai.mainJob,recommendedJobs:JOBCENTRE.ai.recommendedJobs,optimized:c})};if(JOBCENTRE.optimize.length===0){JOBCENTRE.optimize={push:b}}else{b(JOBCENTRE.optimize[0])}}(jQuery));
