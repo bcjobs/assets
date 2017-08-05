@@ -1132,10 +1132,8 @@ input[type="file"].upload-input { display: none; }
 }
 .form-text {
     height: 32px;
-    line-height: 32px;
+    line-height: 32px; 
 }
-
-
 
 .pricing-section-resume { display:none; }
 
@@ -1143,6 +1141,30 @@ input[type="file"].upload-input { display: none; }
     @media(max-width:960px){ display:block; }
 }
 
+// Standard modal going forward
+.modal-basic { 
+    hr {
+        opacity: 0.5;
+    } 
+}
+.modal-basic_body {
+    padding: 52px 35px 15px 35px;
+    @media(max-width: @screen-xs-max) { padding: 52px 15px 15px; }
+}
+.modal-basic_title {
+    font-weight: bold;
+    font-size: 18px;
+}
+.modal-basic_close {
+    position: absolute;
+    top: 7px;
+    right: 16px;
+    float: none;
+    z-index: 1;
+}
+.modal-basic_close-icon {
+    font-size: 26px;
+}
 
 /* - end modals */
 

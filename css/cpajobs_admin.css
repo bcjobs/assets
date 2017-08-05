@@ -1204,6 +1204,31 @@ input[type="file"].upload-input {
     display: block;
   }
 }
+.modal-basic hr {
+  opacity: 0.5;
+}
+.modal-basic_body {
+  padding: 52px 35px 15px 35px;
+}
+@media (max-width: 767px) {
+  .modal-basic_body {
+    padding: 52px 15px 15px;
+  }
+}
+.modal-basic_title {
+  font-weight: bold;
+  font-size: 18px;
+}
+.modal-basic_close {
+  position: absolute;
+  top: 7px;
+  right: 16px;
+  float: none;
+  z-index: 1;
+}
+.modal-basic_close-icon {
+  font-size: 26px;
+}
 /* - end modals */
 .overlay {
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
