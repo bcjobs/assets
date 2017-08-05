@@ -235,6 +235,13 @@ input[type="file"].upload-input{display:none}
 .pricing-section-resume{display:none}
 @media(max-width:960px){.pricing-section-post{display:block}
 }
+.modal-basic hr{opacity:.5}
+.modal-basic_body{padding:52px 35px 15px 35px}
+@media(max-width:767px){.modal-basic_body{padding:52px 15px 15px}
+}
+.modal-basic_title{font-weight:bold;font-size:18px}
+.modal-basic_close{position:absolute;top:7px;right:16px;float:none;z-index:1}
+.modal-basic_close-icon{font-size:26px}
 .overlay{-ms-filter:"alpha(opacity=70)";filter:alpha(opacity=70);opacity:.7;top:0;left:0;right:0;bottom:0}
 .overlay-white{background:#fff}
 .overlay-black{background:#000}
