@@ -8,7 +8,7 @@ JOBCENTRE.jobSearchForm = (function ($) {
                 minimumInputLength: 3,
                 allowClear: true,
                 ajax: {
-                    url: options.restPath + 'locations?pageSize=5&types=town%2Cprovince%2Cterritory',
+                    url: '/api/v1.0/locations?pageSize=5&types=town%2Cprovince%2Cterritory',
                     dataType: 'json',
                     data: function (term, page) {
                         return {
@@ -21,7 +21,7 @@ JOBCENTRE.jobSearchForm = (function ($) {
                 },
                 initSelection: function ($element, callback) {
                     $.ajax({
-                        url: options.restPath + 'locations?pageSize=1&types=town%2Cprovince%2Cterritory',
+                        url: '/api/v1.0/locations?pageSize=1&types=town%2Cprovince%2Cterritory',
                         data: { q: $element.val() },
                         dataType: 'json',
                         type: 'GET',

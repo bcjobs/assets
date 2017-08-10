@@ -12,7 +12,7 @@ JOBCENTRE.jobSearch = (function ($) {
             jobCategories: '/api/v1.0/jobcategories',
             careerLevels: '/api/v1.0/careerlevels',
             memberStatuses: '/api/v1.0/memberstatuses',
-            locations: restPath + 'locations?pageSize=5&types=town%2Cprovince%2Cterritory',
+            locations: '/api/v1.0/locations?pageSize=5&types=town%2Cprovince%2Cterritory',
             log: restPath + 'public/jobs/log',
             jobAlerts: '/api/v1.0/jobalerts/fromjobsearch'
         }
@@ -1083,7 +1083,7 @@ JOBCENTRE.jobSearch = (function ($) {
                 },
                 initSelection: function ($element, callback) {
                     $.ajax({
-                        url: restPath + 'locations?pageSize=1&types=town%2Cprovince%2Cterritory',
+                        url: '/api/v1.0/locations?pageSize=1&types=town%2Cprovince%2Cterritory',
                         data: { q: $element.val() },
                         dataType: 'json',
                         type: 'GET',

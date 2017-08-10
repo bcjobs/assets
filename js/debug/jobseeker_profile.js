@@ -26,8 +26,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             countries: '/api/v1.0/countries',
             provinces: '/api/v1.0/provinces?countryId=:id',
             careerLevels: '/api/v1.0/careerlevels',
-            locations: restPath + 'locations?pageSize=7&types=town%2Cprovince%2Ccountry',
-            skills: restPath + 'skills?pageSize=7'
+            locations: '/api/v1.0/locations?pageSize=7&types=town%2Cprovince%2Ccountry',
+            skills: '/api/v1.0/skills?pageSize=7'
         };
     };
 
