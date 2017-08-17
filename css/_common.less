@@ -1405,55 +1405,105 @@ input[type="file"].upload-input { display: none; }
 }
 
 /* Plan & Payment related */
-
-.pricing-container {
-    border: 1px solid #dadada;
-    color: #787878;
-    min-height: 140px;
-    padding: 25px 5px 35px 5px;
-    position: relative;
-    vertical-align: top;
-    width: 170px;
+.user-container .pricing-container {
+    padding: 23px;
+    margin: 0 0.3vw;
+    width: 23vw;
+    max-width: 242px;
+    min-height: 342px;
     @media (max-width: 740px) {
         width: 30%;
         font-size: 14px;
     }
     @media (max-width: 500px) {
-        margin: 0 0 15px 0;
-        width: 48%;
+        margin: 10px auto;
+        width: 95%;
+        max-width: none; 
+        min-height: 0;
     }
 }
-.pricing-container:hover { border: 1px solid @action_color;}
-.pricing-container a, .pricing-container a:link, .pricing-container a:visited {
+.user-container .pricing-price {
+    font-size: 30px;
+    @media (max-width: 740px) {
+        font-size: 25px;
+    }
+}
+.pricing-container {
+    border: 1px solid #EAEAEA;
     color: #787878;
+    min-height: 140px;
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+    position: relative;
+    width: 175px;
+    margin: 0 5px;
+    padding: 19px 5px;
+    @media (max-width: 740px) {
+        width: 30%;
+        font-size: 14px;
+    }
+    @media (max-width: 500px) {
+        margin: 10px auto;
+        width: 93%;
+    }
+    hr {
+        border-top: 1px solid #EAEAEA;
+    }
+    &:after {
+        content: '';
+        background: transparent;
+        position: absolute;
+        top: 0;
+        height: 2px;
+        width: 100%;
+        left: 0;
+        transition: all 0.3s ease;
+    }
+    &:hover {
+        transition: all 0.3s ease;
+        box-shadow: 2px 2px 19px 0px rgba(0,0,0,0.1);
+        &:after {
+            background: @action_color;
+        }
+    }
+}
+.pricing-name {
+    font-size: 16px;
+}
+.pricing-popular {
+    font-size: 13px;
+    color: @action_color;
+}
+.pricing-discount {
+    font-size: 17px;
+    line-height: 0;
+    color: #c1c1c1;
+    text-decoration: line-through;
+    margin-top: 28px;
+}
+.pricing-price {
+    font-size: 25px;
+    color: @action_color;
+    margin-top: 10px;
+}
+.pricing-recurrence {
+    font-size: 13px;
+    color: #999;
     display: block;
-    height: 100%;
-    width: 100%;
 }
-
-.pricing-container span { font-size: 16px; }
-.pricing-container .plan-price {
-    font-size: 28px;
-    font-weight: bold;
-    line-height: 28px;
-}
-
-.pricing-banner {
-    background: #787878;
-    color: #ffffff;
-    font-size: 11px;
-    left: 0;
-    padding: 2px 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-.pricing-button {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-    width: 100%;
+.pricing-desc {
+    font-size: 14px;
+    line-height: 24px;
+    @media (max-width: 740px) {
+        font-size: 12px;
+        line-height: 21px;
+    }
+    ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 .pricing-details, .pricing-details:hover {
