@@ -1190,6 +1190,11 @@ JOBCENTRE.jobApply = (function ($) {
             }
         },
 
+        processResponse: function(response) {
+            this.model.setResume(response.file.token, response.file.name);
+            this.setSource();
+        },
+
         fillForm: function (formData) {
             if (!formData)
                 return;
@@ -1290,8 +1295,7 @@ JOBCENTRE.jobApply = (function ($) {
                 this.model.setError(response.message);
                 return;
             }
-            this.model.setResume(response.token, response.name);
-            this.setSource();
+            this.processResponse(response);
         },
 
         error: function () {
@@ -1334,8 +1338,7 @@ JOBCENTRE.jobApply = (function ($) {
                 }
             }
             if (response.success) {
-                this.model.setResume(response.data.token, response.data.name);
-                this.setSource();
+                this.processResponse(response.data);
             } else {
                 this.model.setError(response.data.message);
             }
@@ -1391,8 +1394,7 @@ JOBCENTRE.jobApply = (function ($) {
         },
 
         success: function (resume, response) {
-            this.model.setResume(response.token, response.name);
-            this.setSource();
+            this.processResponse(response);
         },
 
         error: function (resume, message) {

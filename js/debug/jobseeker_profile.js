@@ -1352,7 +1352,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 this.model.setError(response.message);
                 return;
             }
-            this.model.setFile(response.token, response.name);
+            this.model.setFile(response.file.token, response.file.name);
         },
 
         error: function () {
@@ -1395,7 +1395,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 }
             }
             if (response.success) {
-                this.model.setFile(response.data.token, response.data.name);
+                this.model.setFile(response.data.file.token, response.data.file.name);
             } else {
                 this.model.setError(response.data.message);
             }
@@ -1451,7 +1451,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         success: function (file, response) {
-            this.model.setFile(response.token, response.name);
+            this.model.setFile(response.file.token, response.file.name);
         },
 
         error: function (file, message) {
@@ -1507,7 +1507,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         success: function (file, response) {
-            this.model.setFile(response.token, response.name);
+            this.model.setFile(response.file.token, response.file.name);
         },
 
         error: function (file, message) {
