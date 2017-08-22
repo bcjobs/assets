@@ -1406,49 +1406,32 @@ input[type="file"].upload-input { display: none; }
 
 /* Plan & Payment related */
 .user-container .pricing-container {
-    padding: 23px;
-    margin: 0 0.3vw;
     width: 23vw;
     max-width: 242px;
-    min-height: 342px;
-    @media (max-width: 740px) {
-        width: 30%;
-        font-size: 14px;
-    }
-    @media (max-width: 500px) {
+    @media (max-width: 600px) {
         margin: 10px auto;
         width: 95%;
         max-width: none; 
         min-height: 0;
     }
-}
-.user-container .pricing-price {
-    font-size: 30px;
-    @media (max-width: 740px) {
-        font-size: 25px;
+    @media (min-width: 601px) and (max-width: 768px) {
+        width: 28vw;
     }
 }
 .pricing-container {
+    width: 30%;
     border: 1px solid #EAEAEA;
-    color: #787878;
-    min-height: 140px;
-    position: relative;
-    vertical-align: top;
-    text-align: center;
-    position: relative;
-    width: 175px;
+    color: #616161;
     margin: 0 5px;
-    padding: 19px 5px;
-    @media (max-width: 740px) {
-        width: 30%;
-        font-size: 14px;
-    }
-    @media (max-width: 500px) {
-        margin: 10px auto;
-        width: 93%;
-    }
+    min-height: 318px;
+    padding: 19px 10px;
+    position: relative;
+    position: relative;
+    text-align: center;
+    vertical-align: top;
     hr {
         border-top: 1px solid #EAEAEA;
+        margin-top: 24px;
     }
     &:after {
         content: '';
@@ -1467,13 +1450,21 @@ input[type="file"].upload-input { display: none; }
             background: @action_color;
         }
     }
+    @media (max-width: 600px) {
+        margin: 10px auto;
+        width: 95%;
+        max-width: none; 
+        min-height: 0;
+    }
+    @media (min-width: 601px) and (max-width: 768px) {
+        width: 28vw;
+    }
 }
 .pricing-name {
-    font-size: 16px;
-}
-.pricing-popular {
-    font-size: 13px;
-    color: @action_color;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
 }
 .pricing-discount {
     font-size: 17px;
@@ -1483,35 +1474,33 @@ input[type="file"].upload-input { display: none; }
     margin-top: 28px;
 }
 .pricing-price {
-    font-size: 25px;
+    font-size: 18px;
+    font-weight: bold;
     color: @action_color;
     margin-top: 10px;
 }
 .pricing-recurrence {
     font-size: 13px;
-    color: #999;
-    display: block;
+    letter-spacing: 1px;
 }
 .pricing-desc {
-    font-size: 14px;
-    line-height: 24px;
-    @media (max-width: 740px) {
-        font-size: 12px;
-        line-height: 21px;
-    }
+    font-size: 12px;
+    line-height: 21px;
     ul {
         list-style-type: none;
         padding: 0;
         margin: 0;
     }
 }
-
-.pricing-details, .pricing-details:hover {
-    border: 0;
-    font-size: 13px;
+.pricing-container .btn { 
+    border-radius: 0;
+    @media (min-width: 601px) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 25px;
+    }
 }
-
-.pricing-container .btn { border-radius: 0; }
 
 .pull-none { float: none; }
 

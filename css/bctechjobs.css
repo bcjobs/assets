@@ -3155,19 +3155,10 @@ input[type="file"].upload-input {
 }
 /* Plan & Payment related */
 .user-container .pricing-container {
-  padding: 23px;
-  margin: 0 0.3vw;
   width: 23vw;
   max-width: 242px;
-  min-height: 342px;
 }
-@media (max-width: 740px) {
-  .user-container .pricing-container {
-    width: 30%;
-    font-size: 14px;
-  }
-}
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .user-container .pricing-container {
     margin: 10px auto;
     width: 95%;
@@ -3175,39 +3166,25 @@ input[type="file"].upload-input {
     min-height: 0;
   }
 }
-.user-container .pricing-price {
-  font-size: 30px;
-}
-@media (max-width: 740px) {
-  .user-container .pricing-price {
-    font-size: 25px;
+@media (min-width: 601px) and (max-width: 768px) {
+  .user-container .pricing-container {
+    width: 28vw;
   }
 }
 .pricing-container {
+  width: 30%;
   border: 1px solid #EAEAEA;
-  color: #787878;
-  min-height: 140px;
-  vertical-align: top;
-  text-align: center;
-  position: relative;
-  width: 175px;
+  color: #616161;
   margin: 0 5px;
-  padding: 19px 5px;
-}
-@media (max-width: 740px) {
-  .pricing-container {
-    width: 30%;
-    font-size: 14px;
-  }
-}
-@media (max-width: 500px) {
-  .pricing-container {
-    margin: 10px auto;
-    width: 93%;
-  }
+  min-height: 318px;
+  padding: 19px 10px;
+  position: relative;
+  text-align: center;
+  vertical-align: top;
 }
 .pricing-container hr {
   border-top: 1px solid #EAEAEA;
+  margin-top: 24px;
 }
 .pricing-container:after {
   content: '';
@@ -3226,12 +3203,24 @@ input[type="file"].upload-input {
 .pricing-container:hover:after {
   background: #e64d2a;
 }
-.pricing-name {
-  font-size: 16px;
+@media (max-width: 600px) {
+  .pricing-container {
+    margin: 10px auto;
+    width: 95%;
+    max-width: none;
+    min-height: 0;
+  }
 }
-.pricing-popular {
-  font-size: 13px;
-  color: #e64d2a;
+@media (min-width: 601px) and (max-width: 768px) {
+  .pricing-container {
+    width: 28vw;
+  }
+}
+.pricing-name {
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
 }
 .pricing-discount {
   font-size: 17px;
@@ -3241,37 +3230,34 @@ input[type="file"].upload-input {
   margin-top: 28px;
 }
 .pricing-price {
-  font-size: 25px;
+  font-size: 18px;
+  font-weight: bold;
   color: #e64d2a;
   margin-top: 10px;
 }
 .pricing-recurrence {
   font-size: 13px;
-  color: #999;
-  display: block;
+  letter-spacing: 1px;
 }
 .pricing-desc {
-  font-size: 14px;
-  line-height: 24px;
-}
-@media (max-width: 740px) {
-  .pricing-desc {
-    font-size: 12px;
-    line-height: 21px;
-  }
+  font-size: 12px;
+  line-height: 21px;
 }
 .pricing-desc ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-.pricing-details,
-.pricing-details:hover {
-  border: 0;
-  font-size: 13px;
-}
 .pricing-container .btn {
   border-radius: 0;
+}
+@media (min-width: 601px) {
+  .pricing-container .btn {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+  }
 }
 .pull-none {
   float: none;
