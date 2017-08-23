@@ -1478,7 +1478,7 @@ input[type="file"].upload-input {
   width: 30%;
   border: 1px solid #EAEAEA;
   color: #616161;
-  margin: 0 5px;
+  margin: 25px 5px 0 5px;
   min-height: 318px;
   padding: 19px 10px;
   position: relative;
@@ -1518,6 +1518,9 @@ input[type="file"].upload-input {
   .pricing-container {
     width: 28vw;
   }
+}
+.pricing-container-cpa {
+  min-height: 0;
 }
 .pricing-name {
   font-size: 14px;
@@ -1561,6 +1564,13 @@ input[type="file"].upload-input {
     transform: translateX(-50%);
     bottom: 25px;
   }
+}
+.pricing-container-cpa .btn {
+  position: relative;
+  left: 0;
+  transform: none;
+  bottom: 0;
+  margin-top: 25px;
 }
 .pull-none {
   float: none;
