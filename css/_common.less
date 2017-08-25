@@ -1,9 +1,40 @@
 ﻿/* Button Styles */
 .btn {
     color: #fff;
+    font-size: 13px;
+    letter-spacing: 0.34px;
+    text-transform: uppercase;
+    font-weight: 500;
     border: 0;
-    border-radius: 0;
-    padding: 5px 10px;
+    border-radius: 5px;
+    padding: 11px 20px;
+    transition: all 0.3s ease;
+    outline: none !important;
+    box-shadow: none !important;
+}
+.btn .glyphicon {
+    font-size: 10px;
+    margin: 0 7px 0 0;
+    top: 0px;
+    transition: all 0.5s ease;
+}
+.btn:hover .glyphicon {
+    transform: scale(1.15);
+}
+
+.btn-hollow {
+    border: 1px solid #fff;
+    color: #fff;
+    &:focus,
+    &:link,
+    &:visited {
+        border: 1px solid #fff;
+        color: #fff;
+    }
+    &:hover,
+    &:active {
+        opacity: 0.7;
+    }
 }
 
 .btn-default, .btn-default:link, .btn-default:visited, .btn-default:focus {
@@ -13,7 +44,7 @@
 }
 
 .btn-default:hover, .btn-default:active {
-    background: @action_color;
+    background: lighten(@action_color, 3%);
     color: #fff;
 }
 
@@ -22,7 +53,7 @@
     color: #fff;
 }
 .btn-primary:hover, .btn-primary:active {
-    background-color: @action_secondary;
+    background-color: lighten(@action_secondary, 3%);
     color: #fff;
 }
 
@@ -31,7 +62,7 @@
     color: #fff;
 }
 .btn-info:hover, .btn-info:active {
-    background-color: @primary_color;
+    background-color: lighten(@primary_color, 3%);
     color: #fff;
 }
 
@@ -1668,6 +1699,7 @@ ul.list-group { margin: 0; }
 /* padding-top */
 .flex-pt20 { padding-top: 20px; }
 .flex-pt30 { padding-top: 30px; }
+.flex-pt43 { padding-top: 43px; }
 /* padding-left */
 .flex-pl0 { padding-left: 0; }
 .flex-pl20 { padding-left: 20px; }
@@ -1679,6 +1711,7 @@ ul.list-group { margin: 0; }
 .flex-pv15 { padding-top: 15px; padding-bottom: 15px; }
 .flex-pv25 { padding-top: 25px; padding-bottom: 25px; }
 .flex-pv40 { padding-top: 40px; padding-bottom: 40px; }
+.flex-pv75 { padding-top: 75px; padding-bottom: 75px; }
 .flex-pv60 { padding-top: 60px; padding-bottom: 60px; }
 .flex-pv100 { padding-top: 100px; padding-bottom: 100px; }
 /* padding-horizontal */
@@ -1703,7 +1736,7 @@ ul.list-group { margin: 0; }
 .max-width-100 img, img.max-width-100 { max-width: 100%; }
 
 
-.flex-relative { position: relative;}
+.flex-relative { position: relative; margin-top: 53px; @media(max-width: @screen-xs-max){ padding: 0; margin-top: 0;} }
 .flex-clear { clear: both; }
 
 .flex-nobullet, .bulletless { list-style-type: none; }

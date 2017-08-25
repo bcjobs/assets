@@ -302,7 +302,7 @@ html[dir="rtl"] .select2-search input {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
-    background-color: #eee;
+    background-color: #fff;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(0.5, #eee));
     background-image: -webkit-linear-gradient(center bottom, #fff 0%, #eee 50%);
     background-image: -moz-linear-gradient(center bottom, #fff 0%, #eee 50%);

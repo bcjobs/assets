@@ -2,9 +2,39 @@
 /* Button Styles */
 .btn {
   color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.34px;
+  text-transform: uppercase;
+  font-weight: 500;
   border: 0;
-  border-radius: 0;
-  padding: 5px 10px;
+  border-radius: 5px;
+  padding: 11px 20px;
+  transition: all 0.3s ease;
+  outline: none !important;
+  box-shadow: none !important;
+}
+.btn .glyphicon {
+  font-size: 10px;
+  margin: 0 7px 0 0;
+  top: 0px;
+  transition: all 0.5s ease;
+}
+.btn:hover .glyphicon {
+  transform: scale(1.15);
+}
+.btn-hollow {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.btn-hollow:focus,
+.btn-hollow:link,
+.btn-hollow:visited {
+  border: 1px solid #fff;
+  color: #fff;
+}
+.btn-hollow:hover,
+.btn-hollow:active {
+  opacity: 0.7;
 }
 .btn-default,
 .btn-default:link,
@@ -16,7 +46,7 @@
 }
 .btn-default:hover,
 .btn-default:active {
-  background: #006fba;
+  background: #0078c9;
   color: #fff;
 }
 .btn-primary,
@@ -28,7 +58,7 @@
 }
 .btn-primary:hover,
 .btn-primary:active {
-  background-color: #43b02a;
+  background-color: #48bc2d;
   color: #fff;
 }
 .btn-info,
@@ -40,7 +70,7 @@
 }
 .btn-info:hover,
 .btn-info:active {
-  background-color: #006fba;
+  background-color: #0078c9;
   color: #fff;
 }
 .btn-danger,
@@ -1821,6 +1851,9 @@ a.a-block {
 .flex-pt30 {
   padding-top: 30px;
 }
+.flex-pt43 {
+  padding-top: 43px;
+}
 /* padding-left */
 .flex-pl0 {
   padding-left: 0;
@@ -1850,6 +1883,10 @@ a.a-block {
 .flex-pv40 {
   padding-top: 40px;
   padding-bottom: 40px;
+}
+.flex-pv75 {
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 .flex-pv60 {
   padding-top: 60px;
@@ -1894,6 +1931,13 @@ img.max-width-100 {
 }
 .flex-relative {
   position: relative;
+  margin-top: 53px;
+}
+@media (max-width: 767px) {
+  .flex-relative {
+    padding: 0;
+    margin-top: 0;
+  }
 }
 .flex-clear {
   clear: both;
@@ -3510,10 +3554,17 @@ body .select2-expand .select2-choices {
 /* Jobseeker Dash */
 .dash-search-wrapper {
   position: relative;
+  margin-top: 53px;
   margin: 0;
   padding: 15px;
   padding-right: 30px;
   padding-left: 30px;
+}
+@media (max-width: 767px) {
+  .dash-search-wrapper {
+    padding: 0;
+    margin-top: 0;
+  }
 }
 .dash-search-title {
   color: #006fba;
