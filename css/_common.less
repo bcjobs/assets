@@ -142,6 +142,7 @@
 
 .flex-minheight100 { min-height: 100px; }
 .flex-minheight200 { min-height: 200px; }
+.flex-minheight0 { min-height: 0; }
 
 /* Tags */
 
@@ -1406,22 +1407,18 @@ input[type="file"].upload-input { display: none; }
 
 /* Plan & Payment related */
 .user-container .pricing-container {
-    width: 23vw;
     max-width: 242px;
     @media (max-width: 600px) {
         margin: 10px auto;
-        width: 95%;
+        width: 95%; 
         max-width: none; 
         min-height: 0;
     }
-    @media (min-width: 601px) and (max-width: 768px) {
-        width: 28vw;
-    }
 }
 .pricing-container {
-    width: 30%;
+    width: calc(~"33.333% - 30px");
     border: 1px solid #EAEAEA;
-    color: #616161;
+    color: #616161; 
     margin: 25px 5px 0 5px;
     min-height: 318px;
     padding: 19px 10px;
@@ -1457,11 +1454,8 @@ input[type="file"].upload-input { display: none; }
         min-height: 0;
     }
     @media (min-width: 601px) and (max-width: 768px) {
-        width: 28vw;
+        width: calc(~"33.333% - 30px");
     }
-}
-.pricing-container-cpa {
-    min-height: 0;
 }
 .pricing-name {
     font-size: 14px;
@@ -1503,13 +1497,6 @@ input[type="file"].upload-input { display: none; }
         transform: translateX(-50%);
         bottom: 25px;
     }
-}
-.pricing-container-cpa .btn {
-    position: relative;
-    left: 0;
-    transform: none;
-    bottom: 0;
-    margin-top: 25px;
 }
 
 .pull-none { float: none; }
@@ -1709,6 +1696,12 @@ ul.list-group { margin: 0; }
 .flex-ph15 { padding-right: 15px; padding-left: 15px; }
 .flex-ph30 { padding-right: 30px; padding-left: 30px; }
 
+.flex-relative {
+    position: relative;
+    left: 0;
+    transform: none;
+    bottom: 0;
+}
 .overlay-low-black {
     background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
     background: rgba(0,0,0,0.5);

@@ -213,6 +213,9 @@
 .flex-minheight200 {
   min-height: 200px;
 }
+.flex-minheight0 {
+  min-height: 0;
+}
 /* Tags */
 .tag {
   float: left;
@@ -1458,7 +1461,6 @@ input[type="file"].upload-input {
 }
 /* Plan & Payment related */
 .user-container .pricing-container {
-  width: 23vw;
   max-width: 242px;
 }
 @media (max-width: 600px) {
@@ -1469,13 +1471,8 @@ input[type="file"].upload-input {
     min-height: 0;
   }
 }
-@media (min-width: 601px) and (max-width: 768px) {
-  .user-container .pricing-container {
-    width: 28vw;
-  }
-}
 .pricing-container {
-  width: 30%;
+  width: calc(33.333% - 30px);
   border: 1px solid #EAEAEA;
   color: #616161;
   margin: 25px 5px 0 5px;
@@ -1516,11 +1513,8 @@ input[type="file"].upload-input {
 }
 @media (min-width: 601px) and (max-width: 768px) {
   .pricing-container {
-    width: 28vw;
+    width: calc(33.333% - 30px);
   }
-}
-.pricing-container-cpa {
-  min-height: 0;
 }
 .pricing-name {
   font-size: 14px;
@@ -1564,13 +1558,6 @@ input[type="file"].upload-input {
     transform: translateX(-50%);
     bottom: 25px;
   }
-}
-.pricing-container-cpa .btn {
-  position: relative;
-  left: 0;
-  transform: none;
-  bottom: 0;
-  margin-top: 25px;
 }
 .pull-none {
   float: none;
@@ -1940,6 +1927,12 @@ a.a-block {
 .flex-ph30 {
   padding-right: 30px;
   padding-left: 30px;
+}
+.flex-relative {
+  position: relative;
+  left: 0;
+  transform: none;
+  bottom: 0;
 }
 .overlay-low-black {
   background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
