@@ -1911,7 +1911,7 @@ body .select2-results .select2-selection-limit {
   min-height: 200px;
 }
 .flex-minheight0 {
-  min-height: 0;
+  min-height: 0  !important;
 }
 /* Tags */
 .tag {
@@ -3626,10 +3626,10 @@ a.a-block {
   padding-left: 30px;
 }
 .flex-notransform {
-  position: relative;
-  left: 0;
-  transform: none;
-  bottom: 0;
+  bottom: 0 !important;
+  left: 0 !important;
+  position: relative !important;
+  transform: none !important;
 }
 .overlay-low-black {
   background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
