@@ -1093,14 +1093,24 @@ body .select2-container .select2-choice{
 }
 
 body .select2-container .select2-choice div{
-    border-radius:0;
+    border-radius:0; 
 }
 
 body .select2-results .select2-no-results, body .select2-results .select2-searching, body .select2-results .select2-selection-limit{
-    padding:5px;
-    background:#0082e3;
-    text-align:center;
-    color:#fff;
+    padding: 0;
+    background: none;
+    font-weight: 500;
+    font-size: 11px;
+    color: @action_color; 
+}
+
+.select2-results .select2-no-results {
+
+}
+.select2-search input {
+    background: grey;
+    background-image: none;
+    border: 0;
 }
 
 .range-dropdown .select2-search, .freshness-dropdown .select2-search {
