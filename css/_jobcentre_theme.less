@@ -29,7 +29,7 @@ textarea {
 body {
     font-family: @default_font;
     font-size: 13px;
-    line-height: 2.4; 
+    line-height: 24px; 
     letter-spacing: 0.24px;  
     color: @default_text;
     position: relative;
@@ -85,8 +85,8 @@ textarea { resize: vertical; }
    Author's custom styles
    ========================================================================== */
 
-  a:link, a:visited { color:#0067B1; text-decoration:none; outline: 0; }
-  a:hover, a:active { color:#000; outline: 0; }
+  a:link, a:visited { color:#0268B4; text-decoration:none; outline: 0; transition: all 0.3s ease; }
+  a:hover, a:active { color:lighten(#0268B4, 3%); outline: 0; }
   a:focus { outline: 0; }
 
 
@@ -189,7 +189,7 @@ body .select2-container.error .select2-choice {
 
 .login-link {
     position: relative;
-    z-index: 1000;
+    z-index: 20000;
 }
 
 .login-panel-wrapper{
@@ -276,7 +276,7 @@ body .select2-container.error .select2-choice {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 99;
+    z-index: 10000;
     @media(max-width: @screen-xs-max){ position: relative; height: auto;}
 }
 
@@ -504,11 +504,12 @@ a.header-action:link, a.header-action:visited {
 
 
 .flair-title {
-    color: @primary_color;
-    font-size: 30px;
-    line-height: 100px;
-    position: relative;
-    z-index: 5;
+    color: @default_text;
+    font-family: @heading_font;
+    letter-spacing: 0.31px;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
     @media(max-width: @screen-xs-max){
         font-size: 20px;
         line-height: 50px;
@@ -539,10 +540,8 @@ a.header-action:link, a.header-action:visited {
 }
 
 .bkg-quotes {
-    background: #005ca2 url(../images/splash-quote.jpg) no-repeat 0 center;
-    background-size: 100%;
-    @media(max-width: 1300px){ background-size: auto 100%;}
-    @media(max-width: @screen-xs-max){ background-image: none; }
+    background: #005ca2 url(../images/splash-quote.jpg) no-repeat center center;
+    background-size: cover;
 }
 .bkg-callout {
     background: #005ca2 url(../images/splash-callout.jpg) no-repeat 0 center;
@@ -569,12 +568,14 @@ a.header-action:link, a.header-action:visited {
     @media(max-width: 1400px){ display: none; }
 }
 .muted-title {
-    border-bottom: 1px solid #dfdfdf;
-    color: #616161;
-    font-weight: bold;
-    margin-bottom: 15px;
-    padding-bottom: 15px;
-    width: 100%;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    color: @default_text;
+    letter-spacing: 0.8px;
+    border-bottom: 1px solid #E3E3E3;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
 }
 .form-base.employer {
     background: url(../images/splash-employer.jpg) no-repeat center center fixed;
@@ -751,9 +752,9 @@ a.header-action:link, a.header-action:visited {
         margin-top: 10px;
     }
 }
-
-
-
+.bct-homebtn {
+    margin-top: -5px;
+}
 
 /* --------------------- */
 /*   DASHBOARD STYLES    */
