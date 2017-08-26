@@ -1887,7 +1887,7 @@ a.a-block {
   padding-right: 30px;
   padding-left: 30px;
 }
-.flex-relative {
+.flex-notransform {
   position: relative;
   left: 0;
   transform: none;
@@ -3518,9 +3518,6 @@ body .select2-expand .select2-choices {
 }
 /* Jobseeker Dash */
 .dash-search-wrapper {
-  left: 0;
-  transform: none;
-  bottom: 0;
   position: relative;
   margin: 0;
   padding: 15px;
