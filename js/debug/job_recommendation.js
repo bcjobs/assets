@@ -1,15 +1,20 @@
 (function ($) {
-    var click = function(jobid, recommender){
+    var click = function(jobId, recommender){
       if(!JOBCENTRE.capabilities.localStorage)
           return;
 
-      var click = {'jobId': parseInt(jobid), 'recommender': recommender, 'timestamp': new Date().toISOString()};
+      var click = {'jobId': parseInt(jobId), 'recommender': recommender, 'timestamp': new Date().toISOString()};
 
       var clickArray = JSON.parse(window.localStorage.getItem('recommendationInfo'));
       if(clickArray == null)
           clickArray = [];
 
-      clickArray.push(click);
+      var clickIndex = clickArray.map(function(e){return e.jobId;}).indexOf(parseInt(jobId));
+      if(clickIndex == -1)
+        clickArray.push(click);
+      else
+        clickArray[clickIndex] = click;
+
       window.localStorage.setItem('recommendationInfo', JSON.stringify(clickArray));
     };
 
