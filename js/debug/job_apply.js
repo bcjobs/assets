@@ -1192,6 +1192,7 @@ JOBCENTRE.jobApply = (function ($) {
 
         processResponse: function(response) {
             this.model.setResume(response.file.token, response.file.name);
+            this.fillForm(response.form);
             this.setSource();
         },
 
