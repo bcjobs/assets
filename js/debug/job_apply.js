@@ -470,6 +470,9 @@ JOBCENTRE.jobApply = (function ($) {
 
                     if (options.success)
                         options.success(that, response);
+
+                    if (JOBCENTRE.jobRecommendation && JOBCENTRE.jobRecommendation.apply)
+                        JOBCENTRE.jobRecommendation.apply(that.get('jobId'));
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     if (jqXHR.status === 400) {

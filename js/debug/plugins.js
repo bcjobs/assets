@@ -129,6 +129,16 @@ JOBCENTRE.capabilities = {
             return false;
         }
     }()),
+    sessionStorage: (function () {
+        // source: Modernizr
+        try {
+            sessionStorage.setItem('foo', 'foo');
+            sessionStorage.removeItem('foo');
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }()),
     oninput: (function () {
 
         // a more robust plugin for this...but lots of hack in it.
@@ -238,7 +248,7 @@ JOBCENTRE.alertFloater = {
                     $('.alert-floater-wrapper').removeClass('active');
                 }, options.duration);
             }
-            
+
         };
         this.show(options);
     },
