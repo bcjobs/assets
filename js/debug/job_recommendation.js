@@ -3,10 +3,9 @@
         if(!JOBCENTRE.capabilities.localStorage)
             return;
 
-        var clicks = {};
         try {
             jobId += '';
-            clicks = JSON.parse(localStorage.getItem('recommendationInfo'));
+            var clicks = JSON.parse(localStorage.getItem('recommendationInfo'));
             if(clicks == null)
                 clicks = {};
 
@@ -29,10 +28,9 @@
         if(!JOBCENTRE.capabilities.localStorage || !localStorage.getItem('recommendationInfo'))
             return;
 
-        var clicks;
         try {
             jobId += '';
-            clicks = JSON.parse(localStorage.getItem('recommendationInfo'));
+            var clicks = JSON.parse(localStorage.getItem('recommendationInfo'));
 
             var click = clicks[jobId];
             // return if the jobEvent has already happened or if more than 24h have passed
