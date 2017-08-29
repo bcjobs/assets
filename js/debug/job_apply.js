@@ -1290,12 +1290,17 @@ JOBCENTRE.jobApply = (function ($) {
         },
 
         load: function (e) {
-            var response = JSON.parse(e.target.responseText);
-            if (e.target.status !== 200) {
-                this.model.setError(response.message);
-                return;
+            // it's possible that the response isn't json
+            try {
+                var response = JSON.parse(e.target.responseText);
+                if (e.target.status !== 200) {
+                    this.model.setError(response.message);
+                    return;
+                }
+                this.processResponse(response);
+            } catch (ex) {
+                this.model.setError('Upload failed.');
             }
-            this.processResponse(response);
         },
 
         error: function () {
