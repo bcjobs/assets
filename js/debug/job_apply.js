@@ -697,13 +697,27 @@ JOBCENTRE.jobApply = (function ($) {
         },
 
         mapToModel: function () {
-
-            var that = this;
-
             var attrs = {};
             var serialized = this.$('form').serializeArray();
-            for (var i = 0, l = serialized.length; i < l; i++)
+            for (var i = 0, l = serialized.length; i < l; i++) {
+
+                // this bit of code is complicated.
+                // if provinces are being fetched, any provinceId that was set on the model hasn't had the chance to get reflected
+                // in our drop-down and so the value is '', so do not map that back.
+                if (serialized[i].name === 'provinceId') {
+                    var countryId = this.$('select[name=countryId]').val();
+                    if (countryId) {
+                        var country = this.options.countries.get(countryId);
+                        if (country) {
+                            var provinces = country.provinceCache.getProvinces();
+                            if (!provinces.state.get('ready'))
+                                continue;
+                        }
+                    }
+                }
+
                 attrs[serialized[i].name] = serialized[i].value;
+            }
 
             this.formPreProcess(attrs);
             this.model.set(attrs);
@@ -742,7 +756,6 @@ JOBCENTRE.jobApply = (function ($) {
         },
 
         onCountryChange: function () {
-
             var countryId = this.$('select[name=countryId]').val();
 
             if (countryId) {
@@ -1202,16 +1215,38 @@ JOBCENTRE.jobApply = (function ($) {
 
             var attrs = {};
 
-            if (formData.firstName && !this.options.form.get('firstName'))
-                attrs.firstName = formData.firstName;
+            this.fillFormField(attrs, formData, 'firstName');
+            this.fillFormField(attrs, formData, 'lastName');
+            this.fillFormField(attrs, formData, 'email');
+            this.fillFormField(attrs, formData, 'city');
 
-            if (formData.lastName && !this.options.form.get('lastName'))
-                attrs.lastName = formData.lastName;
-
-            if (formData.email && !this.options.form.get('email'))
-                attrs.email = formData.email;
+            this.fillFormFieldObject(attrs, formData, 'countryId', ['country', 'id']);
+            this.fillFormFieldObject(attrs, formData, 'provinceId', ['province', 'id']);
 
             this.options.form.set(attrs, { updateForm: true });
+        },
+
+        fillFormField: function(attrs, formData, name) {
+            if (formData[name] && !this.options.form.get(name))
+                attrs[name] = formData[name];
+        },
+
+        fillFormFieldObject: function (attrs, formData, name, formPaths) {
+            if (this.options.form.get(name))
+                return;
+
+            attrs[name] = this.findValue(formData, formPaths);
+        },
+
+        findValue: function(obj, paths) {
+            var path = paths.shift();
+            if (!path)
+                return obj;
+
+            if (!obj[path])
+                return null;
+
+            return this.findValue(obj[path], paths);
         },
 
         setSource: function () {
@@ -1517,20 +1552,23 @@ JOBCENTRE.jobApply = (function ($) {
                 return;
 
             var that = this;
+            var selectHasChanged = false;
 
             // filtering out input elements without name attribute because Select2 creates input elements without name attribute.
             this.$('input[name],select[name]').each(function () {
                 var attr = $(this).attr('name');
                 if ($(this).val() != that.model.get(attr)) {
                     $(this).val(that.model.get(attr));
-
-                    if ($(this).attr('name') === 'countryId')
-                        that.onCountryChange();
-
+                    
                     if (this.tagName === 'SELECT')
-                        that.$('select[name]').trigger('change');
+                        selectHasChanged = true;
                 }
             });
+
+            // this is required for select2 to grab element value (which is hidden)
+            // and reflect it in its own dropdown rendering
+            if (selectHasChanged)
+                this.$('select[name]').trigger('change');
         },
 
         render: function () {
