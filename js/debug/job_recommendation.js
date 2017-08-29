@@ -1,54 +1,52 @@
 (function ($) {
     var click = function(jobId, recommender){
-      if(!JOBCENTRE.capabilities.localStorage)
-          return;
+        if(!JOBCENTRE.capabilities.localStorage)
+            return;
 
-      var click = {'jobId': parseInt(jobId), 'recommender': recommender, 'timestamp': new Date().toISOString()};
+        var clicks = {};
+        try {
+            clicks = JSON.parse(localStorage.getItem('recommendationInfo'));
+        } catch (e) {
+            // Continue if it fails
+        }
 
-      var clickArray = JSON.parse(window.localStorage.getItem('recommendationInfo'));
-      if(clickArray == null)
-          clickArray = [];
+        if(clicks == null)
+            clicks = {};
 
-      var clickIndex = clickArray.map(function(e){return e.jobId;}).indexOf(parseInt(jobId));
-      if(clickIndex == -1)
-        clickArray.push(click);
-      else
-        clickArray[clickIndex] = click;
-
-      window.localStorage.setItem('recommendationInfo', JSON.stringify(clickArray));
+        clicks[jobId] = {'recommender': recommender, 'timestamp': new Date().getTime()};
+        localStorage.setItem('recommendationInfo', JSON.stringify(clicks));
     };
 
     var view = function(jobId){
-      addEvent(jobId, "View");
+        addEvent(jobId, "View");
     };
 
     var apply = function(jobId){
-      addEvent(jobId, "Apply");
+        addEvent(jobId, "Apply");
     };
 
     var addEvent = function(jobId, jobEvent){
-      if(!JOBCENTRE.capabilities.localStorage)
-          return;
+        if(!JOBCENTRE.capabilities.localStorage || !localStorage.getItem('recommendationInfo'))
+            return;
 
-      var clickArray = JSON.parse(window.localStorage.getItem('recommendationInfo'));
-      if(clickArray == null)
-          return;
+        var clicks;
+        try {
+            clicks = JSON.parse(localStorage.getItem('recommendationInfo'));
+        } catch (e) {
+            return;
+        }
 
-      // Only find index if jobEvent hasn't happened previously
-      var clickIndex = clickArray.map(function(e){return e.jobId;}).indexOf(parseInt(jobId));
+        var click = clicks[jobId];
+        // return if the jobEvent has already happened or if more than 24h have passed
+        if (!click || !click.timestamp || !click.recommender || click[jobEvent] || (new Date().getTime() - click.timestamp) / (1000 * 60 * 60) > 24)
+            return;
 
-      // return if the jobEvent has already happened or if more than 24h have passed
-      if(clickIndex == -1 || clickArray[clickIndex][jobEvent] !== undefined || hoursBetweenDates(new Date(clickArray[clickIndex].timestamp), new Date()) > 24)
-          return;
+        click[jobEvent] = true;
+        click.timestamp = new Date().getTime();
 
-      clickArray[clickIndex][jobEvent] = true;
-      clickArray[clickIndex].timestamp = new Date().toISOString();
-      window.localStorage.setItem('recommendationInfo', JSON.stringify(clickArray));
-      appInsights.trackEvent('JobseekerRecommendedJob' + jobEvent, {'jobId': clickArray[clickIndex].jobId, 'recommender': clickArray[clickIndex].recommender});
-    };
-
-    var hoursBetweenDates = function(d1, d2){
-      return Math.abs(d1.getTime() - d2.getTime()) / (1000 * 60 * 60);
+        clicks[jobId] = click;
+        localStorage.setItem('recommendationInfo', JSON.stringify(clicks));
+        appInsights.trackEvent('JobseekerRecommendedJob' + jobEvent, {'jobId': jobId, 'recommender': click.recommender});
     };
 
     JOBCENTRE.jobRecommendation = {click:click, view:view, apply:apply};
