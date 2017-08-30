@@ -1489,15 +1489,6 @@ input[type="file"].upload-input { display: none; }
         margin: 0;
     }
 }
-.pricing-container .btn { 
-    border-radius: 0;
-    @media (min-width: 601px) {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        bottom: 25px;
-    }
-}
 
 .pull-none { float: none; }
 
@@ -1696,11 +1687,13 @@ ul.list-group { margin: 0; }
 .flex-ph15 { padding-right: 15px; padding-left: 15px; }
 .flex-ph30 { padding-right: 30px; padding-left: 30px; }
 
-.flex-notransform {
-    bottom: 0 !important;
-    left: 0 !important;
-    position: relative !important;
-    transform: none !important;
+.sm-flex-th50 {
+    @media (min-width: 601px) {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 25px;
+    }
 }
 .overlay-low-black {
     background: transparent url(../images/black-overlay.png) 0 0 no-repeat;

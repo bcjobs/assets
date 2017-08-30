@@ -1548,17 +1548,6 @@ input[type="file"].upload-input {
   padding: 0;
   margin: 0;
 }
-.pricing-container .btn {
-  border-radius: 0;
-}
-@media (min-width: 601px) {
-  .pricing-container .btn {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 25px;
-  }
-}
 .pull-none {
   float: none;
 }
@@ -1928,11 +1917,13 @@ a.a-block {
   padding-right: 30px;
   padding-left: 30px;
 }
-.flex-notransform {
-  bottom: 0 !important;
-  left: 0 !important;
-  position: relative !important;
-  transform: none !important;
+@media (min-width: 601px) {
+  .sm-flex-th50 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 25px;
+  }
 }
 .overlay-low-black {
   background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
