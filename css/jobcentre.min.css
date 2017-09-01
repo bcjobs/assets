@@ -690,9 +690,6 @@ input[type="file"].upload-input{display:none}
 .pricing-recurrence{font-size:13px;letter-spacing:1px}
 .pricing-desc{font-size:12px;line-height:21px}
 .pricing-desc ul{list-style-type:none;padding:0;margin:0}
-.pricing-container .btn{border-radius:0}
-@media(min-width:601px){.pricing-container .btn{position:absolute;left:50%;transform:translateX(-50%);bottom:25px}
-}
 .pull-none{float:none}
 .job-favourite{color:#54b948;font-size:24px;vertical-align:middle}
 .flex-title{color:#005ca2;font-size:1.6em;margin-bottom:15px}
@@ -793,7 +790,8 @@ ul.list-group{margin:0}
 .flex-ph10{padding-right:10px;padding-left:10px}
 .flex-ph15{padding-right:15px;padding-left:15px}
 .flex-ph30{padding-right:30px;padding-left:30px}
-.flex-notransform{bottom:0!important;left:0!important;position:relative!important;transform:none!important}
+@media(min-width:601px){.sm-flex-th50{position:absolute;left:50%;transform:translateX(-50%);bottom:25px}
+}
 .overlay-low-black{background:transparent url(../images/black-overlay.png) 0 0 no-repeat;background:rgba(0,0,0,0.5)}
 .max-width-100 img,img.max-width-100{max-width:100%}
 .flex-relative{position:relative}
