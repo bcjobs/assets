@@ -1228,12 +1228,10 @@ JOBCENTRE.jobApply = (function ($) {
             this.fillFormField(attrs, formData, 'lastName');
             this.fillFormField(attrs, formData, 'email');
             this.fillFormField(attrs, formData, 'city');
+            this.fillFormField(attrs, formData, 'phone');
 
             this.fillFormFieldObject(attrs, formData, 'countryId', ['country', 'id']);
             this.fillFormFieldObject(attrs, formData, 'provinceId', ['province', 'id']);
-
-            if (formData.phone && !this.options.form.get('phone'))
-                attrs.phone = formData.phone;
 
             this.options.form.set(attrs, { updateForm: true });
         },
