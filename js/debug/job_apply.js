@@ -1114,7 +1114,9 @@ JOBCENTRE.jobApply = (function ($) {
             this.renderUploadButton();
 
             this.$('[data-outlet="file_uploaders"]')
-                .append(this.addChildren(new DropboxUploadView({ model: this.model, form: this.options.form })).render().el);
+                .append(this.addChildren(new DropboxUploadView({ model: this.model, form: this.options.form })).render().el)
+                .append(this.addChildren(new GoogleDriveUploadView({ model: this.model, form: this.options.form })).render().el)
+            ;
 
             this.onStateChange(this.model, this.model.get('state'));
         },
@@ -1466,6 +1468,105 @@ JOBCENTRE.jobApply = (function ($) {
                     id: 'dropboxjs',
                     'data-app-key': dropboxAppKey
                 }
+            );
+
+            return this;
+        }
+
+    });
+
+    //#endregion
+
+    //#region GoogleDriveUploadView
+
+    var GoogleDriveUploadView = UploadView.extend({
+
+        source: 'GoogleDrive',
+
+        template: _.template($('#googledrive_upload').html()),
+
+        events: {
+            'click a': 'onClick'
+        },
+
+        onClick: function (e) {
+            e.preventDefault();
+            window.gapi.load('auth', { callback: _.bind(this.onAuthorize, this) });
+        },
+
+        onAuthorize: function() {
+            window.gapi.auth.authorize(
+            {
+                client_id: '427447998534-e40j5s0ub0b6l8d1h8cs3cshgmj8eshr.apps.googleusercontent.com', // OAuth 2.0 Client ID (APIs & Services > Credentials) // TODO: replace
+                scope: ['https://www.googleapis.com/auth/drive.readonly']
+            },
+            _.bind(this.onAuthorized, this));
+        },
+
+        onAuthorized: function (result) {
+            if (!result || result.error)
+                return;
+
+            this.accessToken = result.access_token;
+            window.gapi.load('picker', { callback: _.bind(this.onPickerLoad, this) });
+        },
+
+        onPickerLoad: function () {
+            var view = new google.picker.View(google.picker.ViewId.DOCS);
+            //view.setMimeTypes("image/png,image/jpeg,image/jpg");  // TODO
+            var picker = new google.picker.PickerBuilder()
+                .enableFeature(google.picker.Feature.NAV_HIDDEN)
+                .setAppId('427447998534') // project number (IAM & Admin > Settings) // TODO: replace
+                .setOAuthToken(this.accessToken)
+                .addView(view)
+                .setDeveloperKey('AIzaSyAX0Cg7K6KTDujNVSHFWYTTE6LTBaZYDeE') // API Key (APIs & Services > Credentials)  // TODO: replace https://console.cloud.google.com/apis/credentials/key/79?project=api-project-427447998534
+                .setCallback(_.bind(this.onPickerAction, this))
+                .build();
+            picker.setVisible(true);
+        },
+
+        onPickerAction: function (data) {
+            if (data.action !== google.picker.Action.PICKED)
+                return;
+
+            var doc = data.docs[0];
+            this.model.setUploading();
+            this.model.set({ fileName: doc.name });
+            this.model.setFileSize(doc.sizeBytes);
+            this.model.fetch('Google Drive', String.format('https://www.googleapis.com/drive/v3/files/{0}?alt=media', doc.id), this.accessToken, {
+                success: _.bind(this.success, this),
+                error: _.bind(this.error, this)
+            });
+
+            // TODO: 
+            // Resumes.cfc and TempRepositoryService needs to be enhanced to support extensionless files
+            // for fetch to work.
+            // 
+            // Pop ups seem to get blocked in Chrome when clicking the Google Drive button. Test in dump.cfm in jobcentre/google-drive branch (temp Google Drive code is there).
+
+            // Google API Console: https://console.cloud.google.com (go to APIs and Services)
+
+            // debug:
+            console.log('doc', doc);
+        },
+
+        success: function (resume, response) {
+            this.processResponse(response);
+        },
+
+        error: function (resume, message) {
+            this.model.setError(message);
+        },
+
+        onScriptLoaded: function () {
+            this.$el.html(this.template(this.model));
+        },
+
+        render: function () {
+
+            JOBCENTRE.lazyLoad.js(
+                'https://apis.google.com/js/api.js',
+                _.bind(this.onScriptLoaded, this)
             );
 
             return this;
