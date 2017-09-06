@@ -1,6 +1,6 @@
 (function ($) {
     var click = function(jobId, recommender){
-        if(!JOBCENTRE.capabilities.localStorage)
+        if(!JOBCENTRE.capabilities.localStorage || recommender === "")
             return;
 
         try {
@@ -9,7 +9,7 @@
             if(clicks == null)
                 clicks = {};
 
-            clicks[jobId] = {'recommender': recommender, 'timestamp': new Date().getTime()};
+            clicks[jobId] = {'recommender': recommender, 'timestamp': new Date().getTime(), 'page': window.location.pathname};
             localStorage.setItem('recommendationInfo', JSON.stringify(clicks));
         } catch (e) {
             // Continue if it fails
@@ -42,7 +42,7 @@
 
             clicks[jobId] = click;
             localStorage.setItem('recommendationInfo', JSON.stringify(clicks));
-            appInsights.trackEvent('JobseekerRecommendedJob' + jobEvent, {'jobId': jobId, 'recommender': click.recommender});
+            appInsights.trackEvent('JobseekerRecommendedJob' + jobEvent, {'jobId': jobId, 'recommender': click.recommender, 'page': click.page});
         } catch (e) {
             return;
         }
