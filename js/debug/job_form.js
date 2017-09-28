@@ -840,7 +840,7 @@ JOBCENTRE.jobForm = (function ($) {
                     that.$('input[name=location' + i + ']').each(function () {
                         var element = this;
                         $(this).jsonSuggest({
-                            url: '/api/v1.0/locations?pageSize=7',
+                            url: '/api/v1.1/locations?pageSize=7',
                             textPropertyName: 'description',
                             minCharacters: 3,
                             onSelect: function () {

@@ -8,15 +8,15 @@ JOBCENTRE.employerProfile = (function ($) {
 
     var url = function(restPath) {
         url = {
-            employers: '/api/v1.0/employers/:id',
+            employers: '/api/v1.1/employers/:id',
 
             images: restPath + 'files',
             formImage: restPath + 'files/form',
             fetchImage: restPath + 'files/fetch',
 
             // generic
-            industries: '/api/v1.0/industries',
-            companySizes: '/api/v1.0/companysizes'
+            industries: '/api/v1.1/industries',
+            companySizes: '/api/v1.1/companysizes'
         };
     };
 
