@@ -148,7 +148,7 @@ JOBCENTRE.renderProvinceNames = function(){
             if (pair.ajax)
                 pair.ajax.abort();
             pair.ajax = $.ajax({
-                url: '/api/v1.0/provinces?countryId=' + $(this).val(),
+                url: '/api/v1.1/provinces?countryId=' + $(this).val(),
                 dataType: 'json',
                 type: 'GET',
                 success: function (provinces, textStatus, jqXHR) {

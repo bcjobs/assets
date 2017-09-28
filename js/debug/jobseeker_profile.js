@@ -8,11 +8,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var url = function (restPath) {
         url = {
-            jobseekers: '/api/v1.0/resumes/:id',
-            relocations: '/api/v1.0/resumes/:id/relocations',
-            educations: '/api/v1.0/resumes/:id/educations',
-            positions: '/api/v1.0/resumes/:id/positions',
-            jobseekerSkills: '/api/v1.0/resumes/:id/skills',
+            jobseekers: '/api/v1.1/resumes/:id',
+            relocations: '/api/v1.1/resumes/:id/relocations',
+            educations: '/api/v1.1/resumes/:id/educations',
+            positions: '/api/v1.1/resumes/:id/positions',
+            jobseekerSkills: '/api/v1.1/resumes/:id/skills',
 
             photos: restPath + 'files',
             formPhoto: restPath + 'files/form',
@@ -23,11 +23,11 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             fetchResume: restPath + 'resumes/fetch',
 
             // generic
-            countries: '/api/v1.0/countries',
-            provinces: '/api/v1.0/provinces?countryId=:id',
-            careerLevels: '/api/v1.0/careerlevels',
-            locations: '/api/v1.0/locations?pageSize=7&types=town%2Cprovince%2Ccountry',
-            skills: '/api/v1.0/skills?pageSize=7'
+            countries: '/api/v1.1/countries',
+            provinces: '/api/v1.1/provinces?countryId=:id',
+            careerLevels: '/api/v1.1/careerlevels',
+            locations: '/api/v1.1/locations?pageSize=7&types=town%2Cprovince%2Ccountry',
+            skills: '/api/v1.1/skills?pageSize=7'
         };
     };
 

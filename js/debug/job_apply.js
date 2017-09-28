@@ -15,8 +15,8 @@ JOBCENTRE.jobApply = (function ($) {
             logResumeError: restPath + 'resumes/logerror',
 
             // generic
-            countries: '/api/v1.0/countries',
-            provinces: '/api/v1.0/provinces?countryId=:id'
+            countries: '/api/v1.1/countries',
+            provinces: '/api/v1.1/provinces?countryId=:id'
         };
     };
 
