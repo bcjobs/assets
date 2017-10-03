@@ -8,6 +8,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     var url = function (restPath) {
         url = {
+            linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
+
             jobseekers: '/api/v1.1/resumes/:id',
             relocations: '/api/v1.1/resumes/:id/relocations',
             educations: '/api/v1.1/resumes/:id/educations',
@@ -406,6 +408,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             return url.fetchPhoto;
         },
         includeDropbox: true,
+        includeLinkedIn: false,
         includeWeb: true
     });
 
@@ -423,6 +426,7 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             return url.fetchResume;
         },
         includeDropbox: true,
+        includeLinkedIn: true,
         includeWeb: false
     });
 
@@ -1480,6 +1484,76 @@ JOBCENTRE.jobseekerProfile = (function ($) {
     });
 
     //#endregion
+
+    //#region LinkedInUploadView
+ 
+     var LinkedInUploadView = UploadView.extend({
+ 
+         source: 'LinkedIn',
+ 
+         template: _.template($('#linkedin_upload').html()),
+ 
+         events: {
+             'click a': 'onClick'
+         },
+ 
+         onClick: function (e) {
+             e.preventDefault();
+ 
+             var that = this;
+             var callback = 'linkedInAuthorizationCallback' + new Date().getTime();
+             window[callback] = function (json) {
+ 
+                 var response = JSON.parse(json);
+ 
+                 try {
+                     delete window[callback]; // IE throws an exception
+                 } catch (e) {
+                     window[callback] = undefined;
+                 }
+ 
+                 // response:
+                 // {
+                 //     sucess: true,
+                 //     data: {token:'',name:''}
+                 // };
+                 // OR
+                 // {
+                 //     sucess: false,
+                 //     error: 'Error message.'
+                 // };
+ 
+                 if (response.success)
+                     that.success(response.data);
+                 else
+                     that.error(response.error);
+             };
+ 
+             window.open(
+                 url.linkedInAuthorization
+                     .replace(':callback', callback),
+                 new Date().getTime(),
+                 'height=600,width=800,resizable=yes,scrollbars=yes,toolbar=no,menubar=no'
+             );
+ 
+         },
+ 
+         success: function (response) {
+             this.model.setFile(response.file.token, response.file.name);
+         },
+ 
+         error: function (message) {
+             this.model.setError(message);
+         },
+ 
+         render: function () {
+             this.$el.html(this.template(this.model));
+             return this;
+         }
+ 
+     });
+ 
+     //#endregion
 
     //#region WebUploadView
 
@@ -2860,6 +2934,9 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
             if (this.model.file.includeDropbox)
                 this.$('[data-outlet="file_uploaders"]').append(this.addChildren(new DropboxUploadView({ model: this.model.file })).render().el);
+
+            if (this.model.file.includeLinkedIn)
+                this.$('[data-outlet="file_uploaders"]').append(this.addChildren(new LinkedInUploadView({ model: this.model.file })).render().el);
 
             if (this.model.file.includeWeb)
                 this.$('[data-outlet="file_uploaders"]').append(this.addChildren(new WebUploadView({ model: this.model.file })).render().el);
