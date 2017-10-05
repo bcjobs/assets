@@ -8,6 +8,8 @@ JOBCENTRE.jobApply = (function ($) {
 
     var url = function (restPath) {
         url = {
+            linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
+
             applications: restPath + 'jobapplications',
             resumes: restPath + 'resumes',
             formResume: restPath + 'resumes/form',
@@ -1114,7 +1116,8 @@ JOBCENTRE.jobApply = (function ($) {
             this.renderUploadButton();
 
             this.$('[data-outlet="file_uploaders"]')
-                .append(this.addChildren(new DropboxUploadView({ model: this.model, form: this.options.form })).render().el);
+                .append(this.addChildren(new DropboxUploadView({ model: this.model, form: this.options.form })).render().el)
+                .append(this.addChildren(new LinkedInUploadView({ model: this.model, form: this.options.form })).render().el);
 
             this.onStateChange(this.model, this.model.get('state'));
         },
@@ -1468,6 +1471,76 @@ JOBCENTRE.jobApply = (function ($) {
                 }
             );
 
+            return this;
+        }
+
+    });
+
+    //#endregion
+
+    //#region LinkedInUploadView
+
+    var LinkedInUploadView = UploadView.extend({
+
+        source: 'LinkedIn',
+
+        template: _.template($('#linkedin_upload').html()),
+
+        events: {
+            'click a': 'onClick'
+        },
+
+        onClick: function (e) {
+            e.preventDefault();
+
+            var that = this;
+            var callback = 'linkedInAuthorizationCallback' + new Date().getTime();
+            window[callback] = function (json) {
+
+                var response = JSON.parse(json);
+
+                try {
+                    delete window[callback]; // IE throws an exception
+                } catch (e) {
+                    window[callback] = undefined;
+                }
+
+                // response:
+                // {
+                //     sucess: true,
+                //     data: {token:'',name:''}
+                // };
+                // OR
+                // {
+                //     sucess: false,
+                //     error: 'Error message.'
+                // };
+
+                if (response.success)
+                    that.success(response.data);
+                else
+                    that.error(response.error);
+            };
+
+            window.open(
+                url.linkedInAuthorization
+                    .replace(':callback', callback),
+                new Date().getTime(),
+                'height=600,width=800,resizable=yes,scrollbars=yes,toolbar=no,menubar=no'
+            );
+
+        },
+
+        success: function (response) {
+            this.processResponse(response);
+        },
+
+        error: function (message) {
+            this.model.setError(message);
+        },
+
+        render: function () {
+            this.$el.html(this.template(this.model));
             return this;
         }
 
