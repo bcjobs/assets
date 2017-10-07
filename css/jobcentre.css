@@ -494,6 +494,7 @@ a.header-action:visited {
   letter-spacing: 1px;
   margin-bottom: 0;
   opacity: 0.69;
+  text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
 }
 /* Landing pages */
 .search-widget-base {
@@ -539,6 +540,7 @@ a.header-action:visited {
   text-transform: uppercase;
   letter-spacing: 1.5px;
   line-height: 1.5;
+  text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
 }
 @media (max-width: 767px) {
   .search-widget-title {
@@ -563,8 +565,9 @@ a.header-action:visited {
   line-height: 1.9;
   color: #fff;
   opacity: 0.68;
+  text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
 }
-.search-widget-tagline-large {
+.search-widget-lgtagline {
   font-family: 'Lato', sans-serif;
   font-size: 23px;
   font-weight: 300;
@@ -573,7 +576,7 @@ a.header-action:visited {
   color: #fff;
 }
 @media (max-width: 767px) {
-  .search-widget-tagline-large {
+  .search-widget-lgtagline {
     font-size: 19px;
     line-height: 31px;
   }
@@ -598,6 +601,17 @@ a.header-action:visited {
 @media (max-width: 767px) {
   .cta-title {
     font-size: 25px;
+  }
+}
+.flair-container {
+  max-width: 745px;
+  margin: 76px auto;
+  text-align: center;
+}
+@media (max-width: 767px) {
+  .flair-container {
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
 .flair-title {
@@ -2377,6 +2391,22 @@ a.list-item-wrapper:hover {
 /* Quotes */
 .quote-outer {
   height: 100%;
+  width: 940px;
+  margin: 60px auto 0 auto;
+  position: relative;
+  display: table;
+}
+@media (max-width: 1024px) {
+  .quote-outer {
+    width: 95%;
+  }
+}
+@media (max-width: 767px) {
+  .quote-outer {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 22px;
+  }
 }
 .quote-container {
   width: 33.333%;
@@ -2455,6 +2485,7 @@ a.list-item-wrapper:hover {
 }
 .quote-image-sm {
   width: 33.333%;
+  display: table-cell;
 }
 @media (max-width: 767px) {
   .quote-image {
@@ -2690,6 +2721,10 @@ a.tab-item.active:hover {
 }
 .refine-search-results:hover .refine-search-results-arrow {
   border-color: transparent #fff transparent transparent;
+}
+.content-container {
+  margin-top: 53px;
+  position: relative;
 }
 .ad-sidebar-widget {
   float: right;

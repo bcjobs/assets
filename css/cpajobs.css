@@ -418,6 +418,22 @@ a.list-item-wrapper:hover {
 /* Quotes */
 .quote-outer {
   height: 100%;
+  width: 940px;
+  margin: 60px auto 0 auto;
+  position: relative;
+  display: table;
+}
+@media (max-width: 1024px) {
+  .quote-outer {
+    width: 95%;
+  }
+}
+@media (max-width: 767px) {
+  .quote-outer {
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 22px;
+  }
 }
 .quote-container {
   width: 33.333%;
@@ -496,6 +512,7 @@ a.list-item-wrapper:hover {
 }
 .quote-image-sm {
   width: 33.333%;
+  display: table-cell;
 }
 @media (max-width: 767px) {
   .quote-image {
@@ -731,6 +748,10 @@ a.tab-item.active:hover {
 }
 .refine-search-results:hover .refine-search-results-arrow {
   border-color: transparent #fff transparent transparent;
+}
+.content-container {
+  margin-top: 53px;
+  position: relative;
 }
 .ad-sidebar-widget {
   float: right;

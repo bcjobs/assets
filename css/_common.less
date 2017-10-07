@@ -393,6 +393,17 @@ a.list-item-wrapper:hover {
 /* Quotes */
 .quote-outer {
     height: 100%;
+    width: 940px;
+    margin: 60px auto 0 auto;
+    position:relative;
+    display: table;
+    @media (max-width: 1024px) {
+        width: 95%;
+    }
+    @media(max-width: @screen-xs-max) {
+        margin-top: 5px;
+        font-size: 12px; line-height: 22px;
+    }
 }
 .quote-container {
     width: 33.333%;
@@ -460,6 +471,7 @@ a.list-item-wrapper:hover {
     box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.12);
     &-sm {
         width: 33.333%;
+        display: table-cell;
     }
     @media(max-width: @screen-xs-max) {
         width: 53px;
@@ -694,7 +706,10 @@ a.tab-item.active:hover{
     border-color: transparent #fff transparent transparent;
 }
 
-
+.content-container {
+    margin-top: 53px;
+    position: relative;
+}
 
 .ad-sidebar-widget{
     float: right;
@@ -1699,7 +1714,7 @@ select.form-selectlist {
 .footer-social {
     display: inline-block;
     padding-right: 5px;
-    opacity: 0.3;
+    opacity: 0.3;   
 }
 .footer-social-facebook img { height: 15px; }
 .footer-social-twitter img { height: 17px; }
