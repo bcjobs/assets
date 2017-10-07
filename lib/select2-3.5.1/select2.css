@@ -143,28 +143,23 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
     position: absolute;
     z-index: 9999;
     top: 100%;
-
     background: #fff;
     color: #414141;
     border-top: 0;
-
     border-radius: 0 0 4px 4px;
     font-size: 13px;
     letter-spacing: 0.34px;
-    font-family: 'Open Sans', sans-serif;
     -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
-            box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
 }
 
 .select2-drop.select2-drop-above {
     margin-top: 1px;
     border-top: 1px solid #aaa;
     border-bottom: 0;
-
     border-radius: 4px 4px 0 0;
-
     -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
-            box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+    box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
 }
 
 .select2-drop-active {

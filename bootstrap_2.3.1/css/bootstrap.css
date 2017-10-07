@@ -225,9 +225,9 @@ body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
-  line-height: 2.4;
+  line-height: 2.4px;
   letter-spacing: 0.24;  
-  color: #414141;
+  color: @primary_color;
   background-color: #ffffff;
 }
 
