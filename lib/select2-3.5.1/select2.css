@@ -230,7 +230,7 @@ html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
     padding-left: 4px;
     padding-right: 4px;
 
-    position: relative;
+    position: relative; 
     z-index: 10000;
 
     white-space: nowrap;
@@ -240,9 +240,6 @@ html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
     width: 100%;
     padding: 4px 20px 4px 5px;
     margin: 0;
-    font-size: 13px;
-    letter-spacing: 0.34px;
-    font-family: 'Open Sans', sans-serif;
     outline: 0;
     border-radius: 0;
     -webkit-box-shadow: none;
