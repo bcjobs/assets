@@ -3183,6 +3183,9 @@ a.flex_button.flex_button_light:hover {
 .alert-floater-wrapper {
   width: 960px;
 }
+.alert-wrapper.alert-floater-wrapper {
+  max-width: 100%;
+}
 .content {
   position: relative;
   /*z-index:6;*/
@@ -3195,6 +3198,9 @@ textarea {
 }
 .header {
   position: relative;
+}
+.header-menu-item-wrapper {
+  margin-top: 25px;
 }
 .header_login_show_anchor {
   position: absolute;
