@@ -111,7 +111,7 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
 }
 
 .select2-container.select2-allowclear .select2-choice abbr {
-    display: none;
+    display: inline-block;
 }
 
 .select2-container .select2-choice abbr:hover {
@@ -143,29 +143,32 @@ html[dir="rtl"] .select2-container .select2-choice > .select2-chosen {
     position: absolute;
     z-index: 9999;
     top: 100%;
+
     background: #fff;
-    color: #414141;
+    color: #000;
+    border: 1px solid #aaa;
     border-top: 0;
+
     border-radius: 0 0 4px 4px;
-    font-size: 13px;
-    letter-spacing: 0.34px;
+
     -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
-    box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+            box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
 }
 
 .select2-drop.select2-drop-above {
     margin-top: 1px;
     border-top: 1px solid #aaa;
     border-bottom: 0;
+
     border-radius: 4px 4px 0 0;
+
     -webkit-box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
-    box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
+            box-shadow: 0 -4px 5px rgba(0, 0, 0, .15);
 }
 
 .select2-drop-active {
-    border: 0;
+    border: 1px solid #5897fb;
     border-top: none;
-    padding: 0px 8px;
 }
 
 .select2-drop.select2-drop-above.select2-drop-active {
@@ -230,7 +233,7 @@ html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
     padding-left: 4px;
     padding-right: 4px;
 
-    position: relative; 
+    position: relative;
     z-index: 10000;
 
     white-space: nowrap;
@@ -238,12 +241,26 @@ html[dir="rtl"] .select2-container .select2-choice .select2-arrow b {
 
 .select2-search input {
     width: 100%;
+    height: auto !important;
+    min-height: 26px;
     padding: 4px 20px 4px 5px;
     margin: 0;
+
     outline: 0;
+    font-family: sans-serif;
+    font-size: 1em;
+
+    border: 1px solid #aaa;
     border-radius: 0;
+
     -webkit-box-shadow: none;
             box-shadow: none;
+
+    background: #fff url('select2.png') no-repeat 100% -22px;
+    background: url('select2.png') no-repeat 100% -22px, -webkit-gradient(linear, left bottom, left top, color-stop(0.85, #fff), color-stop(0.99, #eee));
+    background: url('select2.png') no-repeat 100% -22px, -webkit-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('select2.png') no-repeat 100% -22px, -moz-linear-gradient(center bottom, #fff 85%, #eee 99%);
+    background: url('select2.png') no-repeat 100% -22px, linear-gradient(to bottom, #fff 85%, #eee 99%) 0 0;
 }
 
 html[dir="rtl"] .select2-search input {
@@ -285,7 +302,7 @@ html[dir="rtl"] .select2-search input {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 
-    background-color: #fff;
+    background-color: #eee;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(0.5, #eee));
     background-image: -webkit-linear-gradient(center bottom, #fff 0%, #eee 50%);
     background-image: -moz-linear-gradient(center bottom, #fff 0%, #eee 50%);
@@ -387,7 +404,7 @@ html[dir="rtl"] .select2-results {
 .select2-results-dept-7 .select2-result-label { padding-left: 120px }
 
 .select2-results .select2-highlighted {
-    background: #0268b4;
+    background: #3875d7;
     color: #fff;
 }
 
@@ -399,18 +416,19 @@ html[dir="rtl"] .select2-results {
 .select2-results .select2-highlighted em {
     background: transparent;
 }
- 
+
 .select2-results .select2-highlighted ul {
     background: #fff;
     color: #000;
 }
 
+.select2-results .select2-no-results,
 .select2-results .select2-searching,
 .select2-results .select2-ajax-error,
-.select2-results .select2-selection-limit { 
-    color: #a94442;
-    font-weight: 500;
-    font-size: 11px;
+.select2-results .select2-selection-limit {
+    background: #f4f4f4;
+    display: list-item;
+    padding-left: 5px;
 }
 
 /*
@@ -434,6 +452,10 @@ disabled look for disabled choices in the results dropdown
 
 .select2-more-results.select2-active {
     background: #f4f4f4 url('select2-spinner.gif') no-repeat 100%;
+}
+
+.select2-results .select2-ajax-error {
+    background: rgba(255, 50, 50, .2);
 }
 
 .select2-more-results {
@@ -534,14 +556,6 @@ html[dir="rtl"] .select2-container-multi .select2-choices li
 
 .select2-default {
     color: #999 !important;
-}
-
-.select2-search input.select2-input {
-    background: #EBEBEB;
-    background-image: none !important;
-    border: 0;
-    padding: 10px 15px;
-    line-height: 0;
 }
 
 .select2-container-multi .select2-choices .select2-search-choice {
