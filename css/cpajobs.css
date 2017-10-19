@@ -633,6 +633,9 @@ a.tab-item.active:hover {
     background-color: #fff;
   }
 }
+.search-results-container .search-results-subtitle {
+  color: #fff;
+}
 .search-sidebar-filters {
   width: 20%;
   margin-top: 20px;
@@ -663,20 +666,60 @@ a.tab-item.active:hover {
   }
 }
 .search-results-subtitle {
-  background-color: #006fba;
-  color: #fff;
-  padding: 3px 20px;
-  font-weight: bold;
+  color: #006fba;
+  font-weight: 700;
+  text-align: left;
+  padding: 10px 0 2px 0;
+}
+.search-results-subtitle label {
+  color: #006fba;
+  font-weight: 700;
+  text-align: left;
 }
 .search-results-container .search-results-subtitle {
   background-color: #006fba;
-  margin-bottom: 5px;
+  margin-bottom: 0;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .search-results-subcontent {
-  padding: 10px 10px 15px 10px;
-  background: #f7f7f7;
   position: relative;
   font-size: 0.9em;
+  -webkit-appearance: none;
+  margin-bottom: 15px;
+  text-align: left;
+}
+.search-results-subcontent input,
+.search-results-subcontent .select2-container .select2-choice {
+  border: 0;
+  border-radius: 5px;
+  background: #EBEBEB;
+  padding: 0 10px;
+  box-shadow: none;
+  color: #444 !important;
+}
+.search-results-subcontent .select2-container .select2-choice {
+  border: 0;
+  border-radius: 5px;
+  background: #EBEBEB;
+  padding: 0 10px;
+}
+.search-results-subcontent input {
+  padding: 2.5px 10px;
+}
+.search-results-subcontent .select2-container .select2-choice .select2-arrow {
+  display: none;
+}
+.search-results-subcontent .select2-container .select2-choice:after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background: url(../images/ui_arrow-down.png) center center no-repeat;
+  background-size: 100%;
 }
 .search-results-subcontent-note,
 .search-results-subcontent h5 {
@@ -798,9 +841,9 @@ a.tab-item.active:hover {
 }
 /* Search Jobs Sidebar */
 .search-jobs-widget-map {
-  border: 1px solid #aaa;
   margin-top: 15px;
   height: 165px;
+  border-radius: 5px;
 }
 .search-jobs-widget-anchor {
   display: none;
@@ -820,8 +863,8 @@ a.tab-item.active:hover {
   color: #fff;
   cursor: pointer;
   text-align: center;
-  background-color: #2a91e0;
-  margin-top: 6px;
+  background-color: #005ca2;
+  border-radius: 5px;
 }
 @media (max-width: 949px) {
   .search-jobs-adv-anchor {
@@ -849,9 +892,10 @@ a.tab-item.active:hover {
 .logo-admin,
 .logo-place,
 .logo-related {
-  border: 1px solid #b3b3b3;
   position: relative;
   text-align: center;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .logo-admin {
   height: 120px;
@@ -887,13 +931,14 @@ a.tab-item.active:hover {
 }
 .job-info-icon {
   float: left;
-  margin-right: 10px;
-  width: 20px;
+  margin-right: 5px;
+  width: 15px;
   text-align: center;
+  margin-top: -2px;
 }
 .job-info-icon img {
-  max-height: 20px;
-  max-width: 20px;
+  max-height: 15px;
+  max-width: 15px;
 }
 .job-info-location {
   float: left;
@@ -968,12 +1013,18 @@ a.tab-item.active:hover {
 }
 /* Search Results Featured Employers */
 .ad-sidebar-widget-logo {
-  border: 1px solid #e6e6e6;
   height: 90px;
   line-height: 90px;
   margin-bottom: 6px;
   text-align: center;
   width: 100%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  justify-content: center;
+}
+.ad-sidebar-widget-logo img {
+  filter: grayscale(100%);
+  max-height: 57px;
 }
 .ad-sidebar-widget-logo a {
   display: block;
@@ -1331,6 +1382,7 @@ input[type="file"].upload-input {
 .modal-basic_title {
   font-weight: bold;
   font-size: 18px;
+  line-height: 24px;
 }
 .modal-basic_close {
   position: absolute;
@@ -1712,12 +1764,10 @@ label {
   font-weight: normal;
 }
 .form-multioption {
-  background: #b0bcdd;
   border-radius: 3px;
   cursor: pointer;
-  display: inline-block;
-  margin: 2px 10px;
-  padding: 1px 10px;
+  display: block;
+  margin: 4px 0 0px 0;
 }
 .form-multioption:hover {
   background: #96a5cc;
@@ -1800,6 +1850,9 @@ ul.list-group {
 .text-12 {
   font-size: 12px;
 }
+.text-13 {
+  font-size: 13px;
+}
 .text-14 {
   font-size: 14px;
 }
@@ -1863,6 +1916,12 @@ ul.list-group {
 }
 .text-heading {
   font-family: 'Lato', sans-serif;
+}
+.lh-14 {
+  line-height: 14px;
+}
+.lh-18 {
+  line-height: 18px;
 }
 .a-block a,
 a.a-block {
@@ -1950,6 +2009,9 @@ a.grey-light-hover:hover {
 }
 .flex-mt70 {
   margin-top: 70px;
+}
+.flex-mt100 {
+  margin-top: 100px;
 }
 /* margin-right */
 .flex-mr5 {
@@ -2059,6 +2121,10 @@ a.grey-light-hover:hover {
 }
 .flex-pt43 {
   padding-top: 43px;
+}
+/* padding-bottom */
+.flex-pb5 {
+  padding-bottom: 5px;
 }
 /* padding-left */
 .flex-pl0 {

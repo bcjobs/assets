@@ -507,8 +507,7 @@ a.header-action:link, a.header-action:visited {
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    line-height: 1.5;
-    text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
+    line-height: 1.5; 
     @media(max-width: @screen-xs-max){ 
         font-size: 25px; 
         line-height: 1.5;
@@ -526,8 +525,7 @@ a.header-action:link, a.header-action:visited {
     letter-spacing: 0.86px;
     line-height: 1.9;
     color: #fff;
-    opacity: 0.68;
-    text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
+    opacity: 0.68; 
 }
 .search-widget-lgtagline {
     font-family: @heading_font;
@@ -1180,22 +1178,26 @@ body .select2-container-multi .select2-choices .select2-search-field input{
 }
 
 body .select2-container-multi .select2-choices .select2-search-choice {
-    margin:1px 5px 1px 2px;
-    padding:5px 5px 4px 18px;
-    background-image:none;
-    background: #D6ECFA;
-    line-height:1.1em;
+    margin: 1px 5px 1px 2px;
+    padding: 7px 11px 7px 22px;
+    background-image: none;
+    background: #ebebeb;
+    line-height: 1.1em;
+    border: 0;
+    box-shadow: none;
 }
 
 body .select2-container-multi .select2-search-choice-close{
-    top:7px;
+    top: 8px;
+    left: 6px;
+    transition: none; 
 }
 
 body .select2-container-multi .select2-choices {
     padding-bottom:0px;
     padding-top:0px;
     background-image:none;
-    border-color:#c5c5c5;
+    border: 0;
 }
 
 body .select2-container .select2-choice{
@@ -1346,6 +1348,14 @@ body .select2-container .select2-choice abbr:hover {
 .footer-cols {
     padding: 15px 0;
 }
+
+.footer-links { 
+    line-height: 17px; 
+    display: inline-block; 
+    font-size: 11px; 
+    font-weight: 600;  
+}
+
 
 /* Rss Feed Listing Styles */
 
@@ -1566,11 +1576,13 @@ body .select2-container .select2-choice abbr:hover {
   background-color: @primary_color;
   color: #ffffff;
   padding: 15px;
+  border-radius: 5px;
 }
 .sidefeature-title {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    margin-top: 8px;
 }
 .sidefeature-subtlelink {
   color: #ffffff;
@@ -1584,10 +1596,10 @@ body .select2-container .select2-choice abbr:hover {
   font-size: 14px;
 }
 .sidefeature-jobitem {
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #0079b8;
-  position: relative;
+    padding-bottom: 12px;
+    margin-bottom: 17px;
+    border-bottom: 1px solid #0079b8;
+    position: relative;
 }
 .sidefeature-jobitem .job-info-desc {
   color: #ffffff;
@@ -1602,7 +1614,7 @@ body .select2-container .select2-choice abbr:hover {
 .sidefeature-jobitem:hover .sidefeature-close {
   display: block;
 }
-/* Sidefeature - white */
+/* Sidefeature - white */ 
 .sidefeature-wrapper--white {
     background-color: #ffffff;
     color: #000000;
