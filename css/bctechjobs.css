@@ -2146,7 +2146,7 @@ body .select2-container .select2-choice abbr:hover {
 }
 .alert-floater-wrapper {
   width: 100%;
-  systmax-width: 100%;
+  max-width: 100%;
   transform: translateX(-50%);
   left: 50%;
   z-index: 20009;
