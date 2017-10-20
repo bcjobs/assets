@@ -1071,13 +1071,6 @@ html {
   font-size: 10px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #333333;
-  background-color: #fff;
-}
 input,
 button,
 select,
@@ -2467,6 +2460,9 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
+input {
+  border-radius: 5px;
+}
 fieldset {
   padding: 0;
   margin: 0;
@@ -2575,6 +2571,7 @@ textarea.form-control {
 }
 input[type="search"] {
   -webkit-appearance: none;
+  border: 0;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"],
