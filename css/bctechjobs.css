@@ -181,6 +181,72 @@ input {
   border: 1px solid #BBBBBB;
   border-bottom: 5px solid #fcc;
 }
+#select2-drop {
+  z-index: 500000;
+}
+.search-results-subcontent input,
+.search-results-subcontent .select2-container .select2-choice {
+  border: 0;
+  border-radius: 5px;
+  background: #EBEBEB;
+  padding: 0 10px;
+  box-shadow: none;
+  color: #444 !important;
+}
+.search-results-subcontent .select2-container .select2-choice {
+  border: 0;
+  border-radius: 5px;
+  background: #EBEBEB;
+  padding: 0 10px;
+}
+.search-results-subcontent input {
+  padding: 2.5px 10px;
+}
+.search-results-subcontent .select2-container .select2-choice .select2-arrow {
+  display: none;
+}
+.search-results-subcontent .select2-container .select2-choice:after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background: url(../images/ui_arrow-down.png) center center no-repeat;
+  background-size: 100%;
+}
+.search-form-input .select2-choice,
+.form-group .select2-choices,
+.form-group .select2-container .select2-choice {
+  background: #ebebeb;
+  outline: none;
+  border: 0 !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  padding: 4.5px 15px !important;
+  color: #414141;
+  height: auto;
+  position: relative;
+  min-height: 39px;
+}
+.search-form-input .select2-choice:after,
+.form-group .select2-choices:after,
+.form-group .select2-container .select2-choice:after {
+  content: '';
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15px;
+  background: url(../images/ui_arrow-down.png) center center no-repeat;
+  background-size: 100%;
+}
+.form-group .select2-container .select2-choice .select2-arrow,
+.search-form-input.select2-container .select2-choice .select2-arrow {
+  display: none;
+}
 .data-btn {
   height: 32px;
   vertical-align: middle;
@@ -495,7 +561,6 @@ a.header-action:visited {
   letter-spacing: 1px;
   margin-bottom: 0;
   opacity: 0.69;
-  text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
 }
 /* Landing pages */
 .search-widget-base {
@@ -1393,6 +1458,8 @@ body .select2-container .select2-choice abbr:hover {
   padding: 10px 15px;
   line-height: 0;
   font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .range-dropdown .select2-search,
 .freshness-dropdown .select2-search {
@@ -1712,10 +1779,10 @@ body .select2-container .select2-choice abbr:hover {
   margin-top: 8px;
 }
 .sidefeature-subtlelink {
-  color: #ffffff;
+  color: #fff;
 }
 .sidefeature-highlightlink {
-  color: #d2e3f9;
+  color: #fff;
 }
 .sidefeature-relatedjobs {
   font-size: 14px;
@@ -2721,38 +2788,6 @@ a.tab-item.active:hover {
   margin-bottom: 20px;
   text-align: left;
 }
-.search-results-subcontent input,
-.search-results-subcontent .select2-container .select2-choice {
-  border: 0;
-  border-radius: 5px;
-  background: #EBEBEB;
-  padding: 0 10px;
-  box-shadow: none;
-  color: #444 !important;
-}
-.search-results-subcontent .select2-container .select2-choice {
-  border: 0;
-  border-radius: 5px;
-  background: #EBEBEB;
-  padding: 0 10px;
-}
-.search-results-subcontent input {
-  padding: 2.5px 10px;
-}
-.search-results-subcontent .select2-container .select2-choice .select2-arrow {
-  display: none;
-}
-.search-results-subcontent .select2-container .select2-choice:after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px;
-  background: url(../images/ui_arrow-down.png) center center no-repeat;
-  background-size: 100%;
-}
 .search-results-subcontent-note,
 .search-results-subcontent h5 {
   margin-top: 5px;
@@ -2916,7 +2951,7 @@ a.tab-item.active:hover {
 /* Job Viewing */
 .job-wrapper {
   background: #f8f8f8;
-  color: #616161;
+  color: #414141;
 }
 .job-details {
   background: #e2e5eb;
@@ -3467,14 +3502,11 @@ input[type="file"].upload-input {
   background-image: url(../images/checkmark_on.png);
 }
 /* Search box styles -- specifically for search results pagecontent_ */
-.employer-searchbox {
-  height: 35px;
+.employer-searchbox.searchbox-icon {
+  background: #EBEBEB url(../images/icon_magglass_v3.png) top 10px right 5px no-repeat;
+  background-size: 18px;
+  padding: 8px 15px;
   width: 100%;
-  font-size: 1.1em;
-  padding-left: 5px;
-  background: #fff;
-  box-shadow: 1px 1px 5px 0px #ddd inset;
-  border: 1px solid #bbb;
 }
 .searchbox-icon {
   background: #fff url(../images/icon_magglass_v3.png) right 5px no-repeat;
@@ -3798,7 +3830,7 @@ label {
 .form-multioption {
   border-radius: 3px;
   cursor: pointer;
-  display: block;
+  display: inline-block;
   margin: 4px 0 0px 0;
 }
 .form-multioption:hover {
@@ -4120,7 +4152,7 @@ a.grey-light-hover:hover {
   margin-right: 15px;
 }
 .flex-mtrout {
-  margin-top: 22px;
+  margin-top: 24px;
 }
 /* Padding Classes */
 .flex-p0 {
@@ -4402,8 +4434,10 @@ img.max-width-100 {
   display: inline-block;
 }
 .container-muted {
-  background: #f3f3f3;
+  background: #f9f9f9;
   color: #555555;
+  border-radius: 5px;
+  padding: 20px;
 }
 .container-soft {
   background: #f2f7fb;

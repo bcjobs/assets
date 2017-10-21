@@ -170,9 +170,73 @@ input {
     border: 1px solid #BBBBBB;
     border-bottom:5px solid #fcc;
 }
+#select2-drop {
+    z-index: 500000; 
+} 
+.search-results-subcontent input,
+.search-results-subcontent .select2-container .select2-choice {
+    border: 0;
+    border-radius: 5px;
+    background: #EBEBEB;
+    padding: 0 10px;
+    box-shadow: none;
+    color: #444 !important;
+} 
+.search-results-subcontent .select2-container .select2-choice  {
+    border: 0;
+    border-radius: 5px;
+    background: #EBEBEB;
+    padding: 0 10px;
+}
+.search-results-subcontent input {
+    padding: 2.5px 10px;
+}
+.search-results-subcontent .select2-container .select2-choice .select2-arrow { 
+    display: none;
+}
+.search-results-subcontent .select2-container .select2-choice:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
+    background: url(../images/ui_arrow-down.png) center center no-repeat;
+    background-size: 100%;
+}
+.search-form-input .select2-choice,
+.form-group .select2-choices,
+.form-group .select2-container .select2-choice {
+    background: #ebebeb;
+    outline: none; 
+    border: 0 !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
+    padding: 4.5px 15px !important;
+    color: #414141;
+    height: auto; 
+    position: relative;
+    min-height: 39px;
+    &:after {
+        content: '';
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 15px;
+        background: url(../images/ui_arrow-down.png) center center no-repeat;
+        background-size: 100%;
+    }
+} 
+.form-group .select2-container .select2-choice .select2-arrow,
+.search-form-input.select2-container .select2-choice .select2-arrow, {
+    display: none;
+}  
 
-.data-btn {
-    height: 32px;
+.data-btn {  
+    height: 32px; 
     vertical-align: middle;
 }
 
@@ -466,8 +530,7 @@ a.header-action:link, a.header-action:visited {
     font-weight: 500;
     letter-spacing: 1px;
     margin-bottom: 0;
-    opacity: 0.69;
-    text-shadow: 2px 2px 18px rgba(33, 33, 33, 0.85);
+    opacity: 0.69; 
 }
 
 
@@ -1268,6 +1331,8 @@ body .select2-container .select2-choice abbr:hover {
     padding: 10px 15px;
     line-height: 0;
     font-size: 14px;  
+    margin-top: 5px;
+    margin-bottom: 5px;
  }
 .range-dropdown .select2-search, .freshness-dropdown .select2-search {
     display:none;
@@ -1586,10 +1651,10 @@ body .select2-container .select2-choice abbr:hover {
     margin-top: 8px;
 }
 .sidefeature-subtlelink {
-  color: #ffffff;
+  color: #fff;
 }
 .sidefeature-highlightlink {
-  color: #d2e3f9;
+  color: #fff;
 }
 .sidefeature-relatedjobs {
   font-size: 14px;
