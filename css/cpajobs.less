@@ -42,6 +42,7 @@ h3{ font-size:1.3em; color:#009a49;}
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
 
+
 .clearfix:after {
   content: "";
   display: table;
@@ -643,23 +644,29 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	position:relative;
 }
 .alert-floater-wrapper {
-	width: 960px;
+	width: 960px; 
+}
+.alert-wrapper.alert-floater-wrapper {
+	max-width: 100%;
 }
 
 .content{
 	position:relative;
 	/*z-index:6;*/
 	padding: 1px 15px 30px 15px;
-}
+} 
 
 textarea {
     resize: none;
     font-family:sans-serif;
     padding:10px;
 }
-
+ 
 .header{
 	position:relative;
+}
+.header-menu-item-wrapper {
+	margin-top: 25px;
 }
 
 .header_login_show_anchor{
