@@ -2460,9 +2460,6 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
-input {
-  border-radius: 5px;
-}
 fieldset {
   padding: 0;
   margin: 0;
@@ -2568,10 +2565,6 @@ fieldset[disabled] .form-control {
 }
 textarea.form-control {
   height: auto;
-}
-input[type="search"] {
-  -webkit-appearance: none;
-  border: 0;
 }
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   input[type="date"],

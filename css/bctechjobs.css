@@ -105,6 +105,13 @@ input[type=checkbox] {
   margin-right: 5px;
   margin-left: 5px;
 }
+input {
+  border-radius: 5px;
+}
+input[type="search"] {
+  -webkit-appearance: none;
+  border: 0;
+}
 /* Button Styles -- General Usage */
 a.button:link,
 a.button:visited,
@@ -185,7 +192,8 @@ input {
   z-index: 500000;
 }
 .search-results-subcontent input,
-.search-results-subcontent .select2-container .select2-choice {
+.search-results-subcontent .select2-container .select2-choice,
+.search-results-subcontent .select2-container .select2-choices {
   border: 0;
   border-radius: 5px;
   background: #EBEBEB;
@@ -193,7 +201,8 @@ input {
   box-shadow: none;
   color: #444 !important;
 }
-.search-results-subcontent .select2-container .select2-choice {
+.search-results-subcontent .select2-container .select2-choice,
+.search-results-subcontent .select2-container .select2-choices {
   border: 0;
   border-radius: 5px;
   background: #EBEBEB;
@@ -202,10 +211,12 @@ input {
 .search-results-subcontent input {
   padding: 2.5px 10px;
 }
-.search-results-subcontent .select2-container .select2-choice .select2-arrow {
+.search-results-subcontent .select2-container .select2-choice .select2-arrow,
+.search-results-subcontent .select2-container .select2-choices .select2-arrow {
   display: none;
 }
-.search-results-subcontent .select2-container .select2-choice:after {
+.search-results-subcontent .select2-container .select2-choice:after,
+.search-results-subcontent .select2-container .select2-choices:after {
   content: '';
   width: 10px;
   height: 10px;
@@ -2692,6 +2703,9 @@ a.tab-item.active:hover {
   .tab-select {
     width: 49%;
   }
+}
+.select2-drop-active {
+  z-index: 500000;
 }
 .active .tab-select {
   background: #243958;

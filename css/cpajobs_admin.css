@@ -640,6 +640,9 @@ a.tab-item.active:hover {
     width: 49%;
   }
 }
+.select2-drop-active {
+  z-index: 500000;
+}
 .active .tab-select {
   background: #414141;
   border: 1px solid #414141;
