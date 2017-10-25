@@ -2633,6 +2633,9 @@ ul {
 ul ul {
   list-style-type: circle;
 }
+.list-item-title {
+  margin-bottom: 6px;
+}
 .recordlist thead th {
   color: #fff;
   text-align: center;
