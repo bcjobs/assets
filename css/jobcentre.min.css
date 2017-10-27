@@ -325,7 +325,7 @@ body .select2-container .select2-choice abbr:hover{color:#414141;font-size:13px;
 .list-popup a{color:#fff}
 .list-popup a:hover{color:#4db3ff}
 .footer{display:block;padding-top:.5em;margin:0 auto}
-.footer-logo{max-width:106px}
+.footer-logo{max-height:25px}
 .footer-navigation,.footer-navigation a{color:#666;text-decoration:none}
 .footer-quicklinks{margin:6px 0;padding:5px 0;color:#0067B1;font-size:.8em}
 .footer-quicklinks a{color:#0067B1;text-decoration:none}
@@ -556,7 +556,7 @@ a.tab-item.active:hover{color:#0067B1;cursor:default}
 .tab-select{border:1px solid #b0bcdd;border-radius:5px;float:left;margin:0 1% 10px 0;padding:3px;width:19%}
 @media(max-width:767px){.tab-select{width:49%}
 }
-.select2-drop-active{z-index:500000}
+.select2-drop-active{z-index:500000;margin-top:-4px}
 .active .tab-select{background:#005ca2;border:1px solid #005ca2;color:#fff}
 .tab-select-img{float:left;height:40px;margin:0 5px 0 0;position:relative;overflow:hidden;text-align:center;width:40px}
 .tab-select-img img{max-height:100%;max-width:100%}
@@ -593,6 +593,8 @@ a.tab-item.active:hover{color:#0067B1;cursor:default}
 .refine-search-results-arrow{border-color:transparent #e3edf4 transparent transparent;border-style:solid;border-width:14px;width:0;height:0;float:left;margin-left:-37px;margin-top:-2px}
 .refine-search-results:hover .refine-search-results-arrow{border-color:transparent #fff transparent transparent}
 .content-container{margin-top:53px;position:relative}
+@media(max-width:600px){.content-container{margin-top:0}
+}
 .ad-sidebar-widget{float:right;width:20%;margin-top:20px}
 @media(max-width:949px){.ad-sidebar-widget{width:30%}
 }
@@ -936,6 +938,8 @@ a.grey-light-hover:hover{color:#fff}
 .bg-grey{background:#F7F7F7}
 .bg-black{background:#414141}
 .bt-grey{border-top:1px solid #eaeaea}
+.bg-default{background:#00a936}
+.bg-primary{background:#005ca2}
 .overflow-hidden{overflow:hidden}
 @media(min-width:767px){.hide-sm{display:none}
 }
@@ -1018,4 +1022,6 @@ a.grey-light-hover:hover{color:#fff}
 .xs-mt5{margin-top:5px}
 .xs-mv30{margin-top:30px;margin-bottom:30px}
 .xs-hide{display:none}
+.xs-display-block{display:block}
+.xs-mauto{margin:0 auto}
 }
