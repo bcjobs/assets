@@ -1536,7 +1536,7 @@ body .select2-container .select2-choice abbr:hover {
   margin: 0px auto;
 }
 .footer-logo {
-  max-width: 106px;
+  max-height: 25px;
 }
 .footer-navigation,
 .footer-navigation a {
@@ -2706,6 +2706,7 @@ a.tab-item.active:hover {
 }
 .select2-drop-active {
   z-index: 500000;
+  margin-top: -4px;
 }
 .active .tab-select {
   background: #005ca2;
@@ -2876,6 +2877,11 @@ a.tab-item.active:hover {
 .content-container {
   margin-top: 53px;
   position: relative;
+}
+@media (max-width: 600px) {
+  .content-container {
+    margin-top: 0;
+  }
 }
 .ad-sidebar-widget {
   float: right;
@@ -4324,6 +4330,12 @@ a.grey-light-hover:hover {
 .bt-grey {
   border-top: 1px solid #eaeaea;
 }
+.bg-default {
+  background: #00a936;
+}
+.bg-primary {
+  background: #005ca2;
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -4589,6 +4601,12 @@ img.max-width-100 {
   }
   .xs-hide {
     display: none;
+  }
+  .xs-display-block {
+    display: block;
+  }
+  .xs-mauto {
+    margin: 0 auto;
   }
 }
 

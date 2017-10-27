@@ -553,6 +553,7 @@ a.tab-item.active:hover{
 }
 .select2-drop-active {
     z-index: 500000;
+    margin-top: -4px;
 }
 .active .tab-select {
     background: @primary_color;
@@ -726,6 +727,9 @@ a.tab-item.active:hover{
 .content-container {
     margin-top: 53px;
     position: relative;
+    @media(max-width: 600px){
+        margin-top: 0;
+    }
 }
 
 .ad-sidebar-widget{
@@ -1925,6 +1929,8 @@ a.grey-light-hover {
 .bg-grey { background: #F7F7F7; }
 .bg-black { background: #414141; }
 .bt-grey { border-top: 1px solid #eaeaea; }
+.bg-default { background: @action_color; }
+.bg-primary { background: @primary_color; }
 
 .overflow-hidden { overflow: hidden; }
 .hide-sm {
@@ -2062,4 +2068,6 @@ a.grey-light-hover {
     .xs-mv30 { margin-top: 30px; margin-bottom: 30px;}
 
     .xs-hide { display: none; }
+    .xs-display-block { display: block; }
+    .xs-mauto { margin: 0 auto; }
 }
