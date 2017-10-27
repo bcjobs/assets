@@ -2546,6 +2546,9 @@ img.max-width-100 {
   .xs-mauto {
     margin: 0 auto;
   }
+  .flex-end {
+    display: block;
+  }
 }
 h1,
 h2,
