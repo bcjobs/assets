@@ -1856,7 +1856,7 @@ a.grey-light-hover {
 .flex-mb60 { margin-bottom: 60px; }
 /* margin-left */
 .flex-ml5 { margin-left: 5px; }
-.flex-ml15 { margin-left: 15px; }
+.flex-ml15 { margin-left: 15px; } 
 /* margin-vertical */
 .flex-mv10 { margin-top: 10px; margin-bottom: 10px; }
 .flex-mv15 { margin-top: 15px; margin-bottom: 15px; }
@@ -1866,7 +1866,11 @@ a.grey-light-hover {
 .flex-mh10 { margin-left: 10px; margin-right: 10px; }
 .flex-mh15 { margin-left: 15px; margin-right: 15px;}
 
-.flex-mtrout { margin-top: 24px; }
+.flex-end { 
+    display: flex;
+    justify-content: baseline;
+    align-items: flex-end;
+}
 
 /* Padding Classes */
 .flex-p0 { padding: 0; }
@@ -2070,4 +2074,7 @@ a.grey-light-hover {
     .xs-hide { display: none; }
     .xs-display-block { display: block; }
     .xs-mauto { margin: 0 auto; }
+    .flex-end {
+        display: block; 
+    }
 }
