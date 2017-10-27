@@ -2505,6 +2505,9 @@ img.max-width-100 {
   .xs-mauto {
     margin: 0 auto;
   }
+  .flex-end {
+    display: block;
+  }
 }
 /* CSS Document */
 body {
