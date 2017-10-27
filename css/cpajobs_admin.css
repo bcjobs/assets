@@ -2107,8 +2107,10 @@ a.grey-light-hover:hover {
   margin-left: 15px;
   margin-right: 15px;
 }
-.flex-mtrout {
-  margin-top: 24px;
+.flex-end {
+  display: flex;
+  justify-content: baseline;
+  align-items: flex-end;
 }
 /* Padding Classes */
 .flex-p0 {
