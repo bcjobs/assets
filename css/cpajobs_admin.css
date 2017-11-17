@@ -814,7 +814,7 @@ a.tab-item.active:hover {
   margin-top: 53px;
   position: relative;
 }
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .content-container {
     margin-top: 0;
   }
@@ -967,8 +967,8 @@ a.tab-item.active:hover {
   float: left;
 }
 .job-info-location {
-  border-left: 1px solid #616161;
-  padding: 0 5px;
+  border-left: 1px solid #dedede;
+  padding: 0 11px;
 }
 .job-info-location:first-child {
   border: 0;
@@ -1823,8 +1823,10 @@ select.form-selectlist {
 /* Social media icons */
 .ic-social {
   display: inline-block;
-  padding-left: 5px;
   opacity: 0.3;
+}
+.ic-social img {
+  padding-left: 5px;
 }
 .ic-social-facebook img {
   height: 15px;
@@ -1837,6 +1839,15 @@ select.form-selectlist {
 }
 .ic-social-linkedin img {
   height: 16px;
+}
+.ic-social-youtube img {
+  height: 23px;
+}
+.ic-social-instagram img {
+  height: 17px;
+}
+.ic-social-pinterest img {
+  height: 17px;
 }
 .ic-social:hover {
   opacity: 0.5;
@@ -2096,6 +2107,10 @@ a.grey-light-hover:hover {
 .flex-mv25 {
   margin-top: 25px;
   margin-bottom: 25px;
+}
+.flex-mv90 {
+  margin-top: 90px;
+  margin-bottom: 90px;
 }
 /* margin-horizontal */
 .flex-mh5 {
