@@ -22,7 +22,7 @@ JOBCENTRE.renderLocation = function(ipAddress){
                 parts.push(data.regionName);
             if (data.countryName)
                 parts.push(data.countryName);
-            $('#ip_address').html(ipAddress + ' (' + parts.join(', ') + ')');
+            $('.IpAddress').html(ipAddress + ' (' + parts.join(', ') + ')');
         }
     });
 };
@@ -122,7 +122,7 @@ JOBCENTRE.renderNotes = function(employerId, currentNotes){
 JOBCENTRE.renderResumeAuthorize = function(authorized){
     $('span[id="ResumeAuthorized"]').append(_.template(document.getElementById('email-authorize').innerHTML, {}));
     $('input[name=ResumeAuthorized]').change(function() {
-        if($('input[name=ResumeAuthorized]:checked').val() === '0') {
+        if($('input[name=ResumeAuthorized]:checked').val() === '2') {
             $('#sendresumeauthorizedemail_wrapper').find('input[name=SendResumeAuthorizedEmail]').prop('checked', false);
             $('#sendresumeauthorizedemail_wrapper').hide();
             return;
