@@ -449,6 +449,12 @@ a.list-item-wrapper:hover {
             transform: none;
         }
     }
+    &.tech-event {
+        min-height: 215px;
+        @media(max-width: @screen-xs-max){
+            min-height: 0;
+        }
+    }
 }
 .quote-name {
     font-size: 15px;
@@ -1669,6 +1675,17 @@ input[type="file"].upload-input { display: none; }
     }
 }
 
+.image-block {
+    max-height: 198px;
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    border-radius: 5px;
+    img {
+        height: 198px;
+    }
+}
+
 .pull-none { float: none; }
 
 
@@ -1758,6 +1775,10 @@ select.form-selectlist {
 ul.list-group { margin: 0; }
 
 .text-bold { font-weight: bold; }
+.text-regular { font-weight: 400; }
+.text-semibold { font-weight: 600; }
+.text-italic { font-style: italic; }
+.text-normal { font-style: normal; }
 .text-600 { font-weight: 600; }
 .text-unbold { font-weight: normal; }
 .text-break { word-wrap: break-word; }
@@ -1773,6 +1794,7 @@ ul.list-group { margin: 0; }
 .text-13 { font-size: 13px; }
 .text-14 { font-size: 14px; }
 .text-16 { font-size: 16px; }
+.text-17 { font-size: 17px; }
 .text-med, .text-18 { font-size: 18px; }
 .text-15 { font-size: 15px; }
 .text-20 { font-size: 20px; }
@@ -1866,6 +1888,7 @@ a.grey-light-hover {
 .flex-ml5 { margin-left: 5px; }
 .flex-ml15 { margin-left: 15px; } 
 /* margin-vertical */
+.flex-mv5 { margin-top: 5px; margin-bottom: 5px; }
 .flex-mv10 { margin-top: 10px; margin-bottom: 10px; }
 .flex-mv15 { margin-top: 15px; margin-bottom: 15px; }
 .flex-mv25 { margin-top: 25px; margin-bottom: 25px; }
@@ -1944,6 +1967,12 @@ a.grey-light-hover {
 .bt-grey { border-top: 1px solid #eaeaea; }
 .bg-default { background: @action_color; }
 .bg-primary { background: @primary_color; }
+.bg-techevent { 
+    background: #F4F8FC url(../images/techevent-talent-bg.png) no-repeat top right;
+    @media(max-width: @screen-xs-max) {
+        background: #F4F8FC;
+    }
+}
 
 .overflow-hidden { overflow: hidden; }
 .hide-sm {
@@ -1961,7 +1990,12 @@ a.grey-light-hover {
 .max-width-745 {
     max-width: 745px;
 }
-
+.max-width-940 { 
+    max-width: 940px;
+}
+.max-width-940 { 
+    max-width: 940px;
+}
 
 .flex-relative { position: relative; @media(max-width: @screen-xs-max){ padding: 0; margin-top: 0;} }
 .flex-clear { clear: both; }

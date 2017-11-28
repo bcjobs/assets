@@ -633,6 +633,9 @@ a.header-action:link, a.header-action:visited {
         font-size: 25px;
     }
 }
+.cta-green {
+    font-style: italic;
+}
 .flair-container {
     max-width: 745px;
     margin: 76px auto;
@@ -695,7 +698,7 @@ a.header-action:link, a.header-action:visited {
     @media(max-width: 1400px){ background-size: auto 100%; }
     @media(max-width: @screen-xs-max){ background-image: none; }
 }
-.bkg-callout-user1 {
+.bkg-callout-user1 { 
     position: absolute;
     top: 0;
     left: -160px;
@@ -738,6 +741,9 @@ a.header-action:link, a.header-action:visited {
         padding: 17px !important;
         width: 42%;
     }
+    &.tech-event {
+        height: 110px; 
+    }
 }
 .price-box-price {
     font-family: @heading_font;
@@ -768,6 +774,12 @@ a.header-action:link, a.header-action:visited {
 }
 .price-box-title {
     line-height: 18px;
+}
+.form-base.tech-event {
+    background: url(../images/techevent-cover.png) no-repeat top center fixed;
+    background-size: cover;
+    min-height: 514px;
+    @media(max-width:@screen-xs-max){ min-height: 650px; }
 }
 .form-base.employer {
     background: url(../images/splash-employer.jpg) no-repeat top center fixed;

@@ -529,6 +529,14 @@ a.list-item-wrapper:hover {
     transform: none;
   }
 }
+.quote-content.tech-event {
+  min-height: 215px;
+}
+@media (max-width: 767px) {
+  .quote-content.tech-event {
+    min-height: 0;
+  }
+}
 .quote-name {
   font-size: 15px;
   font-weight: 700;
@@ -1749,6 +1757,16 @@ input[type="file"].upload-input {
   padding: 0;
   margin: 0;
 }
+.image-block {
+  max-height: 198px;
+  position: relative;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 5px;
+}
+.image-block img {
+  height: 198px;
+}
 .pull-none {
   float: none;
 }
@@ -1858,6 +1876,18 @@ ul.list-group {
 .text-bold {
   font-weight: bold;
 }
+.text-regular {
+  font-weight: 400;
+}
+.text-semibold {
+  font-weight: 600;
+}
+.text-italic {
+  font-style: italic;
+}
+.text-normal {
+  font-style: normal;
+}
 .text-600 {
   font-weight: 600;
 }
@@ -1892,6 +1922,9 @@ ul.list-group {
 }
 .text-16 {
   font-size: 16px;
+}
+.text-17 {
+  font-size: 17px;
 }
 .text-med,
 .text-18 {
@@ -2096,6 +2129,10 @@ a.grey-light-hover:hover {
   margin-left: 15px;
 }
 /* margin-vertical */
+.flex-mv5 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .flex-mv10 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -2292,6 +2329,14 @@ a.grey-light-hover:hover {
 .bg-primary {
   background: #414141;
 }
+.bg-techevent {
+  background: #F4F8FC url(../images/techevent-talent-bg.png) no-repeat top right;
+}
+@media (max-width: 767px) {
+  .bg-techevent {
+    background: #F4F8FC;
+  }
+}
 .overflow-hidden {
   overflow: hidden;
 }
@@ -2310,6 +2355,12 @@ img.max-width-100 {
 }
 .max-width-745 {
   max-width: 745px;
+}
+.max-width-940 {
+  max-width: 940px;
+}
+.max-width-940 {
+  max-width: 940px;
 }
 .flex-relative {
   position: relative;
