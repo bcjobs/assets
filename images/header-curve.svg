@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440px" height="305px" viewBox="0 0 1440 305" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47.1 (45422) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" fill="#F1F1F1">
+            <g id="header-curve" fill-rule="nonzero">
+                <path d="M0,84.1875 C181.976562,147.640625 366.347656,176 553.113281,169.265625 C739.878906,162.53125 1035.50781,106.109375 1440,0 L1440,191 L0,191 L0,84.1875 Z" id="Rectangle-8"></path>
+            </g>
+            <rect id="Rectangle" x="0" y="190" width="1440" height="115"></rect>
+        </g>
+    </g>
+</svg>
