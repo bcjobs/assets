@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1157px" height="134px" viewBox="0 0 1157 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>cta-overlay</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="1440" height="190"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cta-overlay" transform="translate(-283.000000, -56.000000)">
+            <g id="Mask" opacity="0" fill="#08B519" fill-rule="nonzero">
+                <rect id="path-1" x="0" y="0" width="1440" height="190"></rect>
+            </g>
+            <g id="Clipped">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="path-1"></g>
+                <g id="Group" opacity="0.427536232" mask="url(#mask-2)">
+                    <g transform="translate(243.000000, -41.000000)">
+                        <g transform="translate(784.265704, 182.293421) scale(-1, 1) rotate(5.000000) translate(-784.265704, -182.293421) translate(7.265704, 67.793421)">
+                            <path d="M3.39772748,71.5211689 C124.177871,51.0122799 205.609669,40.7578349 247.693121,40.7578349 C490.969682,40.7578349 625.512109,89.1718559 755.192621,92.4218879 C822.939708,94.1197539 955.010232,70.0398379 1060.71365,76.2272099 C1153.21538,81.6418189 1290.92084,123.640009 1434.60462,122.718304 C1467.22899,122.509025 1505.92663,130.424784 1550.69754,146.465583 L1536.38813,187.906592 L3.39772748,187.906592 L3.39772748,71.5211689 Z" id="Rectangle-2-Copy" fill="#FFFFFF" fill-rule="nonzero" transform="translate(777.047634, 114.332213) rotate(-3.000000) translate(-777.047634, -114.332213) "></path>
+                            <path d="M0.135102669,94.983876 C113.16178,84.992961 189.141766,79.997504 228.07506,79.997504 C453.141146,79.997504 575.681091,110.678461 695.654364,113.568315 C758.33024,115.078018 880.51462,93.66671 978.305604,99.16838 C1063.88312,103.982925 1191.28062,141.32675 1324.20895,140.507191 C1354.39123,140.321105 1390.19216,147.359616 1431.61173,161.622726 L1418.37345,198.471118 L0.135102669,198.471118 L0.135102669,94.983876 Z" id="Rectangle-2" fill="#D7D8D7" fill-rule="nonzero"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
