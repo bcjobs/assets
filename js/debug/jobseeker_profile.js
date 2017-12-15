@@ -2773,8 +2773,8 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         },
 
         formPreProcess: function (attrs) {
-            attrs.start = attrs.startMonth && attrs.startYear ? attrs.startYear + '-' + attrs.startMonth + '-01' : '';
-            attrs.end = attrs.endMonth && attrs.endYear && !attrs.isCurrent ? attrs.endYear + '-' + attrs.endMonth + '-01' : ''
+            attrs.start = attrs.startMonth && attrs.startYear ? attrs.startYear + '-' + attrs.startMonth + '-01' : null;
+            attrs.end = attrs.endMonth && attrs.endYear && !attrs.isCurrent ? attrs.endYear + '-' + attrs.endMonth + '-01' : null;
             delete attrs.startMonth;
             delete attrs.startYear;
             delete attrs.endMonth;
