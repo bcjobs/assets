@@ -265,7 +265,7 @@ a.header-action:link,a.header-action:visited{color:#6a826b}
 @media(max-width:767px){.user-signup-title{font-size:16px}
 }
 .user-signup-field{font-size:13px;letter-spacing:.24px;margin-bottom:10px;clear:both}
-.user-signup-field input[type=text],.user-signup-field input[type=password],.user-signup-field input[type=email],.user-signup-field select{padding:0 15px;width:100%;border-radius:5px;border:0;background:#fff;line-height:44px}
+.user-signup-field input[type=text],.user-signup-field input[type=password],.user-signup-field input[type=email],.user-signup-field select{padding:0 15px;width:100%;border-radius:5px;border:0;background:#fff;line-height:44px;height:44px}
 .user-signup-field-highlight{background:#0062ad;padding:4px 2px}
 .user-signup-image{background:transparent url(../images/banner_handshake.jpg) center center no-repeat;background-size:100% auto;width:35%;height:100%;position:absolute;left:0}
 @media(max-width:1030px){.user-signup-image{background-size:auto 100%}
