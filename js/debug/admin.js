@@ -139,12 +139,12 @@ JOBCENTRE.renderResumeAuthorize = function(authorized){
 JOBCENTRE.renderProvinceNames = function(){
     var template = _.template($('#province_option').html());
     var pairs = [
-        { source: 'CountryID', destination: 'ProvinceStateID', ajax: null },
+        { source: 'CountryId', destination: 'ProvinceId', ajax: null },
         { source: 'BillingCountryID', destination: 'BillingProvinceStateID', ajax: null }
     ];
 
     _.each(pairs, function(pair) {
-        $('#' + pair.source).change(function(e) {
+        $('[name*=\'' + pair.source + '\']').change(function(e) {
             if (pair.ajax)
                 pair.ajax.abort();
             pair.ajax = $.ajax({
@@ -156,7 +156,7 @@ JOBCENTRE.renderProvinceNames = function(){
                     _.each(provinces.data, function(province) {
                         options.push(template(province));
                     });
-                    $('#' + pair.destination).html(options.join(''));
+                    $('[name*=\'' + pair.destination + '\']').html(options.join(''));
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
                     console.log(errorThrown);
