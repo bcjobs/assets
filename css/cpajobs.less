@@ -80,6 +80,9 @@ h4 {
   display: table;
   clear: both;
 }
+	.hidden-tablet {
+		display: none; 
+	}
 
 
 /* Button Styles */
@@ -273,6 +276,14 @@ ul ul {
     background: url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
     background-size: 180%;
 }
+.background-wave-green {
+	background: @secondary_color url(/assets/images/cta-overlay.svg) no-repeat bottom right;
+    background-size: cover;
+    width: 100%;
+}
+.background-fixed {
+	background-attachment: fixed;
+}
 
 /* Flexible loader */
 
@@ -347,7 +358,10 @@ ul ul {
 .flex_dataentry_wrapper, .form-dataentry{
 	margin-top:5px;
 }
-
+.form-gray input,
+.form-gray select {
+	background: #f6f6f6;
+}
 .flex_dataentry_label{
 	float:left;
 	width:38%;
@@ -358,9 +372,9 @@ ul ul {
 
 .form-horizontal .form-group { margin-left: 0; margin-right: 0; }
 .form-label {
-	border: 3px solid #EAF1F3;
 	margin: 0;
-	padding: 5px 5px 5px 12px;
+    padding: 8px 5px 5px 12px;
+    font-weight: 700;
 	@media(max-width: @screen-xs-max){ border-bottom: 0; }
 }
 .form-input {
@@ -386,11 +400,6 @@ ul ul {
 
 .ie8 select.flex_dataentry_multiple  {
 	min-height: 100px;
-}
-
-.flex_dataentry_wrapper select:not([multiple]), .form-dataentry select:not([multiple]){
-	min-height:0;
-	height: 32px;
 }
 
 .form-dataentry select.form-selectlist {
@@ -656,9 +665,6 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 	border-radius: 0;
 	color: #ffffff;
 }
-.panel>.list-group .list-group-item, .panel-heading+.list-group .list-group-item:first-child {
-	@media(max-width: @screen-xs-max){ border-top: 2px solid @primary_color; }
-}
 .panel li.odd { background: #eeeeee; }
 .panel li.even { background: #f5f5f5; }
 
@@ -747,6 +753,9 @@ textarea {
 	@media(max-width: @screen-xs-max) {
 		padding: 5px 0;
 	}
+	br {
+		display: none;
+	}
 }
 .login_overlay {
 	display: none; 
@@ -762,9 +771,6 @@ textarea {
 }
 .header .row {
 	position: relative;
-}
-.header-menu-item-wrapper {
-	margin-top: 25px;
 }
 .header_login_show_anchor {
     float: right;
@@ -823,7 +829,7 @@ textarea {
     background: white;
     margin: 4px 0;
     height: auto;
-    outline: none;
+    outline: none; 
 }
 .header_login select {
     height: 38px;
@@ -848,8 +854,6 @@ textarea {
 .row {
     max-width: 942px;
     margin: 0 auto;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .header_login_hide_anchor {
@@ -916,9 +920,6 @@ textarea {
 }
 
 /* Jobseeker Login Styles */
-.jobseeker-login {
-    display: flex;
-}
 .jobseeker-login_left {
 	width: 50%;
 	margin-right: 20px;
@@ -1166,7 +1167,7 @@ body .select2-expand .select2-choices {
 .home-splash-employer {
 	color:#003640;
 	background:#008bb0;
-	text-align:center;
+	text-align:center; 
 	width:290px;
 	position:absolute;
 	left:355px;
@@ -1183,23 +1184,11 @@ body .select2-expand .select2-choices {
 }
 .home-splash .flex_button, .home-splash a.flex_button:link { font-size: 13px; }
 
-.rates-cta {
-	text-align: center;
-	padding: 50px 0;
-	background: @secondary_color url(/assets/images/cta-overlay.svg) no-repeat bottom right;
-	background-size: cover;
-	width: 100%;
-	margin: 90px 0 0 0;
-}
-.cpa-featured {
-	background: #fff;
+.cpa-featured {  
 	padding: 90px 0 100px 0;
-	text-align: center;
 }
-.cpa-featured-images {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.cpa-featured-images img {
+    max-width: 180px; 
 }
 .feature_employers {
 	filter: grayscale(100%);
@@ -1210,11 +1199,7 @@ body .select2-expand .select2-choices {
 .social-nav-wrapper {
 	background-color: @primary_color;
 	border-bottom: 1px solid #629AD1;
-	display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
-    z-index: 3;
     height: 57px;
     &.fixed {
 		position: fixed;
@@ -3286,31 +3271,32 @@ a.flex_tab.active { color: #fff;}
 
 .flex-tab {
 	display: inline-block;
-	border:1px solid #008bb1;
-	border-bottom: none;
-	background-color: #fff;
-	text-align: center;
-	padding: 7px 10px;
-	position: relative;
-	z-index: 10;
-	border-radius: 5px 5px 0 0;
-	background-color: none;
-	font-size: 1.1em;
-	margin: 0 2px;
+    border-bottom: none;
+    background-color: rgba(255,255,255,0.26);
+    text-align: center;
+    padding: 7px 17px;
+    position: relative;
+    z-index: 10;
+    border-radius: 5px 5px 0 0;
+    font-size: 13px;
+    margin: 0 0 0 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease; 
 	@media(max-width: 959px){
-		border: 1px solid #008bb1;
-		border-radius: 5px;
-        padding: 5px 5px;
-        font-size: 0.9em;
-        margin: 0 0 5px 0;
+		display: block;
+		width: 100%;
+		border-radius: 0;
+		margin: 0;
 	}
 }
-a.flex-tab { color: #008bb1;}
-a.flex-tab.active { color: #fff;}
-.flex-tab:hover { background-color: #EAF1F3; }
+a.flex-tab { color: #fff;}
+a.flex-tab.active { color: @secondary_color;}
+.flex-tab:hover { background-color: rgba(255,255,255,0.32); }
 .flex-tab.active {
 	z-index: 20;
-	background: #008bb1;
+	background: #fff;
 	cursor: default;
 }
 
@@ -3792,7 +3778,9 @@ a.flex-tab.active { color: #fff;}
 }
 
 @media (max-width: 469px) {
-	
+	.hidden-tablet {
+		display: block;
+	}
 	.home-header-blocks {
 	    display: block;
 	    .header-block {
@@ -3812,10 +3800,6 @@ a.flex-tab.active { color: #fff;}
 	a.btn-arrow {
 		padding: 8px 32px 8px 15px;
 	}
-	.rates-cta {
-		margin: 30px 0 0 0;
-		padding: 30px 0;
-	}
 	.cpa-featured {
 		padding: 30px 0;
 	}
@@ -3828,7 +3812,7 @@ a.flex-tab.active { color: #fff;}
 		margin-bottom: 20px;
 	}
 	.content {
-		padding: 1px 5px 0 5px;
+		padding: 1px 0 0 0;
 	}
 	.footer .row {
 		display: block;
@@ -3914,7 +3898,7 @@ a.flex-tab.active { color: #fff;}
 
     .candidate_keywords input[type=text] { display: block; width: 250px; margin: 10px auto 0 auto; }
 
-   .social-nav-links li { font-size: 0.6em; margin: 0; }
+   .social-nav-links li { font-size: 0.6em; margin: 0 3px; }
    .social-nav { padding-left: 0; }
 
    .jobseeker_profile_section_editable_status_item { width: 100%; }
