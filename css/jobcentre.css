@@ -3905,6 +3905,12 @@ select.form-selectlist {
 ul.list-group {
   margin: 0;
 }
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
 .text-bold {
   font-weight: bold;
 }
@@ -4010,6 +4016,14 @@ ul.list-group {
 .lh-22 {
   line-height: 22px;
 }
+.radius-5 {
+  border-radius: 5px;
+}
+.radius-tlblbr-5 {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 .a-block a,
 a.a-block {
   display: block;
@@ -4041,6 +4055,15 @@ a.grey-light-hover:hover {
 }
 .transition-opacity:hover {
   opacity: 1;
+}
+/* Position */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pos-relative {
+  position: relative;
 }
 /* Margin Classes */
 .flex-mauto {
@@ -4096,6 +4119,9 @@ a.grey-light-hover:hover {
 }
 .flex-mt70 {
   margin-top: 70px;
+}
+.flex-mt90 {
+  margin-top: 90px;
 }
 .flex-mt100 {
   margin-top: 100px;
@@ -4277,13 +4303,21 @@ a.grey-light-hover:hover {
   padding-top: 40px;
   padding-bottom: 40px;
 }
-.flex-pv75 {
-  padding-top: 75px;
-  padding-bottom: 75px;
+.flex-pv50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 .flex-pv60 {
   padding-top: 60px;
   padding-bottom: 60px;
+}
+.flex-pv70 {
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.flex-pv75 {
+  padding-top: 75px;
+  padding-bottom: 75px;
 }
 .flex-pv80 {
   padding-top: 80px;
@@ -4330,6 +4364,9 @@ a.grey-light-hover:hover {
 }
 .display-block {
   display: block;
+}
+.display-flex {
+  display: flex;
 }
 .opacity-07 {
   opacity: 0.7;
@@ -4509,7 +4546,19 @@ img.max-width-100 {
   font-size: 16px;
   color: #005ca2;
 }
+.zindex-2 {
+  z-index: 2;
+}
+.zindex-3 {
+  z-index: 3;
+}
 @media (max-width: 767px) {
+  .xs-radius-0 {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
   .visible-xs {
     display: inline-block !important;
   }
@@ -4611,6 +4660,9 @@ img.max-width-100 {
   .xs-mv30 {
     margin-top: 30px;
     margin-bottom: 30px;
+  }
+  .xs-ml0 {
+    margin-left: 0;
   }
   .xs-hide {
     display: none;
