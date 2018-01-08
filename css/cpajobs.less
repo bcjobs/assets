@@ -180,13 +180,14 @@ p{ margin-top: 0; }
 
 input, select {
 	border: 0 none;
-	width: 100%;
-	padding: 6px 15px;
-	border-radius: 5px;
-	background: white;
-	margin: 4px 0;
-	height: auto;
-	outline: none;
+    width: 100%;
+    border-radius: 5px;
+    background: white;
+    margin: 4px 0;
+    height: 38px;
+    line-height: 38px;
+    outline: none; 
+    padding: 0 15px; 
 }
 
 select {
@@ -824,12 +825,13 @@ textarea {
 .header_login input, .header_login select{
     border: 0 none;
     width: 100%;
-    padding: 6px 15px;
     border-radius: 5px;
     background: white;
     margin: 4px 0;
-    height: auto;
+    height: 38px;
+    line-height: 38px;
     outline: none; 
+    padding: 0 15px; 
 }
 .header_login select {
     height: 38px;
@@ -1016,6 +1018,7 @@ textarea {
 
 /* Select2 plugin overrides */
 
+
 body .select2-container{
 	display:block;
 }
@@ -1042,18 +1045,27 @@ body .select2-container-multi .select2-search-choice-close{
 }
 
 body .select2-container-multi .select2-choices {
-	padding-bottom:0px;
-	padding-top:0px;
-	background-image:none;
-	border-color:#c5c5c5;
+	border: 0 none;
+    width: 100%;
+    border-radius: 5px;
+    background: white;
+    margin: 4px 0;
+    height: 38px;
+    line-height: 38px;
+    outline: none; 
+    padding: 0 15px; 
 }
 
-body .select2-container .select2-choice{
-	border-radius:0;
-	height:32px;
-	line-height:31px;
-	background-image:none;
-	padding-right:20px;
+body .select2-container .select2-choice {
+	border: 0 none;
+    width: 100%;
+    border-radius: 5px;
+    background: white;
+    margin: 4px 0;
+    height: 38px;
+    line-height: 38px;
+    outline: none; 
+    padding: 0 15px; 
 }
 
 body .select2-container .select2-choice div{
@@ -1342,7 +1354,11 @@ body .select2-expand .select2-choices {
 
 
 /* Dashboard General Styles */
-
+.dashboard-wrapper .content {
+	max-width: 942px;
+    margin: 0 auto;
+    padding: 70px 15px;
+}
 .dash-header-wrapper {
 	border-bottom: 20px solid #54b948;
 	margin: 0 -15px;

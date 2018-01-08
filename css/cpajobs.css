@@ -1956,6 +1956,7 @@ a.grey-light-hover:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .pos-relative {
   position: relative;
@@ -2128,6 +2129,9 @@ a.grey-light-hover:hover {
   padding: 40px;
 }
 /* padding-top */
+.flex-pt6 {
+  padding-top: 6px;
+}
 .flex-pt20 {
   padding-top: 20px;
 }
@@ -2757,12 +2761,13 @@ input,
 select {
   border: 0 none;
   width: 100%;
-  padding: 6px 15px;
   border-radius: 5px;
   background: white;
   margin: 4px 0;
-  height: auto;
+  height: 38px;
+  line-height: 38px;
   outline: none;
+  padding: 0 15px;
 }
 select {
   height: 38px;
@@ -3462,12 +3467,13 @@ textarea {
 .header_login select {
   border: 0 none;
   width: 100%;
-  padding: 6px 15px;
   border-radius: 5px;
   background: white;
   margin: 4px 0;
-  height: auto;
+  height: 38px;
+  line-height: 38px;
   outline: none;
+  padding: 0 15px;
 }
 .header_login select {
   height: 38px;
@@ -3651,17 +3657,26 @@ body .select2-container-multi .select2-search-choice-close {
   top: 7px;
 }
 body .select2-container-multi .select2-choices {
-  padding-bottom: 0px;
-  padding-top: 0px;
-  background-image: none;
-  border-color: #c5c5c5;
+  border: 0 none;
+  width: 100%;
+  border-radius: 5px;
+  background: white;
+  margin: 4px 0;
+  height: 38px;
+  line-height: 38px;
+  outline: none;
+  padding: 0 15px;
 }
 body .select2-container .select2-choice {
-  border-radius: 0;
-  height: 32px;
-  line-height: 31px;
-  background-image: none;
-  padding-right: 20px;
+  border: 0 none;
+  width: 100%;
+  border-radius: 5px;
+  background: white;
+  margin: 4px 0;
+  height: 38px;
+  line-height: 38px;
+  outline: none;
+  padding: 0 15px;
 }
 body .select2-container .select2-choice div {
   border-radius: 0;
@@ -3965,6 +3980,11 @@ body .select2-expand .select2-choices {
   text-align: center;
 }
 /* Dashboard General Styles */
+.dashboard-wrapper .content {
+  max-width: 942px;
+  margin: 0 auto;
+  padding: 70px 15px;
+}
 .dash-header-wrapper {
   border-bottom: 20px solid #54b948;
   margin: 0 -15px;

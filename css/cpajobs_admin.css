@@ -1997,6 +1997,7 @@ a.grey-light-hover:hover {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .pos-relative {
   position: relative;
@@ -2169,6 +2170,9 @@ a.grey-light-hover:hover {
   padding: 40px;
 }
 /* padding-top */
+.flex-pt6 {
+  padding-top: 6px;
+}
 .flex-pt20 {
   padding-top: 20px;
 }
