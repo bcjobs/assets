@@ -1,4 +1,8 @@
 @charset "UTF-8";
+@font-face {
+  font-family: GothamBook;
+  src: url("../../fonts/Gotham-Book_0.otf") format("opentype");
+}
 /* Button Styles */
 .btn {
   color: #fff;
@@ -1835,6 +1839,9 @@ ul.list-group {
 .text-bold {
   font-weight: bold;
 }
+.text-light {
+  font-weight: 100;
+}
 .text-regular {
   font-weight: 400;
 }
@@ -1952,6 +1959,9 @@ ul.list-group {
 .lh-22 {
   line-height: 22px;
 }
+.lh-34 {
+  line-height: 34px;
+}
 .radius-5 {
   border-radius: 5px;
 }
@@ -1998,6 +2008,11 @@ a.grey-light-hover:hover {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+.flex-center-row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 .pos-relative {
   position: relative;
@@ -2066,6 +2081,9 @@ a.grey-light-hover:hover {
 /* margin-right */
 .flex-mr5 {
   margin-right: 5px;
+}
+.flex-mr8 {
+  margin-right: 8px;
 }
 .flex-mr10 {
   margin-right: 10px;
@@ -2191,6 +2209,9 @@ a.grey-light-hover:hover {
 }
 .flex-pt43 {
   padding-top: 43px;
+}
+.flex-pt60 {
+  padding-top: 60px ;
 }
 .flex-pt70 {
   padding-top: 70px;
@@ -2673,7 +2694,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'GothamBook', sans-serif;
   color: #006FBA;
   font-weight: bold;
   margin-top: 0;
@@ -2681,8 +2702,8 @@ h6 {
 }
 h1 {
   font-size: 41px;
-  font-weight: 500;
-  letter-spacing: -1.07px;
+  font-weight: bold;
+  letter-spacing: -2.07px;
 }
 h2 {
   font-size: 28px;
@@ -2725,12 +2746,13 @@ h4 {
   display: none;
 }
 /* Button Styles */
-a.btn {
+a.btn,
+.btn-submit {
   color: #fff;
   font-size: 15px;
-  font-family: 'Quicksand', sans-serif;
-  letter-spacing: 0.9px;
-  font-weight: 500;
+  font-weight: bold;
+  font-family: 'GothamBook', sans-serif;
+  letter-spacing: 0;
   transition: all 0.3s ease;
   background: #43B02A;
   border-radius: 5px;
@@ -2739,8 +2761,11 @@ a.btn {
   padding: 16px 25px;
 }
 a.btn:hover,
+.btn-submit:hover,
 a.btn:active,
-a.btn:focus {
+.btn-submit:active,
+a.btn:focus,
+.btn-submit:focus {
   background: #48bc2d;
   color: #fff;
 }
@@ -2759,17 +2784,18 @@ a.btn-sm {
   font-size: 13px;
 }
 a.btn-arrow {
-  padding: 8px 32px 8px 15px;
+  padding: 11px 32px 8px 15px;
+  font-weight: bold;
 }
 a.btn-arrow:after {
   content: '>';
   margin-left: 10px;
   position: absolute;
-  margin-top: -2px;
+  margin-top: 0;
 }
 .flex_button {
   color: #fff;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'GothamBook', sans-serif;
   letter-spacing: 0.9px;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -2822,6 +2848,22 @@ a.btn-info:link {
 }
 .btn-info:hover {
   background: #ffffff;
+}
+.overlay-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  margin-bottom: 20px;
+  display: inline-block;
+  background: #e8e8e8;
+  padding: 7px 9px 7px 30px;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  color: #797979;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 p {
   margin-top: 0;
@@ -3038,10 +3080,6 @@ ul ul {
 }
 .control-label {
   margin-right: 0;
-}
-.flex_dataentry_wrapper select,
-.form-dataentry select {
-  min-height: 100px;
 }
 .ie8 .flex_dataentry_wrapper select,
 .ie8 .form-dataentry select {
@@ -3892,9 +3930,6 @@ body .select2-expand .select2-choices {
 .cpa-featured-images img {
   max-width: 180px;
 }
-.feature_employers {
-  filter: grayscale(100%);
-}
 /* Public Styles */
 .social-nav-wrapper {
   background-color: #006FBA;
@@ -3927,7 +3962,7 @@ body .select2-expand .select2-choices {
   color: #fff;
   font-size: 14px;
   font-weight: 600;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'GothamBook', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.22px;
   padding: 15px 0;
@@ -5657,9 +5692,6 @@ h3.jobseeker_profile_heading {
   width: 100%;
   float: none;
   margin: 20px 0 0 0;
-  background-repeat: repeat-y;
-  background-image: url(data:image/jpeg;base64,/9j/4QAYRXhpZgAASUkqAAgAAAAAAAAAAAAAAP/sABFEdWNreQABAAQAAAA8AAD/4QMpaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLwA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjAtYzA2MCA2MS4xMzQ3NzcsIDIwMTAvMDIvMTItMTc6MzI6MDAgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCBDUzUgV2luZG93cyIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGQkE4RjI3Mjc1RTIxMUUyQUVGQUJBODlENzk5MkY0NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGQkE4RjI3Mzc1RTIxMUUyQUVGQUJBODlENzk5MkY0NyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZCQThGMjcwNzVFMjExRTJBRUZBQkE4OUQ3OTkyRjQ3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkZCQThGMjcxNzVFMjExRTJBRUZBQkE4OUQ3OTkyRjQ3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+/+4ADkFkb2JlAGTAAAAAAf/bAIQABgQEBAUEBgUFBgkGBQYJCwgGBggLDAoKCwoKDBAMDAwMDAwQDA4PEA8ODBMTFBQTExwbGxscHx8fHx8fHx8fHwEHBwcNDA0YEBAYGhURFRofHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8fHx8f/8AAEQgAAQAEAwERAAIRAQMRAf/EAEoAAQAAAAAAAAAAAAAAAAAAAAgBAQAAAAAAAAAAAAAAAAAAAAAQAQAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/AFSD/9k=);
-  /* background-color:#f7f7f7; */
 }
 .content_search_results_sidebar_filters_fullwidth .content_search_results_subsection_wrapper,
 .content_search_results_sidebar_filters_fullwidth .flex_cube {
@@ -5823,6 +5855,35 @@ h3.jobseeker_profile_heading {
 .content_searchbox_widget_search_anchor {
   display: none;
 }
+.search-results-input,
+#search_box input:not([type="radio"]):not([type="checkbox"]) {
+  height: 35px;
+  line-height: 35px;
+  margin-bottom: 0;
+  border: 0;
+}
+.search-results-input:hover,
+#search_box input:not([type="radio"]):not([type="checkbox"]):hover {
+  border: 0;
+}
+.search-results-subcontent .select2-input {
+  width: 100% !important;
+}
+.form-multioption:hover,
+.content_dataentry_item_multioption_wrapper:hover {
+  background: none;
+  background-color: none;
+}
+.form-multioption input,
+.content_dataentry_item_multioption_wrapper input {
+  margin: 0 8px 0 0;
+}
+.list-item-wrapper.odd {
+  background: #fff;
+}
+.ad-sidebar-widget-logo {
+  background: #fff;
+}
 /* Flex List -- I have been converting over the old table-based lists to this standard, because tables and media-queries don't play well */
 .flex_list {
   font-size: 0.9em;
@@ -5843,22 +5904,6 @@ h3.jobseeker_profile_heading {
 /* Styles below were taken from jobcentre or added manually by Johnny or Alexandru */
 /* -------------------------------------------------------------------------- */
 /* cpa project start (Alexandru) */
-.content_dataentry_item_multioption_wrapper {
-  display: inline-block;
-  background: #F2F2F2;
-  padding: 1px 10px;
-  margin: 2px 10px;
-  border-radius: 7px;
-  cursor: pointer;
-}
-.content_dataentry_item_multioption_wrapper input,
-.content_dataentry_item_multioption_wrapper option {
-  cursor: pointer;
-  margin-right: 10px;
-}
-.content_dataentry_item_multioption_wrapper:hover {
-  background-color: #CEE1EE;
-}
 .RequiredAsterix {
   color: #FF0000;
   font-family: Arial, Helvetica, sans-serif;
@@ -6522,6 +6567,9 @@ a.flex-tab.active {
   }
   .jobseeker_profile_section_editable_twoacross .jobseeker_profile_section_input {
     width: 100%;
+  }
+  .joblist_header {
+    padding: 10px 0;
   }
 }
 @media (max-width: 530px) {
