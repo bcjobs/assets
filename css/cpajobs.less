@@ -10,7 +10,7 @@
     src: url("../../fonts/Gotham-Book_0.otf") format("opentype");
 }
 
-@default_font: 'Lato', sans-serif;
+@default_font: 'GothamBook', sans-serif;
 @alt_font: 'GothamBook', sans-serif; 
 
 @import "../bootstrap-3.3.4/less/variables.less";
@@ -21,9 +21,9 @@
 /* CSS Document */
 
 body { 
-	font-size: 15px;
-	line-height: 26px;
-	letter-spacing: 0.6px;
+	font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
 	font-family: @default_font;
     position:relative;
     color: @default_color;
@@ -1387,7 +1387,12 @@ body .select2-expand .select2-choices {
 	margin-top:9px;
 	text-align:center;
 }
-
+.callout-title {
+	letter-spacing: -0.8px;
+}
+.ad-sidebar-widget-logo img {
+	filter: none;
+}
 
 /* Dashboard General Styles */
 .dash-search-jobs {
@@ -1518,7 +1523,14 @@ body .select2-expand .select2-choices {
 	.text-uppercase;
 }
 .dash-search-subtitle { color: #757575; }
-
+.text-default {
+	color: @default_color;
+}
+.tab-select {
+	background: #fff;
+	border: 1px solid #fff;
+	color: @default_color;
+}
 
 /* News box */
 
@@ -3392,7 +3404,9 @@ a.flex-tab.active { color: @secondary_color;}
 
 .visible-mobile { display: none; }
 
-
+.form-group .col-xs-12.col-sm-6.twocols-col1.xs-p0.flex-pt6 {
+    margin-top: 14px;
+}
 
 .content_search_results_footer_pagination_wrapper {
 	padding: 10px 15px 12px 15px;

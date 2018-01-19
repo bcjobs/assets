@@ -2146,6 +2146,10 @@ a.grey-light-hover:hover {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+.flex-mv40 {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
 .flex-mv90 {
   margin-top: 90px;
   margin-bottom: 90px;
@@ -2664,10 +2668,10 @@ img.max-width-100 {
 }
 /* CSS Document */
 body {
-  font-size: 15px;
-  line-height: 26px;
-  letter-spacing: 0.6px;
-  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0;
+  font-family: 'GothamBook', sans-serif;
   position: relative;
   color: #474747;
   background: #f1f1f1;
@@ -3686,7 +3690,7 @@ textarea {
   width: 100%;
   background: #2D2D2D;
   color: #848484;
-  font-family: 'Lato', sans-serif;
+  font-family: 'GothamBook', sans-serif;
   font-size: 11px;
   line-height: 16px;
   padding: 20px 0;
@@ -4108,6 +4112,12 @@ body .select2-expand .select2-choices {
   margin-top: 9px;
   text-align: center;
 }
+.callout-title {
+  letter-spacing: -0.8px;
+}
+.ad-sidebar-widget-logo img {
+  filter: none;
+}
 /* Dashboard General Styles */
 .dash-search-jobs {
   background-color: #43B02A;
@@ -4272,6 +4282,14 @@ body .select2-expand .select2-choices {
 }
 .dash-search-subtitle {
   color: #757575;
+}
+.text-default {
+  color: #474747;
+}
+.tab-select {
+  background: #fff;
+  border: 1px solid #fff;
+  color: #474747;
 }
 /* News box */
 .newsbox_wrapper {
@@ -6128,6 +6146,9 @@ a.flex-tab.active {
 }
 .visible-mobile {
   display: none;
+}
+.form-group .col-xs-12.col-sm-6.twocols-col1.xs-p0.flex-pt6 {
+  margin-top: 14px;
 }
 .content_search_results_footer_pagination_wrapper {
   padding: 10px 15px 12px 15px;
