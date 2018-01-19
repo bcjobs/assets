@@ -2759,6 +2759,7 @@ a.btn,
   text-transform: uppercase;
   display: inline-block;
   padding: 16px 25px;
+  white-space: normal;
 }
 a.btn:hover,
 .btn-submit:hover,
@@ -2878,7 +2879,7 @@ select {
   height: 38px;
   line-height: 38px;
   outline: none;
-  padding: 0 15px;
+  padding: 0 0 0 15px;
 }
 select {
   height: 38px;
@@ -3992,6 +3993,18 @@ body .select2-expand .select2-choices {
   bottom: -1px;
   left: 0;
 }
+.social-nav-links li.nav-active a {
+  opacity: 1;
+}
+.social-nav-links li.nav-active a:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: #43B02A;
+  bottom: -1px;
+  left: 0;
+}
 .preapproved-banner {
   height: 100px;
   width: 100%;
@@ -4986,6 +4999,16 @@ a.campus-remove {
   line-height: 34px;
   padding: 0 8px;
   width: 34px;
+}
+.modal-content input,
+.modal-content select,
+.modal-content .select2-container {
+  background: #f7f7f7;
+}
+.modal-content input .select2-choice,
+.modal-content select .select2-choice,
+.modal-content .select2-container .select2-choice {
+  background: #f7f7f7;
 }
 .table-display {
   width: 100%;
