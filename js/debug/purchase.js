@@ -6,13 +6,13 @@ JOBCENTRE.purchase = (function ($) {
 
     var url = function (restPath) {
         url = {
-            purchases: restPath + 'purchases',
+            purchases: '/api/v1.1/purchases',
 
             // generic
             countries: '/api/v1.1/countries',
             provinces: '/api/v1.1/provinces?countryId=:id',
             taxcodes: restPath + 'taxcodes',
-            storedcards: restPath + 'creditcards'
+            storedcards: '/api/v1.1/creditcards'
         };
     };
 
