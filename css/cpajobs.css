@@ -2976,6 +2976,9 @@ ul ul {
   background-size: cover;
   width: 100%;
 }
+.background-white {
+  background: #fff;
+}
 .background-fixed {
   background-attachment: fixed;
 }
@@ -3616,6 +3619,11 @@ textarea {
 .header_logo_wrapper img {
   width: 100%;
 }
+@media (max-width: 767px) {
+  .header_logo_wrapper {
+    width: 160px;
+  }
+}
 .row {
   max-width: 942px;
   margin: 0 auto;
@@ -3968,15 +3976,15 @@ body .select2-expand .select2-choices {
 .social-nav-links li {
   list-style: none;
   display: inline-block;
-  margin: 0 15px;
+  margin: 0 9px;
 }
 .social-nav-links li a {
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   font-family: 'GothamBook', sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.22px;
+  letter-spacing: 0;
   padding: 15px 0;
   display: inline-block;
   opacity: 0.5;
