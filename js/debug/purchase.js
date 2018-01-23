@@ -545,7 +545,9 @@ JOBCENTRE.purchase = (function ($) {
             return {
                 line1: this.get('addon').prompt1,
                 line2: this.get('addon').prompt2,
-                line3: this.get('addon').prompt3.replace('{price}', difference)
+                line3: this.get('addon').prompt3
+                    .replace('{difference}', difference)
+                    .replace('{price}', this.getAddon().discountedPrice())
             };
         }
     });
