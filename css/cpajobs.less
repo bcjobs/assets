@@ -122,6 +122,16 @@ a.btn-white {
         color: @secondary_color;
     }
 }
+a.btn-blue {
+    color: #fff;
+    background: @primary_color;
+    &:hover,
+    &:active,
+    &:focus {
+    	background: lighten(@primary_color, 3%);
+        color: #fff;
+    }
+}
 a.btn-sm {
     padding: 8px 15px; 
     font-size: 13px; 
@@ -3475,15 +3485,6 @@ a.flex-tab.active { color: @secondary_color;}
     margin: 5px 5px 5px 0;
     padding:5px 7px;
 }
-
-.tag_higlight{
-    background:#e0eaf1;
-    line-height:1.2em;
-    color:#3e6d8e;
-    font-size:0.9em;
-    text-align:center;
-}
-
 .tag_emphasis{
     background:#E1F1E0;
     line-height:1.2em;
@@ -3794,7 +3795,9 @@ a.flex-tab.active { color: @secondary_color;}
     .newsbox_content_title { margin: 5px auto; }
     .newsbox_content_text { margin-top: 5px; padding: 0 10px; }
 
-
+	.social-nav-links li a {
+		letter-spacing: -1px;
+	}
 	.social-nav {
         width: 100%;
         text-align: center;
@@ -4033,9 +4036,11 @@ a.flex-tab.active { color: @secondary_color;}
 
 @media (max-width: 400px) {
 	.flex_button.flex_button_small, a.flex_button.flex_button_small:link, .flex_button.flex_button_small:visited { padding: 2px 5px; }
-
+	
+	.social-nav-links li a {
+		letter-spacing: 0;
+	}
 }
 
 @media (max-width: 350px) {
-
 }
