@@ -16,7 +16,7 @@ JOBCENTRE.jobForm = (function ($) {
 
     var url = function (restPath) {
         url = {
-            jobs: restPath + 'jobs'
+            jobs: '/api/v1.1/jobs'
         };
     };
 
