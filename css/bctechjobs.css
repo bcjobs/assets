@@ -1059,7 +1059,7 @@ a.header-action:visited {
   background: url(../images/ui_arrow-down.png) center center no-repeat;
   background-size: 100%;
 }
-.search-widget-fields input,
+.search-widget-fields input[type=text],
 .search-widget-fields .select2-container .select2-choice {
   border: 0;
   border-radius: 5px;
