@@ -143,6 +143,9 @@ a.button:active {
 .btn-loading:hover {
   background-color: #eee;
 }
+.background-wave-green {
+  background: #00a936 url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
+}
 .flex-outer-width {
   width: 940px;
   margin: 0 auto;
@@ -1805,6 +1808,12 @@ body .select2-container .select2-choice abbr:hover {
   padding: 15px;
   border-radius: 5px;
 }
+.sidefeature-wrapper h2 {
+  font-size: 18px;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
 .sidefeature-title {
   font-size: 18px;
   font-weight: bold;
@@ -2236,7 +2245,6 @@ body .select2-container .select2-choice abbr:hover {
   background: #00a936;
 }
 .background-wave-green {
-  background: #43B02A url(/assets/images/cta-overlay.svg) no-repeat bottom right;
   background-size: cover;
   width: 100%;
 }
