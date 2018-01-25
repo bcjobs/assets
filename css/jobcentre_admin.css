@@ -149,6 +149,11 @@
 .bkg-action {
   background: #006fba;
 }
+.background-wave-green {
+  background: #43B02A url(/assets/images/cta-overlay.svg) no-repeat bottom right;
+  background-size: cover;
+  width: 100%;
+}
 /* Alert Styling */
 .alert-floater-wrapper .alert {
   border: 2px solid #fff;
