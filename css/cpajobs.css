@@ -6655,6 +6655,9 @@ a.flex-tab.active {
   }
 }
 @media (max-width: 469px) {
+  a.btn {
+    font-size: 13px;
+  }
   .hidden-tablet {
     display: block;
   }
