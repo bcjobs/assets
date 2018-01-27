@@ -16,7 +16,7 @@
 @import "../bootstrap-3.3.4/less/variables.less";
 @import "_common.less";
 
-
+ 
 @charset "UTF-8";
 /* CSS Document */
 
@@ -310,11 +310,6 @@ ul ul {
 .background-wave {
     background: url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
     background-size: 180%;
-}
-.background-wave-green {
-	background: @secondary_color url(/assets/images/cta-overlay.svg) no-repeat bottom right;
-    background-size: cover;
-    width: 100%;
 }
 .background-white {
 	background: #fff;
@@ -627,7 +622,7 @@ a.flex_button:hover, .flex_button:hover{ text-decoration:none;}
 }
 
 .flex_brand_base_1 { background-color: #EAF1F3; }
-.bkg-muted { background-color: #EAF1F3; }
+.bkg-muted { background-color: #e4e4e4; }
 .flex-mtrout {
     margin-top: 18px;
 } 
@@ -3869,6 +3864,9 @@ a.flex-tab.active { color: @secondary_color;}
 }
 
 @media (max-width: 469px) {
+	a.btn {
+		font-size: 13px;
+	}
 	.hidden-tablet {
 		display: block;
 	}

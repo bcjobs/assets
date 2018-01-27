@@ -112,6 +112,10 @@
 .bkg-action {
   background: #006fba;
 }
+.background-wave-green {
+  background-size: cover;
+  width: 100%;
+}
 /* Alert Styling */
 .alert-floater-wrapper .alert {
   border: 2px solid #fff;
@@ -2574,6 +2578,9 @@ img.max-width-100 {
     font-size: 12px;
     line-height: 22px;
   }
+  .xs-lh-27 {
+    line-height: 27px;
+  }
   .xs-width-100 {
     width: 100%;
   }
@@ -2981,11 +2988,6 @@ ul ul {
   background: url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
   background-size: 180%;
 }
-.background-wave-green {
-  background: #43B02A url(/assets/images/cta-overlay.svg) no-repeat bottom right;
-  background-size: cover;
-  width: 100%;
-}
 .background-white {
   background: #fff;
 }
@@ -3368,7 +3370,7 @@ a.flex_button.flex_button_light:hover {
   background-color: #EAF1F3;
 }
 .bkg-muted {
-  background-color: #EAF1F3;
+  background-color: #e4e4e4;
 }
 .flex-mtrout {
   margin-top: 18px;
@@ -6655,6 +6657,9 @@ a.flex-tab.active {
   }
 }
 @media (max-width: 469px) {
+  a.btn {
+    font-size: 13px;
+  }
   .hidden-tablet {
     display: block;
   }

@@ -149,6 +149,10 @@
 .bkg-action {
   background: #006fba;
 }
+.background-wave-green {
+  background-size: cover;
+  width: 100%;
+}
 /* Alert Styling */
 .alert-floater-wrapper .alert {
   border: 2px solid #fff;
@@ -2610,6 +2614,9 @@ img.max-width-100 {
   .xs-text-small {
     font-size: 12px;
     line-height: 22px;
+  }
+  .xs-lh-27 {
+    line-height: 27px;
   }
   .xs-width-100 {
     width: 100%;

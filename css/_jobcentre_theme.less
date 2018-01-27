@@ -92,6 +92,16 @@ textarea { resize: vertical; }
 
 h1,h2,h3,h4,h5,h6{ margin:0;}
 
+h1 {
+    font-family: 'Lato', sans-serif;
+    font-size: 19px;
+    font-weight: bold;
+}
+h4 {
+    font-size: 15px;
+    font-weight: bold;
+}
+
 ul{ margin-top:0; margin-bottom: 25px;}
 
 input[type=radio], input[type=checkbox]{
@@ -105,7 +115,7 @@ input {
 
 input[type="search"] {
   -webkit-appearance: none;
-  border: 0; 
+  border: 0;  
 } 
 
 /* Button Styles -- General Usage */
@@ -136,6 +146,9 @@ a.button:link, a.button:visited, a.button:hover, a.button:active { color:#fff; }
 }
 .btn-loading:hover {
     background-color: #eee;
+}
+.background-wave-green {
+    background: @action_color url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
 }
 
 .flex-outer-width {
@@ -942,7 +955,7 @@ a.header-action:link, a.header-action:visited {
         background-size: 100%;
     }
 }
-.search-widget-fields input, .search-widget-fields  .select2-container .select2-choice {
+.search-widget-fields input[type=text], .search-widget-fields  .select2-container .select2-choice {
     border: 0;
     border-radius: 5px;
     height: 44px;
@@ -1680,6 +1693,12 @@ body .select2-container .select2-choice abbr:hover {
   color: #ffffff;
   padding: 15px;
   border-radius: 5px;
+} 
+.sidefeature-wrapper h2 {
+    font-size: 18px;
+    display: inline-block; 
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 .sidefeature-title {
     font-size: 18px;
