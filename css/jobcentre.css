@@ -138,6 +138,9 @@ a.button:active {
   margin: 0 2px;
   white-space: nowrap;
 }
+.btn {
+  background: #00a936;
+}
 .button {
   background: #00a936;
 }
