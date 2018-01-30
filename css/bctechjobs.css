@@ -138,9 +138,6 @@ a.button:active {
   margin: 0 2px;
   white-space: nowrap;
 }
-.btn {
-  background: #e64d2a;
-}
 .button {
   background: #e64d2a;
 }
@@ -157,6 +154,9 @@ a.button:active {
 }
 .background-wave-green {
   background: #e64d2a url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
+}
+.search-jobs-widget-options .btn {
+  background: #e64d2a;
 }
 .flex-outer-width {
   width: 940px;
@@ -185,6 +185,8 @@ input {
   color: #414141;
   position: relative;
   background: #EBEBEB;
+  border: 1px solid transparent !important;
+  transition: all 0.3s ease;
 }
 .form-dataentry input[type=text]::placeholder,
 .form-dataentry input[type=password]::placeholder,
@@ -192,6 +194,16 @@ input {
 .form-dataentry select::placeholder {
   color: #414141;
   opacity: 0.5;
+}
+.form-dataentry input[type=text]:hover,
+.form-dataentry input[type=password]:hover,
+.form-dataentry input[type=email]:hover,
+.form-dataentry select:hover,
+.form-dataentry input[type=text]:focus,
+.form-dataentry input[type=password]:focus,
+.form-dataentry input[type=email]:focus,
+.form-dataentry select:focus {
+  border: 1px solid #e64d2a !important;
 }
 .form-dataentry textarea {
   width: 100%;
@@ -259,6 +271,15 @@ input {
   height: auto;
   position: relative;
   min-height: 39px;
+  border: 1px solid transparent !important;
+}
+.search-form-input .select2-choice:hover,
+.form-group .select2-choices:hover,
+.form-group .select2-container .select2-choice:hover,
+.search-form-input .select2-choice:focus,
+.form-group .select2-choices:focus,
+.form-group .select2-container .select2-choice:focus {
+  border: 1px solid #e64d2a !important;
 }
 .search-form-input .select2-choice:after,
 .form-group .select2-choices:after,
@@ -931,6 +952,9 @@ a.header-action:visited {
     left: 50%;
     transform: translateX(-50%);
   }
+}
+.signup-form-dark {
+  background: rgba(0, 0, 0, 0.3);
 }
 @media (max-width: 767px) {
   .signup-form.employer {
