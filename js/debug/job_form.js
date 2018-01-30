@@ -626,7 +626,7 @@ JOBCENTRE.jobForm = (function ($) {
             delete attrs.positionTypeId;
 
             attrs.confidential = attrs.confidential === '1';
-
+            attrs.autoRefresh = attrs.autoRefresh === '1';
             attrs.trainingPosition = attrs.trainingPosition === '1';
 
             attrs.locations = [];
