@@ -228,7 +228,6 @@ JOBCENTRE.jobForm = (function ($) {
                 url: saveUrl,
                 data: JSON.stringify(this.toJSON()),
                 contentType: 'application/json',
-                headers: { 'JC-RenewIfStale': false },
                 dataType: 'json',
                 cache: false,
                 type: method,
