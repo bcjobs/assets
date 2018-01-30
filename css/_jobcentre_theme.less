@@ -132,10 +132,6 @@ a.button:link, a.button:visited, a.button:hover, a.button:active { color:#fff; }
     margin:0 2px;
     white-space: nowrap;
 }
-
-.btn {
-    background: @action_color;
-}
 .button{
     background: @action_color;
 }
@@ -153,7 +149,9 @@ a.button:link, a.button:visited, a.button:hover, a.button:active { color:#fff; }
 .background-wave-green {
     background: @action_color url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
 }
-
+.search-jobs-widget-options .btn {
+    background: @action_color;
+}
 .flex-outer-width {
     width: 940px;
     margin:0 auto;
@@ -167,9 +165,9 @@ a.button:link, a.button:visited, a.button:hover, a.button:active { color:#fff; }
 
 input {
     outline: none !important;
-    box-shadow: none !important;
+    box-shadow: none !important; 
 }
-
+ 
 .form-dataentry input[type=text], 
 .form-dataentry input[type=password], 
 .form-dataentry input[type=email], 
@@ -181,10 +179,16 @@ input {
     border-radius: 5px;
     color: @default_text;
     position: relative;
-    background: #EBEBEB;
+    background: #EBEBEB; 
+    border: 1px solid transparent !important;
+    transition: all 0.3s ease; 
     &::placeholder {
         color: @default_text;
         opacity: 0.5;
+    }
+    &:hover,
+    &:focus {
+        border: 1px solid @action_color !important;
     }
 }
 .form-dataentry textarea {
@@ -220,7 +224,7 @@ input {
     padding: 0 10px;
 }
 .search-results-subcontent input { 
-    padding: 2.5px 10px;
+    padding: 2.5px 10px; 
 }
 .search-results-subcontent .select2-container .select2-choice .select2-arrow,
 .search-results-subcontent .select2-container .select2-choices .select2-arrow { 
@@ -251,6 +255,11 @@ input {
     height: auto; 
     position: relative;
     min-height: 39px;
+    border: 1px solid transparent !important;
+    &:hover, 
+    &:focus {
+        border: 1px solid @action_color !important;
+    }  
     &:after {
         content: '';
         width: 12px;
@@ -838,6 +847,9 @@ a.header-action:link, a.header-action:visited {
         transform: translateX(-50%);
     }
 }
+.signup-form-dark {
+    background: rgba(0, 0, 0, 0.3);
+}
 .signup-form.employer {
     @media(max-width:@screen-xs-max){ top: 270px; }
 }
@@ -969,7 +981,7 @@ a.header-action:link, a.header-action:visited {
 }
 .search-widget-submit {
     font-size: 16px;
-    height: 44px;
+    height: 44px; 
     margin-top: 30px;
     @media(max-width: @screen-xs-max){
         margin-top: 10px;
