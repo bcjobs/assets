@@ -238,13 +238,6 @@ JOBCENTRE.jobForm = (function ($) {
 
                     pageState.set('isSavedToServer', true);
 
-                    // this doesn't work because page gets reloaded immediately after showing the alertFloater
-                    //if (jqXHR.getResponseHeader('JC-Warning'))
-                    //    JOBCENTRE.alertFloater.show({
-                    //        summary: jqXHR.getResponseHeader('JC-Warning'),
-                    //        isError: false
-                    //    });
-
                     window.location.href = String.format(redirectOnSave, response.id);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
