@@ -152,9 +152,6 @@ a.button:active {
 .btn-loading:hover {
   background-color: #eee;
 }
-.background-wave-green {
-  background: #00a936 url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
-}
 .search-jobs-widget-options .btn {
   background: #00a936;
 }
