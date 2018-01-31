@@ -2988,6 +2988,9 @@ ul ul {
   background: url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;
   background-size: 180%;
 }
+.background-wave-green {
+  background: #006fba url(/assets/images/overlay-green.svg) no-repeat bottom -160px right;
+}
 .background-white {
   background: #fff;
 }
