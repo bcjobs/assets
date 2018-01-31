@@ -16,6 +16,7 @@
 .btn-default.disabled,.btn-default[disabled],.btn-default.disabled:hover,.btn-default[disabled]:hover,.btn-default.disabled:focus,.btn-default[disabled]:focus,.btn-default.disabled:active,.btn-default[disabled]:active,.btn-default.disabled.active,.btn-default[disabled].active{background:#999}
 .bkg-primary{background:#006FBA}
 .bkg-action{background:#006fba}
+.background-wave-green{background-size:cover;width:100%}
 .alert-floater-wrapper .alert{border:2px solid #fff;background-color:#E2ECF8;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkNEQzcxOEU2MzY4ODExRTJCQzEzQUYyNEVDQjFCRTJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkNEQzcxOEU3MzY4ODExRTJCQzEzQUYyNEVDQjFCRTJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6Q0RDNzE4RTQzNjg4MTFFMkJDMTNBRjI0RUNCMUJFMkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6Q0RDNzE4RTUzNjg4MTFFMkJDMTNBRjI0RUNCMUJFMkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7ssUAsAAAAHElEQVR42mJiYGAQYIACJiD+ABNgggqCBQACDAAdcwIXn63wqwAAAABJRU5ErkJggg==);font-size:1.1em;color:#333;margin-bottom:0}
 .alert-floater-wrapper{width:100%;max-width:100%;transform:translateX(-50%);left:50%;z-index:20009;border-radius:10px;position:fixed;top:-100%;-webkit-transition:top .7s ease-out;-moz-transition:top .7s ease-out;transition:top .7s ease-out;z-index:26000;border:3px solid #fff;background-color:#4CABEB;box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);padding:10px}
 @media(min-width:768px) and (max-width:992px){.alert-floater-wrapper{width:100%!important}
@@ -599,6 +600,7 @@ a.grey-light-hover:hover{color:#fff}
 .xs-text-13{font-size:13px}
 .xs-text-35{font-size:35px;line-height:23px}
 .xs-text-small{font-size:12px;line-height:22px}
+.xs-lh-27{line-height:27px}
 .xs-width-100{width:100%}
 .xs-nobullet{list-style-type:none;padding:0}
 .xs-nofloat,.xs-pull-none{float:none!important}
@@ -680,7 +682,7 @@ ul ul{list-style-type:circle}
 .note{font-size:12px;line-height:18px;font-style:italic;color:#b3b3b3}
 .background-gray{background:#dcdcdc;padding:15px;border-radius:5px;margin:0 0 20px 0}
 .background-wave{background:url(/assets/images/overlay-gray.svg) no-repeat bottom -160px right;background-size:180%}
-.background-wave-green{background:#43B02A url(/assets/images/cta-overlay.svg) no-repeat bottom right;background-size:cover;width:100%}
+.background-wave-green{background:#006fba url(/assets/images/overlay-green.svg) no-repeat bottom -160px right}
 .background-white{background:#fff}
 .background-fixed{background-attachment:fixed}
 .flex_loader_wrapper{position:relative;min-height:100px}
@@ -765,7 +767,7 @@ a.flex_button:hover,.flex_button:hover{text-decoration:none}
 .content-page-header .content-page-subheader{margin-top:15px}
 .flex_bordered{border:3px solid #54b948}
 .flex_brand_base_1{background-color:#EAF1F3}
-.bkg-muted{background-color:#EAF1F3}
+.bkg-muted{background-color:#e4e4e4}
 .flex-mtrout{margin-top:18px}
 .flex_tooltip{position:absolute;z-index:5100;display:none}
 .flex_tooltip_message_wrapper{max-width:300px;padding:0}
@@ -1497,7 +1499,8 @@ h3{font-size:1.6em}
 .jobseeker-login_left,.jobseeker-login_right{width:100%;margin:0}
 .jobseeker-login_left{margin-bottom:30px}
 }
-@media(max-width:469px){.hidden-tablet{display:block}
+@media(max-width:469px){a.btn{font-size:13px}
+.hidden-tablet{display:block}
 .home-header-blocks{display:block}
 .home-header-blocks .header-block{width:100%;margin:0 0 10px 0}
 .home-header-blocks .header-block:first-child{margin-right:0}
