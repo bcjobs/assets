@@ -168,7 +168,6 @@ a.button:active {
 /* Custom form Styles */
 input {
   outline: none !important;
-  box-shadow: none !important;
 }
 .form-dataentry input[type=text],
 .form-dataentry input[type=password],
@@ -182,8 +181,8 @@ input {
   color: #414141;
   position: relative;
   background: #EBEBEB;
-  border: 1px solid transparent !important;
   transition: all 0.3s ease;
+  box-shadow: none;
 }
 .form-dataentry input[type=text]::placeholder,
 .form-dataentry input[type=password]::placeholder,
@@ -200,7 +199,7 @@ input {
 .form-dataentry input[type=password]:focus,
 .form-dataentry input[type=email]:focus,
 .form-dataentry select:focus {
-  border: 1px solid #e64d2a !important;
+  box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
 }
 .form-dataentry textarea {
   width: 100%;
@@ -268,15 +267,6 @@ input {
   height: auto;
   position: relative;
   min-height: 39px;
-  border: 1px solid transparent !important;
-}
-.search-form-input .select2-choice:hover,
-.form-group .select2-choices:hover,
-.form-group .select2-container .select2-choice:hover,
-.search-form-input .select2-choice:focus,
-.form-group .select2-choices:focus,
-.form-group .select2-container .select2-choice:focus {
-  border: 1px solid #e64d2a !important;
 }
 .search-form-input .select2-choice:after,
 .form-group .select2-choices:after,
@@ -294,6 +284,12 @@ input {
 .form-group .select2-container .select2-choice .select2-arrow,
 .search-form-input.select2-container .select2-choice .select2-arrow {
   display: none;
+}
+.select2-container-active {
+  box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
+}
+.select2-container input {
+  box-shadow: none !important;
 }
 .data-btn {
   height: 32px;
@@ -437,7 +433,7 @@ body .select2-container.error .select2-choice {
   padding: 0px;
 }
 .header-logo-wrapper {
-  width: 45%;
+  width: auto;
   display: inline-block;
 }
 @media (max-width: 767px) {
@@ -498,7 +494,7 @@ body .select2-container.error .select2-choice {
   }
 }
 .header-menu-wrapper {
-  width: 50%;
+  width: auto;
   display: inline-block;
   text-align: right;
   float: right;
@@ -2280,6 +2276,7 @@ body .select2-container .select2-choice abbr:hover {
 .background-wave-green {
   background-size: cover;
   width: 100%;
+  background: #e64d2a;
 }
 /* Alert Styling */
 .alert-floater-wrapper .alert {

@@ -162,7 +162,6 @@ a.button:link, a.button:visited, a.button:hover, a.button:active { color:#fff; }
 
 input {
     outline: none !important;
-    box-shadow: none !important; 
 }
  
 .form-dataentry input[type=text], 
@@ -177,15 +176,15 @@ input {
     color: @default_text;
     position: relative;
     background: #EBEBEB; 
-    border: 1px solid transparent !important;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
+    box-shadow: none; 
     &::placeholder {
         color: @default_text;
         opacity: 0.5;
     }
     &:hover,
     &:focus {
-        border: 1px solid @action_color !important;
+        box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
     }
 }
 .form-dataentry textarea {
@@ -252,11 +251,6 @@ input {
     height: auto; 
     position: relative;
     min-height: 39px;
-    border: 1px solid transparent !important;
-    &:hover, 
-    &:focus {
-        border: 1px solid @action_color !important;
-    }  
     &:after {
         content: '';
         width: 12px;
@@ -273,6 +267,12 @@ input {
 .search-form-input.select2-container .select2-choice .select2-arrow, {
     display: none;
 }  
+.select2-container-active {
+    box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
+}
+.select2-container input {
+    box-shadow: none !important;
+}
 
 .data-btn {  
     height: 32px; 
@@ -410,7 +410,7 @@ body .select2-container.error .select2-choice {
 }
 
 .header-logo-wrapper{
-    width: 45%;
+    width: auto;
     display: inline-block;
     @media(max-width: @screen-xs-max){
         text-align: center; 
@@ -471,7 +471,7 @@ body .select2-container.error .select2-choice {
     }
 }
 .header-menu-wrapper {
-    width: 50%;
+    width: auto;
     display: inline-block;
     text-align: right;
     float: right;
