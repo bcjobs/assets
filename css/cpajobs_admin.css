@@ -152,6 +152,7 @@
 .background-wave-green {
   background-size: cover;
   width: 100%;
+  background: #006fba;
 }
 /* Alert Styling */
 .alert-floater-wrapper .alert {
