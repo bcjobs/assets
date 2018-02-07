@@ -16,7 +16,7 @@ JOBCENTRE.jobForm = (function ($) {
 
     var url = function (restPath) {
         url = {
-            jobs: restPath + 'jobs'
+            jobs: '/api/v1.1/jobs'
         };
     };
 
@@ -228,7 +228,6 @@ JOBCENTRE.jobForm = (function ($) {
                 url: saveUrl,
                 data: JSON.stringify(this.toJSON()),
                 contentType: 'application/json',
-                headers: { 'JC-RenewIfStale': false },
                 dataType: 'json',
                 cache: false,
                 type: method,
@@ -237,13 +236,6 @@ JOBCENTRE.jobForm = (function ($) {
                         localStorage.removeItem(that.draftKey);
 
                     pageState.set('isSavedToServer', true);
-
-                    // this doesn't work because page gets reloaded immediately after showing the alertFloater
-                    //if (jqXHR.getResponseHeader('JC-Warning'))
-                    //    JOBCENTRE.alertFloater.show({
-                    //        summary: jqXHR.getResponseHeader('JC-Warning'),
-                    //        isError: false
-                    //    });
 
                     window.location.href = String.format(redirectOnSave, response.id);
                 },
@@ -626,7 +618,7 @@ JOBCENTRE.jobForm = (function ($) {
             delete attrs.positionTypeId;
 
             attrs.confidential = attrs.confidential === '1';
-
+            attrs.autoRefresh = attrs.autoRefresh === '1';
             attrs.trainingPosition = attrs.trainingPosition === '1';
 
             attrs.locations = [];
