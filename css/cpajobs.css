@@ -113,9 +113,9 @@
   background: #006fba;
 }
 .background-wave-green {
-  background-size: cover;
+  background-size: cover !important;
   width: 100%;
-  background: #006fba;
+  background: #379f1f;
 }
 /* Alert Styling */
 .alert-floater-wrapper .alert {
@@ -2992,7 +2992,7 @@ ul ul {
 .background-wave-green {
   background-image: url(/assets/images/overlay-green.svg);
   background-repeat: no-repeat;
-  background-position: bottom -160px right;
+  background-position: bottom right;
 }
 .background-white {
   background: #fff;
