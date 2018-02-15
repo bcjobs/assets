@@ -2274,9 +2274,9 @@ body .select2-container .select2-choice abbr:hover {
   background: #00a936;
 }
 .background-wave-green {
-  background-size: cover;
+  background-size: cover !important;
   width: 100%;
-  background: #00a936;
+  background: #009b32;
 }
 /* Alert Styling */
 .alert-floater-wrapper .alert {

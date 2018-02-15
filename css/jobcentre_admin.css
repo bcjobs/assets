@@ -150,9 +150,9 @@
   background: #006fba;
 }
 .background-wave-green {
-  background-size: cover;
+  background-size: cover !important;
   width: 100%;
-  background: #006fba;
+  background: #379f1f;
 }
 /* Alert Styling */
 .alert-floater-wrapper .alert {
