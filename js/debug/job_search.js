@@ -2,20 +2,18 @@
 
 JOBCENTRE.jobSearch = (function ($) {
 
-    var restPath, labels;
+    var labels;
 
     //#region url
 
-    var url = function (restPath) {
-        url = {
-            jobs: restPath + 'public/jobs',
-            jobCategories: '/api/v1.1/jobcategories',
-            careerLevels: '/api/v1.1/careerlevels',
-            memberStatuses: '/api/v1.1/memberstatuses',
-            locations: '/api/v1.1/locations?pageSize=5&types=town%2Cprovince%2Cterritory',
-            log: restPath + 'public/jobs/log',
-            jobAlerts: '/api/v1.1/jobalerts/fromjobsearch'
-        }
+    var url = {
+        jobs: '/api/v1.1/public/jobs',
+        jobCategories: '/api/v1.1/jobcategories',
+        careerLevels: '/api/v1.1/careerlevels',
+        memberStatuses: '/api/v1.1/memberstatuses',
+        locations: '/api/v1.1/locations?pageSize=5&types=town%2Cprovince%2Cterritory',
+        log: '/api/v1.1/public/jobs/log',
+        jobAlerts: '/api/v1.1/jobalerts/fromjobsearch'
     };
 
     //#endregion
@@ -1908,9 +1906,7 @@ JOBCENTRE.jobSearch = (function ($) {
     return {
         init: function (options) {
 
-            restPath = options.restPath;
             labels = options.labels;
-            url(options.restPath);
 
             switch (options.type) {
                 case 'search_jobs':
