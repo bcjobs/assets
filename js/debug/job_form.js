@@ -5,7 +5,6 @@ JOBCENTRE.jobForm = (function ($) {
     var pageState,
         employer,
         tinyMceCssPath,
-        restPath,
         jobPostDurationMax,
         today,
         labels,
@@ -14,10 +13,8 @@ JOBCENTRE.jobForm = (function ($) {
 
     //#region url
 
-    var url = function (restPath) {
-        url = {
-            jobs: '/api/v1.1/jobs'
-        };
+    var url = {
+        jobs: '/api/v1.1/jobs'
     };
 
     //#endregion
@@ -912,14 +909,11 @@ JOBCENTRE.jobForm = (function ($) {
 
             employer = options.employer;
             tinyMceCssPath = options.tinyMceCssPath;
-            restPath = options.restPath;
             jobPostDurationMax = options.jobPostDurationMax;
             today = options.today;
             labels = options.labels;
             redirectOnSave = options.redirectOnSave;
             skipCreditCheckForTypeIds = options.skipCreditCheckForTypeIds;
-
-            url(options.restPath);
 
             var job = new Job(null, { required: options.required });
             if (options.jobId) {
