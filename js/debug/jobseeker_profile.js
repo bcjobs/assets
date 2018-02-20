@@ -6,31 +6,29 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
     //#region url
 
-    var url = function (restPath) {
-        url = {
-            linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
+    var url = {
+        linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
 
-            jobseekers: '/api/v1.1/resumes/:id',
-            relocations: '/api/v1.1/resumes/:id/relocations',
-            educations: '/api/v1.1/resumes/:id/educations',
-            positions: '/api/v1.1/resumes/:id/positions',
-            jobseekerSkills: '/api/v1.1/resumes/:id/skills',
+        jobseekers: '/api/v1.1/resumes/:id',
+        relocations: '/api/v1.1/resumes/:id/relocations',
+        educations: '/api/v1.1/resumes/:id/educations',
+        positions: '/api/v1.1/resumes/:id/positions',
+        jobseekerSkills: '/api/v1.1/resumes/:id/skills',
 
-            photos: restPath + 'files',
-            formPhoto: restPath + 'files/form',
-            fetchPhoto: restPath + 'files/fetch',
+        photos: '/api/v1.1/images',
+        formPhoto: '/api/v1.1/images/form',
+        fetchPhoto: '/api/v1.1/images/fetch',
 
-            resumes: restPath + 'resumes',
-            formResume: restPath + 'resumes/form',
-            fetchResume: restPath + 'resumes/fetch',
+        resumes: '/api/v1.1/resumefiles',
+        formResume: '/api/v1.1/resumefiles/form',
+        fetchResume: '/api/v1.1/resumefiles/fetch',
 
-            // generic
-            countries: '/api/v1.1/countries',
-            provinces: '/api/v1.1/provinces?countryId=:id',
-            careerLevels: '/api/v1.1/careerlevels',
-            locations: '/api/v1.1/locations?pageSize=7&types=town%2Cprovince%2Ccountry',
-            skills: '/api/v1.1/skills?pageSize=7'
-        };
+        // generic
+        countries: '/api/v1.1/countries',
+        provinces: '/api/v1.1/provinces?countryId=:id',
+        careerLevels: '/api/v1.1/careerlevels',
+        locations: '/api/v1.1/locations?pageSize=7&types=town%2Cprovince%2Ccountry',
+        skills: '/api/v1.1/skills?pageSize=7'
     };
 
     //#endregion
@@ -3183,7 +3181,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
         init: function (options) {
 
             dropboxAppKey = options.dropboxAppKey;
-            url(options.restPath);
 
             var jobseeker = new Jobseeker({ id: options.jobseekerId });
             var countryCache = new CountryCache();
