@@ -6,19 +6,17 @@ JOBCENTRE.jobApply = (function ($) {
 
     //#region url
 
-    var url = function (restPath) {
-        url = {
-            linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
+    var url = {
+        linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
 
-            applications: restPath + 'jobapplications',
-            resumes: '/api/v1.1/resumefiles',
-            formResume: '/api/v1.1/resumefiles/form',
-            fetchResume: '/api/v1.1/resumefiles/fetch',
+        applications: '/api/v1.1/jobapplications',
+        resumes: '/api/v1.1/resumefiles',
+        formResume: '/api/v1.1/resumefiles/form',
+        fetchResume: '/api/v1.1/resumefiles/fetch',
 
-            // generic
-            countries: '/api/v1.1/countries',
-            provinces: '/api/v1.1/provinces?countryId=:id'
-        };
+        // generic
+        countries: '/api/v1.1/countries',
+        provinces: '/api/v1.1/provinces?countryId=:id'
     };
 
     //#endregion
@@ -1675,7 +1673,6 @@ JOBCENTRE.jobApply = (function ($) {
         init: function (options) {
 
             dropboxAppKey = options.dropboxAppKey;
-            url(options.restPath);
 
             eid = options.eid;
             siteProvinceCode = options.site.provinceCode;
