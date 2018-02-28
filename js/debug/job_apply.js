@@ -926,7 +926,8 @@ JOBCENTRE.jobApply = (function ($) {
                 this.$('[data-outlet="message"]').html(this.submittingTemplate());
                 this.$el.show();
 
-                $('html,body').scrollTop(this.$el.offset().top); // need HTML selector for IE
+                var fixedHeaderHeight = $('[data-header]').css('position') === 'fixed' ? ($('[data-header]').height() || 0) : 0;
+                $('html,body').scrollTop(this.$el.offset().top - fixedHeaderHeight); // need HTML selector for IE
                 return;
             }
 
@@ -1044,10 +1045,11 @@ JOBCENTRE.jobApply = (function ($) {
             var $topError = this.$('[data-element="error_message"]:visible,.form-error:visible').first();
             if ($topError.length > 0) {
 
-                if (($('html').scrollTop() || $('body').scrollTop()) > $topError.offset().top) { // need HTML selector for IE
+                var fixedHeaderHeight = $('[data-header]').css('position') === 'fixed' ? ($('[data-header]').height() || 0) : 0;
+                if (($('html').scrollTop() || $('body').scrollTop()) > ($topError.offset().top - fixedHeaderHeight)) { // need HTML selector for IE
 
                     $('html,body').animate({
-                        scrollTop: $topError.parent().offset().top
+                        scrollTop: $topError.parent().offset().top - fixedHeaderHeight
                     }, 500);
                 }
             }
