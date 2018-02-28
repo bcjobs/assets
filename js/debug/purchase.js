@@ -4,16 +4,14 @@ JOBCENTRE.purchase = (function ($) {
 
     //#region url
 
-    var url = function (restPath) {
-        url = {
-            purchases: '/api/v1.1/purchases',
+    var url = {
+        purchases: '/api/v1.1/purchases',
 
-            // generic
-            countries: '/api/v1.1/countries',
-            provinces: '/api/v1.1/provinces?countryId=:id',
-            taxcodes: restPath + 'taxcodes',
-            storedcards: '/api/v1.1/creditcards'
-        };
+        // generic
+        countries: '/api/v1.1/countries',
+        provinces: '/api/v1.1/provinces?countryId=:id',
+        taxcodes: '/api/v1.1/taxcodes',
+        storedcards: '/api/v1.1/creditcards'
     };
 
     //#endregion
@@ -1738,8 +1736,6 @@ JOBCENTRE.purchase = (function ($) {
 
     return {
         init: function (options) {
-
-            url(options.restPath);
 
             var router = new Router(options);
             Backbone.history.start();

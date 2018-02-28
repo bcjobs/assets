@@ -6,20 +6,17 @@ JOBCENTRE.jobApply = (function ($) {
 
     //#region url
 
-    var url = function (restPath) {
-        url = {
-            linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
+    var url = {
+        linkedInAuthorization: '/com/portals/auth/linkedin_resume_authorize?callback=:callback',
 
-            applications: restPath + 'jobapplications',
-            resumes: restPath + 'resumes',
-            formResume: restPath + 'resumes/form',
-            fetchResume: restPath + 'resumes/fetch',
-            logResumeError: restPath + 'resumes/logerror',
+        applications: '/api/v1.1/jobapplications',
+        resumes: '/api/v1.1/resumefiles',
+        formResume: '/api/v1.1/resumefiles/form',
+        fetchResume: '/api/v1.1/resumefiles/fetch',
 
-            // generic
-            countries: '/api/v1.1/countries',
-            provinces: '/api/v1.1/provinces?countryId=:id'
-        };
+        // generic
+        countries: '/api/v1.1/countries',
+        provinces: '/api/v1.1/provinces?countryId=:id'
     };
 
     //#endregion
@@ -1316,7 +1313,6 @@ JOBCENTRE.jobApply = (function ($) {
 
             if (this.validate(file.size, file.name)) {
                 this.model.setError(this.validate(file.size, file.name));
-                new Image().src = url.logResumeError + '?source=upload&location=client&name=' + encodeURIComponent(file.name) + '&size=' + encodeURIComponent(file.size);
                 return;
             }
 
@@ -1430,7 +1426,6 @@ JOBCENTRE.jobApply = (function ($) {
 
                     if (that.validate(files[0].bytes, files[0].name)) {
                         that.model.setError(that.validate(files[0].bytes, files[0].name));
-                        new Image().src = url.logResumeError + '?source=dropbox&location=client&name=' + encodeURIComponent(files[0].name) + '&size=' + encodeURIComponent(files[0].bytes);
                         return;
                     }
 
@@ -1678,7 +1673,6 @@ JOBCENTRE.jobApply = (function ($) {
         init: function (options) {
 
             dropboxAppKey = options.dropboxAppKey;
-            url(options.restPath);
 
             eid = options.eid;
             siteProvinceCode = options.site.provinceCode;

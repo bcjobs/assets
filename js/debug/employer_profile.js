@@ -6,18 +6,16 @@ JOBCENTRE.employerProfile = (function ($) {
 
     //#region url
 
-    var url = function(restPath) {
-        url = {
-            employers: '/api/v1.1/employers/:id',
+    var url = {
+        employers: '/api/v1.1/employers/:id',
 
-            images: restPath + 'files',
-            formImage: restPath + 'files/form',
-            fetchImage: restPath + 'files/fetch',
+        images: '/api/v1.1/images',
+        formImage: '/api/v1.1/images/form',
+        fetchImage: '/api/v1.1/images/fetch',
 
-            // generic
-            industries: '/api/v1.1/industries',
-            companySizes: '/api/v1.1/companysizes'
-        };
+        // generic
+        industries: '/api/v1.1/industries',
+        companySizes: '/api/v1.1/companysizes'
     };
 
     //#endregion
@@ -2033,7 +2031,6 @@ JOBCENTRE.employerProfile = (function ($) {
     	init: function (options) {
 
     	    dropboxAppKey = options.dropboxAppKey;
-    	    url(options.restPath);
 
     		var employer = new Employer({ id: options.employerId });
     		var industryCache = new IndustryCache();
