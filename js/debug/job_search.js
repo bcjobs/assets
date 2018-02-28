@@ -1444,8 +1444,10 @@ JOBCENTRE.jobSearch = (function ($) {
 
             // For cross-browser compatibility, use window.pageYOffset instead of window.scrollY. Additionally, older versions of Internet Explorer (< 9) do not support either property and must be worked around by checking other non-standard properties.
             var y = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-            if (y > this.$el.offset().top)
-                window.scrollTo(0, this.$el.offset().top);
+            var fixedHeaderHeight = $('[data-header]').css('position') === 'fixed' ? ($('[data-header]').height() || 0) : 0;
+            var scrollTo = this.$el.offset().top - fixedHeaderHeight;
+            if (y > scrollTo)
+                window.scrollTo(0, scrollTo);
         },
 
         onRefineSearch: function () {
