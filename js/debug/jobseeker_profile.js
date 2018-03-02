@@ -737,7 +737,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
             $.ajax({
                 url: this.url(),
-                contentType: 'application/json',
                 dataType: 'json',
                 type: 'DELETE',
                 success: function (response, textStatus, jqXHR) {
