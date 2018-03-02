@@ -51,8 +51,10 @@ body, .bcjobs-layout-wrapper { background: #f7f7f7; }
         background: lighten(@primary_color, 6%);
     }
 }
-a.login-panel-show {
-    color: #fff;
+.login-panel-slidedown {
+    @media(max-width: @screen-xs-max) {
+        top: 129px;
+    }
 }
 
 
