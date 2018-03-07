@@ -829,8 +829,24 @@ a.header-action:visited {
   padding-bottom: 5px;
   margin-bottom: 12px;
 }
+.bg-employer-plans {
+  background: #FFF url(../images/employer_bg_01.png) no-repeat bottom center;
+  background-size: 100%;
+}
+.bg-employer-resume {
+  background: #FFF url(../images/employer_bg_02.png) no-repeat bottom center;
+  background-size: 100%;
+}
+.bg-employer-featured {
+  background: #FFF url(../images/employer_bg_03.png) no-repeat bottom center;
+  background-size: 100%;
+}
+.bg-employer-lmia {
+  background: #FFF url(../images/employer_bg_04.png) no-repeat bottom center;
+  background-size: 100%;
+}
 .price-box {
-  background: #fff;
+  background: rgba(0, 0, 0, 0.44);
   border-radius: 5px;
   display: inline-block;
   height: 134px;
@@ -842,7 +858,7 @@ a.header-action:visited {
 }
 @media (max-width: 767px) {
   .price-box {
-    margin: 0 5px;
+    margin: 15px 5px;
     padding: 17px !important;
     width: 42%;
   }
@@ -885,27 +901,27 @@ a.header-action:visited {
 .form-base.tech-event {
   background: url(../images/techevent-cover.png) no-repeat top center fixed;
   background-size: cover;
-  min-height: 514px;
+  min-height: 574px;
 }
 @media (max-width: 767px) {
   .form-base.tech-event {
-    min-height: 650px;
+    min-height: 770px;
   }
 }
 .form-base.employer {
-  background: url(../images/splash-employer.jpg) no-repeat top center fixed;
+  background: url(../images/employer_header_bg.png) no-repeat top center fixed;
   background-size: cover;
-  min-height: 514px;
+  min-height: 574px;
 }
 @media (max-width: 767px) {
   .form-base.employer {
-    min-height: 650px;
+    min-height: 770px;
   }
 }
 .form-base.bctia {
   background: url(../images/splash-employer.jpg) no-repeat top center fixed;
   background-size: cover;
-  min-height: 514px;
+  min-height: 574px;
 }
 @media (max-width: 767px) {
   .form-base.bctia {
@@ -915,11 +931,11 @@ a.header-action:visited {
 .form-base.jobseeker {
   background: url(../images/splash-employer.jpg) no-repeat center center fixed;
   background-size: cover;
-  min-height: 514px;
+  min-height: 574px;
 }
 @media (max-width: 767px) {
   .form-base.jobseeker {
-    min-height: 554px;
+    min-height: 770px;
   }
 }
 .form-jobseeker-text {
@@ -931,9 +947,9 @@ a.header-action:visited {
   }
 }
 .signup-form {
-  background: rgba(255, 255, 255, 0.3);
+  background: #243958;
   position: absolute;
-  top: 64px;
+  top: 46px;
   right: 0;
   z-index: 100;
   border-radius: 5px;
@@ -3645,7 +3661,6 @@ input[type="file"].upload-input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: grayscale(100%);
 }
 /* Bootstrap Panel Lists */
 .panel {
@@ -4093,6 +4108,9 @@ ul.list-group {
 .text-lightgrey {
   color: #d4d4d4;
 }
+.text-black {
+  color: #414141;
+}
 .text-white {
   color: #ffffff;
 }
@@ -4116,6 +4134,9 @@ ul.list-group {
 }
 .text-heading {
   font-family: 'Lato', sans-serif;
+}
+.box-shadow {
+  box-shadow: 2px 3.464px 4px 0px rgba(0, 0, 0, 0.2);
 }
 .lh-14 {
   line-height: 14px;
@@ -4313,6 +4334,10 @@ a.grey-light-hover:hover {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+.flex-mv30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 .flex-mv40 {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -4386,6 +4411,9 @@ a.grey-light-hover:hover {
 }
 .flex-pt70 {
   padding-top: 70px;
+}
+.flex-pt75 {
+  padding-top: 75px;
 }
 /* padding-bottom */
 .flex-pb5 {
@@ -4513,6 +4541,9 @@ a.grey-light-hover:hover {
 .opacity-07 {
   opacity: 0.7;
 }
+.bg-white {
+  background: #FFF;
+}
 .bg-grey {
   background: #F7F7F7;
 }
@@ -4547,6 +4578,9 @@ a.grey-light-hover:hover {
 .overlay-low-black {
   background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
   background: rgba(0, 0, 0, 0.5);
+}
+.width-100 {
+  width: 100%;
 }
 .max-width-100 img,
 img.max-width-100 {

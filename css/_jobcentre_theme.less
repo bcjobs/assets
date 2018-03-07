@@ -748,11 +748,27 @@ a.header-action:link, a.header-action:visited {
 .latest-jobs--left {
     
 }
+.bg-employer-plans {
+    background: #FFF url(../images/employer_bg_01.png) no-repeat bottom center;
+    background-size: 100%;
+}
+.bg-employer-resume {
+    background: #FFF url(../images/employer_bg_02.png) no-repeat bottom center;
+    background-size: 100%;
+}
+.bg-employer-featured {
+    background: #FFF url(../images/employer_bg_03.png) no-repeat bottom center;
+    background-size: 100%;
+}
+.bg-employer-lmia {
+    background: #FFF url(../images/employer_bg_04.png) no-repeat bottom center;
+    background-size: 100%;
+}
 .latest-jobs--right {
 
 }
 .price-box {
-    background: #fff;
+    background: rgba(0, 0, 0, 0.44);
     border-radius: 5px;
     display: inline-block;
     height: 134px;
@@ -762,7 +778,7 @@ a.header-action:link, a.header-action:visited {
     width: 100%;
     vertical-align: top;
     @media(max-width:@screen-xs-max) {
-        margin: 0 5px;
+        margin: 15px 5px;
         padding: 17px !important;
         width: 42%;
     }
@@ -803,37 +819,37 @@ a.header-action:link, a.header-action:visited {
 .form-base.tech-event {
     background: url(../images/techevent-cover.png) no-repeat top center fixed;
     background-size: cover;
-    min-height: 514px;
-    @media(max-width:@screen-xs-max){ min-height: 650px; }
+    min-height: 574px;
+    @media(max-width:@screen-xs-max){ min-height: 770px; }
 }
 .form-base.employer {
-    background: url(../images/splash-employer.jpg) no-repeat top center fixed;
+    background: url(../images/employer_header_bg.png) no-repeat top center fixed;
     background-size: cover;
-    min-height: 514px;
-    @media(max-width:@screen-xs-max){ min-height: 650px; }
+    min-height: 574px;
+    @media(max-width:@screen-xs-max){ min-height: 770px; }
 }
 .form-base.bctia {
     background: url(../images/splash-employer.jpg) no-repeat top center fixed;
-    background-size: cover;
-    min-height: 514px;
+    background-size: cover; 
+    min-height: 574px;
     @media(max-width:@screen-xs-max){ min-height: 787px; }
 }
 .form-base.jobseeker {
     background: url(../images/splash-employer.jpg) no-repeat center center fixed;
     background-size: cover;
-    min-height: 514px; 
-    @media(max-width:@screen-xs-max){ min-height: 554px; }
+    min-height: 574px; 
+    @media(max-width:@screen-xs-max){ min-height: 770px; }
 }
 .form-jobseeker-text {
     margin-top: 92px;
     @media(max-width:@screen-xs-max){ margin-top: 0; }
 }
 .signup-form {
-    background: rgba(255,255,255,0.3);
+    background: @primary_color;
     position: absolute;
-    top: 64px;
+    top: 46px;
     right: 0;
-    z-index: 100; 
+    z-index: 100;  
     border-radius: 5px;
     max-width: 371px;
     @media(max-width:@screen-xs-max){ 
