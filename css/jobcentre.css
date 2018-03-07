@@ -846,7 +846,7 @@ a.header-action:visited {
   background-size: 100%;
 }
 .price-box {
-  background: #00a936;
+  background: rgba(0, 0, 0, 0.44);
   border-radius: 5px;
   display: inline-block;
   height: 134px;
@@ -901,11 +901,11 @@ a.header-action:visited {
 .form-base.tech-event {
   background: url(../images/techevent-cover.png) no-repeat top center fixed;
   background-size: cover;
-  min-height: 514px;
+  min-height: 574px;
 }
 @media (max-width: 767px) {
   .form-base.tech-event {
-    min-height: 650px;
+    min-height: 770px;
   }
 }
 .form-base.employer {
@@ -921,7 +921,7 @@ a.header-action:visited {
 .form-base.bctia {
   background: url(../images/splash-employer.jpg) no-repeat top center fixed;
   background-size: cover;
-  min-height: 514px;
+  min-height: 574px;
 }
 @media (max-width: 767px) {
   .form-base.bctia {
@@ -935,7 +935,7 @@ a.header-action:visited {
 }
 @media (max-width: 767px) {
   .form-base.jobseeker {
-    min-height: 730px;
+    min-height: 770px;
   }
 }
 .form-jobseeker-text {
