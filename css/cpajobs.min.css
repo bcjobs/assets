@@ -302,7 +302,7 @@ input[type="file"].upload-input{display:none}
 .employer-logo-slot{height:110px;overflow:hidden;position:relative;opacity:.75;font-size:11px;line-height:18px;font-weight:600}
 @media(max-width:767px){.employer-logo-slot{height:76px}
 }
-.employer-logo-slot img{max-width:90px;max-height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);filter:grayscale(100%)}
+.employer-logo-slot img{max-width:90px;max-height:100%;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
 .panel{border-radius:0}
 @media(max-width:767px){.list-title{color:#fff;background:#AFBBDD;padding:5px}
 }
@@ -410,6 +410,7 @@ ul.list-group{margin:0}
 .text-muted{color:#848484}
 .text-grey{color:#9e9e9e}
 .text-lightgrey{color:#d4d4d4}
+.text-black{color:#414141}
 .text-white{color:#fff}
 .text-shadow{text-shadow:0 1px 5px #000}
 .text-action{color:#006fba}
@@ -418,6 +419,7 @@ ul.list-group{margin:0}
 .text-lh29{line-height:29px}
 .text-lh25{line-height:25px}
 .text-heading{font-family:'Lato',sans-serif}
+.box-shadow{box-shadow:2px 3.464px 4px 0 rgba(0,0,0,0.2)}
 .lh-14{line-height:14px}
 .lh-18{line-height:18px}
 .lh-22{line-height:22px}
@@ -475,6 +477,7 @@ a.grey-light-hover:hover{color:#fff}
 .flex-mv10{margin-top:10px;margin-bottom:10px}
 .flex-mv15{margin-top:15px;margin-bottom:15px}
 .flex-mv25{margin-top:25px;margin-bottom:25px}
+.flex-mv30{margin-top:30px;margin-bottom:30px}
 .flex-mv40{margin-top:40px;margin-bottom:40px}
 .flex-mv90{margin-top:90px;margin-bottom:90px}
 .flex-mh5{margin-left:5px;margin-right:5px}
@@ -496,6 +499,7 @@ a.grey-light-hover:hover{color:#fff}
 .flex-pt43{padding-top:43px}
 .flex-pt60{padding-top:60px}
 .flex-pt70{padding-top:70px}
+.flex-pt75{padding-top:75px}
 .flex-pb5{padding-bottom:5px}
 .flex-pb130{padding-bottom:130px}
 .flex-pl0{padding-left:0}
@@ -530,6 +534,7 @@ a.grey-light-hover:hover{color:#fff}
 .display-block{display:block}
 .display-flex{display:flex}
 .opacity-07{opacity:.7}
+.bg-white{background:#FFF}
 .bg-grey{background:#F7F7F7}
 .bg-black{background:#414141}
 .bt-grey{border-top:1px solid #eaeaea}
@@ -542,6 +547,7 @@ a.grey-light-hover:hover{color:#fff}
 @media(min-width:767px){.hide-sm{display:none}
 }
 .overlay-low-black{background:transparent url(../images/black-overlay.png) 0 0 no-repeat;background:rgba(0,0,0,0.5)}
+.width-100{width:100%}
 .max-width-100 img,img.max-width-100{max-width:100%}
 .max-width-745{max-width:745px}
 .max-width-940{max-width:940px}
