@@ -1483,7 +1483,6 @@ input[type="file"].upload-input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  filter: grayscale(100%);
 }
 /* Bootstrap Panel Lists */
 .panel {
@@ -1931,6 +1930,9 @@ ul.list-group {
 .text-lightgrey {
   color: #d4d4d4;
 }
+.text-black {
+  color: #414141;
+}
 .text-white {
   color: #ffffff;
 }
@@ -1954,6 +1956,9 @@ ul.list-group {
 }
 .text-heading {
   font-family: 'Lato', sans-serif;
+}
+.box-shadow {
+  box-shadow: 2px 3.464px 4px 0px rgba(0, 0, 0, 0.2);
 }
 .lh-14 {
   line-height: 14px;
@@ -2151,6 +2156,10 @@ a.grey-light-hover:hover {
   margin-top: 25px;
   margin-bottom: 25px;
 }
+.flex-mv30 {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 .flex-mv40 {
   margin-top: 40px;
   margin-bottom: 40px;
@@ -2224,6 +2233,9 @@ a.grey-light-hover:hover {
 }
 .flex-pt70 {
   padding-top: 70px;
+}
+.flex-pt75 {
+  padding-top: 75px;
 }
 /* padding-bottom */
 .flex-pb5 {
@@ -2351,6 +2363,9 @@ a.grey-light-hover:hover {
 .opacity-07 {
   opacity: 0.7;
 }
+.bg-white {
+  background: #FFF;
+}
 .bg-grey {
   background: #F7F7F7;
 }
@@ -2385,6 +2400,9 @@ a.grey-light-hover:hover {
 .overlay-low-black {
   background: transparent url(../images/black-overlay.png) 0 0 no-repeat;
   background: rgba(0, 0, 0, 0.5);
+}
+.width-100 {
+  width: 100%;
 }
 .max-width-100 img,
 img.max-width-100 {
