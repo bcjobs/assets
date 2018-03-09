@@ -485,12 +485,12 @@ a.login-panel-show {
     padding: 0;
     margin: 0;
     color: #414141;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.34px;
-    margin-right: 15px;
+    margin-right: 8px;
     text-transform: none;
-    margin-top: 17px;
+    margin-top: 12px;
     &:hover,
     &:focus {
         color: @primary_color;
@@ -811,6 +811,7 @@ a.header-action:link, a.header-action:visited {
     border-bottom-right-radius: 5px;
     @media(max-width:@screen-xs-max) {
         line-height: 13px;
+        padding: 5px;
     }
 }
 .price-box-title {
@@ -846,14 +847,13 @@ a.header-action:link, a.header-action:visited {
 }
 .signup-form {
     background: @primary_color;
-    position: absolute;
+    position: absolute; 
     top: 46px;
     right: 0;
     z-index: 100;  
     border-radius: 5px;
     max-width: 371px;
     @media(max-width:@screen-xs-max){ 
-        background: none; 
         top: 181px; 
         left: 50%;
         transform: translateX(-50%);
