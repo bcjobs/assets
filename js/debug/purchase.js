@@ -1171,7 +1171,7 @@ JOBCENTRE.purchase = (function ($) {
         renderAddressView: function () {
 
             if (!this.model.get('plan')) {
-                router.navigate('', true);
+                router.navigate('plans', true);
                 return;
             }
 
@@ -1184,7 +1184,7 @@ JOBCENTRE.purchase = (function ($) {
         renderAddonView: function () {
 
             if (!this.model.get('plan')) {
-                router.navigate('', true);
+                router.navigate('plans', true);
                 return;
             }
 
@@ -1211,7 +1211,7 @@ JOBCENTRE.purchase = (function ($) {
         renderPaymentView: function () {
 
             if (!this.model.get('plan')) {
-                router.navigate('', true);
+                router.navigate('plans', true);
                 return;
             }
 
@@ -1228,7 +1228,7 @@ JOBCENTRE.purchase = (function ($) {
         renderFinishView: function () {
 
             if (!this.model.get('invoice')) {
-                router.navigate('', true);
+                router.navigate('plans', true);
                 return;
             }
 
@@ -1615,7 +1615,7 @@ JOBCENTRE.purchase = (function ($) {
     var Router = Backbone.Router.extend({
 
         routes: {
-            '': 'plans',
+            'plans': 'plans',
             'address': 'address',
             'addon': 'addon',
             'payment': 'payment',
@@ -1663,9 +1663,7 @@ JOBCENTRE.purchase = (function ($) {
                     return;
                 }
 
-            // can't rely on passing in true to navigate() because if we're already on the fragment,
-            // route won't be triggered.
-            router.navigate('');
+            router.navigate('plans');
             router.plans();
         },
 
@@ -1694,7 +1692,7 @@ JOBCENTRE.purchase = (function ($) {
             if (!this.started)
                 return;
 
-            this.session.set('selectedNav', '');
+            this.session.set('selectedNav', 'plans');
             this.modalView.renderPlansView();
         },
 
