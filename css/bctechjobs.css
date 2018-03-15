@@ -617,7 +617,7 @@ a.header-action:visited {
   .search-widget-base {
     padding: 0;
     margin-top: 0;
-    background: url(../images/banner_home.jpg?v=2) no-repeat top 0 center fixed;
+    background: url(../images/banner_home.jpg?v=2) no-repeat top -170px center fixed;
     background-size: cover;
   }
 }
@@ -1396,6 +1396,24 @@ a.user-signup-link {
 .candidate .user-signup-image-content {
   top: 400px;
   width: 84%;
+}
+.candidate-card {
+  display: inline-block;
+  width: 19.5%;
+}
+@media (max-width: 767px) {
+  .candidate-card {
+    width: 49%;
+  }
+}
+.candidate-card .tab-select {
+  width: 100%;
+  min-height: 58px    ;
+}
+@media (max-width: 767px) {
+  .candidate-card .tab-select {
+    width: 100%;
+  }
 }
 .user-signup-image-subtitle {
   font-size: 16px;
@@ -3936,6 +3954,12 @@ input[type="file"].upload-input {
   margin-bottom: 10px;
 }
 /* Reusable form classes */
+.form-input-white input[type=text],
+.form-input-white input[type=password],
+.form-input-white input[type=email],
+.form-input-white select {
+  background: #fff;
+}
 .form-horizontal .form-group {
   margin-left: 0;
   margin-right: 0;
