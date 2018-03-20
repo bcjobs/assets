@@ -1397,24 +1397,6 @@ a.user-signup-link {
   top: 400px;
   width: 84%;
 }
-.candidate-card {
-  display: inline-block;
-  width: 19.5%;
-}
-@media (max-width: 767px) {
-  .candidate-card {
-    width: 49%;
-  }
-}
-.candidate-card .tab-select {
-  width: 100%;
-  min-height: 58px    ;
-}
-@media (max-width: 767px) {
-  .candidate-card .tab-select {
-    width: 100%;
-  }
-}
 .user-signup-image-subtitle {
   font-size: 16px;
   margin: 0 auto;
@@ -4706,6 +4688,24 @@ img.max-width-100 {
   color: #243958;
   font-size: 50px;
   font-weight: bold;
+}
+.candidate-card {
+  display: inline-block;
+  width: 19.5%;
+}
+@media (max-width: 767px) {
+  .candidate-card {
+    width: 49%;
+  }
+}
+.candidate-card .tab-select {
+  width: 100%;
+  min-height: 58px;
+}
+@media (max-width: 767px) {
+  .candidate-card .tab-select {
+    width: 100%;
+  }
 }
 .container-border {
   border: 1px solid #dedede;

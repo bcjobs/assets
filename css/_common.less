@@ -2091,6 +2091,21 @@ a.grey-light-hover {
     font-weight: bold;
 }
 
+.candidate-card {
+    display: inline-block;
+    width: 19.5%;
+    @media (max-width: 767px) {
+        width: 49%;
+    }
+    .tab-select {
+        width: 100%;
+        min-height: 58px;
+        @media (max-width: 767px) {
+            width: 100%;
+        }
+    }
+}
+
 .container-border { border: 1px solid #dedede; }
 .container-brand {
     background: @primary_color;
