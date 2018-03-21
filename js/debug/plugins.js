@@ -292,6 +292,97 @@ JOBCENTRE.alertFloater = {
 
 //#endregion
 
+//#region JOBCENTRE.jobAlert
+
+JOBCENTRE.jobAlert = {
+    init: function ($container, eventLabel, jobTitle, jobLocations, siteProvinceCode, onSuccess) {
+
+        var $form = $container.find('form');
+
+        var isEmailValid = function (email) {
+            return /^[a-zA-Z0-9!##$%&'*+/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*$/.test(email);
+        };
+
+        var getLocationDescription = function (locations, provinceCode) {
+            if (!locations.length)
+                return 'Canada';
+
+            var location;
+            for (var i = 0; i < locations.length; i++) {
+                location = locations[i];
+                if (location.description.indexOf(provinceCode, location.length - provinceCode.length) !== -1)
+                    return location.description + ', Canada';
+            }
+
+            return locations[0].description + ', Canada';
+        };
+
+        var showError = function (error) {
+            $form.show();
+            $form.find('[data-element="subscribe-error"]').text(error).show();
+            $container.find('[data-element="subscribe-loader"]').hide();
+        };
+
+        var showLoader = function () {
+            $form.hide();
+            $form.find('[data-element="subscribe-error"]').text('').hide();
+            $container.find('[data-element="subscribe-loader"]').show();
+        };
+
+        var showSuccess = function () {
+            $form.hide();
+            $form.find('[data-element="subscribe-error"]').text('').hide();
+            $container.find('[data-element="subscribe-loader"]').hide();
+            $container.find('[data-element="subscribe-success"]').show();
+        };
+
+        $form.submit(function(e) {
+            e.preventDefault();
+                    
+            var email = $(this).find('[name=email]').val();
+            if (!isEmailValid(email)) {
+                showError('Email is invalid.');
+                $(this).find('input').first().focus();
+                return;
+            }
+                        
+            showLoader();
+                        
+            var that = this;
+            $.ajax({
+                url: '/api/v1.1/jobalerts',
+                dataType: 'json',
+                cache: false,
+                type: 'POST',
+                data: JSON.stringify({
+                    name: '',
+                    email: email,
+                    search: jobTitle,
+                    location: getLocationDescription(jobLocations, siteProvinceCode)
+                }),
+                contentType: 'application/json',
+                success: function (response, textStatus, jqXHR) {
+                    showSuccess();
+                    dataLayer.push({ 'event': 'custom', 'eventCategory': 'App', 'eventAction': 'JobAlertSubscribe', 'eventLabel': eventLabel, 'nonInteraction': false });
+                    onSuccess($container);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    if (jqXHR.status === 400) {
+                        var response = JSON.parse(jqXHR.responseText);
+                        showError(response.message)
+                        return;
+                    }
+
+                    showError('Error connecting to the server.')
+                }
+            });
+                        
+        });
+    }
+};
+
+//#endregion
+
 //#region String.prototype.trim
 
 // ECMA Script 5 Shim
