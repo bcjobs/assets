@@ -116,7 +116,7 @@ a.header-action:link,a.header-action:visited{color:#6a826b}
 .content-divide{border-bottom:1px solid #c4c4c4;margin:4px 0;width:100%}
 .search-form-label{font-size:11px;font-weight:500;letter-spacing:1px;margin-bottom:0;opacity:.69}
 .search-widget-base{background:url(../images/banner_home.jpg?v=2) no-repeat top 27px center fixed;background-size:cover;color:#fff}
-@media(max-width:767px){.search-widget-base{padding:0;margin-top:0;background:url(../images/banner_home.jpg?v=2) no-repeat top 0 center fixed;background-size:cover}
+@media(max-width:767px){.search-widget-base{padding:0;margin-top:0;background:url(../images/banner_home.jpg?v=2) no-repeat top -170px center fixed;background-size:cover}
 }
 .search-widget-base.alternate{background:url(../images/splash-alt.jpg) no-repeat center bottom;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover}
 .search-widget-base.not-found{background:url(../images/splash-404.jpg) no-repeat center center;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;color:#fff;-webkit-box-shadow:inset 0 0 5px 5px rgba(0,0,0,0.3);box-shadow:inset 0 0 5px 5px rgba(0,0,0,0.3)}
@@ -794,7 +794,7 @@ input[type="file"].upload-input{display:none}
 .read-more-link{color:#243958;cursor:pointer}
 .read-more-cover{background:transparent url(../images/cover-white-fade.png) 0 0 repeat-x;bottom:0;height:75px;left:0;padding:35px 5px 0 0;position:absolute;right:0;width:100%}
 .modal-close{background:#fff;border-radius:25px;-webkit-box-shadow:0 2px 5px 1px rgba(0,0,0,0.4);box-shadow:0 2px 5px 1px rgba(0,0,0,0.4);height:40px;line-height:44px;position:absolute;text-align:center;top:-15px;right:-15px;width:40px;z-index:1000}
-.x-close{float:none;font-size:30px;width:100%;height:100%;display:block;line-height:34px}
+.x-close{float:none;font-size:30px;width:100%;height:100%;display:block;line-height:40px}
 .user-container .pricing-container{max-width:242px}
 @media(max-width:600px){.user-container .pricing-container{margin:10px auto;width:95%;max-width:none;min-height:0}
 }
@@ -820,6 +820,7 @@ input[type="file"].upload-input{display:none}
 .flex-mtrout{margin-top:18px}
 .flex-title{color:#243958;font-size:1.6em;margin-bottom:15px}
 .flex-subtitle{color:#243958;font-weight:bold;font-size:1.2em;margin-bottom:10px}
+.form-input-white input[type=text],.form-input-white input[type=password],.form-input-white input[type=email],.form-input-white select{background:#fff}
 .form-horizontal .form-group{margin-left:0;margin-right:0}
 .form-horizontal .control-label{font-weight:normal;text-align:left;padding-top:5px}
 .control-label,label{font-weight:normal}
@@ -1040,6 +1041,12 @@ a.grey-light-hover:hover{color:#fff}
 .text-action{color:#e64d2a}
 .text-brand{color:#243958}
 .text-large{color:#243958;font-size:50px;font-weight:bold}
+.candidate-card{display:inline-block;width:19.5%}
+@media(max-width:767px){.candidate-card{width:49%}
+}
+.candidate-card .tab-select{width:100%;min-height:58px}
+@media(max-width:767px){.candidate-card .tab-select{width:100%}
+}
 .container-border{border:1px solid #dedede}
 .container-brand{background:#243958;color:#fff}
 .container-divide{border-bottom:2px solid #eee}
