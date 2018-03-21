@@ -118,6 +118,39 @@ JOBCENTRE.utility = {
 
 //#endregion
 
+//#region JOBCENTRE.optimize
+
+if (JOBCENTRE.optimize && JOBCENTRE.optimizeHandlers)
+{
+    (function () {
+        var variants = [];
+        var handlers = [];
+
+        var registerVariant = function (variant) {
+            variants.push(variant);
+            for (var i = 0; i < handlers.length; i++)
+                handlers[i](variant);
+        }
+
+        var registerHandler = function (handler) {
+            handlers.push(handler);
+            for (var i = 0; i < variants.length; i++)
+                handler(variants[i]);
+        };
+
+        for (var i = 0; i < JOBCENTRE.optimize.length; i++)
+            registerVariant(JOBCENTRE.optimize[i]);
+
+        for (var i = 0; i < JOBCENTRE.optimizeHandlers.length; i++)
+            registerHandler(JOBCENTRE.optimizeHandlers[i]);
+
+        JOBCENTRE.optimize = { push: registerVariant };
+        JOBCENTRE.optimizeHandlers = { push: registerHandler };
+    }());
+}
+
+//#endregion
+
 JOBCENTRE.capabilities = {
     localStorage: (function () {
         // source: Modernizr
