@@ -636,7 +636,7 @@ JOBCENTRE.jobForm = (function ($) {
         },
 
         bindSelect2: function() {
-            this.$('select').select2();
+            this.$('select[multiple]').select2();
         },
 
         bindTinyMCE: function () {
