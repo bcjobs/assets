@@ -1253,24 +1253,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                         $select.val(property);
                 }
             });
-        },
-
-        bindSelect2: function () {
-            var that = this;
-            var execute = function () {
-                // select2 will destroy any existing select2 component if it's already been created.
-                that.$('select').select2({
-                    allowClear: true
-                });
-            };
-
-            if (!$.contains(document.documentElement, this.el)) {
-
-                // we need to setTimeout (or setImmediate) and let the DOM update in order for chosen plugin to work.
-                setTimeout(execute, 10);
-            } else {
-                execute();
-            }
         }
 
     });
@@ -2209,7 +2191,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
 
             this.renderCountries();
             this.selectDropdowns();
-            this.bindSelect2();
             return this;
         }
 
@@ -2304,7 +2285,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
             this.$el.html(this.template({ careerLevel: this.model.get('careerLevel') }));
 
             this.renderCareerLevels();
-            this.bindSelect2();
 
             return this;
         }
@@ -2715,7 +2695,6 @@ JOBCENTRE.jobseekerProfile = (function ($) {
                 this.$el.addClass('new');
 
             this.selectDropdowns();
-            this.bindSelect2();
             return this;
         }
 
