@@ -960,6 +960,7 @@ JOBCENTRE.purchase = (function ($) {
 
         onValidationError: function (model, errors) {
 
+            this._validatable = true;
             var $summary = this.$('[data-element="alert_danger_server"]');
 
             $summary.html('');
