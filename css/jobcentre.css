@@ -546,6 +546,22 @@ a.header-action:link,
 a.header-action:visited {
   color: #6a826b;
 }
+.stripe-element {
+  border: 0;
+  padding: 12px 15px;
+  height: 40px;
+  border-radius: 5px;
+  color: #414141;
+  background: #EBEBEB;
+  box-shadow: none;
+}
+.stripe-element-focus {
+  box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
+}
+.stripe-element-invalid {
+  border: 1px solid #BBBBBB;
+  border-bottom: 5px solid #fcc;
+}
 /* Content Styles -- General */
 .content-page-header {
   padding: 15px 20px;
@@ -2402,6 +2418,15 @@ body .select2-container .select2-choice abbr:hover {
 }
 .flex-minheight0 {
   min-height: 0 !important;
+}
+.stripe-element {
+  padding: 4px 6px;
+  border: 1px solid #BBBBBB;
+}
+/* mimic webkit's default focus ring */
+.stripe-element-focus {
+  outline-offset: -2px;
+  outline: -webkit-focus-ring-color auto 5px;
 }
 /* Tags */
 .tag {
