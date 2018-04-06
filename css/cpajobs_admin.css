@@ -1877,6 +1877,9 @@ select.form-selectlist {
 .ic-social-pinterest img {
   height: 17px;
 }
+.ic-social-mail img {
+  height: 17px;
+}
 .ic-social:hover {
   opacity: 0.5;
 }

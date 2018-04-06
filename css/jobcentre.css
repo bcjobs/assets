@@ -633,7 +633,7 @@ a.header-action:visited {
   .search-widget-base {
     padding: 0;
     margin-top: 0;
-    background: url(../images/banner_home.jpg?v=2) no-repeat top -170px center fixed;
+    background: url(../images/banner_home.jpg?v=2) no-repeat top 0 center fixed;
     background-size: cover;
   }
 }
@@ -2119,6 +2119,32 @@ body .select2-container .select2-choice abbr:hover {
   h3 {
     page-break-after: avoid;
   }
+}
+.select2.select2-container .select2-selection {
+  border: 0;
+  padding: 0 15px;
+  width: 100%;
+  min-height: 40px;
+  border-radius: 5px;
+  color: #414141;
+  position: relative;
+  background: #EBEBEB;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+.select2.select2-container .select2-selection:hover,
+.select2.select2-container .select2-selection:focus {
+  box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
+}
+.select2.select2-container .select2-selection__rendered {
+  padding: 2px 5px;
+}
+.select2.select2-container .select2-selection__choice {
+  background: #FDFDFD;
+  border: 0 none;
+}
+.col-xs-12.col-sm-6.twocols-col1.xs-p0.flex-pt6 {
+  margin-top: 17px;
 }
 @media print {
   * {
@@ -4032,6 +4058,9 @@ select.form-selectlist {
   height: 17px;
 }
 .ic-social-pinterest img {
+  height: 17px;
+}
+.ic-social-mail img {
   height: 17px;
 }
 .ic-social:hover {

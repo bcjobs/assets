@@ -1840,6 +1840,9 @@ select.form-selectlist {
 .ic-social-pinterest img {
   height: 17px;
 }
+.ic-social-mail img {
+  height: 17px;
+}
 .ic-social:hover {
   opacity: 0.5;
 }
@@ -6946,6 +6949,27 @@ a.flex-tab.active {
   .social-nav-links li a {
     letter-spacing: 0;
   }
+}
+.select2.select2-container .select2-selection {
+  border: 0;
+  padding: 0 15px;
+  width: 100%;
+  min-height: 40px;
+  border-radius: 5px;
+  position: relative;
+  background: #FFF;
+  transition: all 0.3s ease;
+  box-shadow: none;
+}
+.select2.select2-container .select2-selection__rendered {
+  padding: 2px 5px;
+}
+.select2.select2-container .select2-selection__choice {
+  background: whitesmoke;
+  border: 0 none;
+}
+.col-xs-12.col-sm-6.twocols-col1.xs-p0.flex-pt6 {
+  margin-top: 17px;
 }
 
 /*# sourceMappingURL=cpajobs.css.map */
