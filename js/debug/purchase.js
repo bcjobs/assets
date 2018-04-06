@@ -320,86 +320,89 @@ JOBCENTRE.purchase = (function ($) {
     var CreditCard = BaseModel.extend({
 
         defaults: {
+            stripe: null,
             storedCardId: '',
-            holder: '',
-            number: '',
-            expiry: '',
-            cvd: ''
+            cardHolder: '',
+            cardNumber: null,
+            cardNumberError: '',
+            cardExpiry: null,
+            cardExpiryError: '',
+            cardCvc: null,
+            cardCvcError: ''
         },
 
-        expiryMonth: function () {
-            if (!this.get('expiry'))
-                return '';
-
-            if (this.get('expiry').length < 2)
-                return '';
-
-            return this.get('expiry').substring(0, 2);
-        },
-
-        expiryYear: function () {
-            if (!this.get('expiry'))
-                return '';
-
-            if (this.get('expiry').length !== 4)
-                return '';
-
-            return this.get('expiry').substring(2, 4);
+        initialize: function (attrs, options) {
+            var stripe = Stripe(options.stripePublishableKey);
+            this.set('stripe', stripe);
+            var elements = stripe.elements();
+            this.set('cardNumber', elements.create('cardNumber', { classes: { base: 'stripe-element', focus: 'stripe-element-focus', invalid: 'stripe-element-invalid' } }));
+            this.set('cardExpiry', elements.create('cardExpiry', { classes: { base: 'stripe-element', focus: 'stripe-element-focus', invalid: 'stripe-element-invalid' } }));
+            this.set('cardCvc', elements.create('cardCvc', { classes: { base: 'stripe-element', focus: 'stripe-element-focus', invalid: 'stripe-element-invalid' } }));
+            this.registerEvents([this.get('cardNumber'), this.get('cardExpiry'), this.get('cardCvc')]);
         },
 
         validations: {
-            holder: {
-                required: {}
+            cardHolder: {
+                required: {
+                    message: 'Cardholder name is required.'
+                }
             },
-            number: {
-                required: {},
+            cardNumber: {
                 custom: {
                     isValid: function (validationItem, attr, value, attrs) {
+                        if (!attrs.cardNumberError)
+                            return true;
 
-                        // based on http://en.wikipedia.org/wiki/Luhn
-
-                        if (!value || value.trim() == '')
-                            return false;
-
-                        // accept only digits and dashes
-                        if (/[^0-9-]+/.test(value))
-                            return false;
-
-                        var nCheck = 0,
-				        nDigit = 0,
-				        bEven = false;
-
-                        value = value.replace(/\D/g, "");
-
-                        for (var n = value.length - 1; n >= 0; n--) {
-                            var cDigit = value.charAt(n);
-                            var nDigit = parseInt(cDigit, 10);
-                            if (bEven) {
-                                if ((nDigit *= 2) > 9)
-                                    nDigit -= 9;
-                            }
-                            nCheck += nDigit;
-                            bEven = !bEven;
-                        }
-
-                        return (nCheck % 10) == 0;
-                    },
-                    message: ' is invalid'
+                        return attrs.cardNumberError;
+                    }
                 }
             },
-            expiry: {
-                required: {},
-                regex: {
-                    pattern: /^[0-9]{4}$/,
-                    message: ' is not complete'
+            cardExpiry: {
+                custom: {
+                    isValid: function (validationItem, attr, value, attrs) {
+                        if (!attrs.cardExpiryError)
+                            return true;
+
+                        return attrs.cardExpiryError;
+                    }
                 }
             },
-            cvd: {
-                required: {},
-                regex: {
-                    pattern: /^[0-9]{3,4}$/
+            cardCvc: {
+                custom: {
+                    isValid: function (validationItem, attr, value, attrs) {
+                        if (!attrs.cardCvcError)
+                            return true;
+
+                        return attrs.cardCvcError;
+                    }
                 }
             }
+        },
+
+        registerEvents: function (elements) {
+            var that = this;
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('change', function (event) {
+                    if (event.error)
+                        that.set(event.elementType + 'Error', event.error.message);
+                    else
+                        that.set(event.elementType + 'Error', '');
+
+                    that.trigger('validate');
+                });
+            }
+        },
+
+        mount: function(numberElement, expiryElement, cvcElement) {
+            this.get('cardNumber').mount(numberElement);
+            this.get('cardExpiry').mount(expiryElement);
+            this.get('cardCvc').mount(cvcElement);
+        },
+
+        unmount: function () {
+            this.get('cardNumber').unmount();
+            this.get('cardExpiry').unmount();
+            this.get('cardCvc').unmount();
         }
     });
 
@@ -619,7 +622,7 @@ JOBCENTRE.purchase = (function ($) {
     var Purchase = Backbone.Model.extend({
 
         defaults: {
-            creditCard: new CreditCard(),
+            creditCard: null,
             address: new Address(),
             plan: null,
             invoice: null
@@ -627,6 +630,7 @@ JOBCENTRE.purchase = (function ($) {
         
         initialize: function (attrs, options) {
             this.options = options;
+            this.set('creditCard', new CreditCard(null, {stripePublishableKey: options.stripePublishableKey}));
             this.plans = new Plans(options.plans);
             this.taxCodes = new TaxCodeCache().getTaxCodes();
             this.storedCards = new StoredCardCache().getStoredCards();
@@ -756,29 +760,20 @@ JOBCENTRE.purchase = (function ($) {
         tokenizeCard: function (options) {
             var that = this;
 
-            // TODO: set province and country
-            Stripe.setPublishableKey(this.options.stripePublishableKey);
-            Stripe.card.createToken({
-                address_line1: this.get('address').get('street'),
-                address_city: this.get('address').get('city'),
-                address_state: 'BC',
-                address_zip: this.get('address').get('postalCode'),
-                address_country: 'Canada',
-                name: this.get('creditCard').get('holder'),
-                number: this.get('creditCard').get('number'),
-                cvc: this.get('creditCard').get('cvd'),
-                exp_month: this.get('creditCard').get('expiry').substr(0,2),
-                exp_year: '20' + this.get('creditCard').get('expiry').substr(2, 2)
-            }, function (status, response) {
-                if (response.error)
-                    options.error(that, response.error.message);
-                else
-                    that.save(_.extend(that.toJSON(), {
-                        creditCard: {
-                            token: response.id
-                        }
-                    }), options);
-            });
+            this.get('creditCard').get('stripe')
+                .createToken(
+                    this.get('creditCard').get('cardNumber'),
+                    { name: this.get('creditCard').get('cardHolder') })
+                .then(function (result) {
+                    if (result.error)
+                        options.error(that, result.error.message);
+                    else
+                        that.save(_.extend(that.toJSON(), {
+                            creditCard: {
+                                token: result.token.id
+                            }
+                        }), options);
+                });
         },
 
         save: function (payload, options) {
@@ -922,8 +917,10 @@ JOBCENTRE.purchase = (function ($) {
     var BaseFormView = function (options) {
         BaseView.apply(this, [options]);
 
-        if (this.modelName)
+        if (this.modelName) {
             this.listenTo(this.model.get(this.modelName), 'validation-error', this.onValidationError, this);
+            this.listenTo(this.model.get(this.modelName), 'validate', this.isValid, this);
+        }
     };
 
     _.extend(BaseFormView.prototype, BaseView.prototype, {
@@ -963,6 +960,7 @@ JOBCENTRE.purchase = (function ($) {
 
         onValidationError: function (model, errors) {
 
+            this._validatable = true;
             var $summary = this.$('[data-element="alert_danger_server"]');
 
             $summary.html('');
@@ -973,7 +971,7 @@ JOBCENTRE.purchase = (function ($) {
                     $summary.html(error).show();
                 } else {
                     var attr = this.mapFromModel(error.attr);
-                    this.$('input[name="' + attr + '"],textarea[name="' + attr + '"],select[name="' + attr + '"]')
+                    this.$('input[name="' + attr + '"],textarea[name="' + attr + '"],select[name="' + attr + '"],[data-input="' + attr + '"]')
                         .each(function () {
                             if (this.tagName === 'SELECT') {
                                 // don't add error class because the behaviour is unpredicable.
@@ -1524,18 +1522,6 @@ JOBCENTRE.purchase = (function ($) {
                 return BaseFormView.prototype.isValid.apply(this);
         },
 
-        formPreProcess: function (attrs) {
-
-            if (attrs.expiryMonth && attrs.expiryYear)
-                attrs.expiry = attrs.expiryMonth.toString() + attrs.expiryYear.toString();
-            else
-                attrs.expiry = '';
-
-            attrs.number = attrs.number.replace(/\s/g, '');
-            delete attrs['expiryMonth'];
-            delete attrs['expiryYear'];
-        },
-
         mapFromModel: function (attr) {
             if (attr === 'expiry')
                 return 'expiryMonth';
@@ -1556,6 +1542,17 @@ JOBCENTRE.purchase = (function ($) {
             });
         },
 
+        setupStripeElements: function () {
+            // run this asynchronously to not block our animation
+            var that = this;
+            setTimeout(function () {
+                that.model.get('creditCard').mount(
+                    that.$('[data-input="cardNumber"]')[0],
+                    that.$('[data-input="cardExpiry"]')[0],
+                    that.$('[data-input="cardCvc"]')[0]);
+            }, 350);
+        },
+
         render: function () {
             if (this.renderState(this.model.taxCodes.state))
                 return this;
@@ -1564,6 +1561,7 @@ JOBCENTRE.purchase = (function ($) {
                 return this;
 
             this.$el.html(this.template(this.model));
+            this.setupStripeElements();
             this.onStoredCardIdChange();
 
             var that = this;
@@ -1572,8 +1570,11 @@ JOBCENTRE.purchase = (function ($) {
             }, 100);
 
             return this;
-        }
+        },
 
+        dispose: function () {
+            BaseView.prototype.dispose.apply(this);
+        }
     });
 
     //#endregion

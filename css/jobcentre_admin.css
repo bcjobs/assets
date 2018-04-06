@@ -2985,5 +2985,14 @@ html {
     border-width: 2px 0px;
   }
 }
+.stripe-element {
+  padding: 4px 6px;
+  border: 1px solid #BBBBBB;
+}
+/* mimic webkit's default focus ring */
+.stripe-element-focus {
+  outline-offset: -2px;
+  outline: -webkit-focus-ring-color auto 5px;
+}
 
 /*# sourceMappingURL=jobcentre_admin.css.map */
