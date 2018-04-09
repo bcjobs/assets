@@ -101,6 +101,9 @@ a.header-action-jobseeker:hover,a.login-panel-show:hover,a.header-action-jobseek
 @media(max-width:600px){.header-action{margin:0}
 }
 a.header-action:link,a.header-action:visited{color:#6a826b}
+.stripe-element{border:0;padding:12px 15px;height:40px;border-radius:5px;color:#414141;background:#EBEBEB;box-shadow:none}
+.stripe-element-focus{box-shadow:2px 1.464px 4px 0 rgba(0,0,0,0.21)}
+.stripe-element-invalid{border:1px solid #BBB;border-bottom:5px solid #fcc}
 .content-page-header{padding:15px 20px;background-color:#005ca2;color:#fff;font-size:28px}
 @media(max-width:767px){.content-page-header{font-size:22px}
 }

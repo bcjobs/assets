@@ -705,3 +705,5 @@ html{font-size:13px}
 }
 @media(max-width:767px){.panel>.list-group.long-list .list-group-item{border-color:#414141;border-width:2px 0}
 }
+.stripe-element{padding:4px 6px;border:1px solid #BBB}
+.stripe-element-focus{outline-offset:-2px;outline:-webkit-focus-ring-color auto 5px}
