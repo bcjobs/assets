@@ -416,7 +416,7 @@ JOBCENTRE.purchase = (function ($) {
             contact: '',
             email: '',
             phone: '',
-            street: '',
+            line1: '',
             city: '',
             postalCode: '',
             province: {},
@@ -456,7 +456,7 @@ JOBCENTRE.purchase = (function ($) {
                     message: ' must be at least 10 numbers'
                 }
             },
-            street: {
+            line1: {
                 required: {},
                 maxLength: {
                     max: 128
