@@ -879,12 +879,34 @@ JOBCENTRE.jobForm = (function ($) {
             );
         },
 
+        selectDropdowns: function () {
+            this.$('select[name=categoryIds]')
+                .val(_.map(this.model.get('categories'), function (c) {
+                    return c.id
+                }));
+
+            this.$('select[name=memberStatusIds]')
+                .val(_.map(this.model.get('memberStatuses'), function (c) {
+                    return c.id
+                }));
+
+            this.$('select[name=careerLevelIds]')
+                .val(_.map(this.model.get('careerLevels'), function (c) {
+                    return c.id
+                }));
+
+            if (this.model.get('positionType'))
+                this.$('select[name=positionTypeId]')
+                    .val(this.model.get('positionType').id);
+        },
+
         render: function () {
 
             if (this.renderState(this.model.state))
                 return this;
 
             this.$el.html(this.template(this.model));
+            this.selectDropdowns();
             this.bindSelect2();
 
             if (!$.contains(document.documentElement, this.el))
