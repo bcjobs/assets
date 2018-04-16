@@ -886,7 +886,12 @@ JOBCENTRE.jobForm = (function ($) {
 
             this.$el.html(this.template(this.model));
             this.bindSelect2();
-            this.bindTinyMCE();
+
+            if (!$.contains(document.documentElement, this.el))
+                setTimeout(this.bindTinyMCE, 10);
+            else
+                this.bindTinyMCE();
+
             this.bindLocationsSuggests();
             this.bindUrlFixer();
             this.bindTrainingPositionDisplay();
