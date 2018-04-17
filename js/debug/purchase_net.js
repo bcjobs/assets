@@ -1422,7 +1422,7 @@ JOBCENTRE.purchase = (function ($) {
                 output.push(String.format(
                     '<option value="{0}"{1}>{2}</option>',
                     country.id,
-                    (that.model.get('address').get('country').id == country.id) ? ' selected="selected"' : '',
+                    (that.model.get('address').get('country') && that.model.get('address').get('country').id == country.id) ? ' selected="selected"' : '',
                     country.get('name')
                 ));
             });
