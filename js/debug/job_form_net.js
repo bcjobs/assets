@@ -885,10 +885,11 @@ JOBCENTRE.jobForm = (function ($) {
                     return c.id
                 }));
 
-            this.$('select[name=memberStatusIds]')
-                .val(_.map(this.model.get('memberStatuses'), function (c) {
-                    return c.id
-                }));
+            var memberStatusIds = _.map(this.model.get('memberStatuses'), function (s) {
+                return s.id
+            });
+            this.$('input[name=memberStatusIds]')
+                .filter('[value=' + memberStatusIds.join('], [value=') + ']').prop('checked', true);
 
             this.$('select[name=careerLevelIds]')
                 .val(_.map(this.model.get('careerLevels'), function (c) {
