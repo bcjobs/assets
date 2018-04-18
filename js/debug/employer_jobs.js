@@ -3,6 +3,7 @@
 JOBCENTRE.employerJobs = (function ($) {
 
     var employerPlan;
+    var redirectOnDelete;
 
     //#region setup
 
@@ -107,21 +108,24 @@ JOBCENTRE.employerJobs = (function ($) {
 
     //#region request
 
-    var request = function (url, method, payload, onInsufficientCredit) {
+    var request = function (options) {
         showOverlay();
         $.ajax({
-            url: url,
+            url: options.url,
             dataType: 'json',
-            type: method,
+            type: options.method,
             contentType: 'application/json',
-            data: payload ? JSON.stringify(payload) : null,
+            data: options.payload ? JSON.stringify(options.payload) : null,
             success: function (response, textStatus, jqXHR) {
-                window.location.reload(true);
+                if (options.onSuccess)
+                    options.onSuccess();
+                else
+                    window.location.reload(true);
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 
                 if (jqXHR.status === 402) {
-                    onInsufficientCredit && onInsufficientCredit();
+                    options.onInsufficientCredit && options.onInsufficientCredit();
                 } else if (jqXHR.status >= 400 && jqXHR.status < 500) {
                     var response = JSON.parse(jqXHR.responseText);
                     showError(response.message);
@@ -148,10 +152,15 @@ JOBCENTRE.employerJobs = (function ($) {
     };
 
     var activate = function (jobId) {
-        request('/api/v1.1/jobs/' + jobId, 'PUT', {
-            status: 'active'
-        }, function () {
-            JOBCENTRE.purchaseModal.purchase(null, function () { activate(jobId); })
+        request({
+            url: '/api/v1.1/jobs/' + jobId,
+            method: 'PUT',
+            payload: {
+                status: 'active'
+            },
+            onInsufficientCredit: function () {
+                JOBCENTRE.purchaseModal.purchase(null, function () { activate(jobId); })
+            }
         });
     };
 
@@ -169,8 +178,12 @@ JOBCENTRE.employerJobs = (function ($) {
     };
 
     var refresh = function (jobId) {
-        request('/api/v1.1/jobs/' + jobId + '/refresh', 'POST', null, function () {
-            JOBCENTRE.purchaseModal.purchase(null, function () { refresh(jobId); })
+        request({
+            url: '/api/v1.1/jobs/' + jobId + '/refresh',
+            method: 'POST',
+            onInsufficientCredit: function () {
+                JOBCENTRE.purchaseModal.purchase(null, function () { refresh(jobId); })
+            }
         });
     };
 
@@ -188,8 +201,12 @@ JOBCENTRE.employerJobs = (function ($) {
     };
 
     var archive = function (jobId) {
-        request('/api/v1.1/jobs/' + jobId, 'PUT', {
-            status: 'archived'
+        request({
+            url: '/api/v1.1/jobs/' + jobId,
+            method: 'PUT',
+            payload: {
+                status: 'archived'
+            }
         });
     };
 
@@ -198,13 +215,19 @@ JOBCENTRE.employerJobs = (function ($) {
     //#region delete
 
     var tryDeleteJob = function (jobId, jobTitle) {
-        showModal('Deleted: ' + jobTitle, 'Do you wish to continue?', function () {
+        showModal('Delete: ' + jobTitle, 'Do you wish to continue?', function () {
             deleteJob(jobId);
         });
     };
 
     var deleteJob = function (jobId) {
-        request('/api/v1.1/jobs/' + jobId, 'DELETE');
+        request({
+            url: '/api/v1.1/jobs/' + jobId,
+            method: 'DELETE',
+            onSuccess: redirectOnDelete ? function () {
+                window.location.href = redirectOnDelete;
+            } : null
+        });
     };
 
     //#endregion
@@ -212,6 +235,7 @@ JOBCENTRE.employerJobs = (function ($) {
     return {
         init: function (options) {
             employerPlan = options.employerPlan;
+            redirectOnDelete = options.redirectOnDelete;
             setup();
         }
     };
