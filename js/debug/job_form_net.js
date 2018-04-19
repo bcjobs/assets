@@ -89,7 +89,8 @@ JOBCENTRE.jobForm = (function ($) {
 
         getCloseDateOptions: function () {
 
-            var start = !!this.get('activeDate') ? moment.utc(this.get('activeDate')) : moment.utc(today);
+            // use publishDate for now. In the future, when we work with slots, expose activeDate from API and use that.
+            var start = !!this.get('publishDate') ? moment.utc(this.get('publishDate')) : moment.utc(today);
 
             var options = [];
             for (var i = 1; i <= jobPostDurationMax; i++) {
@@ -144,7 +145,6 @@ JOBCENTRE.jobForm = (function ($) {
                 type: 'GET',
                 success: function (response, textStatus, jqXHR) {
                     delete response.id;
-                    delete response.activeDate;
                     delete response.publishDate;
                     delete response.closeDate;
                     response.status = 'active';
