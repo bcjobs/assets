@@ -1795,7 +1795,7 @@ JOBCENTRE.ensurePlan = (function ($) {
 
             var that = this;
             $.ajax({
-                url: '/services/RemoteServiceProxy.cfc?method=checkEmployerCredits&returnformat=json',
+                url: '/api/v1.1/employerplans/me',
                 dataType: 'json',
                 cache: false,
                 type: 'GET',
@@ -1803,21 +1803,19 @@ JOBCENTRE.ensurePlan = (function ($) {
 
                     that.removeSpinner();
 
-                    if (response.SUCCESS) {
-                        if (options.isForJob) {
-                            if (response.JOBPOST) {
-                                if (options.onValidPlan)
-                                    options.onValidPlan();
+                    if (options.isForJob) {
+                        if (response.jobPackage.active) {
+                            if (options.onValidPlan)
+                                options.onValidPlan();
 
-                                return;
-                            }
-                        } else {
-                            if (response.RESUMEACCESS) {
-                                if (options.onValidPlan)
-                                    options.onValidPlan();
+                            return;
+                        }
+                    } else {
+                        if (response.resumePackage.active) {
+                            if (options.onValidPlan)
+                                options.onValidPlan();
 
-                                return;
-                            }
+                            return;
                         }
                     }
 
