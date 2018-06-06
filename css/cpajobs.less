@@ -4049,29 +4049,22 @@ a.flex-tab.active { color: @secondary_color;}
 	.social-nav-links li a {
 		letter-spacing: 0;
 	}
-}
+} 
 
 @media (max-width: 350px) {
 }
 
-// New Select 2
+/* Select 2 Dropdown */
 .select2.select2-container {
     .select2-selection {
-        border: 0;
-        padding: 0 15px;
-        width: 100%;
-        min-height: 40px;
-        border-radius: 5px;
-        position: relative;
         background: #FFF; 
-        transition: all 0.3s ease;
-        box-shadow: none;  
-        &__rendered {
-            padding: 2px 5px;
+        box-shadow: none;   
+        &:hover,
+        &:focus { 
+        	border: 0 none;
         }
         &__choice {
             background: whitesmoke;
-            border: 0 none;
         }
     }
 }

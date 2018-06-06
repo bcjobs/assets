@@ -2024,37 +2024,21 @@ body .select2-container .select2-choice abbr:hover {
 
 // Job Alert Modal
 .job_alert_modal {
-
+  
 } 
 
-// New Select 2
-.select2.select2-container {
+/* Select 2 Dropdown */
+.select2.select2-container { 
     .select2-selection {
-        border: 0;
-        padding: 0 15px;
-        width: 100%;
-        min-height: 40px;
-        border-radius: 5px;
         color: @default_text;
-        position: relative;
         background: #EBEBEB; 
         transition: all 0.3s ease;
-        box-shadow: none;  
         &:hover,
         &:focus { 
             box-shadow: 2px 1.464px 4px 0px rgba(0, 0, 0, 0.21);
         }
-        &__rendered {
-            padding: 2px 5px;
-            .select2-search {
-                &__field {
-
-                }
-            }
-        }
         &__choice {
             background: #FDFDFD;
-            border: 0 none;
         }
     }
 }
